@@ -17,7 +17,7 @@ Este site é o ideal para um acompanhamento organizado e cuidados específicos c
 Para uma melhor organização em relação aos cuidados com o pet, visto que atualmente não existe um aplicativo ou um site para facilitar o acompanhamento do pet.
 
 ### Where
-•	Terá um foco em Maceió-AL. \**
+•	Terá um foco em Maceió-AL.<br>
 •	Será implementado na Web.
 
 ### Who
