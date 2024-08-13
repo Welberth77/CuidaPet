@@ -2,11 +2,11 @@
 Engenharia de Software <br>
 Prof. Marcos Vinícius <br>
 Grupo:
-Igor Rafael Basilio de Lima <br>
-Welberth de Oliveira Costa <br>
-Ricardo Antônio Figueiredo Warumby <br>
-Paulo César dos Santos Costa <br>
-Guilherme César Lucena Jatobá <br>
+Igor Rafael Basilio de Lima,
+Welberth de Oliveira Costa,
+Ricardo Antônio Figueiredo Warumby,
+Paulo César dos Santos Costa,
+Guilherme César Lucena Jatobá.
 
 	5WH	
 
