@@ -10,17 +10,17 @@ Guilherme César Lucena Jatobá
 
 	5WH	
 
-What ->
+#What ->
 Este site é o ideal para um acompanhamento organizado e cuidados específicos com o seu animal de estimação. Acompanhamento das vacinas, banho e tosa, alimentação e passeios.
 
-Why
+#Why ->
 Para uma melhor organização em relação aos cuidados com o pet, visto que atualmente não existe um aplicativo ou um site para facilitar o acompanhamento do pet.
 
-Where
+#Where ->
 •	Terá um foco em Maceió-AL.
 •	Será implementado na Web.
 
-Who
+#Who ->
 Donos de pet que não possuem muito tempo para organizar a rotina do seu animal, como horários de alimentação, datas de vacinas e cuidados específicos de cada raça.
 
 When
