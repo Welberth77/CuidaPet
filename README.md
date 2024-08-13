@@ -10,26 +10,26 @@ Guilherme César Lucena Jatobá
 
 	5WH	
 
-#What ->
+What ->
 Este site é o ideal para um acompanhamento organizado e cuidados específicos com o seu animal de estimação. Acompanhamento das vacinas, banho e tosa, alimentação e passeios.
 
-#Why ->
+Why ->
 Para uma melhor organização em relação aos cuidados com o pet, visto que atualmente não existe um aplicativo ou um site para facilitar o acompanhamento do pet.
 
-#Where ->
+Where ->
 •	Terá um foco em Maceió-AL.
 •	Será implementado na Web.
 
-#Who ->
+Who ->
 Donos de pet que não possuem muito tempo para organizar a rotina do seu animal, como horários de alimentação, datas de vacinas e cuidados específicos de cada raça.
 
-When
+When ->
 •	5WH – 13/08/2024
 •	Projeto Final - Final do período letivo 2024/2 (30/11/2024).
 
 
 
-How
+How ->
 •	Framework Web (Flask ou Django)
 •	Front-end (HTML/CSS)
 •	Banco de Dados (SQL/ORM)
