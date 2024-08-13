@@ -24,17 +24,15 @@ Para uma melhor organização em relação aos cuidados com o pet, visto que atu
 Donos de pet que não possuem muito tempo para organizar a rotina do seu animal, como horários de alimentação, datas de vacinas e cuidados específicos de cada raça.
 
 ### When
-•	5WH – 13/08/2024
+•	5WH – 13/08/2024 <br>
 •	Projeto Final - Final do período letivo 2024/2 (30/11/2024).
 
-
-
 ### How
-•	Framework Web (Flask ou Django)
-•	Front-end (HTML/CSS)
-•	Banco de Dados (SQL/ORM)
-•	APIs (Google Places API/TheDogAPI/TheCatAPI)
-•	Hospedagem
-•	Desenvolvimento Ágil (GIT)
-•	Documentação e Testes
+•	Framework Web (Flask ou Django) <br>
+•	Front-end (HTML/CSS) <br>
+•	Banco de Dados (SQL/ORM) <br>
+•	APIs (Google Places API/TheDogAPI/TheCatAPI) <br>
+•	Hospedagem <br>
+•	Desenvolvimento Ágil (GIT) <br>
+•	Documentação e Testes <br>
 
