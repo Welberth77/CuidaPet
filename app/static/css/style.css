@@ -1,0 +1,76 @@
+body {
+    font-family: 'Roboto', Helvetica, sans-serif;
+}
+
+.area-login {
+    display: flex;
+    text-align: center;
+    gap: 150px;
+}
+
+.imagem-login {
+    width: 600px;
+    height: 1024px;
+    background-color: #0B7ABF;
+}
+
+.login .titulo .texto-titulo {
+    color: #053451;
+    font-weight: 900;
+    font-size: 50px;
+    margin: 80px 0 18px 0;
+}
+
+.login .titulo .descricao-titulo {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    color: #095F95;
+}
+
+.login .interacao-usuario .titulo-interacao {
+    margin: 100px 0 0;
+}
+
+.login .interacao-usuario h2{
+    font-size: 24px;
+    font-weight: 700;
+    color: #053451;
+    text-align: left;
+    margin: 10px 0 8px;
+}
+
+.login .interacao-usuario .inputs-usuario {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.login .interacao-usuario .inputs-usuario input {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    width: 400px;
+    height: 50px;
+    padding-left: 10px;
+    border-radius: 18px;
+    background-color: #D9D9D9;
+    color: #333;
+    border: 2px solid #053451
+}
+
+.login .entrar {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.login .entrar .botao-entrar {
+    font-size: 32px;
+    font-weight: 700;
+    width: 220px;
+    height: 60px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #0B7ABF;
+    color: #ffffff;
+}
