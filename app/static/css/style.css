@@ -29,20 +29,22 @@ body {
 }
 
 .login .interacao-usuario .titulo-interacao {
-    margin: 100px 0 0;
+    font-size: 24px;
+    margin: 100px 20px 0 0;
+    text-align: center;
 }
 
 .login .interacao-usuario h2{
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
     color: #053451;
-    text-align: left;
-    margin: 10px 0 8px;
+    text-align: center;
+    margin: 20px 340px 8px 0;
 }
 
 .login .interacao-usuario .inputs-usuario {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .login .interacao-usuario .inputs-usuario input {
@@ -60,14 +62,14 @@ body {
 .login .entrar {
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .login .entrar .botao-entrar {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 700;
-    width: 220px;
-    height: 60px;
+    width: 170px;
+    height: 55px;
     border-radius: 20px;
     border: none;
     cursor: pointer;
