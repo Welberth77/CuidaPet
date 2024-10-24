@@ -1,4 +1,10 @@
+* {
+    margin: 0;
+}
+
 body {
+    margin: 0;
+    height: 100%;
     font-family: 'Roboto', Helvetica, sans-serif;
 }
 
@@ -8,10 +14,9 @@ body {
     gap: 150px;
 }
 
-.imagem-login {
+.area-login .imagem-login {
     width: 600px;
-    height: 1024px;
-    background-color: #0B7ABF;
+    height: 100%;
 }
 
 .login .titulo .texto-titulo {
