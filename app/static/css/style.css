@@ -81,3 +81,35 @@ body {
     background-color: #0B7ABF;
     color: #ffffff;
 }
+
+.cadastrar-novo {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastrar-novo .linha {
+    width: 150px;
+    height: 1px;
+    background-color: black;
+}
+
+.cadastrar-novo h3 {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0 20px;
+}
+
+.cadastre-se {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastre-se a {
+    font-size: 18px;
+    font-weight: 400;
+    color: #0B7ABF;
+}
