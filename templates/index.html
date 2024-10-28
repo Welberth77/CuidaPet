@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CuidaPet</title>
+    <title>CuidaPet - Login</title>
 
     <!-- Adicionando fonte robotto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,20 +24,35 @@
 
             <div class="interacao-usuario">
                 <h2 class="titulo-interacao">ENTRE COM SUA CONTA CUIDAPET</h2>
+
                 <h2 class="e-mail-titulo">E-MAIL</h2>
                 <div class="inputs-usuario">
-                    <input type="email" class="input-e-mail" placeholder="E-MAIL">
+                    <input type="email" class="input-e-mail" placeholder="E-mail" id="e-mail">
                 </div>
+
                 <h2 class="senha-titulo">SENHA</h2>
                 <div class="inputs-usuario">
-                    <input type="password" class="input-senha" placeholder="SENHA"> 
+                    <input type="password" class="input-senha" placeholder="Senha" id="senha"> 
                 </div>
             </div>
 
-            <div class="entrar">
-                <input type="submit" value="ENTRAR" class="botao-entrar">
+            <a class="entrar">
+                <div>
+                    <input type="submit" value="ENTRAR" class="botao-entrar" onclick="logar()">
+                </div>
+            </a>
+
+            <div class="cadastrar-novo">
+                <hr class="linha">
+                <h3>NÃO TEM CADASTRO ?</h3>
+                <hr class="linha">
+            </div>
+
+            <div class="cadastre-se">
+                <a href="cadastrar_usuario.html">CADASTRE-SE AQUI</a>
             </div>
         </div>
     </div>
+    <script src="../app/static/js/index.js"></script>
 </body>
 </html>
