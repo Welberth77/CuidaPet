@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CuidaPet - Cadastro de Novo Usuário</title>
 
-    <link rel="stylesheet" href="../app/static/css/style.css">
+    <link rel="stylesheet" href="../app/static/css/base.css">
+    <link rel="stylesheet" href="../app/static/css/pages/cadastro.css">
+
 </head>
 <body class="pagina-cadastrar-usuario">
     <div class="cadastro">
@@ -18,26 +20,23 @@
                 <h2>CADASTRE-SE</h2>
             </div>
 
-            <div class="interacao-usuario">
+            <form class="interacao-usuario" action="index.html" method="POST">
                 <h3>NOME COMPLETO:</h3>
-                <input type="text" class="input-nome-completo" placeholder="Nome completo">
+                <input type="text" class="input-nome-completo" placeholder="Nome completo" required>
 
                 <h3>E-MAIL:</h3>
-                <input type="email" class="input-e-mail" placeholder="E-mail">
+                <input type="email" class="input-e-mail" placeholder="E-mail" required>
 
                 <h3>SENHA:</h3>
-                <input type="password" class="input-senha" placeholder="Senha">
+                <input type="password" class="input-senha" placeholder="Senha" required>
 
                 <h3>CONFIRMAÇÃO DE SENHA:</h3>
-                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha">
+                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha" required>
 
-                <a class="cadastrar" href="index.html">
-                    <div class="cadastrar">
-                        <h4 class="texto-cadastrar">CADASTRAR</h4>
-                    </div>
-                </a>
-            </div>
-        </div>
+                <button type="submit" class="cadastrar">
+                    <h4 class="texto-cadastrar">CADASTRAR</h4>
+                </button>
+            </form>
         </div>
     </div>
 </body>
