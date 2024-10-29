@@ -146,7 +146,7 @@ body {
     border-radius: 20px;
 }
 
-.cadastro .area-cadastro-usuario .titulo-area-cadastro-usuario h2 {
+.cadastro .area-cadastro-usuario .titulo-area-cadastro h2 {
     font-size: 36px;
     font-weight: 700;
 }
@@ -173,7 +173,7 @@ body {
     border-radius: 18px;
     background-color: #D9D9D9;
     color: #333;
-    border: 2px solid #053451
+    border: 2px solid #053451;
 }
 
 .cadastro .area-cadastro-usuario .interacao-usuario .cadastrar {
@@ -187,8 +187,12 @@ body {
     align-items: center;
     justify-content: center; 
     margin: 20px auto;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-
-/* ------------ Página principal ---------------- */
-
+.cadastro .area-cadastro-usuario .interacao-usuario .cadastrar:hover {
+    background-color: #095a8c;
+}

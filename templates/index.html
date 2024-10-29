@@ -21,26 +21,28 @@
                 <h1 class="texto-titulo">CUIDAPET</h1>
                 <p class="descricao-titulo">Facilite a vida do seu pet com apenas um clique!</p>
             </div>
-
+            
             <div class="interacao-usuario">
                 <h2 class="titulo-interacao">ENTRE COM SUA CONTA CUIDAPET</h2>
-
-                <h2 class="e-mail-titulo">E-MAIL</h2>
-                <div class="inputs-usuario">
-                    <input type="email" class="input-e-mail" placeholder="E-mail" id="e-mail">
-                </div>
-
-                <h2 class="senha-titulo">SENHA</h2>
-                <div class="inputs-usuario">
-                    <input type="password" class="input-senha" placeholder="Senha" id="senha"> 
-                </div>
-            </div>
-
-            <a class="entrar">
-                <div>
-                    <input type="submit" value="ENTRAR" class="botao-entrar" onclick="logar()">
-                </div>
-            </a>
+            
+                <form id="login-form" method="POST" onsubmit="logar(); return false;">
+                    <h2 class="e-mail-titulo">E-MAIL</h2>
+                    <div class="inputs-usuario">
+                        <input type="email" class="input-e-mail" placeholder="E-mail" id="e-mail" name="email" required>
+                    </div>
+            
+                    <h2 class="senha-titulo">SENHA</h2>
+                    <div class="inputs-usuario">
+                        <input type="password" class="input-senha" placeholder="Senha" id="senha" name="password" required>
+                    </div>
+            
+                    <div class="login">
+                        <div class="entrar">
+                            <input type="submit" value="ENTRAR" class="botao-entrar">
+                        </div>
+                    </div>
+                </form>
+            </div>            
 
             <div class="cadastrar-novo">
                 <hr class="linha">
