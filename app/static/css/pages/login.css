@@ -1,15 +1,5 @@
 /* Estilos da página de login */
 
-* {
-    margin: 0;
-}
-
-body {
-    margin: 0;
-    height: 100%;
-    font-family: 'Roboto', Helvetica, sans-serif;
-}
-
 .area-login {
     display: flex;
     text-align: center;
