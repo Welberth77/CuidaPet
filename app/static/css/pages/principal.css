@@ -45,7 +45,7 @@
 }
 
 .servicos h2 {
-    margin: 20px 0 0 60px;
+    margin: 20px 0 0 65px;
     font-size: 24px;
 }
 
@@ -66,4 +66,45 @@
     text-align: center;
     background-color: #0B7ABF;
     margin: 0 30px 0;
+}
+
+.servicos .botoes li h3 {
+    font-size: 28px;
+    color: #ffffff;
+    text-align: left;
+    margin: 30px 0 0 30px;
+    max-width: 350px;
+}
+
+.servicos .botoes li p {
+    font-size: 14px;
+    color: #ffffff;
+    text-align: left;
+    max-width: 180px;
+    margin: 15px 0 0 30px;
+}
+
+.servicos .botoes .imagem-meus-pets {
+    width: 80%;
+    height: 80%;
+    margin: -74px 0 0 70px;
+}
+
+.servicos .botoes .imagem-medicamentos-e-vacinas {
+    width: 80%;
+    height: 80%;
+    margin: -124px 0 0 40px;
+}
+
+.servicos .botoes .imagem-noticias {
+    width: 100%;
+    height: 100%;
+    margin: -129px 0 0 0;
+    border-bottom-right-radius: 20px;
+}
+
+.servicos .botoes .imagem-pet-shops {
+    width: 90%;
+    height: 90%;
+    margin: -115px 0 0 20px;
 }
