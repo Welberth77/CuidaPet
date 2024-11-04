@@ -28,6 +28,7 @@
     align-items: center; 
 }
 
+
 .cabecalho .navegacao .foto-perfil {
     width: 40px;
     height: 40px;
@@ -63,6 +64,10 @@
     flex-wrap: wrap;
     margin: 20px 0;
     padding: 0;
+}
+
+.servicos ul a {
+    text-decoration: none;
 }
 
 .servicos .botoes li {
