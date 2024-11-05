@@ -1,0 +1,71 @@
+/* CABEÇALHO */
+.cabecalho {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #0B7ABF;
+    color: white;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.cabecalho .logo-cuidapet {
+    margin-left: 20px;
+    font-size: 35px;
+    text-align: left;
+}
+
+.cabecalho .navegacao ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center; 
+}
+
+
+.cabecalho .navegacao .foto-perfil {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    background-color: #053451;
+    border-radius: 40px;
+}
+
+/* Div de interação com usuário */
+
+/* .titulo-area-pet h2 {
+    font-weight: 900;
+    font-size: 30px;
+    color: #ffffff;
+    margin: 10px 0 0;
+    width: 100%;
+    text-align: center;
+} */
+
+.area-cadastro-pet {
+    width: 640px;
+    height: 700px;
+    margin: 30px auto; 
+    background-color: #053451;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.area-cadastro-pet .titulo-area-pet h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.area-cadastro-pet .interacao-usuario {
+    margin: 40px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}

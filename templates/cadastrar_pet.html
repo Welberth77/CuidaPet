@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Cadastrar Pet</title>
+
+    <link rel="stylesheet" href="../app/static/css/base.css">
+    <link rel="stylesheet" href="../app/static/css/pages/cadastrarPet.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">CUIDAPET</h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>HOME</li>
+                <li>SOBRE-NÓS</li>
+                <li class="foto-perfil"></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="area-cadastro-pet">
+        <div class="titulo-area-pet">
+            <h2>CADASTRAR PET</h2>
+        </div>
+
+        <form class="interacao-usuario" action="meus_pets.html" method="POST">
+            <h3>NOME COMPLETO:</h3>
+            <input type="text" class="input-nome-completo" placeholder="Nome completo" required>
+
+            <h3>E-MAIL:</h3>
+            <input type="email" class="input-e-mail" placeholder="E-mail" required>
+
+            <h3>SENHA:</h3>
+            <input type="password" class="input-senha" placeholder="Senha" required>
+
+            <h3>CONFIRMAÇÃO DE SENHA:</h3>
+            <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha" required>
+
+            <button type="submit" class="cadastrar">
+                <h4 class="texto-cadastrar">CADASTRAR PET</h4>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
