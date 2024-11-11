@@ -64,8 +64,107 @@
 }
 
 .area-cadastro-pet .interacao-usuario {
-    margin: 40px 0 0;
+    display: flex;
+    margin: 40px 40px 0;
+    gap: 100px;
+}
+
+.area-cadastro-pet .interacao-usuario h3 {
     font-size: 18px;
-    font-weight: 700;
+    text-align: left;
+    padding: 0 0 0 5px;
+}
+
+.area-cadastro-pet .interacao-usuario input {
+    margin: 5px 10px 25px 0;
+    font-size: 14px;
+    width: 200px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    color: #333;
+    border: 2px solid #053451;
+}
+
+.area-cadastro-pet .interacao-usuario select {
+    margin: 5px 0 25px -10px;
+    font-size: 14px;
+    width: 210px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    padding-left: 10px;
+    color: #333;
+}
+
+.area-cadastro-pet .interacao-usuario option {
+    padding: 5px;
+}
+
+.area-cadastro-pet .interacao-usuario .interacao-usuario-direito textarea {
+    margin: 5px 20px 25px 0;
+    font-size: 14px;
+    width: 200px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    color: #333;
+    border: 2px solid #053451;
+}
+
+/* Lado direito */
+
+.area-cadastro-pet .interacao-usuario .interacao-usuario-direito .sobre-o-pet {
+    width: 200;               /* Ocupa 100% do contêiner pai */
+    max-width: 280;           /* Limita a largura máxima */
+    padding: 10px;             /* Espaço interno */
+    font-size: 14px;           /* Tamanho da fonte */
+    border: 2px solid #ccc;    /* Estilo da borda */
+    border-radius: 5px;        /* Arredonda as bordas */
+    box-sizing: border-box;    /* Inclui padding e borda na largura total */
+    height: 150px;             /* Altura fixa para o campo */
+    overflow-y: auto;          /* Barra de rolagem vertical ao exceder a altura */
+    resize: none;              /* Impede o redimensionamento pelo usuário */
+    white-space: pre-wrap;
+}
+
+.foto-do-pet {
+    display: none; /* Esconde o input real */
+  }
+  
+.foto-label {
+    margin: 5px 0 25px 0;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #0B7ABF; /* Cor de fundo do botão */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.foto-label:hover {
+    background-color: #095F95; /* Cor de fundo ao passar o mouse */
+}
+
+/* Botão cadastrar Pet */
+
+.botao-cadastrar-pet {
+    background-color: #0B7ABF;
     color: #ffffff;
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin: auto;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
 }
