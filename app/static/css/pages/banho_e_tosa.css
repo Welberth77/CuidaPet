@@ -46,25 +46,31 @@
     margin: 20px 0 0;
 }
 
-/* LADO ESQUERDO */
+/* DIV CENTRAL */
 
 .banho {
     display: flex;
     margin: 30px 90px 0;
 }
 
+/* LADO ESQUERDO */
+
 .banho-pet {
+    display: block;
     width: 30%;
-    justify-content: center;
-    align-items: center;
+    margin: 0 0 0 50px;
+    text-align: center;
 }
 
 .banho-pet img {
     background-color: #053451;
     border-radius: 100%;
-    width: 350px;
-    height: 350px;
-    padding: 0 0 0 30px;
+    width: 300px;
+    height: 300px;
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 300px;
+    min-height: 300px;
 }
 
 .banho-pet h2 {
@@ -122,5 +128,24 @@
     margin: 10px;
     padding: 10px;
     background-color: #0B7ABF;
+    border-radius: 20px;
+}
+
+/* MENSAGEM DO BANHO */
+
+.mensagem-banho {
+    display: block;
+    text-align: center;
+    margin: 170px 0 0 -530px; /* Colocando Div abaixo das divs Ultimo banho e Próximo Banho */
+}
+
+.mensagem-banho h3 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #00b200;
+    max-width: 500px;
+    color: #fff;
+    padding: 10px 15px;
     border-radius: 20px;
 }
