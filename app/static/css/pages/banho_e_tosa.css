@@ -46,106 +46,97 @@
     margin: 20px 0 0;
 }
 
-/* DIV CENTRAL */
+/* BANHO */
 
 .banho {
     display: flex;
-    margin: 30px 90px 0;
+    justify-content: center;
+    margin: 50px 0 0 0;
+    gap: 90px;
 }
 
-/* LADO ESQUERDO */
+/* DIV ESQUERDA | INFORMAÇÕES DO PET SELECIONADO */
 
-.banho-pet {
+.informacoes-pet {
     display: block;
-    width: 30%;
-    margin: 0 0 0 50px;
-    text-align: center;
 }
 
-.banho-pet img {
+.imagem-pet img {
     background-color: #053451;
-    border-radius: 100%;
     width: 300px;
     height: 300px;
-    max-width: 350px;
-    max-height: 350px;
-    min-width: 300px;
-    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 100%;
 }
 
-.banho-pet h2 {
+.informacoes-pet .nome-do-pet {
     text-align: center;
-    font-weight: 700;
-    color: #053451;
+    margin: 10px auto;
 }
 
-/* LADO DIREITO */
+.informacoes-pet .nome-do-pet h2 {
+    color: #053451;
+    font-size: 24px;
+    font-weight: 600;
+}
 
-.descricao-banho-pet {
+/* DIV DIREITA | DATAS DOS BANHOS */
+/* TITULOS DAS INFORMAÇÕES DE DATAS DO PET  */
+
+.titulo-banho-pet {
     display: flex;
-    gap: 30px;
-    margin: 0 0 0 80px;
+    gap: 50px;
 }
 
-/* ULTIMO BANHO */
-
-.data-ultimo-banho {
-    padding: 30px 30px 0;
-}
-
-.data-ultimo-banho h2 {
-    font-size: 24px;
+.titulo-banho-pet h2 {
+    font-size: 26px;
     color: #053451;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.data-ultimo-banho h3 {
+/* DATAS BANHOS PET */
+
+.datas-banho {
+    display: flex;
+    justify-content: center;
     text-align: center;
-    font-size: 20px;
-    color: #fff;
-    margin: 10px;
-    padding: 10px;
+    gap: 90px;
+}
+
+.datas-banho h3 {
+    font-weight: 600;
+    width: 120px;
     background-color: #0B7ABF;
-    border-radius: 20px;
-}
-
-/* PRÓXIMO BANHO */
-
-.data-proximo-banho {
-    padding: 30px 30px 0;
-}
-
-.data-proximo-banho h2 {
-    font-size: 24px;
-    color: #053451;
-    font-weight: 600;
-}
-
-.data-proximo-banho h3 {
-    text-align: center;
-    font-size: 20px;
     color: #fff;
-    margin: 10px;
-    padding: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 10px 0 0 40px;
+}
+
+/* SITUAÇÃO DO BANHO DO PET */
+
+.situacao-banho-pet {
+    margin: 40px auto auto 55px;
+    text-align: center;
+}
+
+.situacao-banho-pet h3 {
     background-color: #0B7ABF;
-    border-radius: 20px;
-}
-
-/* MENSAGEM DO BANHO */
-
-.mensagem-banho {
-    display: block;
-    text-align: center;
-    margin: 170px 0 0 -530px; /* Colocando Div abaixo das divs Ultimo banho e Próximo Banho */
-}
-
-.mensagem-banho h3 {
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    background-color: #00b200;
-    max-width: 500px;
     color: #fff;
-    padding: 10px 15px;
     border-radius: 20px;
+    padding: 10px;
+    max-width: 450px;
+}
+
+/* REGISTRAR NOVO BANHO */
+
+.registrar-novo-banho {
+    text-align: center;
+    margin: 30px 0 0;
+}
+
+.registrar-novo-banho a {
+    color: #0B7ABF;
+    font-size: 18px;
 }
