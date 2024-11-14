@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Registrar Banho</title>
+
+    <link rel="stylesheet" href="../app/static/css/base.css">
+    <link rel="stylesheet" href="../app/static/css/pages/registrar_banho.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">CUIDAPET</h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>HOME</li>
+                <li>SOBRE-NÓS</li>
+                <li class="foto-perfil"></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="titulo-pagina">REGISTRAR NOVO BANHO</h1>
+
+    <div class="conteiner-registrar-banho">
+        <form class="interacao-usuario" action="banho_e_tosa.html" method="POST">
+            <h2>PET:</h2>
+            <select class="selecionar-pet" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="bob">BOB</option>
+                <option value="marley">MARLEY</option>
+            </select>
+    
+            <h2>DATA:</h2>
+            <input type="date" class="data-novo-banho" required>
+    
+            <h2>PRÓXIMO BANHO:</h2>
+            <select class="selecionar-data-proximo-banho" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="7-dias">7 DIAS</option>
+                <option value="15-dias">15 DIAS</option>
+                <option value="20-dias">20 DIAS</option>
+                <option value="30-dias">30 DIAS</option>
+            </select>
+    
+            <h2>OBSERVAÇÕES:</h2>
+            <textarea class="observacoes-banho" placeholder="Observações sobre o banho do pet"></textarea>
+    
+            <button type="submit" class="salvar-banho">
+                <h3>SALVAR BANHO</h3>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
