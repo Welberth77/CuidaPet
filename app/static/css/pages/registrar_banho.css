@@ -39,9 +39,9 @@
 /* Título da página */
 
 .titulo-pagina {
+    font-size: 40px;
     text-align: center;
     font-weight: 700;
-    font-size: 40px;
     color: #053451;
     margin: 20px 0 0;
 }
@@ -50,11 +50,59 @@
 
 .conteiner-registrar-banho {
     background-color: #053451;
-    width: 500px;
+    border-radius: 20px;
+    width: 300px;
     display: block;
     margin: 40px auto;
+    padding: 30px;
+    text-align: center;
+}
+
+.conteiner-registrar-banho h2 {
+    text-align: left;
 }
 
 .interacao-usuario h2 {
-    margin: 0 0 5px 0;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 5px 40px;
+}
+
+.interacao-usuario input {
+    background-color: #D9D9D9;
+    color: #333;
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 0 0 20px;
+}
+
+.interacao-usuario select {
+    background-color: #D9D9D9;
+    color: #333;
+    width: 220px;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 0 0 20px;
+}
+
+.interacao-usuario .observacoes-banho{
+    height: 120px;
+    margin: 0 0 40px;
+}
+
+.interacao-usuario .salvar-banho {
+    background-color: #0B7ABF;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.interacao-usuario .salvar-banho h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
 }
