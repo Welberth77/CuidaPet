@@ -24,10 +24,10 @@
     <h1 class="titulo-pagina">REGISTRAR NOVO BANHO</h1>
 
     <div class="conteiner-registrar-banho">
-        <form class="interacao-usuario" method="POST">
+        <form class="interacao-usuario" action="banho_e_tosa.html" method="POST">
             <h2>PET:</h2>
             <select class="selecionar-pet" required>
-                <option value="vazio">-</option>
+                <option value="" disabled selected>Selecione uma opção</option>
                 <option value="bob">BOB</option>
                 <option value="marley">MARLEY</option>
             </select>
@@ -37,15 +37,15 @@
     
             <h2>PRÓXIMO BANHO:</h2>
             <select class="selecionar-data-proximo-banho" required>
-                <option value="vazio">-</option>
+                <option value="" disabled selected>Selecione uma opção</option>
                 <option value="7-dias">7 DIAS</option>
                 <option value="15-dias">15 DIAS</option>
                 <option value="20-dias">20 DIAS</option>
                 <option value="30-dias">30 DIAS</option>
             </select>
     
-            <h2>OBSERVAÇÕES</h2>
-            <input type="text" class="observacoes-banho">
+            <h2>OBSERVAÇÕES:</h2>
+            <textarea class="observacoes-banho" placeholder="Observações sobre o banho do pet"></textarea>
     
             <button type="submit" class="salvar-banho">
                 <h3>SALVAR BANHO</h3>

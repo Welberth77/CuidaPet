@@ -33,7 +33,7 @@
 
                 <h3>ESPÉCIE:</h3>
                 <select class="especie-pet">
-                    <option value="vazio">-</option>
+                    <option value="" disabled selected>Selecione uma opção</option>
                     <option value="cachorro">Cachorro</option>
                     <option value="gato">Gato</option>
                 </select>
@@ -43,7 +43,7 @@
 
                 <h3>SEXO:</h3>
                 <select class="sexo-do-pet">
-                    <option value="vazio">-</option>
+                    <option value="" disabled selected>Selecione uma opção</option>
                     <option value="macho">Macho</option>
                     <option value="femea">Fêmea</option>
                     <option value="nao-identificado">Não identificado</option>
@@ -63,7 +63,7 @@
 
                 <h3>PELAGEM:</h3>
                 <select class="pelagem-do-pet">
-                    <option value="vazio">-</option>
+                    <option value="" disabled selected>Selecione uma opção</option>
                     <option value="curta">Curta</option>
                     <option value="media">Média</option>
                     <option value="longa">Longa</option>
@@ -73,7 +73,7 @@
                 <textarea class="sobre-o-pet" placeholder="Sobre o Pet"></textarea>
 
                 <h3>FOTO:</h3>
-                <label for="foto-do-pet" class="foto-label">Selecione uma imagem do pet</label>
+                <label for="foto-do-pet" id="foto-label" class="foto-label">Selecione uma imagem do pet</label>
                 <input type="file" id="foto-do-pet" class="foto-do-pet" accept="image/*">
             </div>
         </form>

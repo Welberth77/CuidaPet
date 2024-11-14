@@ -51,9 +51,9 @@
 .conteiner-registrar-banho {
     background-color: #053451;
     border-radius: 20px;
-    width: 300px;
+    width: 400px;
     display: block;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 30px;
     text-align: center;
 }
@@ -63,17 +63,17 @@
 }
 
 .interacao-usuario h2 {
+    color: #FFF;
     font-size: 25px;
     font-weight: 600;
-    color: #fff;
     margin: 0 0 5px 40px;
 }
 
 .interacao-usuario input {
     background-color: #D9D9D9;
     color: #333;
-    width: 200px;
-    height: 35px;
+    width: 300px;
+    height: 40px;
     border-radius: 10px;
     padding: 0 10px;
     margin: 0 0 20px;
@@ -82,16 +82,24 @@
 .interacao-usuario select {
     background-color: #D9D9D9;
     color: #333;
-    width: 220px;
-    height: 35px;
+    width: 320px;
+    height: 40px;
     border-radius: 10px;
     padding: 0 10px;
     margin: 0 0 20px;
 }
 
 .interacao-usuario .observacoes-banho{
+    margin: 0 0 30px;
+    font-size: 16px;
+    width: 300px;
     height: 120px;
-    margin: 0 0 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    color: #333;
+    border: 2px solid #053451;
+    resize: none;
 }
 
 .interacao-usuario .salvar-banho {
