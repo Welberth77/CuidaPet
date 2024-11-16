@@ -1,0 +1,26 @@
+.titulo-pagina {
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    color: #053451;
+    margin: 20px 0 0;
+}
+
+.principal {
+    margin: 30px 5% 5%;
+}
+
+.principal h2 {
+    font-size: 26px;
+    color: #053451;
+}
+
+.principal p {
+    font-size: 18px;
+    margin: 5px 0 15px;
+}
+
+.principal ul {
+    font-size: 18px;
+    margin: 5px 0 15px;
+}
