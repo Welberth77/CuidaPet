@@ -13,26 +13,46 @@
 .lista-pets {
     list-style: none;
     margin: 0 0 0 2%;
+    display: none; /* Inicialmente oculta */
+    gap: 20px;
 }
 
 .lista-pets li {
     width: 160px;
     height: 80px;
-    background-color: #0B7ABF;
+    background-color: #ffffff; /* Fundo branco quando não selecionado */
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 30px 0 0;
-    /* Faz com que a div fique escondida */
-    /* display: none; */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    border: 2px solid #053451; /* Borda azul quando não selecionado */
 }
 
 .lista-pets li h2 {
-    color: #ffffff;
+    color: #0B7ABF; /* Cor azul para texto quando não selecionado */
     font-size: 22px;
 }
 
+/* Estilo para o item selecionado */
+.lista-pets li.selected {
+    background-color: #0B7ABF; /* Fundo azul para selecionado */
+    border: none; /* Remove a borda quando selecionado */
+}
+
+.lista-pets li.selected h2 {
+    color: #ffffff; /* Texto branco para o item selecionado */
+}
+
+.mensagem-vazia {
+    display: none;  /* Inicialmente oculta */
+    font-size: 20px;
+    color: #0B7ABF;
+    text-align: center;
+    margin-top: 20px;
+}
 
 /* Cadastrar Novo Pet */
 
