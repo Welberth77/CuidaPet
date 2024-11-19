@@ -1,0 +1,183 @@
+/* Título da página */
+
+.titulo-pagina {
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    color: #053451;
+    margin: 20px 0 0;
+}
+
+/* medicamentos */
+
+.medicamentos-e-vacinas {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+    gap: 90px;
+}
+
+/* DIV ESQUERDA | INFORMAÇÕES DO PET SELECIONADO */
+
+.informacoes-pet {
+    display: block;
+}
+
+.imagem-pet img {
+    background-color: #053451;
+    width: 300px;
+    height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 100%;
+}
+
+.informacoes-pet .nome-do-pet {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.informacoes-pet .nome-do-pet h2 {
+    color: #053451;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* DIV DIREITA | DATAS DOS MEDICAMENTOS */
+/* TITULOS DAS INFORMAÇÕES DE DATAS DO PET  */
+
+.titulo-medicamento-pet {
+    text-align: center;
+    font-size: 22px;
+    color: #053451;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+}
+
+.titulo-medicamentos-pet {
+    display: flex;
+    gap: 170px;
+}
+
+.titulo-medicamentos-pet h2 {
+    font-size: 26px;
+    color: #053451;
+    font-weight: 700;
+}
+
+/* DATAS MEDICAMENTOS PET */
+
+.datas-medicamentos {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 50px;
+}
+
+.datas-medicamentos h3 {
+    font-weight: 600;
+    width: 150px;
+    background-color: #0B7ABF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 10px 0 0 0;
+}
+
+/* SITUAÇÃO DO medicamentos DO PET */
+
+.situacao-medicamentos-pet {
+    margin: 40px auto auto 120px;
+    text-align: center;
+}
+
+.situacao-medicamentos-pet h3 {
+    background-color: #0B7ABF;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 450px;
+}
+
+
+/* REGISTRAR NOVO MEDICAMENTO */
+
+.registrar-novo-medicamento {
+    text-align: center;
+    margin: 30px 0 0;
+}
+
+.registrar-novo-medicamento a {
+    color: #0B7ABF;
+    font-size: 18px;
+}
+
+/* PARTE 2, VACINAS */
+
+/* TITULOS DAS INFORMAÇÕES DE DATAS DO PET  */
+
+.titulo-vacina-pet {
+    text-align: center;
+    font-size: 22px;
+    color: #053451;
+    font-weight: 700;
+    margin: 60px 0 30px 0;
+}
+
+.titulo-vacinas-pet {
+    display: flex;
+    gap: 170px;
+}
+
+.titulo-vacinas-pet h2 {
+    font-size: 26px;
+    color: #053451;
+    font-weight: 700;
+}
+
+/* DATAS MEDICAMENTOS PET */
+
+.datas-vacinas {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 50px;
+}
+
+.datas-vacinas h3 {
+    font-weight: 600;
+    width: 150px;
+    background-color: #0B7ABF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 10px 0 0 0;
+}
+
+/* SITUAÇÃO DO medicamentos DO PET */
+
+.situacao-vacinas-pet {
+    margin: 40px auto auto 120px;
+    text-align: center;
+}
+
+.situacao-vacinas-pet h3 {
+    background-color: #0B7ABF;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 450px;
+}
+
+
+/* REGISTRAR NOVO MEDICAMENTO */
+
+.registrar-novo-vacinas {
+    text-align: center;
+    margin: 30px 0 0;
+}
+
+.registrar-novo-vacinas a {
+    color: #0B7ABF;
+    font-size: 18px;
+}
