@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CuidaPet - Página Principal</title>
+    <title>{% block title %}CuidaPet - Pagina Principal{% endblock %}</title>
 
-    <link rel="stylesheet" href="../app/static/css/base.css">
-    <link rel="stylesheet" href="../app/static/css/header.css">
-    <link rel="stylesheet" href="../app/static/css/pages/principal.css">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/pages/principal.css">
 </head>
 <body>
     <header class="cabecalho">
@@ -21,7 +21,7 @@
                     <a href="pagina_principal.html">HOME</a>
                 </li>
                 <li>
-                    <a href="sobre_nos.html">SOBRE NÓS</a>
+                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
                 </li>
                 <li class="foto-perfil"></li>
             </ul>
@@ -29,7 +29,7 @@
     </header>
 
     <div class="fundo-banner-principal">
-        <img src="../app/static/css/imagens/banner-principal.png" alt="banner-principal" class="banner-principal">
+        <img src="../../static/css/imagens/banner-principal.png" alt="banner-principal" class="banner-principal">
     </div>
 
     <div class="servicos">
@@ -37,43 +37,43 @@
 
         <ul class="botoes">
             <li class="meus-pets">
-                <a href="meus_pets.html">
+                <a href="../meus_pets/meus_pets.html">
                     <h3>MEUS PETS</h3>
                     <p>Gerencie informações dos seus pets em um só lugar</p>
-                    <img src="../app/static/css/imagens/meus-pets.png" alt="imagem-meus-pets" class="imagem-meus-pets">
+                    <img src="../../static/css/imagens/meus-pets.png" alt="imagem-meus-pets" class="imagem-meus-pets">
                 </a>
             </li>
 
             <li class="banho-e-tosa">
-                <a href="banho_e_tosa.html">
+                <a href="../banho_e_tosa/banho_e_tosa.html">
                     <h3>BANHO E TOSA</h3>
                     <p>Acompanhe o histórico e receba lembretes para novos cuidados</p>
-                    <img src="../app/static/css/imagens/banho.png" alt="banho" class="imagem-banho">
+                    <img src="../../static/css/imagens/banho.png" alt="banho" class="imagem-banho">
                 </a>
             </li>
 
             <li class="medicamentos-e-vacinas">
                 <h3>MEDICAMENTOS E VACINAS</h3>
                 <p>Organize vacinas e medicamentos para garantir a saúde do seu pet</p>
-                <img src="../app/static/css/imagens/medicamentos-e-vacinas.png" alt="imagem-medicamentos-e-vacinas" class="imagem-medicamentos-e-vacinas">
+                <img src="../../static/css/imagens/medicamentos-e-vacinas.png" alt="imagem-medicamentos-e-vacinas" class="imagem-medicamentos-e-vacinas">
             </li>
 
             <li class="noticias">
                 <h3>NOTÍCIAS</h3>
                 <p>Confira dicas e novidades do mundo pet para melhor cuidar do seu animal</p>
-                <img src="../app/static/css/imagens/noticias.png" alt="imagem-noticias" class="imagem-noticias">
+                <img src="../../static/css/imagens/noticias.png" alt="imagem-noticias" class="imagem-noticias">
             </li>
 
             <li class="pet-shops">
                 <h3>PET-SHOPS</h3>
                 <p>Encontre pet-shops próximos e informações úteis</p>
-                <img src="../app/static/css/imagens/pet-shops.png" alt="imagem-pet-shops" class="imagem-pet-shops">
+                <img src="../../static/css/imagens/pet-shops.png" alt="imagem-pet-shops" class="imagem-pet-shops">
             </li>
 
             <li class="rotina">
                 <h3>ROTINA</h3>
                 <p>Crie uma rotina de cuidados para uma vida saudável e equilibrada</p>
-                <img src="../app/static/css/imagens/rotina.png" alt="rotina" class="imagem-rotina">
+                <img src="../../static/css/imagens/rotina.png" alt="rotina" class="imagem-rotina">
             </li>
         </ul>
     </div>
