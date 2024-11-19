@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Cadastro de Novo Usuário</title>
+
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/pages/cadastro.css">
+
+</head>
+<body class="pagina-cadastrar-usuario">
+    <div class="cadastro">
+        <div class="titulo">
+            <h1>CUIDAPET</h1>
+        </div>
+
+        <div class="area-cadastro-usuario">
+            <div class="titulo-area-cadastro">
+                <h2>CADASTRE-SE</h2>
+            </div>
+
+            <form class="interacao-usuario" action="../index.html" method="POST">
+                <h3>NOME COMPLETO:</h3>
+                <input type="text" class="input-nome-completo" placeholder="Nome completo" required>
+
+                <h3>E-MAIL:</h3>
+                <input type="email" class="input-e-mail" placeholder="E-mail" required>
+
+                <h3>SENHA:</h3>
+                <input type="password" class="input-senha" placeholder="Senha" required>
+
+                <h3>CONFIRMAÇÃO DE SENHA:</h3>
+                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha" required>
+
+                <button type="submit" class="cadastrar">
+                    <h4 class="texto-cadastrar">CADASTRAR</h4>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
