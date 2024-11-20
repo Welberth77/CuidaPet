@@ -1,0 +1,83 @@
+/* Título da página */
+
+.area-editar-perfil {
+    width: 640px;
+    height: 850px;
+    margin: 30px auto; 
+    background-color: #053451;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.area-editar-perfil .titulo-editar-perfil h2 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.area-editar-perfil .interacao-usuario {
+    margin: 70px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.area-editar-perfil .interacao-usuario h3 {
+    font-size: 18px;
+    text-align: left;
+    padding: 0 0 10px 115px;
+}
+
+.interacao-usuario input {
+    margin: 0 0 25px 0;
+    font-size: 16px;
+    width: 400px;
+    height: 50px;
+    padding-left: 10px;
+    border-radius: 18px;
+    background-color: #D9D9D9;
+    color: #333;
+    border: 2px solid #053451;
+}
+
+/* EDITAR FOTO */
+
+.area-editar-perfil .interacao-usuario .foto-perfil {
+    margin: 0 0 40px 0;
+    gap: 40px;
+}
+
+.area-editar-perfil .interacao-usuario .foto-perfil img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.area-editar-perfil .interacao-usuario .foto-perfil .editar-foto {
+    font-size: 16px;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.area-editar-perfil .interacao-usuario .salvar {
+    background-color: #0B7ABF;
+    color: #ffffff;
+    text-decoration: none;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin: 20px auto;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.area-editar-perfil .interacao-usuario .salvar:hover {
+    background-color: #095a8c;
+}
