@@ -1,0 +1,78 @@
+/* Título da página */
+
+.titulo-pagina {
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    color: #053451;
+    margin: 20px 0 0;
+}
+
+/* INFORMAÇÕES USUARIO - FOTO */
+
+.perfil-usuario {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+    gap: 90px;
+}
+
+/* DIV ESQUERDA | INFORMAÇÕES DO USUARIO */
+
+.informacoes-usuario {
+    display: block;
+}
+
+.imagem-usuario img {
+    background-color: #053451;
+    width: 300px;
+    height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 100%;
+}
+
+.informacoes-usuario .nome-do-usuario {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.informacoes-usuario .nome-do-usuario h2 {
+    color: #053451;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* DIV DIREITA | DADOS DO USUÁRIO */
+
+.dados-usuario {
+    display: block;
+}
+
+.dados-usuario h2 {
+    font-size: 26px;
+    color: #053451;
+}
+
+.dados-usuario .container-dado {
+    background-color: #D9D9D9;
+    width: 500px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 13px 10px 10px;
+    margin: 5px 0 15px;
+}
+
+.dados-usuario .container-dado h3 {
+    color: #000;
+    font-size: 20px;
+}
+
+/* EDITAR PERFIL USUARIO */
+
+.editar-perfil-usuario {
+    color: #0B7ABF;
+    font-size: 18px;
+    text-align: center;
+    margin: 30px 0 0; 
+}

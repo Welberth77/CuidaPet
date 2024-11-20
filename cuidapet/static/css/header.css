@@ -42,3 +42,8 @@
     background-color: #053451;
     border-radius: 40px;
 }
+
+.cabecalho .navegacao .foto-perfil img {
+    max-width: 40px;
+    max-height: 40px;
+}
