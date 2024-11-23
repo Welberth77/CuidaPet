@@ -11,12 +11,18 @@
 /* CONTAINER */
 
 .container-noticias {
-    background-color: orange;
     margin: 30px 180px;
     display: flex;
     justify-content: center;
-    gap: 130px
 }
+
+.container-noticias ul {
+    display: flex;
+    gap: 130px;
+    list-style-type: none;
+    margin: 0 0 20px;
+}
+
 .container-noticias .noticia {
     background-color: #053451;
     width: 400px;
@@ -29,7 +35,6 @@
 /* IMAGEM */
 
 .container-noticias .noticia .imagem {
-    background-color: green;
     width: 400px;
     height: 220px;
     border-top-left-radius: 20px;
@@ -37,7 +42,7 @@
 }
 
 .container-noticias .noticia .imagem img {
-    background-color: #053451;
+    background-color: #0B7ABF;
     width: 400px;
     height: 220px;
     max-width: 450px;
@@ -49,7 +54,6 @@
 /* TITULO E DESCRIÇÃO */
 
 .container-noticias .noticia .titulo-e-descricao {
-    background-color: green;
     margin: 20px;
     width: 350px;
     height: 170px;
