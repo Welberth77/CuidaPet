@@ -1,0 +1,88 @@
+/* Título da página */
+
+.titulo-pagina {
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    color: #053451;
+    margin: 20px 0 0;
+}
+
+/* CONTAINER */
+
+.container-petshops {
+    margin: 30px 180px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-petshops ul {
+    display: flex;
+    gap: 130px;
+    list-style-type: none;
+    margin: 0 0 20px;
+}
+
+.container-petshops .petshop {
+    background-color: #053451;
+    width: 400px;
+    height: 480px;
+    padding: 0;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* IMAGEM */
+
+.container-petshops .petshop .imagem {
+    width: 400px;
+    height: 220px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.container-petshops .petshop .imagem img {
+    background-color: #0B7ABF;
+    width: 400px;
+    height: 220px;
+    max-width: 450px;
+    max-height: 220px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* TITULO E DESCRIÇÃO */
+
+.container-petshops .petshop .titulo-e-descricao {
+    margin: 20px;
+    width: 350px;
+    height: 170px;
+    text-align: center;
+}
+
+.container-petshops .petshop .titulo-e-descricao h2 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.container-petshops .petshop .titulo-e-descricao p {
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    margin: 10px;
+}
+
+/* BOTÃO VER MAIS*/
+
+.container-petshops .petshop .botao-ver-mais {
+    text-align: center;
+}
+
+.container-petshops .petshop a {
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #0B7ABF;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px 30px;
+}
