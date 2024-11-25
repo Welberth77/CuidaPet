@@ -25,7 +25,7 @@
                 </li>
                 <li class="foto-perfil">
                     <a href="{% url "perfil usuario" %}">
-                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                        <img src="{% static "css/imagens/foto-perfil-padrao.png" %}" alt="foto-perfil">
                     </a>
                 </li>
             </ul>
@@ -35,7 +35,7 @@
     <h1 class="titulo-pagina">REGISTRAR NOVA ROTINA</h1>
 
     <div class="container-registrar-rotina">
-        <form class="interacao-usuario" action="rotina.html" method="POST">
+        <form class="interacao-usuario" action="../rotina/" method="POST">
             <h2>PET:</h2>
             <select class="selecionar-pet" required>
                 <option value="" disabled selected>Selecione uma opção</option>

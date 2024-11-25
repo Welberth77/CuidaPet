@@ -25,7 +25,7 @@
                 </li>
                 <li class="foto-perfil">
                     <a href="{% url "perfil usuario" %}">
-                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                        <img src="{% static "css/imagens/foto-perfil-padrao.png" %}" alt="foto-perfil">
                     </a>
                 </li>
             </ul>
@@ -37,7 +37,7 @@
     <div class="perfil-usuario">
         <div class="informacoes-usuario">
             <div class="imagem-usuario">
-                <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="imagem do usuario">
+                <img src="{% static "css/imagens/foto-perfil-padrao.png" %}" alt="imagem do usuario">
             </div>
             <div class="nome-do-usuario">
                 <h2>NOME DO USUARIO</h2>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="editar-perfil-usuario">
-                <a href="./editar_perfil.html">EDITAR PERFIL</a>
+                <a href="{% url "editar perfil" %}">EDITAR PERFIL</a>
             </div>
     </div>
 </body>

@@ -89,7 +89,7 @@
             </div>
         </form>
 
-        <form action="{% url "meus pets" %}" method="post" class="botao-cadastrar-pet">
+        <form action="{% url "meus pets" %}" method="post" class="botao-cadastrar-pet">{% csrf_token %}
             <button class="botao-cadastrar-pet">CADASTRAR</button>
         </form>
     </div>

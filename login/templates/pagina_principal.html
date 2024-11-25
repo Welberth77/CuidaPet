@@ -23,13 +23,17 @@
                 <li>
                     <a href="{% url "sobre nos" %}">SOBRE NÓS</a>
                 </li>
-                <li class="foto-perfil"></li>
+                <li class="foto-perfil">
+                    <a href="{% url "perfil usuario" %}">
+                        <img src="{% static "css/imagens/foto-perfil-padrao.png" %}" alt="foto-perfil">
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
 
     <div class="fundo-banner-principal">
-        <img src="../app/static/css/imagens/banner-principal.png" alt="banner-principal" class="banner-principal">
+        <img src="{% static "css/imagens/banner-principal.png" %}" alt="banner-principal" class="banner-principal">
     </div>
 
     <div class="servicos">
@@ -40,7 +44,7 @@
                 <a href="{% url "meus pets" %}">
                     <h3>MEUS PETS</h3>
                     <p>Gerencie informações dos seus pets em um só lugar</p>
-                    <img src="../app/static/css/imagens/meus-pets.png" alt="imagem-meus-pets" class="imagem-meus-pets">
+                    <img src="{% static "css/imagens/meus-pets.png" %}" alt="imagem-meus-pets" class="imagem-meus-pets">
                 </a>
             </li>
 
@@ -48,7 +52,7 @@
                 <a href="{% url "banho e tosa" %}">
                     <h3>BANHO E TOSA</h3>
                     <p>Acompanhe o histórico e receba lembretes para novos cuidados</p>
-                    <img src="../app/static/css/imagens/banho.png" alt="banho" class="imagem-banho">
+                    <img src="{% static "css/imagens/banho.png" %}" alt="banho" class="imagem-banho">
                 </a>
             </li>
 
@@ -56,7 +60,7 @@
                 <a href="{% url "medicamentos e vacinas" %}">
                     <h3>MEDICAMENTOS E VACINAS</h3>
                     <p>Organize vacinas e medicamentos para garantir a saúde do seu pet</p>
-                    <img src="../app/static/css/imagens/medicamentos-e-vacinas.png" alt="imagem-medicamentos-e-vacinas" class="imagem-medicamentos-e-vacinas">
+                    <img src="{% static "css/imagens/medicamentos-e-vacinas.png" %}" alt="imagem-medicamentos-e-vacinas" class="imagem-medicamentos-e-vacinas">
                 </a>
             </li>
 
@@ -64,7 +68,7 @@
                 <a href="{% url "noticias" %}">
                     <h3>NOTÍCIAS</h3>
                     <p>Confira dicas e novidades do mundo pet para melhor cuidar do seu animal</p>
-                    <img src="../app/static/css/imagens/noticias.png" alt="imagem-noticias" class="imagem-noticias">
+                    <img src="{% static "css/imagens/noticias.png" %}" alt="imagem-noticias" class="imagem-noticias">
                 </a>
             </li>
 
@@ -72,7 +76,7 @@
                 <a href="{% url "petshops" %}">
                     <h3>PET-SHOPS</h3>
                     <p>Encontre pet-shops próximos e informações úteis</p>
-                    <img src="../app/static/css/imagens/pet-shops.png" alt="imagem-pet-shops" class="imagem-pet-shops">
+                    <img src="{% static "css/imagens/pet-shops.png" %}" alt="imagem-pet-shops" class="imagem-pet-shops">
                 </a>
             </li>
 
@@ -80,7 +84,7 @@
                 <a href="{% url "rotina" %}">
                     <h3>ROTINA</h3>
                     <p>Crie uma rotina de cuidados para uma vida saudável e equilibrada</p>
-                    <img src="../app/static/css/imagens/rotina.png" alt="rotina" class="imagem-rotina">
+                    <img src="{% static "css/imagens/rotina.png" %}" alt="rotina" class="imagem-rotina">
                 </a>
             </li>
         </ul>

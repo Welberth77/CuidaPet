@@ -25,7 +25,7 @@
                 </li>
                 <li class="foto-perfil">
                     <a href="{% url "perfil usuario" %}">
-                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                        <img src="{% static "css/imagens/foto-perfil-padrao.png" %}" alt="foto-perfil">
                     </a>
                 </li>
             </ul>
@@ -37,7 +37,7 @@
             <h2>EDITAR PERFIL</h2>
         </div>
 
-        <form class="interacao-usuario" action="./perfil_usuario.html" method="POST">
+        <form class="interacao-usuario" action="../perfil usuario/" method="POST">
             <h3>NOME COMPLETO:</h3>
             <input type="text" class="input-nome-completo" placeholder="Nome completo">
 
@@ -51,7 +51,7 @@
             <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha">
 
             <div class="foto-perfil">
-                <img id="foto-perfil" src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto de perfil">
+                <img id="foto-perfil" src="{% static "css/imagens/foto-perfil-padrao.png" %}" alt="foto de perfil">
                 
                 <br>
                 <label for="upload-foto" class="editar-foto">EDITAR FOTO</label>

@@ -23,7 +23,11 @@
                 <li>
                     <a href="{% url "sobre nos" %}">SOBRE NÓS</a>
                 </li>
-                <li class="foto-perfil"></li>
+                <li class="foto-perfil">
+                    <a href="{% url "perfil usuario" %}">
+                        <img src="{% static "css/imagens/foto-perfil-padrao.png" %}" alt="foto-perfil">
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -31,7 +35,7 @@
     <h1 class="titulo-pagina">REGISTRAR NOVO BANHO</h1>
 
     <div class="conteiner-registrar-banho">
-        <form class="interacao-usuario" action="./banho_e_tosa.html" method="POST">
+        <form class="interacao-usuario" action="../banho e tosa/" method="POST">
             <h2>PET:</h2>
             <select class="selecionar-pet" required>
                 <option value="" disabled selected>Selecione uma opção</option>

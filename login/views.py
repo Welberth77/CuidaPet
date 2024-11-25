@@ -69,3 +69,7 @@ def noticias(request):
 def noticia_unica(request):
     print('noticia_unica')
     return render(request, 'noticia_unica.html')
+
+def registrar_nova_vacina(request):
+    print('registrar_nova_vacina')
+    return render(request, 'registrar_nova_vacina.html')
