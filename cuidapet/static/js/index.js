@@ -13,7 +13,7 @@ function logar() {
     if (email === 'admin@gmail.com' && senha === 'admin') {
         alert('Login realizado com sucesso!');
         // Redireciona para a página principal
-        window.location.href = "pagina_principal/pagina_principal.html";
+        window.location.href = "./cuidapet/templates/pagina_principal/pagina_principal.html";
     } else {
         alert('Usuário ou senha incorretos!');
     }
