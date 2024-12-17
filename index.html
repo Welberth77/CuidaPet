@@ -18,23 +18,29 @@
 </head>
 <body>
     <div class="area-login">
+        <!-- Banner -->
         <div class="imagem-login"><img src="./cuidapet/static/css/imagens/banner-pagina-de-login.jpg" alt="Banner com cachorros e gatos"></div>
 
+        <!-- Input usuário, área de login -->
         <div class="login">
+            <!-- titulo -->
             <div class="titulo">
                 <h1 class="texto-titulo">CUIDAPET</h1>
                 <p class="descricao-titulo">Facilite a vida do seu pet com apenas um clique!</p>
             </div>
             
+            <!-- interação com o usuário -->
             <div class="interacao-usuario">
                 <h2 class="titulo-interacao">ENTRE COM SUA CONTA CUIDAPET</h2>
             
-                <form id="login-form" method="POST" onsubmit="logar(); return false;">
+                <form id="login-form" method="POST">
+                    <!-- Pedindo e-mail -->
                     <h2 class="e-mail-titulo">E-MAIL</h2>
                     <div class="inputs-usuario">
                         <input type="email" class="input-e-mail" placeholder="E-mail" id="e-mail" name="email" required>
                     </div>
             
+                    <!-- Pedindo senha -->
                     <h2 class="senha-titulo">SENHA</h2>
                     <div class="inputs-usuario">
                         <input type="password" class="input-senha" placeholder="Senha" id="senha" name="password" required>
@@ -59,6 +65,10 @@
             </div>
         </div>
     </div>
+
+    <script src="./cuidapet/static/js/dados.js"></script>
     <script src="./cuidapet/static/js/index.js"></script>
+
+    <a href=""></a>
 </body>
 </html>
