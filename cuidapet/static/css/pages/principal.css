@@ -2,8 +2,7 @@
 
 /* section */
 section {
-    height: 100%;
-    width: 100%;
+    width: 100vw;
 }
 
 /* BANNER PRINCIPAL */
@@ -25,10 +24,11 @@ section {
 /* SERVIÇOS */
 
 .servicos-container {
-    width: 100%;
+    width: 100vw;
     padding: 30px 50px;
     display: grid;
     grid-template-columns: auto auto auto;
+    justify-content: space-between;
     gap: 30px;
 }
 
@@ -103,39 +103,29 @@ section {
 /* PRINCIPAIS NOTÍCIAS */
 
 .principais-noticias {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: #053451;
+    padding: 30px;
 }
 
-/* CONTAINER */
-
-/* .container-noticias {
-    margin: 40px 0 0;
-    padding: 50px 0;
-    width: 100%;
-    height: 500px;
-    background-color: #053451;
-    display: block;
-}
-
-.container-noticias .titulo-principais-noticias {
+/* TITULO */
+.titulo-principais-noticias {
     font-size: 32px;
     color: #fff;
     font-weight: 700;
     text-align: center;
-    margin: -20px 0 30px 0;
 }
 
-.container-noticias ul {
+/* CONTAINER */
+.container-noticias {
     display: flex;
-    gap: 70px;
-    list-style-type: none;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 40px 30px;
 }
 
-.container-noticias .noticia {
+.container-noticias .noticia-item {
     background-color: #fff;
     width: 400px;
     height: 480px;
@@ -144,16 +134,14 @@ section {
     text-align: center;
 }
 
-/* IMAGEM */
-
-/* .container-noticias .noticia .imagem {
+.container-noticias .noticia-item .imagem {
     width: 400px;
     height: 220px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
-.container-noticias .noticia .imagem img {
+.container-noticias .noticia-item .imagem img {
     background-color: #0B7ABF;
     width: 400px;
     height: 220px;
@@ -161,68 +149,42 @@ section {
     max-height: 220px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-} */
+}
 
-/* TITULO E DESCRIÇÃO */
-
-/* .container-noticias .noticia .titulo-e-descricao {
+.container-noticias .noticia-item .titulo-e-descricao {
     margin: 20px;
     width: 350px;
     height: 170px;
     text-align: center;
 }
 
-.container-noticias .noticia .titulo-e-descricao h2 {
+/* TITULO NOTICIA */
+.container-noticias .noticia-item .titulo-e-descricao h2 {
     font-size: 24px;
     color: #053451;
 }
 
-.container-noticias .noticia .titulo-e-descricao p {
+/* DESCRIÇÃO NOTICIA */
+.container-noticias .noticia-item .titulo-e-descricao p {
     font-size: 18px;
     color: #053451;
     text-align: center;
     margin: 10px;
-} */
+}
 
-/* BOTÃO VER MAIS*/
-
-/* .container-noticias .noticia .botao-ver-mais {
+/* BOTÃO */
+.container-noticias .noticia-item .botao-ver-mais {
     text-align: center;
 }
 
-.container-noticias .noticia a {
+.container-noticias .noticia-item a {
     font-size: 20px;
     text-decoration: none;
     background-color: #0B7ABF;
     color: #fff;
     border-radius: 20px;
     padding: 10px 30px;
-} */
-
-/* 
-
-.principais-noticias h2 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 32px;
-    color: #ffffff;
-    padding: 20px 0 0;
 }
-
-.principais-noticias ul {
-    margin: 80px 0 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.principais-noticias li {
-    width: 380px;
-    height: 400px;
-    background-color: #ffffff;
-    border-radius: 20px;
-} */
 
 /* CARACTERÍSTICAS DO PET */
 
@@ -275,26 +237,25 @@ section {
 /* RODAPÉ */
 
 .rodape {
+    width: 100vw;
     margin: 60px 0 0;
-    width: 100%;
     height: 300px;
     background-color: #0B7ABF;
+    padding: 20px;
 }
 
 .rodape .lista-rodape {
     color: #ffffff;
-    padding: 50px 100px 0 0;
     display: flex;
+    flex-direction: row;
     list-style: none;
-    justify-content: center;
-    gap: 200px;
+    justify-content: space-around;
 }
 
 .rodape .lista-rodape .cuida-pet-rodape h3 {
     text-align: center;
     font-size: 40px;
     font-weight: 900;
-    padding: 50px 0 0;
 }
 
 .rodape .lista-rodape .cuida-pet-rodape p {
@@ -326,6 +287,10 @@ section {
     text-decoration: none;
 }
 
+.rodape .lista-rodape .inicio-rodape ul li a:hover {
+    color: #053451;
+}
+
 /*  */
 .rodape .lista-rodape .sobre-rodape h3 {
     font-size: 20px;
@@ -346,4 +311,8 @@ section {
 .rodape .lista-rodape .sobre-rodape ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+.rodape .lista-rodape .sobre-rodape ul li a:hover {
+    color: #053451;
 }
