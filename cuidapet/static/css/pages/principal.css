@@ -1,5 +1,10 @@
 /* # Estilos da página principal */
 
+/* section */
+section {
+    width: 100vw;
+}
+
 /* BANNER PRINCIPAL */
 
 .fundo-banner-principal {
@@ -8,9 +13,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.fundo-banner-principal img {
+    padding-top: 20px;
+    height: 250px;
 }
 
 /* SERVIÇOS */
+
+.servicos-container {
+    width: 100vw;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    gap: 30px;
+}
 
 .servicos h2 {
     margin: 20px 0 0 65px;
@@ -19,30 +39,19 @@
     color: #074973;
 }
 
-.servicos ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px 0;
-    padding: 0;
+.servicos-container .servico-item {
+    width: 400px;
+    height: 200px;
+    background-color: #0B7ABF;
+    border-radius: 20px;
+    text-align: center;
 }
 
-.servicos ul a {
+.servicos-container .servico-item a {
     text-decoration: none;
 }
 
-.servicos .botoes li {
-    width: 400px;
-    height: 190px;
-    border-radius: 20px;
-    text-align: center;
-    background-color: #0B7ABF;
-    margin: 0 30px 0;
-}
-
-.servicos .botoes li h3 {
+.servicos-container .servico-item h3 {
     font-weight: 700;
     font-size: 28px;
     color: #ffffff;
@@ -51,7 +60,7 @@
     max-width: 350px;
 }
 
-.servicos .botoes li p {
+.servicos-container .servico-item p {
     font-weight: 500;
     font-size: 14px;
     color: #ffffff;
@@ -60,74 +69,63 @@
     margin: 15px 0 0 30px;
 }
 
-.servicos .botoes .imagem-meus-pets {
+.servicos-container .servico-item .imagem-meus-pets {
     width: 80%;
     height: 80%;
-    margin: -74px 0 0 70px;
+    margin: -70px 0 0 70px;
 }
 
-.servicos .botoes .imagem-banho {
+.servicos-container .servico-item .imagem-banho {
     width: 90%;
     height: 90%;
-    margin: -110px 0 0 40px;
+    margin: -107px 0 0 40px;
 }
 
-.servicos .botoes .imagem-medicamentos-e-vacinas {
+.servicos-container .servico-item .imagem-medicamentos-e-vacinas {
     width: 80%;
     height: 80%;
-    margin: -124px 0 0 40px;
+    margin: -119px 0 0 40px;
 }
 
-.servicos .botoes .imagem-noticias {
+.servicos-container .servico-item .imagem-noticias {
     width: 100%;
     height: 100%;
-    margin: -129px 0 0 0;
+    margin: -127px 0 0 0;
     border-bottom-right-radius: 20px;
 }
 
-.servicos .botoes .imagem-pet-shops {
+.servicos-container .servico-item .imagem-pet-shops {
     width: 90%;
     height: 90%;
-    margin: -115px 0 0 20px;
-}
-
-.servicos .botoes .imagem-rotina {
-    width: 100%;
-    height: 100%;
-    margin: -129px 0 0; 
-    border-bottom-right-radius: 20px;
+    margin: -108px 0 0 20px;
 }
 
 /* PRINCIPAIS NOTÍCIAS */
 
-/* CONTAINER */
-
-.container-noticias {
-    margin: 40px 0 0;
-    padding: 50px 0;
-    width: 100%;
-    height: 500px;
+.principais-noticias {
+    width: 100vw;
+    height: 100vh;
     background-color: #053451;
-    display: block;
+    padding: 30px;
 }
 
-.container-noticias .titulo-principais-noticias {
+/* TITULO */
+.titulo-principais-noticias {
     font-size: 32px;
     color: #fff;
     font-weight: 700;
     text-align: center;
-    margin: -20px 0 30px 0;
 }
 
-.container-noticias ul {
+/* CONTAINER */
+.container-noticias {
     display: flex;
-    gap: 70px;
-    list-style-type: none;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 40px 30px;
 }
 
-.container-noticias .noticia {
+.container-noticias .noticia-item {
     background-color: #fff;
     width: 400px;
     height: 480px;
@@ -136,16 +134,14 @@
     text-align: center;
 }
 
-/* IMAGEM */
-
-.container-noticias .noticia .imagem {
+.container-noticias .noticia-item .imagem {
     width: 400px;
     height: 220px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
-.container-noticias .noticia .imagem img {
+.container-noticias .noticia-item .imagem img {
     background-color: #0B7ABF;
     width: 400px;
     height: 220px;
@@ -155,34 +151,33 @@
     border-top-right-radius: 20px;
 }
 
-/* TITULO E DESCRIÇÃO */
-
-.container-noticias .noticia .titulo-e-descricao {
+.container-noticias .noticia-item .titulo-e-descricao {
     margin: 20px;
     width: 350px;
     height: 170px;
     text-align: center;
 }
 
-.container-noticias .noticia .titulo-e-descricao h2 {
+/* TITULO NOTICIA */
+.container-noticias .noticia-item .titulo-e-descricao h2 {
     font-size: 24px;
     color: #053451;
 }
 
-.container-noticias .noticia .titulo-e-descricao p {
+/* DESCRIÇÃO NOTICIA */
+.container-noticias .noticia-item .titulo-e-descricao p {
     font-size: 18px;
     color: #053451;
     text-align: center;
     margin: 10px;
 }
 
-/* BOTÃO VER MAIS*/
-
-.container-noticias .noticia .botao-ver-mais {
+/* BOTÃO */
+.container-noticias .noticia-item .botao-ver-mais {
     text-align: center;
 }
 
-.container-noticias .noticia a {
+.container-noticias .noticia-item a {
     font-size: 20px;
     text-decoration: none;
     background-color: #0B7ABF;
@@ -190,31 +185,6 @@
     border-radius: 20px;
     padding: 10px 30px;
 }
-
-/* 
-
-.principais-noticias h2 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 32px;
-    color: #ffffff;
-    padding: 20px 0 0;
-}
-
-.principais-noticias ul {
-    margin: 80px 0 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.principais-noticias li {
-    width: 380px;
-    height: 400px;
-    background-color: #ffffff;
-    border-radius: 20px;
-} */
 
 /* CARACTERÍSTICAS DO PET */
 
@@ -267,26 +237,25 @@
 /* RODAPÉ */
 
 .rodape {
+    width: 100vw;
     margin: 60px 0 0;
-    width: 100%;
     height: 300px;
     background-color: #0B7ABF;
+    padding: 20px;
 }
 
 .rodape .lista-rodape {
     color: #ffffff;
-    padding: 50px 100px 0 0;
     display: flex;
+    flex-direction: row;
     list-style: none;
-    justify-content: center;
-    gap: 200px;
+    justify-content: space-around;
 }
 
 .rodape .lista-rodape .cuida-pet-rodape h3 {
     text-align: center;
     font-size: 40px;
     font-weight: 900;
-    padding: 50px 0 0;
 }
 
 .rodape .lista-rodape .cuida-pet-rodape p {
@@ -318,6 +287,10 @@
     text-decoration: none;
 }
 
+.rodape .lista-rodape .inicio-rodape ul li a:hover {
+    color: #053451;
+}
+
 /*  */
 .rodape .lista-rodape .sobre-rodape h3 {
     font-size: 20px;
@@ -338,4 +311,8 @@
 .rodape .lista-rodape .sobre-rodape ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+.rodape .lista-rodape .sobre-rodape ul li a:hover {
+    color: #053451;
 }
