@@ -21,6 +21,11 @@
     margin-bottom: 0;
 }
 
+.login-container .imagem-login {
+    height: 100vh;
+    width: 35%;
+}
+
 .login-container .imagem-login img {
     height: 100%;
     width: 100%;
