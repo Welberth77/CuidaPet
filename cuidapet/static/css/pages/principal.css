@@ -9,7 +9,7 @@ section {
 
 .fundo-banner-principal {
     /* margin-top: 80px; */
-    background-color: #053451;
+    background-color: var(--bg-color-01);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,13 +36,13 @@ section {
     margin: 20px 0 0 65px;
     font-size: 24px;
     font-weight: 900;
-    color: #074973;
+    color: var(--text-color-02);
 }
 
 .servicos-container .servico-item {
     width: 400px;
     height: 200px;
-    background-color: #0B7ABF;
+    background-color: var(--bg-color-02);
     border-radius: 20px;
     padding: 25px 10px 0 25px;
     text-align: center;
@@ -69,7 +69,7 @@ section {
 .servicos-container .servico-item h3 {
     font-weight: 700;
     font-size: 28px;
-    color: #ffffff;
+    color: var(--text-color-01);
     text-align: left;
     margin: 0;
 }
@@ -77,7 +77,7 @@ section {
 .servicos-container .servico-item p {
     font-weight: 500;
     font-size: 14px;
-    color: #ffffff;
+    color: var(--text-color-01);
     text-align: left;
     max-width: 180px;
     margin: 15px 0 0;
@@ -113,14 +113,14 @@ section {
 .principais-noticias {
     width: 100vw;
     height: 100vh;
-    background-color: #053451;
+    background-color: var(--bg-color-01);
     padding: 30px;
 }
 
 /* TITULO */
 .titulo-principais-noticias {
     font-size: 32px;
-    color: #fff;
+    color: var(--text-color-01);
     font-weight: 700;
     text-align: center;
 }
@@ -134,7 +134,7 @@ section {
 }
 
 .container-noticias .noticia-item {
-    background-color: #fff;
+    background-color: var(--text-color-01);
     width: 400px;
     height: 480px;
     padding: 0;
@@ -150,7 +150,7 @@ section {
 }
 
 .container-noticias .noticia-item .imagem img {
-    background-color: #0B7ABF;
+    background-color: var(--bg-color-02);
     width: 400px;
     height: 220px;
     max-width: 450px;
@@ -169,13 +169,13 @@ section {
 /* TITULO NOTICIA */
 .container-noticias .noticia-item .titulo-e-descricao h2 {
     font-size: 24px;
-    color: #053451;
+    color: var(--text-color-02);
 }
 
 /* DESCRIÇÃO NOTICIA */
 .container-noticias .noticia-item .titulo-e-descricao p {
     font-size: 18px;
-    color: #053451;
+    color: var(--text-color-02);
     text-align: center;
     margin: 10px;
 }
@@ -188,58 +188,53 @@ section {
 .container-noticias .noticia-item a {
     font-size: 20px;
     text-decoration: none;
-    background-color: #0B7ABF;
-    color: #fff;
+    background-color: var(--bg-color-02);
+    color: var(--text-color-01);
     border-radius: 20px;
     padding: 10px 30px;
 }
 
 /* CARACTERÍSTICAS DO PET */
 
+.caracteristicas-do-pet {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .caracteristicas-do-pet h2 {
     text-align: center;
+    padding-top: 20px;
     font-size: 32px;
-    color: #074973;
-    padding: 20px 0 0;
-}
-
-.caracteristicas-do-pet ul h3 {
-    color: #074973;
-    font-size: 24px;
     font-weight: 800;
+    color: var(--text-color-02);
 }
 
-.caracteristicas-do-pet .nome-e-imagem p {
-    text-align: center;
-    width: 300px;
-    height: 300px;
-    background-color: #053451;
-    border-radius: 150px;
-    margin: 30px 0 0;
+.caracteristicas-do-pet .caracteristicas {
+    background-color: var(--bg-color-01);
+    width: 80%;
+    height: 50%;
+    margin-top: 40px;
+    padding: 30px 40px;
+    border-radius: 20px;
 }
 
 .caracteristicas-do-pet .caracteristicas h3 {
-    margin: 0 0 15px;
-}
-
-.caracteristicas-do-pet ul {
-    margin: 80px 0 0;
-    display: flex;
-    list-style: none;
+    color: var(--text-color-01);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
     padding: 0;
-    width: 100%;
 }
 
-.caracteristicas-do-pet ul li {
-    width: 50%;
-    text-align: center;
-    justify-items: center;
-    margin: 0 120px 0 0;
-}
-
-.caracteristicas-do-pet ul li p {
-    text-align: justify;
-    margin: 0 0 20px;
+.caracteristicas-do-pet .caracteristicas p {
+    color: var(--text-color-01);
+    font-weight: 400;
+    text-align: start;
+    margin: 0;
+    padding: 10px 0 40px;
 }
 
 /* RODAPÉ */
@@ -248,12 +243,12 @@ section {
     width: 100vw;
     margin: 60px 0 0;
     height: 300px;
-    background-color: #0B7ABF;
+    background-color: var(--bg-color-02);
     padding: 20px;
 }
 
 .rodape .lista-rodape {
-    color: #ffffff;
+    color: var(--text-color-01);
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -296,7 +291,7 @@ section {
 }
 
 .rodape .lista-rodape .inicio-rodape ul li a:hover {
-    color: #053451;
+    color: var(--bg-color-01);
 }
 
 /*  */
@@ -322,5 +317,5 @@ section {
 }
 
 .rodape .lista-rodape .sobre-rodape ul li a:hover {
-    color: #053451;
+    color: var(--bg-color-01);
 }

@@ -1,4 +1,12 @@
 /* # Estilos básicos e reset */
+:root {
+    --bg-color-01: #053451;
+    --bg-color-02: #0B7ABF;
+    
+    --text-color-01: #fff;
+    --text-color-02: #074973;
+}
+
 html, body {
     margin: 0;
     padding: 0;
