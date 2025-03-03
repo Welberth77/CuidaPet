@@ -20,34 +20,45 @@ function logar() {
 }
 
 
+// PÁGINA MEUS PETS
+
 // Lista dinamica para a lista de pets
 // Se existir pets cadastrados ele mostra o bloco
 // Se não existir pets cadastrados ele ocutra a lista
-window.onload = function() {
-    const listaPets = document.querySelector('.lista-pets');
-    const mensagemVazia = document.querySelector('.mensagem-vazia');
-    const blocolinha = document.querySelector('.bloco-linha')
-    
-    // Verifica se há pelo menos um item na lista
-    if (listaPets.querySelectorAll('li').length > 0) {
-        listaPets.style.display = 'flex';  // Exibe a lista
-        mensagemVazia.style.display = 'none';  // Esconde a mensagem
-        blocolinha.style.display = 'flex' // Exibe a linha
+document.addEventListener("DOMContentLoaded", function () {
+    const listaPets = document.querySelector(".lista-pets");
+    const mensagemVazia = document.querySelector(".mensagem-vazia");
+    const petInfo = document.querySelector(".pet-info");
+
+    // Verifica se há pets cadastrados
+    if (listaPets.children.length > 0) {
+        listaPets.style.display = "flex";
+        mensagemVazia.style.display = "none";
     } else {
-        listaPets.style.display = 'none';  // Esconde a lista
-        mensagemVazia.style.display = 'block';  // Exibe a mensagem
-        blocolinha.style.display = 'none' // Esconde a linha
+        listaPets.style.display = "none";
+        mensagemVazia.style.display = "block";
     }
 
-    // Adiciona o comportamento de seleção nos itens da lista
-    const items = listaPets.querySelectorAll('li');
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            // Remove a seleção de todos os itens
-            items.forEach(i => i.classList.remove('selected'));
+    // Evento de clique para cada pet
+    document.querySelectorAll(".lista-pets li").forEach((item) => {
+        item.addEventListener("click", function () {
+            // Remove a seleção dos outros pets
+            document.querySelectorAll(".lista-pets li").forEach(li => li.classList.remove("selected"));
 
-            // Adiciona a seleção ao item clicado
-            item.classList.add('selected');
+            // Adiciona a classe 'selected' ao pet clicado
+            item.classList.add("selected");
+
+            // Captura o nome do pet e exibe as informações
+            const nomePet = item.textContent.trim();
+            petInfo.innerHTML = `
+                <h2>Informações de ${nomePet}</h2>
+                <p>Idade: 3 anos</p>
+                <p>Raça: Labrador</p>
+                <p>Vacinas: Em dia</p>
+            `;
+
+            // Exibe a div pet-info
+            petInfo.style.display = "block";
         });
     });
-};
+});

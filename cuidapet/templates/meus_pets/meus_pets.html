@@ -5,55 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CuidaPet - Meus Pets</title>
 
+    <!-- Importação dos arquivos CSS -->
     <link rel="stylesheet" href="../../static/css/base.css">
     <link rel="stylesheet" href="../../static/css/header.css">
     <link rel="stylesheet" href="../../static/css/pages/meuspets.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header class="cabecalho">
         <h1 class="logo-cuidapet">
             <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
         </h1>
 
+        <!-- Menu de navegação -->
         <nav class="navegacao">
             <ul>
-                <li>
-                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
-                </li>
-                <li>
-                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
-                </li>
+                <li><a href="../pagina_principal/pagina_principal.html">HOME</a></li>
+                <li><a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a></li>
                 <li class="foto-perfil">
                     <a href="../perfil_usuario/perfil_usuario.html">
-                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="Foto de perfil padrão">
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
+    <!-- /Cabeçalho -->
 
-    <h1 class="titulo-pagina">MEUS PETS</h1>
+    <!-- Seção principal: Meus Pets -->
+    <section class="meus-pets">
+        <h1 class="titulo-pagina">MEUS PETS</h1>
 
-    <ul class="lista-pets">
-        <li>
-            <h2>BOB</h2>
-        </li>
-        <li>
-            <h2>Marley</h2>
-        </li>
-    </ul>
+        <!-- Container com a lista de pets -->
+        <div class="meus-pets-container">
+            <ul class="lista-pets">
+                <li><h2>BOB</h2></li>
+                <li><h2>Marley</h2></li>
+                <li><h2>Rex</h2></li>
+                <li><h2>Thor</h2></li>
+            </ul>
+        </div>
 
-    <!-- Esta mensagem só aparece se o usuário não tiver pets cadastrados -->
-    <p class="mensagem-vazia">Você ainda não tem pets cadastrados</p>
+        <!-- Div que será exibida ao clicar em um pet -->
+        <div class="pet-info"></div>
 
-    <div class="bloco-linha">
-        <hr class="linha">
-    </div>
+        <!-- Mensagem exibida caso o usuário não tenha pets cadastrados -->
+        <p class="mensagem-vazia">Você ainda não tem pets cadastrados</p>
 
-    <div class="cadastrar-novo-pet">
-        <a href="cadastrar_pet.html">CADASTRAR UM NOVO PET</a>
-    </div>
+        <!-- Linha divisória -->
+        <div class="bloco-linha">
+            <hr class="linha">
+        </div>
 
+        <!-- Link para cadastrar um novo pet -->
+        <div class="cadastrar-novo-pet">
+            <a href="cadastrar_pet.html">CADASTRAR UM NOVO PET</a>
+        </div>
+    </section>
+
+    <!-- Importação do JavaScript -->
     <script src="../../static/js/index.js"></script>
 </body>
 </html>
