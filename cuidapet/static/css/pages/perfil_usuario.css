@@ -24,7 +24,7 @@
     flex-direction: column;
     align-items: center;
     width: 40%;
-    height: 60%;
+    height: 450px;
     margin: 50px 0 0;
     padding: 30px 50px;
     border-radius: 20px;
@@ -41,6 +41,7 @@
 }
 
 .dados-usuario label {
+    text-transform: uppercase;
     font-size: 22px;
     font-weight: 600;
     color: var(--text-color-01);
@@ -73,7 +74,7 @@
 
 .perfil-usuario .botao-editar-perfil .editar-perfil-usuario {
     background-color: var(--bg-color-02);
-    padding: 1px 30px;
+    padding: 12px 22px;
     border-radius: 20px;
     color: var(--text-color-01);
 }
