@@ -67,10 +67,10 @@
 
 .pet-info {
     display: none; /* Inicialmente oculta */
-    width: 60%;
+    width: auto;
     height: auto;
     margin-top: 20px;
-    padding: 20px;
+    padding: 30px 60px;
     border-radius: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -78,6 +78,15 @@
     font-weight: 500;
     background-color: var(--bg-color-01);
     color: var(--text-color-01);
+}
+
+.pet-info h1 {
+    margin-bottom: 10px;
+}
+
+.pet-info p {
+    text-align: start;
+    margin: 0 0 5px;
 }
 
 /* Mensagem quando não há pets cadastrados */

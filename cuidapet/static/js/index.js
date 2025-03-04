@@ -20,15 +20,23 @@ function logar() {
 }
 
 
-// PÁGINA MEUS PETS
+// PÁGINA MEUS PETS && PÁGINA BANHO E TOSA
 
-// Lista dinamica para a lista de pets
+// Lista dinâmica para a lista de pets
 // Se existir pets cadastrados ele mostra o bloco
-// Se não existir pets cadastrados ele ocutra a lista
+// Se não existir pets cadastrados ele oculta a lista
 document.addEventListener("DOMContentLoaded", function () {
     const listaPets = document.querySelector(".lista-pets");
     const mensagemVazia = document.querySelector(".mensagem-vazia");
     const petInfo = document.querySelector(".pet-info");
+
+    // Simulação de um banco de dados de pets
+    const pets = {
+        Bob: { idade: "4 anos", raca: "Vira lata", ultimo_banho: "02/03/2025", vacina: "Em dia" },
+        Marley: { idade: "9 anos", raca: "Labrador", ultimo_banho: "02/03/2025", vacina: "Em dia" },
+        Rex: { idade: "3 anos", raca: "Labrador", ultimo_banho: "15/02/2025", vacina: "Em dia" },
+        Thor: { idade: "2 anos", raca: "Poodle", ultimo_banho: "20/02/2025", vacina: "Atrasada" }
+    };
 
     // Verifica se há pets cadastrados
     if (listaPets.children.length > 0) {
@@ -50,15 +58,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Captura o nome do pet e exibe as informações
             const nomePet = item.textContent.trim();
-            petInfo.innerHTML = `
-                <h2>Informações de ${nomePet}</h2>
-                <p>Idade: 3 anos</p>
-                <p>Raça: Labrador</p>
-                <p>Vacinas: Em dia</p>
-            `;
+            if (pets[nomePet]) {
+                // Atualiza os elementos existentes no HTML
+                document.getElementById("nome_pet").textContent = nomePet;
+                document.getElementById("idade_pet").textContent = pets[nomePet].idade;
+                document.getElementById("raca_pet").textContent = pets[nomePet].raca;
+                document.getElementById("ultimo_banho").textContent = pets[nomePet].ultimo_banho;
+                document.getElementById("vacina_pet").textContent = pets[nomePet].vacina;
 
-            // Exibe a div pet-info
-            petInfo.style.display = "block";
+                // Exibe a div pet-info
+                petInfo.style.display = "block";
+            }
         });
     });
 });
