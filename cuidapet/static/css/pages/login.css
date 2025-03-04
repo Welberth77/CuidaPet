@@ -39,57 +39,67 @@
     width: 70%;
     height: 100%;
     text-align: center;
+    align-items: center;
     justify-content: center;
 }
 
 /* Titulo e descrição */
 .area-login .titulo .texto-titulo {
-    color: #053451;
+    color: var(--text-color-02);
     font-weight: 900;
     font-size: 50px;
+    text-transform: uppercase;
 }
 
 .area-login .titulo .descricao-titulo {
+    text-transform: uppercase;
     font-weight: 700;
-    font-size: 24px;
-    color: #095F95;
+    font-size: 22px;
+    margin: 20px 0 0;
+    color: var(--text-color-02);
 }
 
 /* inputs */
 .area-login .interacao-usuario {
+    margin-top: 50px;
     justify-items: center;
-}
-
-.area-login .interacao-usuario .titulo-interacao {
-    font-size: 24px;
+    width: 40%;
 }
 
 .area-login .interacao-usuario h2 {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
-    color: #053451;
+    text-align: center;
+    color: var(--text-color-02);
 }
 
 .area-login .interacao-usuario .input-container {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    align-items: center;
+    width: 100%;
     height: 280px;
+    padding: 20px 0 0;
+}
+
+.area-login .interacao-usuario .input-container .inputs-usuario {
+    width: 100%;
+    text-align: start;
+    margin: 0 0 20px;
 }
 
 .area-login .interacao-usuario .input-container label {
     padding: 15px 0 5px 5px; 
-    text-align: left;
     font-size: 20px;
     font-weight: 500;
-    color: #053451;
+    color: var(--text-color-02);
 }
 
 .area-login .interacao-usuario .input-container .inputs-usuario input {
     font-size: 16px;
-    width: 400px;
+    width: 100%;
     height: 50px;
-    padding-left: 10px;
+    padding: 10px;
     border-radius: 20px;
     background-color: #D9D9D9;
     color: #333;
@@ -97,9 +107,6 @@
 }
 
 /* Botão entrar */
-.area-login .entrar {
-    padding-top: 30px;
-}
 
 .area-login .entrar .botao-entrar {
     font-size: 22px;
@@ -109,13 +116,13 @@
     border-radius: 20px;
     border: none;
     cursor: pointer;
-    background-color: #0B7ABF;
+    background-color: var(--bg-color-02);
     color: #ffffff;
 }
 
 .area-login .entrar .botao-entrar:hover {
     transition-duration: 0.5s;
-    background-color: #053451;
+    background-color: var(--bg-color-01);
 }
 
 /* Cadastrar */
@@ -140,8 +147,8 @@
     padding: 0 20px;
 }
 
-
 .cadastre-se {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
