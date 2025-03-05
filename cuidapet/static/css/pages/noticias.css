@@ -12,6 +12,7 @@
 }
 
 .noticias .titulo-pagina h1 {
+    text-transform: uppercase;
     font-weight: 700;
     font-size: 40px;
     color: var(--text-color-02);
