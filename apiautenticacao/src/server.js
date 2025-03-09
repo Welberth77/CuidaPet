@@ -1,6 +1,10 @@
 const express = require("express");
 
+const authcontroller = require("./controllers/authcontroller");
+
 const app = express();
+
+app.use("/auth", authcontroller);
 
 app.get("/", (req, res) => {
   return res.json({
