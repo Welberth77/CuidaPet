@@ -1,71 +1,73 @@
-/* Título da página */
 
-.area-editar-perfil {
-    width: 640px;
-    height: 850px;
-    margin: 30px auto; 
-    background-color: #053451;
-    color: white;
+.editar-perfil {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container editar perfil */
+
+.editar-perfil .editar-perfil-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    height: 600px;
     text-align: center;
-    padding: 20px;
+    background-color: var(--bg-color-01);
+    margin-top: 30px;
+    padding: 30px;
     border-radius: 20px;
 }
 
-.area-editar-perfil .titulo-editar-perfil h2 {
-    font-size: 36px;
+/* Título da página */
+
+.editar-perfil .editar-perfil-container .titulo-editar-perfil h2 {
+    font-size: 40px;
     font-weight: 700;
+    color: var(--text-color-01);
 }
 
-.area-editar-perfil .interacao-usuario {
-    margin: 70px 0 0;
-    font-size: 18px;
-    font-weight: 700;
-    color: #ffffff;
+.editar-perfil .editar-perfil-container .interacao-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 30px;
+    width: 70%;
 }
 
-.area-editar-perfil .interacao-usuario h3 {
+/* Label */
+
+.editar-perfil .editar-perfil-container .interacao-usuario label {
     font-size: 18px;
-    text-align: left;
-    padding: 0 0 10px 115px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-color-01);
+    padding-left: 5px
 }
+
+/* Input */
 
 .interacao-usuario input {
     margin: 0 0 25px 0;
     font-size: 16px;
-    width: 400px;
+    width: 100%;
     height: 50px;
-    padding-left: 10px;
-    border-radius: 18px;
+    padding: 2px 10px;
+    border-radius: 20px;
     background-color: #D9D9D9;
     color: #333;
     border: 2px solid #053451;
 }
 
-/* EDITAR FOTO */
+/* Botão Salvar */
 
-.area-editar-perfil .interacao-usuario .foto-perfil {
-    margin: 0 0 40px 0;
-    gap: 40px;
-}
-
-.area-editar-perfil .interacao-usuario .foto-perfil img {
-    max-width: 150px;
-    max-height: 150px;
-}
-
-.area-editar-perfil .interacao-usuario .foto-perfil .editar-foto {
-    font-size: 16px;
-    padding: 0;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.area-editar-perfil .interacao-usuario .salvar {
-    background-color: #0B7ABF;
-    color: #ffffff;
+.editar-perfil-container .interacao-usuario .salvar {
+    background-color: var(--bg-color-02);
+    color: var(--text-color-01);
     text-decoration: none;
-    width: 200px;
+    width: 50%;
     height: 50px;
     border-radius: 20px;
     display: flex;
@@ -76,8 +78,4 @@
     border: none;
     font-size: 18px;
     font-weight: bold;
-}
-
-.area-editar-perfil .interacao-usuario .salvar:hover {
-    background-color: #095a8c;
 }
