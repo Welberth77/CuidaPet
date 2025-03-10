@@ -271,6 +271,35 @@
     body {
         background-color: green;
     }
+
+    /* descrição do titulo */
+    .area-login .titulo .descricao-titulo {
+        font-size: 22px;
+    }
+
+    /* inputs */
+    .area-login .interacao-usuario {
+        width: 50%;
+    }
+
+    .area-login .interacao-usuario h2 {
+        font-size: 22px;
+    }
+
+    .area-login .interacao-usuario .input-container label {
+        font-size: 20px;
+    }
+
+    /* Botão entrar */
+    .area-login .entrar .botao-entrar {
+        width: 150px;
+        height: 50px;
+    }
+
+    /* Cadastrar */
+    .cadastrar-novo .linha {
+        width: 130px;
+    }
  }
 
 /* Large (L) - Laptop */
