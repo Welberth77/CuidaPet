@@ -240,6 +240,30 @@
     body {
         background-color: red;
     }
+
+    /* Titulo e descrição */
+    .area-login .titulo .texto-titulo {
+        font-size: 50px;
+    }
+
+    .area-login .titulo .descricao-titulo {
+        font-size: 20px;
+    }
+
+    /* inputs */
+    .area-login .interacao-usuario {
+        width: 65%;
+    }
+
+    /* Botão entrar */
+    .area-login .entrar .botao-entrar {
+        width: 140px;
+    }
+
+    /* Cadastrar */
+    .cadastrar-novo .linha {
+        width: 110px;
+    }
 }
 
 /* Medium (M) - Tablets */
