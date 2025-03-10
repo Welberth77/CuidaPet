@@ -4,6 +4,8 @@ const authcontroller = require("./controllers/authcontroller");
 
 const app = express();
 
+app.use(express.json());
+
 app.use("/auth", authcontroller);
 
 app.get("/", (req, res) => {
