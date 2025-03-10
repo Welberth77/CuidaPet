@@ -66,7 +66,7 @@
 .area-login .interacao-usuario {
     margin-top: 50px;
     justify-items: center;
-    width: 40%;
+    width: 45%;
 }
 
 .area-login .interacao-usuario h2 {
@@ -271,6 +271,10 @@
     .cadastrar-novo .linha {
         width: 110px;
     }
+
+    .cadastrar-novo h3 {
+        font-size: 18px;
+    }
 }
 
 /* Medium (M) - Tablets */
@@ -314,6 +318,29 @@
     body {
         background-color: turquoise;
     }
+
+    .login-container {
+        padding: 0px;
+    }
+
+    .login-container .imagem-login {
+        display: block;
+    }
+
+    /* Area de login */
+    .login-container .area-login {
+        width: 70%;
+    }
+
+    /* inputs */
+    .area-login .interacao-usuario {
+        width: 55%;
+    }
+
+    /* Cadastrar */
+    .cadastrar-novo .linha {
+        width: 150px;
+    }
 }
 
 /* Extra large (xl): Desktop */
@@ -321,14 +348,12 @@
     body {
         background-color: orange;
     }
+
+    /* inputs */
+    .area-login .interacao-usuario {
+        width: 45%;
+    }
 }
-
-
-
-
-
-
-
 
 
 
