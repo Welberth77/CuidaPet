@@ -43,6 +43,10 @@
 }
 
 /* Titulo e descrição */
+.area-login {
+    text-align: center;
+}
+
 .area-login .titulo .texto-titulo {
     color: var(--text-color-02);
     font-weight: 900;
@@ -176,6 +180,7 @@
 
     .login-container {
         padding: 20px;
+        text-align: center;
     }
 
     .login-container .imagem-login {
@@ -193,6 +198,7 @@
     }
 
     .area-login .titulo .descricao-titulo {
+        max-width: 300px;
         font-size: 16px;
     }
 
@@ -227,11 +233,11 @@
     }
 
     .cadastrar-novo .linha {
-        width: 80px;
+        width: 60px;
     }
 
     .cadastrar-novo h3 {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
@@ -247,6 +253,7 @@
     }
 
     .area-login .titulo .descricao-titulo {
+        max-width: 100%;
         font-size: 20px;
     }
 
