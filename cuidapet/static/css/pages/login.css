@@ -174,9 +174,9 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        /* background-color: purple; */
-    }
+    /* body {
+        background-color: purple;
+    } */
 
     .login-container {
         padding: 20px;
@@ -243,9 +243,9 @@
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) { 
-    body {
+    /* body {
         background-color: red;
-    }
+    } */
 
     /* Titulo e descrição */
     .area-login .titulo .texto-titulo {
@@ -279,9 +279,9 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
+    /* body {
         background-color: green;
-    }
+    } */
 
     /* descrição do titulo */
     .area-login .titulo .descricao-titulo {
@@ -315,9 +315,9 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) { 
-    body {
+    /* body {
         background-color: turquoise;
-    }
+    } */
 
     .login-container {
         padding: 0px;
@@ -345,9 +345,9 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
+    /* body {
         background-color: orange;
-    }
+    } */
 
     /* inputs */
     .area-login .interacao-usuario {
