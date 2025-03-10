@@ -1,5 +1,7 @@
 const mongoose = require("../database/index");
 
+const bcryptjs = require("bcryptjs");
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,6 +22,13 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+userSchema.pre("save", async function (next) {
+  const hash = await bcryptjs.hash(this.password, 10);
+  console.log(this);
+  console.log(hash);
+  this.password = hash;
 });
 
 const user = mongoose.model("user", userSchema);
