@@ -2,7 +2,6 @@
 
 .login {
     width: 100vw;
-    height: 100vh;
 }
 
 .login-container {
@@ -165,3 +164,114 @@
     transition-duration: 0.5s;
     color: #053451;
 }
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        /* background-color: purple; */
+    }
+
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-container .imagem-login {
+        display: none;
+    }
+
+    /* Area de login */
+    .login-container .area-login {
+        width: 100%;
+    }
+
+    /* Titulo e descrição */
+    .area-login .titulo .texto-titulo {
+        font-size: 40px;
+    }
+
+    .area-login .titulo .descricao-titulo {
+        font-size: 16px;
+    }
+
+    /* inputs */
+    .area-login .interacao-usuario {
+        margin-top: 30px;
+        width: 80%;
+    }
+
+    .area-login .interacao-usuario h2 {
+        font-size: 20px;
+    }
+
+    .area-login .interacao-usuario .input-container {
+        height: 260px;
+    }
+
+    .area-login .interacao-usuario .input-container label {
+        font-size: 18px;
+    }
+
+    /* Botão entrar */
+    .area-login .entrar .botao-entrar {
+        font-size: 20px;
+        width: 130px;
+        height: 45px;
+    }
+
+    /* Cadastrar */
+    .cadastrar-novo {
+        margin-top: 50px;
+    }
+
+    .cadastrar-novo .linha {
+        width: 80px;
+    }
+
+    .cadastrar-novo h3 {
+        font-size: 18px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+    body {
+        background-color: red;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+ }
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) { 
+    body {
+        background-color: turquoise;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==== RESPONSIVIDADE ==== */
+/* ==== MEDIA QUERIES ==== */
