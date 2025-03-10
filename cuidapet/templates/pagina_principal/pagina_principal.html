@@ -42,46 +42,66 @@
         </div>
         <!-- /banner -->
 
-        <h2>CUIDADOS E SERVIÇOS PARA SEU PET</h2>
+        <h2>PERFIL E SERVIÇOS</h2>
 
         <div class="servicos-container">
             <div class="servico-item">
+                <a href="../perfil_usuario/perfil_usuario.html">
+                    <div class="servico-item-esquerdo">
+                        <h3>MEU PERFIL</h3>
+                        <p>Página do usuário com informações do perfil</p>
+                    </div>
+                    <img src="../../static/css/imagens/meus-pets.png" alt="imagem-meu-perfil" class="imagem-meu-perfil">
+                </a>
+            </div>
+
+            <div class="servico-item">
                 <a href="../meus_pets/meus_pets.html">
-                    <h3>MEUS PETS</h3>
-                    <p>Gerencie informações dos seus pets em um só lugar</p>
+                    <div class="servico-item-esquerdo">
+                        <h3>MEUS PETS</h3>
+                        <p>Gerencie informações dos seus pets em um só lugar</p>
+                    </div>
                     <img src="../../static/css/imagens/meus-pets.png" alt="imagem-meus-pets" class="imagem-meus-pets">
                 </a>
             </div>
 
             <div class="servico-item">
                 <a href="../banho_e_tosa/banho_e_tosa.html">
-                    <h3>BANHO E TOSA</h3>
-                    <p>Acompanhe o histórico e receba lembretes para novos cuidados</p>
-                    <img src="../../static/css/imagens/banho.png" alt="banho" class="imagem-banho">
+                    <div class="servico-item-esquerdo">
+                        <h3>BANHO E TOSA</h3>
+                        <p>Acompanhe o histórico e receba lembretes para novos cuidados</p>
+                    </div>
+                    <img src="../../static/css/imagens/banho-e-tosa.png" alt="banho" class="imagem-banho">
                 </a>
             </div>
 
             <div class="servico-item">
                 <a href="../medicamentos_e_vacinas/medicamentos_e_vacinas.html">
-                    <h3>MEDICAMENTOS E VACINAS</h3>
-                    <p>Organize vacinas e medicamentos para garantir a saúde do seu pet</p>
+                    <div class="servico-item-esquerdo">
+                        <h3>MEDICAMENTOS E VACINAS</h3>
+                        <p>Organize vacinas e medicamentos para garantir a saúde do seu pet</p>
+                    </div>
                     <img src="../../static/css/imagens/medicamentos-e-vacinas.png" alt="imagem-medicamentos-e-vacinas" class="imagem-medicamentos-e-vacinas">
                 </a>
             </div>
 
             <div class="servico-item">
                 <a href="../noticias/noticias.html">
-                    <h3>NOTÍCIAS</h3>
-                    <p>Confira dicas e novidades do mundo pet para melhor cuidar do seu animal</p>
+                    <div class="servico-item-esquerdo">
+                        <h3>NOTÍCIAS</h3>
+                        <p>Confira dicas e novidades do mundo pet para melhor cuidar do seu animal</p>
+                    </div>
                     <img src="../../static/css/imagens/noticias.png" alt="imagem-noticias" class="imagem-noticias">
                 </a>
             </div>
 
             <div class="servico-item">
                 <a href="../petshops/petshops.html">
-                    <h3>PET-SHOPS</h3>
-                    <p>Encontre pet-shops próximos e informações úteis</p>
-                    <img src="../../static/css/imagens/pet-shops.png" alt="imagem-pet-shops" class="imagem-pet-shops">
+                    <div class="servico-item-esquerdo">
+                        <h3>PET-SHOPS</h3>
+                        <p>Encontre pet-shops próximos e informações úteis</p>
+                    </div>
+                    <img src="../../static/css/imagens/pet-shop.png" alt="imagem-pet-shops" class="imagem-pet-shops">
                 </a>
             </div>
         </div>
@@ -89,7 +109,7 @@
     <!-- /Serviços -->
 
     <!-- Principais Noticias -->
-    <section class="principais-noticias">
+    <section class="principais-noticias" id="principais-noticias">
         <h2 class="titulo-principais-noticias">PRINCIPAIS NOTÍCIAS</h2>
         
         <div class="container-noticias">
@@ -136,23 +156,16 @@
     <!-- /Principais Noticias -->
 
     <!-- Caracteristicas do pet -->
-    <div class="caracteristicas-do-pet">
+    <section class="caracteristicas-do-pet" id="caracteristicas-do-pet">
         <h2>CARACTERÍSTICAS DO PET</h2>
 
-        <ul>
-            <li class="nome-e-imagem">
-                <h3>BOB</h3>
-                <p>imagem</p>
-            </li>
-            
-            <li class="caracteristicas">
-                <h3>CARACTERÍSTICAS DO LABRADOR</h3>
-                <p>O Labrador Retriever é uma raça de cachorro conhecida por sua natureza amigável, inteligente e leal. De porte médio a grande, eles possuem uma pelagem curta e densa, geralmente em tons de amarelo, preto ou chocolate.</p>
-                <h3>COMPORTAMENTO E PERSONALIDADE</h3>
-                <p>Labradores são altamente enérgicos, adoram brincar e nadar, sendo excelentes companheiros para famílias e ótimos cães de trabalho em áreas como resgate e assistência. Além de sua personalidade carinhosa, são fáceis de treinar, o que os torna uma escolha popular entre amantes de cães.</p>
-            </li>
-        </ul>
-    </div>
+        <div class="caracteristicas">
+            <h3>CARACTERÍSTICAS DO LABRADOR</h3>
+            <p>O Labrador Retriever é uma raça de cachorro conhecida por sua natureza amigável, inteligente e leal. De porte médio a grande, eles possuem uma pelagem curta e densa, geralmente em tons de amarelo, preto ou chocolate.</p>
+            <h3>COMPORTAMENTO E PERSONALIDADE</h3>
+            <p>Labradores são altamente enérgicos, adoram brincar e nadar, sendo excelentes companheiros para famílias e ótimos cães de trabalho em áreas como resgate e assistência. Além de sua personalidade carinhosa, são fáceis de treinar, o que os torna uma escolha popular entre amantes de cães.</p>
+        </div>
+    </section>
     <!-- /Caracteristicas do pet -->
 
     <!-- Rodapé -->
