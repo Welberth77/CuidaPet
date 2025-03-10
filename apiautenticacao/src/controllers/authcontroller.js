@@ -16,6 +16,8 @@ router.post("/registrar", async (req, res) => {
 
   const user = await usermodel.create(req.body);
 
+  user.password = undefined;
+
   return res.json({
     error: false,
     message: "Registrado com sucesso",
