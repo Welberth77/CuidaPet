@@ -345,18 +345,11 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* inputs */
     .area-login .interacao-usuario {
         width: 45%;
     }
 }
-
-
-
 
 /* ==== RESPONSIVIDADE ==== */
 /* ==== MEDIA QUERIES ==== */
