@@ -174,9 +174,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    /* body {
-        background-color: purple;
-    } */
 
     .login-container {
         padding: 20px;
@@ -205,11 +202,11 @@
     /* inputs */
     .area-login .interacao-usuario {
         margin-top: 30px;
-        width: 80%;
+        width: 90%;
     }
 
     .area-login .interacao-usuario h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .area-login .interacao-usuario .input-container {
@@ -217,7 +214,11 @@
     }
 
     .area-login .interacao-usuario .input-container label {
-        font-size: 18px;
+        font-size: 16px;
+    }
+
+    .area-login .interacao-usuario .input-container .inputs-usuario input {
+        font-size: 14px;
     }
 
     /* Botão entrar */
@@ -239,13 +240,14 @@
     .cadastrar-novo h3 {
         font-size: 16px;
     }
+
+    .cadastre-se a {
+        font-size: 16px;
+    }
 }
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) { 
-    /* body {
-        background-color: red;
-    } */
 
     /* Titulo e descrição */
     .area-login .titulo .texto-titulo {
@@ -275,13 +277,14 @@
     .cadastrar-novo h3 {
         font-size: 18px;
     }
+
+    .cadastre-se a {
+        font-size: 18px;
+    }
 }
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    /* body {
-        background-color: green;
-    } */
 
     /* descrição do titulo */
     .area-login .titulo .descricao-titulo {
@@ -315,9 +318,6 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) { 
-    /* body {
-        background-color: turquoise;
-    } */
 
     .login-container {
         padding: 0px;
@@ -345,9 +345,9 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    /* body {
+    body {
         background-color: orange;
-    } */
+    }
 
     /* inputs */
     .area-login .interacao-usuario {

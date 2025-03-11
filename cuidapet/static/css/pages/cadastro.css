@@ -21,7 +21,7 @@
 .cadastro-container {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
     height: 85%;
     max-height: 600px;
     margin: 30px auto; 
@@ -85,15 +85,132 @@
 }
 
 .cadastro-container .interacao-usuario .cadastrar:hover {
-    transition: 1s;
+    transition: 0.5s;
     background-color: #095a8c;
 } 
 
-/* .pagina-cadastrar-usuario {
-    background-color: #0B7ABF;
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    .cadastrar-usuario {
+        background-color: purple;
+    }
+
+    /* Container */
+    .cadastro-container {
+        width: 85%;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .cadastro-container .titulo-container h2 {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    /* Interação com o usuário */
+    .cadastro-container .interacao-usuario {
+        width: 85%;
+    }
+
+    .cadastro-container .interacao-usuario label {
+        font-size: 16px;
+    }
+
+    .cadastro-container .interacao-usuario input {
+        font-size: 16px;
+        height: 45px;
+    }
+
+    .cadastro-container .interacao-usuario .cadastrar {
+        width: 180px;
+        height: 45px;
+        margin: 30px auto 0;
+        font-size: 16px;
+    }
 }
 
-.cadastro {
-    display: block;
-} */
 
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+    .cadastrar-usuario {
+        background-color: red;
+    }
+
+    /* Interação com o usuário */
+    .cadastro-container .interacao-usuario {
+        width: 80%;
+    }
+}
+
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    .cadastrar-usuario {
+        background-color: green;
+    }
+
+    /* Container */
+    .cadastro-container {
+        width: 75%;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .cadastro-container .titulo-container h2 {
+        font-size: 36px;
+    }
+
+    /* Interação com o usuário */
+    .cadastro-container .interacao-usuario {
+        width: 75%;
+    }
+
+    .cadastro-container .interacao-usuario label {
+        font-size: 18px;
+    }
+
+    .cadastro-container .interacao-usuario input {
+        height: 50px;
+    }
+
+    .cadastro-container .interacao-usuario .cadastrar {
+        width: 200px;
+        height: 50px;
+        font-size: 18px;
+    }
+}
+
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) { 
+    .cadastrar-usuario {
+        background-color: turquoise;
+    }
+    
+    /* Container */
+    .cadastro-container {
+        width: 60%;
+    }
+
+    /* Interação com o usuário */
+    .cadastro-container .interacao-usuario {
+        width: 70%;
+    }
+}
+
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    .cadastrar-usuario {
+        background-color: orange;
+    }
+
+    /* Container */
+    .cadastro-container {
+        width: 50%;
+    }
+}
