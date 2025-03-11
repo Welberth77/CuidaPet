@@ -9,6 +9,7 @@
     height: 100vh;
     display: flex;
     flex-direction: row;
+    background-color: #fff;
 }
 
 /* Imagem lateral */
