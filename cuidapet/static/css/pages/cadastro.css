@@ -95,10 +95,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    .cadastrar-usuario {
-        background-color: purple;
-    }
-
     /* Container */
     .cadastro-container {
         width: 85%;
@@ -136,10 +132,6 @@
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) { 
-    .cadastrar-usuario {
-        background-color: red;
-    }
-
     /* Interação com o usuário */
     .cadastro-container .interacao-usuario {
         width: 80%;
@@ -149,10 +141,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    .cadastrar-usuario {
-        background-color: green;
-    }
-
     /* Container */
     .cadastro-container {
         width: 75%;
@@ -187,10 +175,6 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) { 
-    .cadastrar-usuario {
-        background-color: turquoise;
-    }
-    
     /* Container */
     .cadastro-container {
         width: 60%;
@@ -205,10 +189,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    .cadastrar-usuario {
-        background-color: orange;
-    }
-
     /* Container */
     .cadastro-container {
         width: 50%;
