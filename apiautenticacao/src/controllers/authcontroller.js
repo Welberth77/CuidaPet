@@ -10,6 +10,19 @@ const usermodel = require("../models/user");
 
 const router = express.Router();
 
+const generatetoken = (user = {}) => {
+  return jwt.sign(
+    {
+      id: user.id,
+      name: user.name,
+    },
+    authconfig.secret,
+    {
+      expiresIn: 86400,
+    }
+  );
+};
+
 router.post("/registrar", async (req, res) => {
   const { email } = req.body;
 
@@ -24,10 +37,20 @@ router.post("/registrar", async (req, res) => {
 
   user.password = undefined;
 
+  const token = jwt.sign(
+    {
+      id: user.id,
+      name: user.name,
+    },
+    authconfig.secret,
+    {
+      expiresIn: 86400,
+    }
+  );
+
   return res.json({
-    error: false,
-    message: "Registrado com sucesso",
-    data: user,
+    user,
+    token: generatetoken(user),
   });
 });
 
@@ -52,20 +75,9 @@ router.post("/autenticar", async (req, res) => {
 
   user.password = undefined;
 
-  const token = jwt.sign(
-    {
-      id: user.id,
-      name: user.name,
-    },
-    authconfig.secret,
-    {
-      expiresIn: 86400,
-    }
-  );
-
   return res.json({
     user,
-    token,
+    token: generatetoken(user),
   });
 });
 
