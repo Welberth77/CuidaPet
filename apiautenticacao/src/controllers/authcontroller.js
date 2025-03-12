@@ -28,7 +28,7 @@ router.post("/registrar", async (req, res) => {
 router.post("/autenticar", async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await usermodel.findOne({ email });
+  const user = await usermodel.findOne({ email }).select("+password");
 
   if (!user) {
     return res.status(400).json({
