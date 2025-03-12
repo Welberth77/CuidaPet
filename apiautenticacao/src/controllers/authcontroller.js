@@ -25,4 +25,19 @@ router.post("/registrar", async (req, res) => {
   });
 });
 
+router.post("/autenticar", async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await usermodel.findOne({ email });
+
+  if (!user) {
+    return res.status(400).json({
+      error: true,
+      message: "Usuario não encontrado",
+    });
+  }
+
+  return res.json(user);
+});
+
 module.exports = router;
