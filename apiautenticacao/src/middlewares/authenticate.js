@@ -17,7 +17,15 @@ module.exports = (req, res, next) => {
       message: "Tipo do token invalido",
     });
   }
-  console.log(authheader);
+
+  const [Schema, token] = parts;
+
+  if (Schema.indexOf("Bearer") !== 0) {
+    return res.status(401).json({
+      error: true,
+      message: "Token mal formatado",
+    });
+  }
 
   next();
 };
