@@ -9,6 +9,14 @@ module.exports = (req, res, next) => {
     });
   }
 
+  const parts = authheader.split(" ");
+
+  if (parts.length != 2) {
+    return res.status(401).json({
+      error: true,
+      message: "Tipo do token invalido",
+    });
+  }
   console.log(authheader);
 
   next();
