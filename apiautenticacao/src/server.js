@@ -4,13 +4,15 @@ const authcontroller = require("./controllers/authcontroller");
 
 const admincontroller = require("./controllers/admincontroller");
 
+const authenticatemiddleware = require("./middlewares/authenticate");
+
 const app = express();
 
 app.use(express.json());
 
 app.use("/auth", authcontroller);
 
-app.use("/admin", admincontroller);
+app.use("/admin", authenticatemiddleware, admincontroller);
 
 app.get("/", (req, res) => {
   return res.json({
