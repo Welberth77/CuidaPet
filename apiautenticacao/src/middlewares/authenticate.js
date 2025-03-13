@@ -1,5 +1,8 @@
+const jwt = require("jsonwebtoken");
+
+const authconfig = require("../config/auth.json");
+
 module.exports = (req, res, next) => {
-  console.log("middleware");
   const authheader = req.headers.authorization;
 
   if (!authheader) {
@@ -27,5 +30,16 @@ module.exports = (req, res, next) => {
     });
   }
 
-  next();
+  jwt.verify(token, authconfig.secret, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({
+        erro: true,
+        message: "Token expirado",
+      });
+    }
+
+    req.userlogged = decoded;
+
+    return next();
+  });
 };
