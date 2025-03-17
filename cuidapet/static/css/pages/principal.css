@@ -84,11 +84,13 @@
     margin: 15px 0 0;
 }
 
-/* Imagem meus pets */
-.servicos-container .servico-item .imagem-meus-perfil {
+
+
+.servicos-container .servico-item .imagem-meu-perfil {
     width: 50%;
 }
 
+/* Imagem meus pets */
 .servicos-container .servico-item .imagem-meus-pets {
     width: 50%;
 }
