@@ -9,7 +9,6 @@
 /* BANNER PRINCIPAL */
 
 .fundo-banner-principal {
-    /* margin-top: 80px; */
     background-color: var(--bg-color-01);
     display: flex;
     justify-content: center;
@@ -329,4 +328,82 @@
 .rodape .lista-rodape .sobre-rodape ul li a:hover {
     transition: 0.5s;
     color: var(--bg-color-01);
+}
+
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal {
+        background-color: var(--bg-color-01);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .fundo-banner-principal img {
+        width: 100%;
+        height: 100%;
+        padding-top: 10px;
+    }
+
+    /* SERVIÇOS */
+    .servicos-container {
+        padding: 10px 20px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .servicos h2 {
+        margin-top: 10px;
+        font-size: 28px;
+    }
+
+    .servicos-container .servico-item {
+        width: 350px;
+        height: 180px;
+    }
+
+    .servicos-container .servico-item h3 {
+        font-size: 24px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+    body {
+        background-color: red;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
 }
