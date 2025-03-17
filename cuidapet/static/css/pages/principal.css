@@ -221,7 +221,7 @@
 .caracteristicas-do-pet .caracteristicas {
     background-color: var(--bg-color-01);
     width: 80%;
-    height: 50%;
+    height: auto;
     margin-top: 40px;
     padding: 30px 40px;
     border-radius: 20px;
@@ -377,6 +377,130 @@
 
     .servicos-container .servico-item h3 {
         font-size: 24px;
+    }
+
+    
+    /* PRINCIPAIS NOTÍCIAS */
+
+    .principais-noticias {
+        height: auto;
+        padding: 20px;
+    }
+
+    /* TITULO */
+    .titulo-principais-noticias {
+        font-size: 28px;
+    }
+
+    /* CONTAINER */
+    .container-noticias {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        overflow-x: auto; /* Permite rolagem horizontal */
+        scroll-snap-type: x mandatory; /* Faz com que cada item "trave" no centro */
+        gap: 20px; /* Espaço entre as notícias */
+        padding: 20px; /* Reduz o padding para melhor adaptação */
+        width: 100%;
+    }
+
+    .container-noticias .noticia-item {
+        width: 320px;
+        height: 480px;
+        text-align: center;
+        scroll-snap-align: center; /* Centraliza ao deslizar */
+    }
+
+    .container-noticias .noticia-item .imagem {
+        width: 320px;
+        height: 220px;
+    }
+
+    .container-noticias .noticia-item .imagem img {
+        width: 320px;
+        height: 220px;
+        max-width: 320px;
+        max-height: 220px;
+    }
+
+    .container-noticias .noticia-item .titulo-e-descricao {
+        margin: 10px 0 0;
+        padding: 0 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* TITULO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao h2 {
+        font-size: 20px;
+    }
+
+    /* DESCRIÇÃO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao p {
+        font-size: 16px;
+    }
+
+    /* BOTÃO */
+    .container-noticias .noticia-item a {
+        font-size: 18px;
+        border-radius: 20px;
+        padding: 10px 20px;
+    }
+
+    /* CARACTERÍSTICAS DO PET */
+    .caracteristicas-do-pet h2 {
+        font-size: 24px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas {
+        width: 90%;
+        height: auto;
+        margin-top: 40px;
+        padding: 30px 20px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas h3 {
+        font-size: 20px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas p {
+        font-size: 16px;
+        font-weight: 400;
+        text-align: start;
+        margin: 0;
+        padding: 10px 0 30px;
+    }
+
+    /* RODAPÉ */
+    .rodape .lista-rodape {
+        justify-content: center;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape h3 {
+        font-size: 32px;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape p {
+        margin: 10px 0 0;
+        max-width: 250px;
+        font-size: 18px;
+    }
+
+    .rodape .lista-rodape .inicio-rodape h3 {
+        display: none;
+    }
+
+    .rodape .lista-rodape .inicio-rodape ul {
+        display: none;
+    }
+
+    /*  */
+    .rodape .lista-rodape .sobre-rodape h3 {
+        display: none;
+    }
+
+    .rodape .lista-rodape .sobre-rodape ul {
+        display: none;
     }
 }
 
