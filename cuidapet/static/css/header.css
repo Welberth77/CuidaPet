@@ -47,3 +47,24 @@
     max-width: 40px;
     max-height: 40px;
 }
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    .cabecalho {
+        padding: 0 10px;
+        height: 60px;
+    }
+    
+    .cabecalho .logo-cuidapet a {        
+        margin-left: 0px;
+        font-size: 28px;
+    }
+    
+    .cabecalho .navegacao ul {
+        gap: 10px;
+        font-size: 14px;
+    }
+}
