@@ -68,3 +68,17 @@
         font-size: 14px;
     }
 }
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+    .cabecalho {
+        background-color: red;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    .cabecalho {
+        background-color: green;
+    }
+}
