@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Registrar Medicamento</title>
+
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/pages/registrar_medicamento.css">
+</head>
+<body>
+    <!-- cabeçalho -->
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">
+            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+        </h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>
+                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
+                </li>
+                <li>
+                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+                </li>
+                <li class="foto-perfil">
+                    <a href="../perfil_usuario/perfil_usuario.html">
+                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /cabeçalho -->
+
+    <!-- section -->
+    <section class="registrar-medicamento-vacina" id="registrar-medicamento-vacina">
+        <!-- titulo -->
+        <div class="titulo-pagina">
+            <h1>REGISTRAR MEDICAMENTO OU VACINA</h1>
+        </div>
+        <!-- /titulo -->
+
+        <!-- Conteiner registrar banho -->
+        <div class="container-registrar-medicamento-vacina">
+            <!-- interação usuario -->
+            <form class="interacao-usuario" action="./medicamentos_e_vacinas.html" method="POST">
+                <div class="interacao-item">
+                    <label for="selecionar-pet">Pet:</label>
+                    <select class="selecionar-pet" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="bob">BOB</option>
+                        <option value="marley">MARLEY</option>
+                    </select>
+                </div>
+
+                <div class="interacao-item">
+                    <label for="nome-medicamento-vacina">Nome:</label>
+                    <input type="text" class="nome-medicamento-vacina" placeholder="Nome do medicamento ou vacina" required>
+                </div>
+
+                <div class="interacao-item">
+                    <label for="data-medicamento-vacina">Data:</label>
+                    <input type="date" class="data-medicamento-vacina" required>
+                </div>
+        
+                <div class="interacao-item">
+                    <label for="selecionar-prox-medicamento-vacina">Próximo:</label>
+                    <select class="selecionar-prox-medicamento-vacina" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="7-dias">7 DIAS</option>
+                        <option value="15-dias">15 DIAS</option>
+                        <option value="20-dias">20 DIAS</option>
+                        <option value="30-dias">30 DIAS</option>
+                    </select>
+                </div>
+        
+                <div class="interacao-item">
+                    <label for="observacoes-medicamento-vacina">Observações:</label>
+                    <textarea class="observacoes-medicamento-vacina" placeholder="Observações sobre o medicamento ou vacina do pet"></textarea>
+                </div>
+        
+                <button type="submit" class="salvar">SALVAR</button>
+            </form>
+            <!-- /intereação usuario -->
+        </div>
+        <!-- /container registrar banho -->
+    </section>
+    <!-- /section -->
+</body>
+</html>

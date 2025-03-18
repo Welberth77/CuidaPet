@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Nova Vacina</title>
+
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/pages/registrar_vacina.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">
+            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+        </h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>
+                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
+                </li>
+                <li>
+                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+                </li>
+                <li class="foto-perfil">
+                    <a href="../perfil_usuario/perfil_usuario.html">
+                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="titulo-pagina">REGISTRAR NOVA VACINA</h1>
+
+    <div class="conteiner-registrar-vacina">
+        <form class="interacao-usuario" action="./medicamentos_e_vacinas.html" method="POST">
+            <h2>PET:</h2>
+            <select class="selecionar-pet" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="bob">BOB</option>
+                <option value="marley">MARLEY</option>
+            </select>
+
+            <h2>NOME DA VACINA:</h2>
+            <input type="text" class="nome-da-vacina" placeholder="Nome da vacina" required>
+    
+            <h2>DATA:</h2>
+            <input type="date" class="data-nova-vacina" required>
+    
+            <h2>PRÓXIMA VACINA:</h2>
+            <select class="selecionar-data-proxima-vacina" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="7-dias">7 DIAS</option>
+                <option value="15-dias">15 DIAS</option>
+                <option value="20-dias">20 DIAS</option>
+                <option value="30-dias">30 DIAS</option>
+            </select>
+    
+            <h2>OBSERVAÇÕES:</h2>
+            <textarea class="observacoes-vacina" placeholder="Observações sobre a vacina do pet"></textarea>
+    
+            <button type="submit" class="salvar-vacina">
+                <h3>SALVAR VACINA</h3>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

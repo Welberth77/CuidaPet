@@ -1,0 +1,53 @@
+/* # Estilos básicos e reset */
+:root {
+    --bg-color-01: #053451;
+    --bg-color-02: #0B7ABF;
+    
+    --text-color-01: #fff;
+    --text-color-02: #074973;
+    --text-color-03: #000;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    font-family: 'Roboto', Helvetica, sans-serif;
+}
+
+/* Reset básico para remover margens, paddings e definir box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remove decoração de links e mantém cores neutras */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Removendo estilos padrão de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Removendo estilos padrão de inputs e botões */
+input, button, textarea, select {
+    font: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+/* Fazendo botões terem um cursor adequado */
+button {
+    cursor: pointer;
+}
+

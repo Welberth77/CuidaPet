@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Medicamentos e Vacinas</title>
+
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/pages/medicamentos_e_vacinas.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">
+            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+        </h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>
+                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
+                </li>
+                <li>
+                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+                </li>
+                <li class="foto-perfil">
+                    <a href="../perfil_usuario/perfil_usuario.html">
+                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /cabeçalho -->
+
+    <!-- Seção principal: Medicamentos e Vacinas -->
+    <section class="medicamento-e-vacina" id="medicamento-e-vacina">
+        <h1 class="titulo-pagina">Medicamentos e vacinas</h1>
+
+        <!-- Container com a lista de pets -->
+        <div class="medicamento-e-vacina-container">
+            <ul class="lista-pets">
+                <li><h2>Bob</h2></li>
+                <li><h2>Marley</h2></li>
+                <li><h2>Rex</h2></li>
+                <li><h2>Thor</h2></li>
+            </ul>
+        </div>
+
+        <!-- Div que será exibida ao clicar em um pet -->
+        <div class="pet-info">
+            <h1>Informações de <span id="nome_pet"></span></h1>
+            <p>Idade: <span id="idade_pet"></span></p>
+            <p>Raça: <span id="raca_pet"></span></p>
+            <p>Último banho: <span id="ultimo_banho"></span></p>
+            <p>Vacina: <span id="vacina_pet"></span></p>
+        </div>
+
+        <!-- Mensagem exibida caso o usuário não tenha pets cadastrados -->
+        <p class="mensagem-vazia">Você ainda não tem pets cadastrados</p>
+
+        <!-- Linha divisória -->
+        <div class="bloco-linha">
+            <hr class="linha">
+        </div>
+
+        <!-- Link para cadastrar um novo pet -->
+        <div class="registrar-novo-medicamento">
+            <a href="./registrar_medicamento.html">REGISTRAR NOVO MEDICAMENTO OU VACINA</a>
+        </div>
+    </section>
+    <script src="../../static/js/index.js"></script>
+</body>
+</html>
