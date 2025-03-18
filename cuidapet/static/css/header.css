@@ -89,3 +89,10 @@
         background-color: aqua;
     }
 }
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    .cabecalho {
+        background-color: orange;
+    }
+}
