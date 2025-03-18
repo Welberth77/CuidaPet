@@ -617,6 +617,37 @@
     body {
         background-color: green;
     }
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal img {
+        padding-top: 20px;
+        width: 100%;
+        height: 220px;
+    }
+
+    /* SERVIÇOS */ 
+    .servicos-container {
+        padding: 10px 20px 30px;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .servicos h2 {
+        margin-top: 10px;
+        font-size: 28px;
+    }
+
+    .servicos-container .servico-item {
+        width: 350px;
+        height: 180px;
+    }
+
+    .servicos-container .servico-item h3 {
+        font-size: 24px;
+    }
 }
 
 /* Large (L) - Laptop */

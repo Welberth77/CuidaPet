@@ -82,3 +82,10 @@
         background-color: green;
     }
 }
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    .cabecalho {
+        background-color: aqua;
+    }
+}
