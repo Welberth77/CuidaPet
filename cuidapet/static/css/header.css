@@ -11,6 +11,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
+    padding: 0 30px;
 }
 
 .cabecalho .logo-cuidapet a {
@@ -51,7 +52,7 @@
 /* ==== MEDIA QUERIES ==== */
 /* ==== RESPONSIVIDADE ==== */
 
-/* Extra Small (XS) - Celular no modo retrato */
+/* Extra Small (XS) - Celular no modo retrato, small (sm) - celular modo paisagem */
 @media (min-width: 0px) {
     .cabecalho {
         padding: 0 10px;
@@ -69,30 +70,21 @@
     }
 }
 
-/* Small (S) - Celular no modo horizontal */
-@media (min-width: 576px) { 
-    .cabecalho {
-        background-color: red;
-    }
-}
-
-/* Medium (M) - Tablets */
+/* Medium (M) - Tablets, Large (L) - Laptop, Extra Large (xl) - Desktop */
 @media (min-width: 768px) {
     .cabecalho {
         background-color: green;
+        padding: 0 20px;
+        height: 80px;
     }
-}
 
-/* Large (L) - Laptop */
-@media (min-width: 992px) {
-    .cabecalho {
-        background-color: aqua;
+    .cabecalho .logo-cuidapet a {
+        margin-left: 0px;
+        font-size: 35px;
     }
-}
 
-/* Extra large (xl): Desktop */
-@media (min-width: 1200px) {
-    .cabecalho {
-        background-color: orange;
+    .cabecalho .navegacao ul {
+        gap: 30px;
+        font-size: 16px;
     }
 }

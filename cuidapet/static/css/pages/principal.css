@@ -336,9 +336,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
 
     /* BANNER PRINCIPAL */
     .fundo-banner-principal {
@@ -506,9 +503,6 @@
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) { 
-    body {
-        background-color: red;
-    }
 
     /* BANNER PRINCIPAL */
     .fundo-banner-principal img {
@@ -614,9 +608,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
 
     /* BANNER PRINCIPAL */
     .fundo-banner-principal img {
@@ -652,9 +643,6 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) {
-    body {
-        background-color: aqua;
-    }
 
     /* BANNER PRINCIPAL */
     .fundo-banner-principal img {
@@ -709,9 +697,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
 
     /* BANNER PRINCIPAL */
     .fundo-banner-principal img {
@@ -765,10 +750,17 @@
         font-size: 20px;
         padding: 10px 30px;
     }
-}
+}   
 
 /* Extra large min-1400px (xl) - desktop */
 @media (min-width: 1400px) {
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal img {
+        padding-top: 20px;
+        width: 70%;
+        height: 250px;
+    }    
 
     /* SERVIÇOS */
     .servicos-container {
@@ -784,5 +776,22 @@
         width: 400px;
         height: 200px;
         padding: 25px 10px 0 25px;
+    }
+
+    /* CARACTERISTICAS DO PET */    
+    .caracteristicas-do-pet .caracteristicas {
+        width: 80%;
+        margin: 40px 0;
+        padding: 30px 40px;
+        border-radius: 20px;
+    }
+    
+    .caracteristicas-do-pet .caracteristicas h3 {
+        font-size: 24px;
+    }
+    
+    .caracteristicas-do-pet .caracteristicas p {
+        font-size: 20px;
+        padding: 10px 0 40px;
     }
 }
