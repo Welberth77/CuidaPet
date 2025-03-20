@@ -73,7 +73,6 @@
 /* Medium (M) - Tablets, Large (L) - Laptop, Extra Large (xl) - Desktop */
 @media (min-width: 768px) {
     .cabecalho {
-        background-color: green;
         padding: 0 20px;
         height: 80px;
     }
