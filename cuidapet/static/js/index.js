@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const listaPets = document.querySelector(".lista-pets");
     const mensagemVazia = document.querySelector(".mensagem-vazia");
     const petInfo = document.querySelector(".pet-info");
+    const linha = document.querySelector(".bloco-linha");
 
     // Simulação de um banco de dados de pets
     const pets = {
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         listaPets.style.display = "none";
         mensagemVazia.style.display = "block";
+        linha.style.display = "block";
     }
 
     // Evento de clique para cada pet
