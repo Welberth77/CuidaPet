@@ -32,6 +32,7 @@
     white-space: nowrap;  /* Não quebra linhas */
     padding: 10px 0; 
     display: flex;
+    justify-content: center;
     list-style: none;
     gap: 20px;
 }
@@ -84,10 +85,14 @@
 }
 
 .pet-info h1 {
+    font-size: 26px;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
 .pet-info p {
+    font-size: 20px;
+    font-weight: 500;
     text-align: start;
     margin: 0 0 5px;
 }
@@ -123,7 +128,7 @@
 /* Botão de cadastro de novo pet */
 
 .cadastrar-novo-pet {
-    display: flex;
+    display: none;
     justify-content: center;
 }
 
@@ -171,6 +176,9 @@
 
     /* Container da lista de pets */
     /* Lista de pets */
+    .lista-pets {
+        justify-content: start;
+    }
     /* Estilo de cada item da lista de pets */
     .lista-pets li {
         padding: 15px 25px;
@@ -224,6 +232,51 @@
 @media (min-width: 768px) {
     body {
         background-color: green;
+    }
+
+    /* Estilização da seção principal */
+    .banho-e-tosa {
+        padding: 0 40px;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 40px;
+        margin: 30px 0 0;
+    }
+
+    /* Container da lista de pets */
+    /* Lista de pets */
+    .lista-pets {
+        justify-content: center;
+    }
+    /* Estilo de cada item da lista de pets */
+    .lista-pets li {
+        padding: 15px 30px;
+    }
+
+    /* Estilo do nome do pet */
+    .lista-pets li h2 {
+        font-size: 22px;
+    }
+
+    /* Informações do pet */
+    /* Só é mostrada quando algum pet é selecionado */
+    .pet-info {
+        padding: 20px 40px;
+    }
+
+    /* Mensagem quando não há pets cadastrados */
+    .mensagem-vazia {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 30px 0;
+    }
+
+    /* Botão de cadastro de novo pet */
+    .cadastrar-novo-pet a {
+        font-size: 20px;
+        margin: 15px 0 0;
     }
 }
 

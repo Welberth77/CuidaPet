@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mensagemVazia = document.querySelector(".mensagem-vazia");
     const petInfo = document.querySelector(".pet-info");
     const linha = document.querySelector(".bloco-linha");
+    const cadastrarPet = document.querySelector(".cadastrar-novo-pet");
 
     // Simulação de um banco de dados de pets
     const pets = {
@@ -42,9 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Verifica se há pets cadastrados
     if (listaPets.children.length > 0) {
         listaPets.style.display = "flex";
+        cadastrarPet.style.display = "flex";
         mensagemVazia.style.display = "none";
     } else {
         listaPets.style.display = "none";
+        cadastrarPet.style.display = "none";
         mensagemVazia.style.display = "block";
         linha.style.display = "block";
     }
