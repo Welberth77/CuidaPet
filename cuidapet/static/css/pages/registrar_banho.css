@@ -93,10 +93,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* section */
     .registrar-banho {
         padding: 20px 10px;
@@ -126,10 +122,6 @@
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) {
-    body {
-        background-color: red;
-    } 
-
     /* INTERAÇÃO USUÁRIO */
     .container-registrar-banho {
         width: 80%;
@@ -140,10 +132,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-
     /* section */
     .registrar-banho {
         padding: 30px;
@@ -172,10 +160,6 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) {
-    body {
-        background-color: aqua;
-    }
-
     /* Título da página */
     .titulo-pagina h1 {
         font-size: 40px;
@@ -191,10 +175,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* INTERAÇÃO USUÁRIO */
     .container-registrar-banho {
         width: 40%;

@@ -155,10 +155,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* Estilização da seção principal */
     .banho-e-tosa {
         width: 100vw;
@@ -220,19 +216,8 @@
     }
 }
 
-/* Small (S) - Celular no modo horizontal */
-@media (min-width: 576px) {
-    body {
-        background-color: red;
-    } 
-}
-
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-
     /* Estilização da seção principal */
     .banho-e-tosa {
         padding: 0 40px;
@@ -278,19 +263,8 @@
     }
 }
 
-/* Large (L) - Laptop */
-@media (min-width: 992px) {
-    body {
-        background-color: aqua;
-    }
-}
-
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* Estilização da seção principal */
     .banho-e-tosa {
         padding: 0 60px;
