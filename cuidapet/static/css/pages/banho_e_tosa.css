@@ -1,7 +1,6 @@
 /* Estilização da seção principal */
 .banho-e-tosa {
     width: 100vw;
-    height: 100vh;
     padding: 0 60px;
     display: flex;
     flex-direction: column;
@@ -21,14 +20,19 @@
 /* Container da lista de pets */
 .banho-e-tosa-container {
     display: flex;
-    flex-direction: column;
-    width: 90%;
+    flex-direction: row;
+    width: 100%;
     margin-top: 30px;
 }
 
 /* Lista de pets */
 .lista-pets {
+    width: 100%; 
+    overflow-x: auto; /* scroll para o lado */
+    white-space: nowrap;  /* Não quebra linhas */
+    padding: 10px 0; 
     display: flex;
+    justify-content: center;
     list-style: none;
     gap: 20px;
 }
@@ -49,6 +53,7 @@
 /* Estilo do nome do pet */
 .lista-pets li h2 {
     font-size: 22px;
+    font-weight: 600;
     color: var(--text-color-02);
 }
 
@@ -75,17 +80,19 @@
     border-radius: 20px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 500;
     background-color: var(--bg-color-01);
     color: var(--text-color-01);
 }
 
 .pet-info h1 {
+    font-size: 26px;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
 .pet-info p {
+    font-size: 20px;
+    font-weight: 500;
     text-align: start;
     margin: 0 0 5px;
 }
@@ -105,10 +112,11 @@
 /* Linha divisória */
 
 .bloco-linha {
-    margin-top: 50px;
-    display: flex;
+    display: none;
+    margin-top: 10px;
     align-items: center;
     justify-content: center;
+    width: 90%;
 }
 
 .bloco-linha .linha {
@@ -120,7 +128,7 @@
 /* Botão de cadastro de novo pet */
 
 .cadastrar-novo-pet {
-    display: flex;
+    display: none;
     justify-content: center;
 }
 
@@ -128,7 +136,7 @@
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 500;
-    margin: 15px 0 0;
+    margin: 30px 0 0;
     padding: 10px 20px;
     border-radius: 20px;
     color: var(--text-color-01);
@@ -139,4 +147,158 @@
 .cadastrar-novo-pet a:hover {
     transition: 0.5s;
     background-color: var(--bg-color-02);
+}
+
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* Estilização da seção principal */
+    .banho-e-tosa {
+        width: 100vw;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 32px;
+        margin: 20px 0 0;
+    }
+
+    /* Container da lista de pets */
+    /* Lista de pets */
+    .lista-pets {
+        justify-content: start;
+    }
+    /* Estilo de cada item da lista de pets */
+    .lista-pets li {
+        padding: 15px 25px;
+    }
+
+    /* Estilo do nome do pet */
+    .lista-pets li h2 {
+        font-size: 20px;
+    }
+
+    /* Informações do pet */
+    /* Só é mostrada quando algum pet é selecionado */
+    .pet-info {
+        margin-top: 20px;
+        padding: 20px 30px;
+    }
+
+    .pet-info h1 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .pet-info p {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    /* Mensagem quando não há pets cadastrados */
+    .mensagem-vazia {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 20px 0;
+    }
+
+    /* Botão de cadastro de novo pet */
+    .cadastrar-novo-pet a {
+        font-size: 18px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) {
+    body {
+        background-color: red;
+    } 
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+
+    /* Estilização da seção principal */
+    .banho-e-tosa {
+        padding: 0 40px;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 40px;
+        margin: 30px 0 0;
+    }
+
+    /* Container da lista de pets */
+    /* Lista de pets */
+    .lista-pets {
+        justify-content: center;
+    }
+    /* Estilo de cada item da lista de pets */
+    .lista-pets li {
+        padding: 15px 30px;
+    }
+
+    /* Estilo do nome do pet */
+    .lista-pets li h2 {
+        font-size: 22px;
+    }
+
+    /* Informações do pet */
+    /* Só é mostrada quando algum pet é selecionado */
+    .pet-info {
+        padding: 20px 40px;
+    }
+
+    /* Mensagem quando não há pets cadastrados */
+    .mensagem-vazia {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 30px 0;
+    }
+
+    /* Botão de cadastro de novo pet */
+    .cadastrar-novo-pet a {
+        font-size: 20px;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
+
+    /* Estilização da seção principal */
+    .banho-e-tosa {
+        padding: 0 60px;
+    }
+
+    /* Informações do pet */
+    /* Só é mostrada quando algum pet é selecionado */
+    .pet-info {
+        padding: 30px 60px;
+    }
 }
