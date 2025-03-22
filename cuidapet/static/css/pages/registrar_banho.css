@@ -22,7 +22,7 @@
 .container-registrar-banho {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     border-radius: 20px;
     margin: 20px 0 0;
     padding: 30px;
@@ -86,4 +86,119 @@
     border-radius: 20px;
     background-color: var(--bg-color-02);
     color: var(--text-color-01);
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* section */
+    .registrar-banho {
+        padding: 20px 10px;
+    }
+
+    /* Título da página */
+    .titulo-pagina h1 {
+        font-size: 32px;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-banho {
+        width: 90%;
+        margin: 20px 0 0;
+        padding: 30px;
+    }
+
+    .container-registrar-banho .interacao-usuario label {
+        font-size: 20px;
+    }
+    
+    .interacao-usuario .observacoes-banho {
+        font-size: 16px;
+        height: 150px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) {
+    body {
+        background-color: red;
+    } 
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-banho {
+        width: 80%;
+        margin: 20px 0 0;
+        padding: 30px;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+
+    /* section */
+    .registrar-banho {
+        padding: 30px;
+    }
+
+    /* Título da página */
+    .titulo-pagina h1 {
+        font-size: 36px;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-banho {
+        width: 70%;
+        margin: 20px 0 0;
+        padding: 30px;
+    }
+
+    .container-registrar-banho .interacao-usuario label {
+        font-size: 22px;
+    }
+    
+    .interacao-usuario .observacoes-banho {
+        height: 120px;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+
+    /* Título da página */
+    .titulo-pagina h1 {
+        font-size: 40px;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-banho {
+        width: 60%;
+        margin: 20px 0 0;
+        padding: 30px;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-banho {
+        width: 40%;
+        margin: 20px 0 0;
+        padding: 30px;
+    }
 }
