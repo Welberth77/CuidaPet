@@ -46,6 +46,14 @@ input, button, textarea, select {
     background: none;
 }
 
+input[type="date"] {
+    width: 100%; /* Garante que ocupe toda a largura disponível */
+    max-width: 100%; /* Evita que o input ultrapasse o contêiner */
+    box-sizing: border-box; /* Evita problemas de dimensionamento */
+    padding: 10px; /* Melhorar a usabilidade */
+    font-size: 16px; /* Aumenta o tamanho para evitar zoom no mobile */
+}
+
 /* Fazendo botões terem um cursor adequado */
 button {
     cursor: pointer;
