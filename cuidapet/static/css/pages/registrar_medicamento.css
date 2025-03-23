@@ -22,7 +22,7 @@
 .container-registrar-medicamento-vacina {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     border-radius: 20px;
     margin: 20px 0 0;
     padding: 30px;
@@ -40,7 +40,7 @@
 }
 
 .container-registrar-medicamento-vacina .interacao-usuario label {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
     text-transform: uppercase;
     color: var(--text-color-01);
@@ -86,4 +86,116 @@
     border-radius: 20px;
     background-color: var(--bg-color-02);
     color: var(--text-color-01);
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* section */
+    .registrar-medicamento-vacina {
+        padding: 20px 10px;
+    }
+
+    /* Título da página */
+    .titulo-pagina h1 {
+        font-size: 25px;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-medicamento-vacina {
+        width: 90%;
+    }
+
+    .container-registrar-medicamento-vacina .interacao-usuario label {
+        font-size: 20px;
+    }
+
+    .interacao-usuario .observacoes-medicamento-vacina {
+        font-size: 16px;
+        height: 150px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) {
+    body {
+        background-color: red;
+    }
+
+    /* Título da página */
+    .titulo-pagina h1 {
+        font-size: 28px;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-medicamento-vacina {
+        width: 80%;
+
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+
+    /* section */
+    .registrar-medicamento-vacina {
+        padding: 30px;
+    }
+
+    /* Título da página */
+    .titulo-pagina h1 {
+        font-size: 36px;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-medicamento-vacina {
+        width: 70%;
+    }
+
+    .container-registrar-medicamento-vacina .interacao-usuario label {
+        font-size: 22px;
+    }
+
+    .interacao-usuario .observacoes-medicamento-vacina {
+        font-size: 16px;
+        height: 120px;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+
+    /* Título da página */
+    .titulo-pagina h1 {
+        font-size: 40px;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-medicamento-vacina {
+        width: 60%;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
+
+    /* INTERAÇÃO USUÁRIO */
+    .container-registrar-medicamento-vacina {
+        width: 40%;
+    }
 }
