@@ -154,10 +154,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* Estilização da seção principal */
     .medicamento-e-vacina {
         padding: 0 20px;
@@ -218,10 +214,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-
     /* Estilização da seção principal */
     .medicamento-e-vacina {
         padding: 0 40px;
@@ -270,10 +262,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* Estilização da seção principal */
     .medicamento-e-vacina {
         padding: 0 60px;
