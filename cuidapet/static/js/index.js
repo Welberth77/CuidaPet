@@ -20,17 +20,12 @@ function logar() {
 }
 
 
-// PÁGINA MEUS PETS && PÁGINA BANHO E TOSA
-
-// Lista dinâmica para a lista de pets
-// Se existir pets cadastrados ele mostra o bloco
-// Se não existir pets cadastrados ele oculta a lista
 document.addEventListener("DOMContentLoaded", function () {
     const listaPets = document.querySelector(".lista-pets");
     const mensagemVazia = document.querySelector(".mensagem-vazia");
     const petInfo = document.querySelector(".pet-info");
     const linha = document.querySelector(".bloco-linha");
-    const cadastrarPet = document.querySelector(".cadastrar-novo-pet");
+    const registrarMedicamento = document.querySelector(".registrar-novo-medicamento");
 
     // Simulação de um banco de dados de pets
     const pets = {
@@ -43,11 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Verifica se há pets cadastrados
     if (listaPets.children.length > 0) {
         listaPets.style.display = "flex";
-        cadastrarPet.style.display = "flex";
+        if (registrarMedicamento) registrarMedicamento.style.display = "flex"; 
         mensagemVazia.style.display = "none";
     } else {
         listaPets.style.display = "none";
-        cadastrarPet.style.display = "none";
+        if (registrarMedicamento) registrarMedicamento.style.display = "none"; 
         mensagemVazia.style.display = "block";
         linha.style.display = "block";
     }
@@ -64,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // Captura o nome do pet e exibe as informações
             const nomePet = item.textContent.trim();
             if (pets[nomePet]) {
-                // Atualiza os elementos existentes no HTML
                 document.getElementById("nome_pet").textContent = nomePet;
                 document.getElementById("idade_pet").textContent = pets[nomePet].idade;
                 document.getElementById("raca_pet").textContent = pets[nomePet].raca;
