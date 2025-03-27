@@ -30,10 +30,6 @@ section {
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* Section */
     section {
         width: 100vw;
@@ -52,10 +48,6 @@ section {
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) {
-    body {
-        background-color: red;
-    }
-
     /* Section */
     section {
         padding: 20px 40px;
@@ -63,18 +55,10 @@ section {
 }
 
 /* Medium (M) - Tablets */
-@media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-}
+/* Não */
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) {
-    body {
-        background-color: aqua;
-    }
-
     /* Título da página */
     .titulo-pagina {
         font-size: 40px;
@@ -87,10 +71,6 @@ section {
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* Section */
     section {
         padding: 20px 60px;

@@ -95,10 +95,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* Section */
     .noticias {
         padding: 20px 10px;
@@ -148,10 +144,6 @@
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) {
-    body {
-        background-color: red;
-    }
-
     /* Section */
     .noticias {
         padding: 20px;
@@ -171,10 +163,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-
     /* Section */
     .noticias {
         padding: 30px;
@@ -211,10 +199,6 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) {
-    body {
-        background-color: aqua;
-    }
-
     /* Section */
     .noticias {
         padding: 30px 40px;
@@ -247,10 +231,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* Section */
     .noticias {
         padding: 30px;
@@ -273,10 +253,6 @@
 
 /* Extra large (xl): Desktop - 1400px */
 @media (min-width: 1400px) {
-    body {
-        background-color: white;
-    }
-
     /* Section */
     .noticias {
         padding: 30px 60px;
