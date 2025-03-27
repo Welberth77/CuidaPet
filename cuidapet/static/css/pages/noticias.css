@@ -1,4 +1,4 @@
-
+/* Section */
 .noticias {
     width: 100vw;
     padding: 30px 60px;
@@ -71,7 +71,7 @@
     font-size: 18px;
     color: var(--text-color-01);
     text-align: center;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 /* BOTÃO VER MAIS*/
@@ -88,4 +88,90 @@
     color: var(--text-color-01);
     border-radius: 20px;
     padding: 10px 30px;
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* Section */
+    .noticias {
+        padding: 20px 10px;
+    }
+
+    /* Título da página */
+    .noticias .titulo-pagina h1 {
+        font-size: 32px;
+    }
+
+    /* CONTAINER */
+    .noticias .container-noticias {
+        margin: 20px 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .noticias .container-noticias .noticia-item {
+        width: 300px;
+        height: 430px;
+    }
+
+    /* TITULO E DESCRIÇÃO */
+    .noticias .container-noticias .noticia-item .titulo-e-descricao {
+        margin: 10px;
+        height: 45%;
+        max-height: 45%;
+    }
+
+    .noticias .container-noticias .noticia-item .titulo-e-descricao h2 {
+        font-size: 20px;
+    }
+
+    .noticias .container-noticias .noticia-item .titulo-e-descricao p {
+        font-size: 16px;
+    }
+
+    /* BOTÃO VER MAIS*/
+    .container-noticias .noticia-item a {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) {
+    body {
+        background-color: red;
+    }
+
+    
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
 }
