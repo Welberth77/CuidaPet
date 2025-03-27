@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mensagemVazia = document.querySelector(".mensagem-vazia");
     const petInfo = document.querySelector(".pet-info");
     const linha = document.querySelector(".bloco-linha");
+    const registrarBanho = document.querySelector(".cadastrar-novo-pet");
     const registrarMedicamento = document.querySelector(".registrar-novo-medicamento");
 
     // Simulação de um banco de dados de pets
@@ -38,10 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Verifica se há pets cadastrados
     if (listaPets.children.length > 0) {
         listaPets.style.display = "flex";
+        if (registrarBanho) registrarBanho.style.display = "flex";
         if (registrarMedicamento) registrarMedicamento.style.display = "flex"; 
         mensagemVazia.style.display = "none";
     } else {
         listaPets.style.display = "none";
+        if (registrarBanho) registrarBanho.style.display = "none";
         if (registrarMedicamento) registrarMedicamento.style.display = "none"; 
         mensagemVazia.style.display = "block";
         linha.style.display = "block";
