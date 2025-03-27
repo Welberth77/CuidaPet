@@ -750,6 +750,17 @@
         font-size: 20px;
         padding: 10px 30px;
     }
+
+    /* RODAPÉ */
+
+    .rodape .lista-rodape .cuida-pet-rodape h3 {
+        font-size: 40px;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape p {
+        max-width: 300px;
+        font-size: 18px;
+    }
 }   
 
 /* Extra large min-1400px (xl) - desktop */
