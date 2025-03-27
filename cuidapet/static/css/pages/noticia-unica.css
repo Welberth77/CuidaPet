@@ -1,14 +1,98 @@
+/* Section */
+section {
+    width: 100vw;
+    padding: 20px 60px;
+}
+
 /* Título da página */
 
 .titulo-pagina {
     text-align: center;
     font-weight: 700;
     font-size: 40px;
-    color: #053451;
+    color: var(--text-color-02);
     margin: 20px 0 0;
 }
 
 .conteudo-noticia {
-    background-color: orange;
-    margin: 30px 80px;
+    margin-top: 20px;
+}
+
+.conteudo-noticia p {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color-02);
+    text-align: start;
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* Section */
+    section {
+        width: 100vw;
+        padding: 20px;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 30px;
+    }
+
+    .conteudo-noticia p {
+        font-size: 16px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) {
+    body {
+        background-color: red;
+    }
+
+    /* Section */
+    section {
+        padding: 20px 40px;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 40px;
+    }
+
+    .conteudo-noticia p {
+        font-size: 18px;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
+
+    /* Section */
+    section {
+        padding: 20px 60px;
+    }
 }
