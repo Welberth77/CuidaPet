@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Editar Perfil</title>
+    
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/pages/editar_perfil.css">
+</head>
+<body>
+    <!-- Cebeçalho -->
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">
+            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+        </h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>
+                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
+                </li>
+                <li>
+                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+                </li>
+                <li class="foto-perfil">
+                    <a href="../perfil_usuario/perfil_usuario.html">
+                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /Cabeçalho -->
+
+    <section class="editar-perfil" id="editar-perfil">
+        <!-- Container editar perfil -->
+        <div class="editar-perfil-container">
+            <!-- Título -->
+            <div class="titulo-editar-perfil">
+                <h2>EDITAR PERFIL</h2>
+            </div>
+            <!-- /Título -->
+    
+            <!-- Inputs do usuario -->
+            <form class="interacao-usuario" action="./perfil_usuario.html" method="POST">
+                <label for="input-nome-completo">Nome completo:</label>
+                <input type="text" class="input-nome-completo" placeholder="Nome completo">
+    
+                <label for="input-email">E-mail:</label>
+                <input type="email" class="input-email" placeholder="E-mail">
+    
+                <label for="input-senha">Senha:</label>
+                <input type="password" class="input-senha" placeholder="Senha">
+    
+                <label for="input-confirmacao-senha">Confirmação de senha:</label>
+                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha">
+    
+                <button type="submit" class="salvar">
+                    <h4 class="texto-salvar">SALVAR</h4>
+                </button>
+            </form>
+            <!-- /inputs do usuário -->
+        </div>
+        <!-- /Container editar perfil -->
+    </section>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Registrar Banho</title>
+
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/pages/registrar_banho.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">
+            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+        </h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>
+                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
+                </li>
+                <li>
+                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+                </li>
+                <li class="foto-perfil">
+                    <a href="../perfil_usuario/perfil_usuario.html">
+                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /Cabeçalho -->
+
+    <!-- section -->
+    <section class="registrar-banho" id="registrar-banho">
+        <!-- titulo -->
+        <div class="titulo-pagina">
+            <h1>REGISTRAR NOVO BANHO</h1>
+        </div>
+        <!-- /titulo -->
+
+        <!-- Conteiner registrar banho -->
+        <div class="container-registrar-banho">
+            <!-- interação usuario -->
+            <form class="interacao-usuario" action="./banho_e_tosa.html" method="POST">
+                <div class="interacao-item">
+                    <label for="selecionar-pet">Pet:</label>
+                    <select class="selecionar-pet" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="bob">BOB</option>
+                        <option value="marley">MARLEY</option>
+                    </select>
+                </div>
+
+                <div class="interacao-item">
+                    <label for="data-novo-banho">Data:</label>
+                    <input type="date" class="data-novo-banho" required>
+                </div>
+        
+                <div class="interacao-item">
+                    <label for="selecionar-data-proximo-banho">Próximo banho:</label>
+                    <select class="selecionar-data-proximo-banho" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="7-dias">7 DIAS</option>
+                        <option value="15-dias">15 DIAS</option>
+                        <option value="20-dias">20 DIAS</option>
+                        <option value="30-dias">30 DIAS</option>
+                    </select>
+                </div>
+        
+                <div class="interacao-item">
+                    <label for="observacoes-banho">Observações:</label>
+                    <textarea class="observacoes-banho" placeholder="Observações sobre o banho do pet"></textarea>
+                </div>
+        
+                <button type="submit" class="salvar-banho">SALVAR BANHO</button>
+            </form>
+            <!-- /intereação usuario -->
+        </div>
+        <!-- /container registrar banho -->
+    </section>
+    <!-- /section -->
+</body>
+</html>
