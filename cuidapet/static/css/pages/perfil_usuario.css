@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 20px;
 }
 
 .titulo-pagina {
@@ -13,7 +14,6 @@
     font-weight: 700;
     font-size: 40px;
     color: var(--text-color-02);
-    padding: 40px 0 0;
     margin: 0;
 }
 
@@ -23,8 +23,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
-    height: 450px;
+    width: 50%;
+    height: auto;
     margin: 50px 0 0;
     padding: 30px 50px;
     border-radius: 20px;
@@ -53,12 +53,14 @@
     width: 100%;
     height: 50px;
     border-radius: 20px;
-    padding: 15px 10px 10px;
+    padding: 15px 10px;
     margin: 5px 0 15px;
 }
 
 .dados-usuario .container-dado h2 {
+    text-transform: capitalize;
     color: var(--text-color-03);
+    font-weight: 500;
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -73,13 +75,145 @@
 }
 
 .perfil-usuario .botao-editar-perfil .editar-perfil-usuario {
+    margin-top: 20px;
     background-color: var(--bg-color-02);
-    padding: 12px 22px;
+    padding: 10px 20px;
     border-radius: 20px;
     color: var(--text-color-01);
 }
 
 .perfil-usuario .botao-editar-perfil .editar-perfil-usuario p {
+    font-size: 20px;
     text-decoration: none;
     text-transform: uppercase;
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 32px;
+    }
+
+    /* Perfil usuário */
+    .perfil-usuario {
+        width: 90%;
+        height: auto;
+        margin: 20px 0 0;
+        padding: 30px 20px;
+    }
+
+    /*DADOS DO USUÁRIO */
+    .dados-usuario label {
+        font-size: 20px;
+    }
+    
+    .dados-usuario .container-dado h2 {
+        font-size: 16px;
+    }
+
+    /* EDITAR PERFIL USUARIO */
+    .perfil-usuario .botao-editar-perfil .editar-perfil-usuario {
+        margin-top: 10px;
+    }
+
+    .perfil-usuario .botao-editar-perfil .editar-perfil-usuario p {
+        font-size: 16px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+    body {
+        background-color: red;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 40px;
+    }
+
+    /* Perfil usuário */
+    .perfil-usuario {
+        width: 70%;
+        padding: 30px;
+    }
+
+    /*DADOS DO USUÁRIO */
+    .dados-usuario label {
+        font-size: 22px;
+    }
+    
+    .dados-usuario .container-dado h2 {
+        font-size: 18px;
+    }
+
+    /* EDITAR PERFIL USUARIO */
+    .perfil-usuario .botao-editar-perfil .editar-perfil-usuario {
+        margin-top: 20px;
+    }
+
+    .perfil-usuario .botao-editar-perfil .editar-perfil-usuario p {
+        font-size: 18px;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 40px;
+    }
+
+    /* Perfil usuário */
+    .perfil-usuario {
+        width: 60%;
+        padding: 30px 40px;
+    }
+
+    /*DADOS DO USUÁRIO */
+    .dados-usuario label {
+        font-size: 22px;
+    }
+    
+    .dados-usuario .container-dado h2 {
+        font-size: 18px;
+    }
+
+    /* EDITAR PERFIL USUARIO */
+    .perfil-usuario .botao-editar-perfil .editar-perfil-usuario p {
+        font-size: 18px;
+    }
+}
+
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
+
+     /* Perfil usuário */
+     .perfil-usuario {
+        width: 50%;
+        padding: 30px 50px;
+    }
 }
