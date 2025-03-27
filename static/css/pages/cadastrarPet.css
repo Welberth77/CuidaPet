@@ -1,0 +1,133 @@
+/* Div de interação com usuário */
+
+.cadastrar-pet {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container cadastrar pet */
+
+.cadastrar-pet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: auto;
+    margin: 40px 0 0; 
+    background-color: var(--bg-color-01);
+    text-align: center;
+    padding: 30px 50px;
+    border-radius: 20px;
+}
+
+/* titulo */
+
+.cadastrar-pet-container .titulo-area-pet h2 {
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--text-color-01);
+    text-align: center;
+}
+
+/* Container cadastrar pet */
+
+.cadastrar-pet-container .interacao-usuario {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* input container */
+
+.cadastrar-pet-container .interacao-usuario .input-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30px;
+    width: 100%;
+    text-align: start;
+}
+
+/* label */
+
+.cadastrar-pet-container .interacao-usuario .input-container label {
+    font-size: 18px;
+    color: var(--text-color-01);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* inputs */
+
+.cadastrar-pet-container .interacao-usuario .input-container input {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    color: #333;
+    border: 2px solid var(--bg-color-01);
+}
+
+/* select */
+
+.cadastrar-pet-container .interacao-usuario .input-container select {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    padding: 10px;
+    color: #333;
+    border: 2px solid var(--bg-color-01);
+}
+
+/* option */
+
+.cadastrar-pet-container .interacao-usuario .input-container option {
+    padding: 5px;
+}
+
+/* Sobre o pet, textarea */
+
+.cadastrar-pet-container .interacao-usuario .input-container .sobre-o-pet {
+    margin: 5px 20px 25px 0;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    color: #333;
+    border: 2px solid var(--bg-color-01);
+    height: 100px;             /* Altura fixa para o campo */
+    overflow-y: auto;          /* Barra de rolagem vertical ao exceder a altura */
+    resize: none;              /* Impede o redimensionamento pelo usuário */
+    white-space: pre-wrap;
+}
+
+/* Botão cadastrar Pet */
+
+.cadastrar-pet {
+    margin-top: 20px;
+}
+
+.botao-cadastrar-pet {
+    background-color: var(--bg-color-02);
+    color: var(--text-color-01);
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin: auto;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+}

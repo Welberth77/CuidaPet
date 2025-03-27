@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuidaPet - Seu Perfil</title>
+
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/pages/perfil_usuario.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+        <h1 class="logo-cuidapet">
+            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+        </h1>
+
+        <nav class="navegacao">
+            <ul>
+                <li>
+                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
+                </li>
+                <li>
+                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+                </li>
+                <li class="foto-perfil">
+                    <a href="../perfil_usuario/perfil_usuario.html">
+                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /Cabeçlho -->
+
+    <section class="meu-perfil" id="meu-perfil">
+        <h1 class="titulo-pagina">SEU PERFIL</h1>
+
+        <!-- Perfil usuario -->
+        <div class="perfil-usuario">
+            <div class="dados-usuario">
+                <label for="nome-completo">Nome:</label>
+                <div class="container-dado nome-completo">
+                    <h2>NOME COMPLETO USUARIO</h2>
+                </div>
+
+                <label for="email-usuario">E-mail:</label>
+                <div class="container-dado email-usuario">
+                    <h2>EMAIL USUARIO</h2>
+                </div>
+
+                <label for="senha-usuario">Senha:</label>
+                <div class="container-dado senha-usuario">
+                    <h2>SENHA USUARIO</h2>
+                </div>
+            </div>
+
+            <div class="botao-editar-perfil">
+                <!-- Botão editar perfil -->
+                <a href="./editar_perfil.html">
+                    <div class="editar-perfil-usuario">
+                        <p>Editar Perfil</p>
+                    </div>
+                </a>
+                <!-- /Botão editar perfil -->
+            </div>
+        </div>
+        <!-- /Perfil usuario -->
+    </section>
+</body>
+</html>

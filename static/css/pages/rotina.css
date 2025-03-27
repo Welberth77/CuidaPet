@@ -1,0 +1,182 @@
+/* Título da página */
+
+.titulo-pagina {
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    color: #053451;
+    margin: 20px 0 0;
+}
+
+/* ROTINAS */
+
+.container-rotinas {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+    gap: 90px;
+}
+
+/* DIV ESQUERDA | INFORMAÇÕES DO PET SELECIONADO */
+
+.informacoes-pet {
+    display: block;
+}
+
+.imagem-pet img {
+    background-color: #053451;
+    width: 300px;
+    height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 100%;
+}
+
+.informacoes-pet .nome-do-pet {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.informacoes-pet .nome-do-pet h2 {
+    color: #053451;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* DIV DIREITA | DATAS DAS ROTINAS */
+/* TITULOS DAS INFORMAÇÕES DE DATAS DO PET  */
+
+.titulo-rotina-pet {
+    text-align: center;
+    font-size: 22px;
+    color: #053451;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+}
+
+.titulo-rotinas-pet {
+    display: flex;
+    gap: 80px;
+}
+
+.titulo-rotinas-pet h2 {
+    font-size: 24px;
+    color: #053451;
+    font-weight: 700;
+}
+
+/* DATAS ROTINA 1 PET */
+
+.datas-rotinas {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 200px;
+}
+
+.datas-rotinas h3 {
+    font-weight: 600;
+    width: 150px;
+    background-color: #0B7ABF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 10px 0 0 40px;
+}
+
+/* SITUAÇÃO DA ROTINA DO PET */
+
+.situacao-rotina-pet {
+    margin: 40px auto auto 120px;
+    text-align: center;
+}
+
+.situacao-rotina-pet h3 {
+    background-color: #0B7ABF;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 450px;
+}
+
+
+/* REGISTRAR NOVA ROTINA 1 */
+
+.registrar-nova-rotina {
+    text-align: center;
+    margin: 30px 0 0;
+}
+
+.registrar-nova-rotina a {
+    color: #0B7ABF;
+    font-size: 18px;
+}
+
+/* PARTE 2, rotina2 */
+
+/* TITULOS DAS INFORMAÇÕES DE DATAS DO PET  */
+
+.titulo-rotina2-pet {
+    text-align: center;
+    font-size: 22px;
+    color: #053451;
+    font-weight: 700;
+    margin: 60px 0 30px 0;
+}
+
+.titulo-rotinas2-pet {
+    display: flex;
+    gap: 170px;
+}
+
+.titulo-rotinas2-pet h2 {
+    font-size: 24px;
+    color: #053451;
+    font-weight: 700;
+}
+
+/* DATAS DA ROTINA 2 PET */
+
+.datas-rotinas2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 200px;
+}
+
+.datas-rotinas2 h3 {
+    font-weight: 600;
+    width: 150px;
+    background-color: #0B7ABF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 10px 0 0 40px;
+}
+
+/* SITUAÇÃO DA ROTINA 2 */
+
+.situcao-rotina2-pet {
+    margin: 40px auto auto 120px;
+    text-align: center;
+}
+
+.situcao-rotina2-pet h3 {
+    background-color: #0B7ABF;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 450px;
+}
+
+/* REGISTRAR NOVA ROTINA */
+
+.registrar-nova-rotina2 {
+    text-align: center;
+    margin: 30px 0 60px;
+}
+
+.registrar-nova-rotina2 a {
+    color: #0B7ABF;
+    font-size: 18px;
+}
