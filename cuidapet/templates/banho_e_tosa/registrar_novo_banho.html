@@ -33,7 +33,7 @@
     <section class="registrar-banho" id="registrar-banho">
         <!-- titulo -->
         <div class="titulo-pagina">
-            <h1>REGISTRAR NOVO BANHO</h1>
+            <h1>REGISTRAR</h1>
         </div>
         <!-- /titulo -->
 
@@ -47,6 +47,16 @@
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="bob">BOB</option>
                         <option value="marley">MARLEY</option>
+                    </select>
+                </div>
+
+                <div class="interacao-item">
+                    <label for="selecionar-servico">Serviço:</label>
+                    <select name="selecionar-servico" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="banho-e-tosa">BANHO E TOSA</option>
+                        <option value="apenas-banho">APENAS BANHO</option>
+                        <option value="apenas-tosa">APENAS TOSA</option>
                     </select>
                 </div>
 
@@ -68,7 +78,7 @@
         
                 <div class="interacao-item">
                     <label for="observacoes-banho">Observações:</label>
-                    <textarea class="observacoes-banho" placeholder="Observações sobre o banho do pet"></textarea>
+                    <textarea class="observacoes-banho" placeholder="Observações"></textarea>
                 </div>
         
                 <button type="submit" class="salvar-banho">SALVAR BANHO</button>
