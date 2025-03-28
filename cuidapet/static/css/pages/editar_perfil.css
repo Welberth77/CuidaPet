@@ -1,3 +1,4 @@
+/* Section */
 
 .editar-perfil {
     width: 100vw;
@@ -13,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     width: 40%;
-    height: 600px;
+    height: auto;
     text-align: center;
     background-color: var(--bg-color-01);
     margin-top: 30px;
@@ -66,16 +67,92 @@
 .editar-perfil-container .interacao-usuario .salvar {
     background-color: var(--bg-color-02);
     color: var(--text-color-01);
-    text-decoration: none;
-    width: 50%;
-    height: 50px;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    margin: 20px auto;
+    margin: 0 auto;
+    padding: 15px 40px;
     cursor: pointer;
     border: none;
-    font-size: 18px;
-    font-weight: bold;
+}
+
+.editar-perfil-container .interacao-usuario .salvar h3 {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* Container editar perfil */
+    .editar-perfil .editar-perfil-container {
+        width: 90%;
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    /* Título da página */
+    .editar-perfil .editar-perfil-container .titulo-editar-perfil h2 {
+        font-size: 32px;
+    }
+
+    .editar-perfil .editar-perfil-container .interacao-usuario {
+        width: 100%;
+    }
+
+    /* Label */
+    .editar-perfil .editar-perfil-container .interacao-usuario label {
+        font-size: 18px;
+    }
+
+    /* Input */
+    .interacao-usuario input {
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    /* Botão Salvar */
+
+    /* Botão Salvar */
+    .editar-perfil-container .interacao-usuario .salvar {
+        padding: 10px 25px;
+    }
+
+    .editar-perfil-container .interacao-usuario .salvar h3 {
+        font-size: 18px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+    body {
+        background-color: red;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
 }
