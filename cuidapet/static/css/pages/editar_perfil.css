@@ -13,12 +13,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
+    width: 50%;
     height: auto;
     text-align: center;
     background-color: var(--bg-color-01);
-    margin-top: 30px;
-    padding: 30px;
+    margin-top: 40px;
+    padding: 30px 40px;
     border-radius: 20px;
 }
 
@@ -35,13 +35,13 @@
     flex-direction: column;
     align-items: start;
     margin-top: 30px;
-    width: 70%;
+    width: 100%;
 }
 
 /* Label */
 
 .editar-perfil .editar-perfil-container .interacao-usuario label {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
     color: var(--text-color-01);
@@ -118,8 +118,6 @@
     }
 
     /* Botão Salvar */
-
-    /* Botão Salvar */
     .editar-perfil-container .interacao-usuario .salvar {
         padding: 10px 25px;
     }
@@ -134,12 +132,49 @@
     body {
         background-color: red;
     }
+
+    /* Container editar perfil */
+    .editar-perfil .editar-perfil-container {
+        width: 80%;
+        padding: 20px 30px;
+    }
+
+    /* Botão Salvar */
+    .editar-perfil-container .interacao-usuario .salvar {
+        padding: 10px 30px;
+    }
 }
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
     body {
         background-color: green;
+    }
+
+    /* Container editar perfil */
+    .editar-perfil .editar-perfil-container {
+        width: 70%;
+        margin-top: 20px;
+        padding: 20px 30px;
+    }
+
+    /* Título da página */
+    .editar-perfil .editar-perfil-container .titulo-editar-perfil h2 {
+        font-size: 40px;
+    }
+
+    /* Label */
+    .editar-perfil .editar-perfil-container .interacao-usuario label {
+        font-size: 20px;
+    }
+
+    /* Botão Salvar */
+    .editar-perfil-container .interacao-usuario .salvar {
+        padding: 13px 35px;
+    }
+
+    .editar-perfil-container .interacao-usuario .salvar h3 {
+        font-size: 18px;
     }
 }
 
@@ -148,11 +183,33 @@
     body {
         background-color: aqua;
     }
+
+    /* Container editar perfil */
+    .editar-perfil .editar-perfil-container {
+        width: 60%;
+        margin-top: 20px;
+        padding: 20px 40px;
+    }
+
+    /* Botão Salvar */
+    .editar-perfil-container .interacao-usuario .salvar {
+        padding: 15px 40px;
+    }
+
+    .editar-perfil-container .interacao-usuario .salvar h3 {
+        font-size: 18px;
+    }
 }
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
     body {
         background-color: orange;
+    }
+
+    /* Container editar perfil */
+    .editar-perfil .editar-perfil-container {
+        width: 50%;
+        margin-top: 40px;
     }
 }
