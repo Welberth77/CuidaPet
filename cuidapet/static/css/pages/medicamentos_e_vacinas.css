@@ -137,7 +137,7 @@
     font-size: 20px;
     font-weight: 500;
     margin: 30px 0 0;
-    padding: 10px 20px;
+    padding: 10px 25px;
     border-radius: 20px;
     color: var(--text-color-01);
     background-color: var(--bg-color-01);
@@ -208,7 +208,7 @@
     .registrar-novo-medicamento a {
         text-align: center;
         font-size: 18px;
-        padding: 10px 10px;
+        padding: 10px 25px;
     }
 }
 
@@ -256,7 +256,6 @@
     /* Botão de cadastro de novo pet */
     .registrar-novo-medicamento a {
         font-size: 20px;
-        padding: 10px 20px;
     }
 }
 

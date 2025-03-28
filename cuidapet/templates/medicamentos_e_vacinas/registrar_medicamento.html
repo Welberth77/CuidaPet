@@ -33,7 +33,7 @@
     <section class="registrar-medicamento-vacina" id="registrar-medicamento-vacina">
         <!-- titulo -->
         <div class="titulo-pagina">
-            <h1>REGISTRAR MEDICAMENTO OU VACINA</h1>
+            <h1>REGISTRAR</h1>
         </div>
         <!-- /titulo -->
 
@@ -47,6 +47,15 @@
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="bob">BOB</option>
                         <option value="marley">MARLEY</option>
+                    </select>
+                </div>
+
+                <div class="interacao-item">
+                    <label for="selecionar-categoria">Categoria:</label>
+                    <select name="selecionar-categoria" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="medicamento">MEDICAMENTO</option>
+                        <option value="VACINA">VACINA</option>
                     </select>
                 </div>
 
@@ -73,7 +82,7 @@
         
                 <div class="interacao-item">
                     <label for="observacoes-medicamento-vacina">Observações:</label>
-                    <textarea class="observacoes-medicamento-vacina" placeholder="Observações sobre o medicamento ou vacina do pet"></textarea>
+                    <textarea class="observacoes-medicamento-vacina" placeholder="Observações"></textarea>
                 </div>
         
                 <button type="submit" class="salvar">SALVAR</button>
