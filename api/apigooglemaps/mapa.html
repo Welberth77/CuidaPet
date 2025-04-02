@@ -1,0 +1,17 @@
+<header>
+  <div class="pet-shop" id="map"></div>
+  <script type="text/javascript">
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -9.667241, lng: -35.73534 },
+        zoom: 15,
+      });
+    }
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCinRvdrJB_e4n65vADH4Kz9SLDyn-axsc&callback=initMap"
+    async
+    defer
+  ></script>
+</header>
