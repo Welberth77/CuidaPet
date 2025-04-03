@@ -1,5 +1,13 @@
-.pet-shop .map {
-  height: 500px;
-  width: 10000px;
-  background-color: var(--bg-color-02);
+html,
+body {
+  height: 100%;
+  margin: 0;
+
+  padding: 0;
+}
+
+.mapa {
+  height: 100%;
+
+  background-color: darkgray;
 }
