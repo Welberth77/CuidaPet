@@ -48,10 +48,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* Título */
     .titulo-pagina {
         font-size: 32px;
@@ -86,10 +82,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-
     /* Título */
     .titulo-pagina {
         font-size: 36px;
@@ -119,10 +111,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* Título */
     .titulo-pagina {
         font-size: 40px;
