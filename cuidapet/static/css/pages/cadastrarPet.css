@@ -130,10 +130,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* Container cadastrar pet */
     .cadastrar-pet-container {
         width: 90%;
@@ -166,10 +162,6 @@
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) {
-    body {
-        background-color: red;
-    }
-
     /* Container cadastrar pet */
     .cadastrar-pet-container {
         width: 80%;
@@ -180,10 +172,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-
     /* Container cadastrar pet */
     .cadastrar-pet-container {
         width: 90%;
@@ -206,10 +194,6 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) {
-    body {
-        background-color: aqua;
-    }
-
     /* Container cadastrar pet */
     .cadastrar-pet-container {
         width: 90%;
@@ -224,10 +208,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* Container cadastrar pet */
     .cadastrar-pet-container {
         width: 70%;
