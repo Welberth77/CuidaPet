@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 70%;
     height: auto;
     margin: 40px 0 0; 
     background-color: var(--bg-color-01);
@@ -97,7 +97,6 @@
     margin: 5px 20px 25px 0;
     font-size: 16px;
     width: 100%;
-    height: 40px;
     padding: 10px;
     border-radius: 10px;
     background-color: #D9D9D9;
@@ -116,18 +115,128 @@
 }
 
 .botao-cadastrar-pet {
+    font-size: 18px;
+    font-weight: 600;
+    margin: auto;
+    padding: 15px 30px;
+    border-radius: 20px;
     background-color: var(--bg-color-02);
     color: var(--text-color-01);
-    text-decoration: none;
-    width: 180px;
-    height: 50px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    margin: auto;
-    cursor: pointer;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
+}
+
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    body {
+        background-color: purple;
+    }
+
+    /* Container cadastrar pet */
+    .cadastrar-pet-container {
+        width: 90%;
+        margin: 20px 0 0; 
+        padding: 20px 20px;
+    }
+
+    /* titulo */
+    /* input container */
+    .cadastrar-pet-container .interacao-usuario .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* label */
+
+    /* inputs */
+
+    /* Sobre o pet, textarea */
+    .cadastrar-pet-container .interacao-usuario .input-container .sobre-o-pet {
+        height: 150px;         
+    }
+
+    /* Botão cadastrar Pet */
+    .cadastrar-pet {
+        margin-top: 0px;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) {
+    body {
+        background-color: red;
+    }
+
+    /* Container cadastrar pet */
+    .cadastrar-pet-container {
+        width: 80%;
+        margin: 20px 0 0; 
+        padding: 20px 20px;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: green;
+    }
+
+    /* Container cadastrar pet */
+    .cadastrar-pet-container {
+        width: 90%;
+        margin: 20px 0 0; 
+        padding: 20px 20px;
+    }
+
+    /* input container */
+    .cadastrar-pet-container .interacao-usuario .input-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 10px;
+    }
+
+    /* Sobre o pet, textarea */
+    .cadastrar-pet-container .interacao-usuario .input-container .sobre-o-pet {
+        height: 100px;         
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+    body {
+        background-color: aqua;
+    }
+
+    /* Container cadastrar pet */
+    .cadastrar-pet-container {
+        width: 90%;
+        padding: 20px 30px;
+    }
+
+    /* input container */
+    .cadastrar-pet-container .interacao-usuario .input-container {
+        gap: 20px;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    body {
+        background-color: orange;
+    }
+
+    /* Container cadastrar pet */
+    .cadastrar-pet-container {
+        width: 70%;
+        margin: 40px 0 0; 
+        padding: 30px 50px;
+    }
+
+    /* input container */
+    .cadastrar-pet-container .interacao-usuario .input-container {
+        gap: 30px;
+    }
 }
