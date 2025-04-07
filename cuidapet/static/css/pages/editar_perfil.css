@@ -85,10 +85,6 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
-    body {
-        background-color: purple;
-    }
-
     /* Container editar perfil */
     .editar-perfil .editar-perfil-container {
         width: 90%;
@@ -129,10 +125,6 @@
 
 /* Small (S) - Celular no modo horizontal */
 @media (min-width: 576px) { 
-    body {
-        background-color: red;
-    }
-
     /* Container editar perfil */
     .editar-perfil .editar-perfil-container {
         width: 80%;
@@ -147,10 +139,6 @@
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
-    body {
-        background-color: green;
-    }
-
     /* Container editar perfil */
     .editar-perfil .editar-perfil-container {
         width: 70%;
@@ -180,10 +168,6 @@
 
 /* Large (L) - Laptop */
 @media (min-width: 992px) {
-    body {
-        background-color: aqua;
-    }
-
     /* Container editar perfil */
     .editar-perfil .editar-perfil-container {
         width: 60%;
@@ -203,10 +187,6 @@
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    body {
-        background-color: orange;
-    }
-
     /* Container editar perfil */
     .editar-perfil .editar-perfil-container {
         width: 50%;
