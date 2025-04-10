@@ -1,4 +1,6 @@
 // Configurações da API
+// Configurações da API
+import { PATHS } from "./pathconfig";
 const API_BASE_URL = "http://localhost:3200";
 const AUTH_TOKEN_KEY = "cuidapet_token";
 
@@ -27,7 +29,7 @@ async function logar() {
     localStorage.setItem(AUTH_TOKEN_KEY, data.token);
 
     // Redireciona para a página principal
-    window.location.href = "./pagina_principal/pagina_principal.html";
+    window.location.href = PATHS.HOME;
   } catch (error) {
     console.error("Erro ao fazer login:", error);
     alert("Erro ao fazer login. Por favor, tente novamente.");
@@ -69,7 +71,7 @@ async function registrar() {
     localStorage.setItem(AUTH_TOKEN_KEY, data.token);
 
     // Redireciona para a página principal
-    window.location.href = "../pagina_principal/pagina_principal.html";
+    window.location.href = PATHS.HOME;
   } catch (error) {
     console.error("Erro ao registrar:", error);
     alert("Erro ao registrar. Por favor, tente novamente.");
@@ -134,7 +136,7 @@ async function updateUser(name, email, password) {
 // Função para fazer logout
 function logout() {
   localStorage.removeItem(AUTH_TOKEN_KEY);
-  window.location.href = "../index.html";
+  window.location.href = PATHS.LOGIN;
 }
 
 // Verifica autenticação ao carregar páginas protegidas
@@ -145,12 +147,12 @@ async function checkAuth() {
     window.location.pathname.includes("cadastrar_usuario.html");
 
   if (!token && !isAuthPage) {
-    window.location.href = "../index.html";
+    window.location.href = PATHS.LOGIN;
     return;
   }
 
   if (token && isAuthPage) {
-    window.location.href = "./pagina_principal/pagina_principal.html";
+    window.location.href = PATHS.HOME;
     return;
   }
 
