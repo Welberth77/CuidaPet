@@ -73,5 +73,30 @@
       <!-- /Container editar perfil -->
     </section>
     <script src="../../static/js/auth.js"></script>
+    <script>
+      async function atualizarPerfil() {
+        const name = document.getElementById("edit-nome").value;
+        const email = document.getElementById("edit-email").value;
+        const password = document.getElementById("edit-senha").value;
+        const confirmPassword = document.getElementById(
+          "edit-confirmacao-senha"
+        ).value;
+
+        // Validação se senha foi fornecida
+        if (password && password !== confirmPassword) {
+          alert("As senhas não coincidem!");
+          return;
+        }
+
+        const result = await updateUser(name, email, password);
+
+        if (result.error) {
+          alert(result.message);
+        } else {
+          alert("Perfil atualizado com sucesso!");
+          window.location.href = "./perfil_usuario.html";
+        }
+      }
+    </script>
   </body>
 </html>
