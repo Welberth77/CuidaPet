@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../static/css/base.css">
     <link rel="stylesheet" href="../../static/css/header.css">
     <link rel="stylesheet" href="../../static/css/pages/petshops.css">
+    <link rel="stylesheet" href="../../static/js/mapa.js">
 </head>
 <body>
     <!-- Cabeçalho -->
@@ -35,104 +36,16 @@
     <section class="pet-shop" id="pet-shop">
         <!-- titulo -->
         <div class="titulo-pagina">
-            <h1 class=>Pet-shops próximos</h1>
+            <h1 class=>Localize aqui</h1>
         </div>
-        <!-- /titulo -->
 
-        <!-- Lista com as informações da API -->
-        <!-- container pet-shop -->
-        <div class="container-pet-shop">
-            <!-- noticia item -->
-            <div class="pet-shop-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/pet-shop.png" alt="Pet-shop 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Pet-shop 1</h2>
-                    <p>Pequena descrição Pet-shop 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-pet-shop" href="./noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
-            <!-- /noticia item -->
-
-            <!-- noticia item -->
-            <div class="pet-shop-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/pet-shop.png" alt="Pet-shop 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Pet-shop 1</h2>
-                    <p>Pequena descrição Pet-shop 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-pet-shop" href="./noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
-            <!-- /noticia item -->
-
-            <!-- noticia item -->
-            <div class="pet-shop-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/pet-shop.png" alt="Pet-shop 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Pet-shop 1</h2>
-                    <p>Pequena descrição Pet-shop 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-pet-shop" href="./noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
-            <!-- /noticia item -->
-
-            <!-- noticia item -->
-            <div class="pet-shop-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/pet-shop.png" alt="Pet-shop 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Pet-shop 1</h2>
-                    <p>Pequena descrição Pet-shop 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-pet-shop" href="./noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
-            <!-- /noticia item -->
-
-            <!-- noticia item -->
-            <div class="pet-shop-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/pet-shop.png" alt="Pet-shop 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Pet-shop 1</h2>
-                    <p>Pequena descrição Pet-shop 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-pet-shop" href="./noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
-            <!-- /noticia item -->
-
-            <!-- noticia item -->
-            <div class="pet-shop-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/pet-shop.png" alt="Pet-shop 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Pet-shop 1</h2>
-                    <p>Pequena descrição Pet-shop 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-pet-shop" href="./noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
-            <!-- /noticia item -->
-        </div>
-        <!-- /container pet-shop -->
+        <div class="map" id="map"></div>
+    <script src="../../static/js/mapa.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7fpikcskzoe6OQGjFtQgJZVxRizNniqw&callback=initMap&libraries=places"
+      async
+      defer
+    ></script>
     </section>
 </body>
 </html>

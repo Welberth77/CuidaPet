@@ -1,91 +1,48 @@
+/* Adicione isto ao seu petshops.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("../imagens/Patas-google-mapa.png"); /* Alterar para seu caminho */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Opcional - efeito parallax */
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
 
 .pet-shop {
-    width: 100vw;
-    padding: 30px 60px;
+  width: 100%;
+  max-width: 1200px; /* Adicionado limite máximo */
+  margin: 0 auto; /* Centraliza o container */
+  padding: 30px 20px; /* Ajuste no padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens internos */
 }
 
 /* Título da página */
-
 .pet-shop .titulo-pagina {
-    margin: 0;
-    text-align: center;
+  margin: 0 0 30px 0; /* Ajuste nas margens */
+  text-align: center;
+  width: 100%;
 }
 
 .pet-shop .titulo-pagina h1 {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 40px;
-    color: var(--text-color-02);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--text-color-02);
 }
 
-/* CONTAINER */
-
-.pet-shop .container-pet-shop {
-    margin: 30px 0 0;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 30px;
-}
-
-.pet-shop .container-pet-shop .pet-shop-item {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--bg-color-01);
-    width: 400px;
-    height: 480px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-/* IMAGEM */
-
-.pet-shop .container-pet-shop .pet-shop-item .imagem {
-    width: 100%;
-    height: 40%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-color: var(--bg-color-02);
-}
-
-.pet-shop .container-pet-shop .pet-shop-item .imagem img {
-    width: 100%;
-    height: 100%;
-}
-
-/* TITULO E DESCRIÇÃO */
-
-.pet-shop .container-pet-shop .pet-shop-item .titulo-e-descricao {
-    margin: 20px;
-    height: 40%;
-    max-height: 40%;
-    text-align: center;
-}
-
-.pet-shop .container-pet-shop .pet-shop-item .titulo-e-descricao h2 {
-    text-transform: uppercase;
-    font-size: 24px;
-    color: var(--text-color-01);
-}
-
-.pet-shop .container-pet-shop .pet-shop-item .titulo-e-descricao p {
-    font-size: 18px;
-    color: var(--text-color-01);
-    text-align: center;
-    margin: 10px;
-}
-
-/* BOTÃO VER MAIS*/
-
-.container-pet-shop .pet-shop-item .botao-ver-mais {
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.container-pet-shop .pet-shop-item a {
-    font-size: 20px;
-    text-decoration: none;
-    background-color: var(--bg-color-02);
-    color: var(--text-color-01);
-    border-radius: 20px;
-    padding: 10px 30px;
+/* Mapa - Estilo atualizado */
+.pet-shop .map {
+  height: 500px;
+  width: 90%; /* Alterado para porcentagem */
+  max-width: 800px; /* Limite máximo */
+  background: #cb4646;
+  border: 10px solid #074973;
+  border-radius: 10px;
+  margin: 0 auto; /* Centraliza o mapa */
 }
