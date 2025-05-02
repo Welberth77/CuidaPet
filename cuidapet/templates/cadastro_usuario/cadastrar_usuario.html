@@ -24,27 +24,29 @@
                 <h2>CADASTRE-SE</h2>
             </div>
 
-            <form class="interacao-usuario" action="../index.html" method="POST">
+            <!-- Formulário -->
+            <form class="interacao-usuario" onsubmit="cadastrarUsuario(event); return false;">
                 <!-- <h3>NOME COMPLETO:</h3> -->
-                <label for="input-nome-completo">Nome Completo</label>
-                <input type="text" class="input-nome-completo" placeholder="Nome completo" required>
+                <label for="nome-completo">Nome Completo</label>
+                <input type="text" class="input-nome-completo" id="nome-completo" placeholder="Nome completo" autocomplete="name" required>
 
                 <!-- <h3>E-MAIL:</h3> -->
-                <label for="input-e-mail">E-mail</label>
-                <input type="email" class="input-e-mail" placeholder="E-mail" required>
+                <label for="email">E-mail</label>
+                <input type="email" class="input-e-mail" id="email" placeholder="E-mail" autocomplete="email" required>
 
                 <!-- <h3>SENHA:</h3> -->
-                <label for="input-senha">Senha</label>
-                <input type="password" class="input-senha" placeholder="Senha" required>
+                <label for="senha">Senha</label>
+                <input type="password" class="input-senha" id="senha" placeholder="Senha" autocomplete="new-password" required>
 
                 <!-- <h3>CONFIRMAÇÃO DE SENHA:</h3> -->
-                <label for="input-confirmacao-senha">Confirmação de senha</label>
-                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha" required>
+                <label for="confirma-senha">Confirmação de senha</label>
+                <input type="password" class="input-confirmacao-senha" id="confirma-senha" placeholder="Confirmação de senha" autocomplete="new-password" required>
 
                 <button type="submit" class="cadastrar">
                     <h4 class="texto-cadastrar">CADASTRAR</h4>
                 </button>
             </form>
+            <!-- /Formulário -->
         </div>
         <!-- /Cadastro container -->
     </section>

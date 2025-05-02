@@ -1,42 +1,62 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.getElementById("login-form");
+// Função de login
+function logar(){
+    // Pegando o email e senha do usuario
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+    console.log(email, senha);
 
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault(); // Evita o envio padrão do formulário
+    // Verificando email e senha
+    if (email == "admin@gmail.com" && senha == "admin") {
+        alert("Login realizado com sucesso!");
+        window.location.href = "./cuidapet/templates/pagina_principal/pagina_principal.html";
+    } else {
+        alert("Email ou senha incorretos");
+    };
+};
 
-        const email = document.getElementById("e-mail").value;
-        const senha = document.getElementById("senha").value;
 
-        // Verifica se o campo de mensagem de erro existe, se não, cria um
-        let mensagemErro = document.getElementById("mensagem-erro");
-        if (!mensagemErro) {
-            mensagemErro = document.createElement("p");
-            mensagemErro.id = "mensagem-erro";
-            mensagemErro.style.color = "red";
-            loginForm.appendChild(mensagemErro);
-        }
+// Lista de usuários cadastrados
+// let usuarios = [];
 
-        // Verifica se o email existe no dicionário de usuários
-        const usuario = usuarios[email];
+// Recuperar a lista do localStorage ou criar nova
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-        if (usuario && usuario.senha === senha) {
-            alert("Login realizado com sucesso!");
-            window.location.href = "./cuidapet/templates/pagina_principal/pagina_principal.html"; // Redireciona para a página principal
-        } else {
-            // Exibe a mensagem de erro
-            mensagemErro.textContent = "Email ou senha incorretos. Tente novamente!";
 
-            // Limpa os campos de email e senha
-            document.getElementById("e-mail").value = "";
-            document.getElementById("senha").value = "";
+// Função de cadastrar usuário
+function cadastrarUsuario(event) {
+    event.preventDefault(); // Impede o envio do formulário
 
-            // Atualiza a página para mostrar os campos vazios novamente
-            setTimeout(() => {
-                mensagemErro.textContent = ""; // Limpa a mensagem de erro após 2 segundos
-            }, 2000);
-        }
-    });
-});
+    // Pegando todos os dados do usuário
+    let nomeCompleto = document.getElementById("nome-completo").value;
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+    let confirmacaoSenha = document.getElementById("confirma-senha").value;
+
+    if (senha !== confirmacaoSenha)
+    {
+        alert("Senha e confirmação de senha não estão iguais!");
+        return;
+    }
+
+    // Criando objeto do usuário de forma organizada
+    let novoUsuario = {
+        nome: nomeCompleto,
+        email: email,
+        senha: senha // (obs: em um sistema real, nunca armazene senha em texto plano)
+    };
+
+    // Adicionando à lista
+    usuarios.push(novoUsuario);
+    console.log("usuario adicionado a lista");
+
+    // Salvar no localstorage
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+    // Redirecionando para a página de login
+    alert("Usuário cadastrado com sucesso!");
+    console.log("Redirecionando...");
+    window.location.href = "../../../index.html";
+};
 
 
   
