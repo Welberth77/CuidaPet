@@ -27,12 +27,31 @@ const confirmacaoSenha = document.getElementById("confirma-senha");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    alert("cadastrado com sucesso!");
+    checkInputNomeCompleto();
 });
 
 
 function checkInputNomeCompleto() {
     const nomeCompletoValue = nome.value;
+
+    // Se o campo estiver vazio
+    if (nomeCompletoValue === "") {
+        // Mostrar aviso e mostrar a mensagem de erro
+        errorInput(nome, "Preencha um nome válido!");
+    }
+}
+
+function errorInput(input, message) {
+    // Pega o item pai do input
+    const formItem = input.parentElement;
+    // Seleciona a tag <a>
+    const textMessage = formItem.querySelector("a");
+
+    // Escreve a mensagem
+    textMessage.innerText = message;
+
+    // Adiciona a classe de error
+    formItem.className = "interacao-usuario-content error";
 }
 
   

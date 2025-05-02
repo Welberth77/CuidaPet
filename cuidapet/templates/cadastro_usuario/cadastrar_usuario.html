@@ -25,36 +25,36 @@
             </div>
 
             <!-- Formulário -->
-            <form class="interacao-usuario" id="form-cadastrar-usuario" onsubmit="cadastrarUsuario(event); return false;">
+            <form class="interacao-usuario" id="form-cadastrar-usuario">
                 <div class="interacao-usuario-content">
                     <!-- Nome completo -->
                     <label for="nome-completo">Nome Completo</label>
-                    <input type="text" class="input-nome-completo" id="nome-completo" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="text" class="input-nome-completo" id="nome-completo" placeholder="Nome completo" autocomplete="name">
                     <a>Aqui vai a mensagem de erro...</a>
                 </div>
 
                 <div class="interacao-usuario-content">
                     <!-- Email -->
                     <label for="email">E-mail</label>
-                    <input type="email" class="input-e-mail" id="email" placeholder="E-mail" autocomplete="email" required>
+                    <input type="email" class="input-e-mail" id="email" placeholder="E-mail" autocomplete="email">
                     <a>Aqui vai a mensagem de erro...</a>
                 </div>
 
                 <div class="interacao-usuario-content">                    
                     <!-- Senha -->
                     <label for="senha">Senha</label>
-                    <input type="password" class="input-senha" id="senha" placeholder="Senha" autocomplete="new-password" required>
+                    <input type="password" class="input-senha" id="senha" placeholder="Senha" autocomplete="new-password">
                     <a>Aqui vai a mensagem de erro...</a>
                 </div>
 
                 <div class="interacao-usuario-content">
                     <!-- Confirmação de senha -->
                     <label for="confirma-senha">Confirmação de senha</label>
-                    <input type="password" class="input-confirmacao-senha" id="confirma-senha" placeholder="Confirmação de senha" autocomplete="new-password" required>
+                    <input type="password" class="input-confirmacao-senha" id="confirma-senha" placeholder="Confirmação de senha" autocomplete="new-password">
                     <a>Aqui vai a mensagem de erro...</a>
                 </div>
 
-                <button type="submit" class="cadastrar">
+                <button class="cadastrar">
                     <h4 class="texto-cadastrar">CADASTRAR</h4>
                 </button>
             </form>
@@ -64,6 +64,6 @@
     </section>
     <!-- /Cadastrar usuario -->
     <!-- Script  -->
-    <script src="../../../index.html"></script>
+    <script src="../../static/js/index.js"></script>
 </body>
 </html>
