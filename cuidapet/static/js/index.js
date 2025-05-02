@@ -15,52 +15,30 @@ function logar(){
 };
 
 
-// Lista de usuários cadastrados
-// let usuarios = [];
+// Cadastrar novo usuário
+// Recebendo dados do usuário
+const form = document.getElementById("form-cadastrar-usuario");
+const nome = document.getElementById("nome-completo");
+const email = document.getElementById("email");
+const senha = document.getElementById("senha");
+const confirmacaoSenha = document.getElementById("confirma-senha");
 
-// Recuperar a lista do localStorage ou criar nova
-let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    alert("cadastrado com sucesso!");
+});
 
 
-// Função de cadastrar usuário
-function cadastrarUsuario(event) {
-    event.preventDefault(); // Impede o envio do formulário
-
-    // Pegando todos os dados do usuário
-    let nomeCompleto = document.getElementById("nome-completo").value;
-    let email = document.getElementById("email").value;
-    let senha = document.getElementById("senha").value;
-    let confirmacaoSenha = document.getElementById("confirma-senha").value;
-
-    if (senha !== confirmacaoSenha)
-    {
-        alert("Senha e confirmação de senha não estão iguais!");
-        return;
-    }
-
-    // Criando objeto do usuário de forma organizada
-    let novoUsuario = {
-        nome: nomeCompleto,
-        email: email,
-        senha: senha // (obs: em um sistema real, nunca armazene senha em texto plano)
-    };
-
-    // Adicionando à lista
-    usuarios.push(novoUsuario);
-    console.log("usuario adicionado a lista");
-
-    // Salvar no localstorage
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-    // Redirecionando para a página de login
-    alert("Usuário cadastrado com sucesso!");
-    console.log("Redirecionando...");
-    window.location.href = "../../../index.html";
-};
-
+function checkInputNomeCompleto() {
+    const nomeCompletoValue = nome.value;
+}
 
   
 
+
+// Página de meus pets
 document.addEventListener("DOMContentLoaded", function () {
     const listaPets = document.querySelector(".lista-pets");
     const mensagemVazia = document.querySelector(".mensagem-vazia");
