@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../static/css/pages/perfil_usuario.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header class="cabecalho">
         <h1 class="logo-cuidapet">
             <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
@@ -23,46 +24,44 @@
                 <li>
                     <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
                 </li>
-                <li class="foto-perfil">
-                    <a href="../perfil_usuario/perfil_usuario.html">
-                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
-                    </a>
-                </li>
             </ul>
         </nav>
     </header>
+    <!-- /Cabeçlho -->
 
-    <h1 class="titulo-pagina">SEU PERFIL</h1>
-    
-    <div class="perfil-usuario">
-        <div class="informacoes-usuario">
-            <div class="imagem-usuario">
-                <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="imagem do usuario">
+    <section class="meu-perfil" id="meu-perfil">
+        <h1 class="titulo-pagina">SEU PERFIL</h1>
+
+        <!-- Perfil usuario -->
+        <div class="perfil-usuario">
+            <div class="dados-usuario">
+                <label for="nome-completo">Nome:</label>
+                <div class="container-dado nome-completo">
+                    <h2>nome completo do usuario</h2>
+                </div>
+
+                <label for="email-usuario">E-mail:</label>
+                <div class="container-dado email-usuario">
+                    <h2>email do usuario</h2>
+                </div>
+
+                <label for="senha-usuario">Senha:</label>
+                <div class="container-dado senha-usuario">
+                    <h2>senha do usuario</h2>
+                </div>
             </div>
-            <div class="nome-do-usuario">
-                <h2>NOME DO USUARIO</h2>
+
+            <div class="botao-editar-perfil">
+                <!-- Botão editar perfil -->
+                <a href="./editar_perfil.html">
+                    <div class="editar-perfil-usuario">
+                        <p>Editar Perfil</p>
+                    </div>
+                </a>
+                <!-- /Botão editar perfil -->
             </div>
         </div>
-
-        <div class="dados-usuario">
-            <div>
-                <h2>NOME:</h2>
-                <div class="container-dado">
-                    <h3>NOME COMPLETO USUARIO</h3>
-                </div>
-                <h2>EMAIL:</h2>
-                <div class="container-dado">
-                    <h3>EMAIL USUARIO</h3>
-                </div>
-                <h2>SENHA:</h2>
-                <div class="container-dado">
-                    <h3>SENHA USUARIO</h3>
-                </div>
-            </div>
-
-            <div class="editar-perfil-usuario">
-                <a href="./editar_perfil.html">EDITAR PERFIL</a>
-            </div>
-    </div>
+        <!-- /Perfil usuario -->
+    </section>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Título */
 .titulo-pagina {
     text-align: center;
     font-weight: 700;
@@ -6,21 +7,117 @@
     margin: 20px 0 0;
 }
 
+/* Main */
 .principal {
-    margin: 30px 5% 5%;
+    margin: 30px 40px;
 }
 
+/* h2 */
 .principal h2 {
     font-size: 26px;
     color: #053451;
 }
 
+/* Paragrafos p */
 .principal p {
     font-size: 18px;
     margin: 5px 0 15px;
 }
 
+/* Listas */
 .principal ul {
-    font-size: 18px;
+    text-align: justify;
     margin: 5px 0 15px;
+    list-style-type: disc;
+}
+
+/* Li */
+.principal ul li {
+    margin-left: 20px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* span */
+.principal ul li span{
+    font-weight: bold;
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    /* Título */
+    .titulo-pagina {
+        font-size: 32px;
+    }
+
+    /* Main */
+    .principal {
+        margin: 30px 20px;
+    }
+
+    /* h2 */
+    .principal h2 {
+        font-size: 24px;
+        color: #053451;
+    }
+
+    /* Paragrafos p */
+    .principal p {
+        font-size: 16px;
+        margin: 5px 0 15px;
+        text-align: justify;
+    }
+
+    /* Listas */
+
+    /* Li */
+    .principal ul li {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    /* Título */
+    .titulo-pagina {
+        font-size: 36px;
+    }
+
+    /* Main */
+    .principal {
+        margin: 30px 30px;
+    }
+
+    /* h2 */
+    .principal h2 {
+        font-size: 26px;
+    }
+
+    /* Paragrafos p */
+    .principal p {
+        font-size: 18px;
+    }
+
+    /* Listas */
+    /* Li */
+    .principal ul li {
+        font-size: 18px;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    /* Título */
+    .titulo-pagina {
+        font-size: 40px;
+    }
+
+    /* Main */
+    .principal {
+        margin: 30px 40px;
+    }
 }

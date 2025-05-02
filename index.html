@@ -9,64 +9,78 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+    <!-- /Adicionando fonte robotto -->
 
     <link rel="stylesheet" href="./cuidapet/static/css/base.css">
     <link rel="stylesheet" href="./cuidapet/static/css/pages/login.css">
     
 </head>
 <body>
-    <div class="area-login">
-        <!-- Banner -->
-        <div class="imagem-login"><img src="./cuidapet/static/css/imagens/banner-pagina-de-login.jpg" alt="Banner com cachorros e gatos"></div>
-
-        <!-- Input usuário, área de login -->
-        <div class="login">
-            <!-- titulo -->
-            <div class="titulo">
-                <h1 class="texto-titulo">CUIDAPET</h1>
-                <p class="descricao-titulo">Facilite a vida do seu pet com apenas um clique!</p>
+    <!-- area de login -->
+    <section class="login" id="login">
+        <!-- Login container -->
+        <div class="login-container">
+            <!-- Imagem lateral -->
+            <div class="imagem-login">
+                <img src="./cuidapet/static/css/imagens/banner-lateral-login.png" alt="Banner lateral">
             </div>
-            
-            <!-- interação com o usuário -->
-            <div class="interacao-usuario">
-                <h2 class="titulo-interacao">ENTRE COM SUA CONTA CUIDAPET</h2>
-            
-                <form id="login-form" method="POST">
-                    <!-- Pedindo e-mail -->
-                    <h2 class="e-mail-titulo">E-MAIL</h2>
-                    <div class="inputs-usuario">
-                        <input type="email" class="input-e-mail" placeholder="E-mail" id="e-mail" name="email" required>
-                    </div>
-            
-                    <!-- Pedindo senha -->
-                    <h2 class="senha-titulo">SENHA</h2>
-                    <div class="inputs-usuario">
-                        <input type="password" class="input-senha" placeholder="Senha" id="senha" name="password" required>
-                    </div>
-            
-                    <div class="login">
-                        <div class="entrar">
-                            <input type="submit" value="ENTRAR" class="botao-entrar">
+            <!-- /Imagem lateral -->
+
+            <!-- area login -->
+            <div class="area-login">
+                <div class="titulo">
+                    <h1 class="texto-titulo">CUIDAPET</h1>
+                    <p class="descricao-titulo">Facilite a vida do seu pet com apenas um clique!</p>
+                </div>
+
+                <!-- Inputs -->
+                <div class="interacao-usuario">
+                    <h2 class="titulo-interacao">ENTRE COM SUA CONTA CUIDAPET</h2>
+                
+                    <form class="input-container" id="login-form" method="POST" onsubmit="logar(); return false;">
+
+                        <!--Input e-mail -->
+                        <div class="inputs-usuario">
+                            <label for="input-e-mail">E-mail:</label>
+                            <input type="email" class="input-e-mail" placeholder="E-mail" id="e-mail" name="email" required>
                         </div>
-                    </div>
-                </form>
-            </div>            
+                        <!-- /Input e-mail -->
 
-            <div class="cadastrar-novo">
-                <hr class="linha">
-                <h3>NÃO TEM CADASTRO ?</h3>
-                <hr class="linha">
-            </div>
+                        <!-- Input senha -->
+                        <div class="inputs-usuario">
+                            <label for="input-senha">Senha:</label>
+                            <input type="password" class="input-senha" placeholder="Senha" id="senha" name="password" required>
+                        </div>
+                        <!-- /Input senha -->
+                
+                        <!-- Botão login -->
+                        <div class="login">
+                            <div class="entrar">
+                                <input type="submit" value="ENTRAR" class="botao-entrar">
+                            </div>
+                        </div>
+                        <!-- /Botão login -->
+                    </form>
+                </div>
+                <!-- /Inputs -->
 
-            <div class="cadastre-se">
-                <a href="./cuidapet/templates/cadastro_usuario/cadastrar_usuario.html">CADASTRE-SE AQUI</a>
+                <!-- Novo cadastro -->
+                <div class="cadastrar-novo">
+                    <hr class="linha">
+                    <h3>NÃO TEM CADASTRO ?</h3>
+                    <hr class="linha">
+                </div>
+
+                <div class="cadastre-se">
+                    <a href="./cuidapet/templates/cadastro_usuario/cadastrar_usuario.html">CADASTRE-SE AQUI</a>
+                </div>
+                <!-- /Novo cadastro -->
             </div>
+            <!-- area login -->
         </div>
-    </div>
-
-    <script src="./cuidapet/static/js/dados.js"></script>
+        <!-- /login container -->
+    </section>
+    <!-- /area de login -->
     <script src="./cuidapet/static/js/index.js"></script>
 </body>
 </html>

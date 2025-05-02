@@ -11,6 +11,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
+    padding: 0 30px;
 }
 
 .cabecalho .logo-cuidapet a {
@@ -46,4 +47,43 @@
 .cabecalho .navegacao .foto-perfil img {
     max-width: 40px;
     max-height: 40px;
+}
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato, small (sm) - celular modo paisagem */
+@media (min-width: 0px) {
+    .cabecalho {
+        padding: 0 10px;
+        height: 60px;
+    }
+    
+    .cabecalho .logo-cuidapet a {        
+        margin-left: 0px;
+        font-size: 28px;
+    }
+    
+    .cabecalho .navegacao ul {
+        gap: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Medium (M) - Tablets, Large (L) - Laptop, Extra Large (xl) - Desktop */
+@media (min-width: 768px) {
+    .cabecalho {
+        padding: 0 20px;
+        height: 80px;
+    }
+
+    .cabecalho .logo-cuidapet a {
+        margin-left: 0px;
+        font-size: 35px;
+    }
+
+    .cabecalho .navegacao ul {
+        gap: 30px;
+        font-size: 16px;
+    }
 }

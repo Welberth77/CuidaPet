@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../static/css/pages/editar_perfil.css">
 </head>
 <body>
+    <!-- Cebeçalho -->
     <header class="cabecalho">
         <h1 class="logo-cuidapet">
             <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
@@ -23,45 +24,41 @@
                 <li>
                     <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
                 </li>
-                <li class="foto-perfil">
-                    <a href="../perfil_usuario/perfil_usuario.html">
-                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
-                    </a>
-                </li>
             </ul>
         </nav>
     </header>
+    <!-- /Cabeçalho -->
 
-    <div class="area-editar-perfil">
-        <div class="titulo-editar-perfil">
-            <h2>EDITAR PERFIL</h2>
-        </div>
-
-        <form class="interacao-usuario" action="./perfil_usuario.html" method="POST">
-            <h3>NOME COMPLETO:</h3>
-            <input type="text" class="input-nome-completo" placeholder="Nome completo">
-
-            <h3>E-MAIL:</h3>
-            <input type="email" class="input-e-mail" placeholder="E-mail">
-
-            <h3>SENHA:</h3>
-            <input type="password" class="input-senha" placeholder="Senha">
-
-            <h3>CONFIRMAÇÃO DE SENHA:</h3>
-            <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha">
-
-            <div class="foto-perfil">
-                <img id="foto-perfil" src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto de perfil">
-                
-                <br>
-                <label for="upload-foto" class="editar-foto">EDITAR FOTO</label>
-                <input type="file" id="upload-foto" accept="image/*" style="display: none;">
+    <section class="editar-perfil" id="editar-perfil">
+        <!-- Container editar perfil -->
+        <div class="editar-perfil-container">
+            <!-- Título -->
+            <div class="titulo-editar-perfil">
+                <h2>EDITAR PERFIL</h2>
             </div>
-
-            <button type="submit" class="salvar">
-                <h4 class="texto-salvar">SALVAR</h4>
-            </button>
-        </form>
-    </div>
+            <!-- /Título -->
+    
+            <!-- Inputs do usuario -->
+            <form class="interacao-usuario" action="./perfil_usuario.html" method="POST">
+                <label for="input-nome-completo">Nome completo:</label>
+                <input type="text" class="input-nome-completo" placeholder="Nome completo">
+    
+                <label for="input-email">E-mail:</label>
+                <input type="email" class="input-email" placeholder="E-mail">
+    
+                <label for="input-senha">Senha:</label>
+                <input type="password" class="input-senha" placeholder="Senha">
+    
+                <label for="input-confirmacao-senha">Confirmação de senha:</label>
+                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha">
+    
+                <button type="submit" class="salvar">
+                    <h3 class="texto-salvar">SALVAR</h3>
+                </button>
+            </form>
+            <!-- /inputs do usuário -->
+        </div>
+        <!-- /Container editar perfil -->
+    </section>
 </body>
 </html>

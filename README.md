@@ -1,18 +1,17 @@
 # CuidaPet
 Engenharia de Software <br>
-Prof. Marcos Vinícius <br>
+Prof. Marcos Vinícius e Ícaro Ferreira <br>
 Grupo:
 Igor Rafael Basilio de Lima,
 Welberth de Oliveira Costa,
 Ricardo Antônio Figueiredo Warumby,
 Paulo César dos Santos Costa,
-Guilherme César Lucena Jatobá.
 
 	5WH	
 
 <h3>What</h3>
 
-Este site é para um acompanhamento organizado e cuidados específicos com o seu animal de estimação. Acompanhamento das vacinas, banho e tosa, alimentação e passeios.
+Este site é para um acompanhamento organizado e cuidados específicos com o seu animal de estimação. Acompanhamento das vacinas, banho e tosa.
 
 <h3>Why</h3>
 
@@ -25,18 +24,17 @@ Será implementado na Web. (Github pages)
 <h3>Who</h3>
 
 Donos de pet que não possuem muito tempo para organizar a rotina do seu animal, como horários de alimentação, datas de vacinas e cuidados específicos de cada raça. <br>
-Grupo: Igor Rafael Basilio de Lima, Welberth de Oliveira Costa, Ricardo Antônio Figueiredo Warumby, Paulo César dos Santos Costa, Guilherme César Lucena Jatobá.
+Grupo: Igor Rafael Basilio de Lima, Welberth de Oliveira Costa, Ricardo Antônio Figueiredo Warumby, Paulo César dos Santos Costa.
 
 <h3>When</h3>
 
 - 5WH – 13/08/2024 <br>
-- Projeto Final - Final do período letivo 2024/2 (16/11/2024).
+- Projeto Final - Final do período letivo 2025/1 (26/06/2025).
 
 <h3>How</h3>
  
-- Framework Web (Flask ou Django) <br>
-- Front-end (HTML/CSS) <br>
-- Back-end (Python) <br>
+- Front-end (HTML5/CSS3) <br>
+- Back-end (Javascript) <br>
 - Banco de Dados (MySQL/ORM) <br>
 - APIs (Google Places API/TheDogAPI/TheCatAPI) <br>
 - Hospedagem (Github pages, Vercel) <br>

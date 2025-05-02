@@ -1,134 +1,146 @@
 /* # Estilos da página principal */
 
+/* section */
+.servicos {
+    width: 100vw;
+    text-align: center;
+}
+
 /* BANNER PRINCIPAL */
 
 .fundo-banner-principal {
-    /* margin-top: 80px; */
-    background-color: #053451;
+    background-color: var(--bg-color-01);
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.fundo-banner-principal img {
+    padding-top: 20px;
+    height: 250px;
 }
 
 /* SERVIÇOS */
 
-.servicos h2 {
-    margin: 20px 0 0 65px;
-    font-size: 24px;
-    font-weight: 900;
-    color: #074973;
-}
-
-.servicos ul {
-    display: flex;
-    list-style: none;
+.servicos-container {
+    width: 100vw;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
     gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px 0;
-    padding: 0;
 }
 
-.servicos ul a {
+.servicos h2 {
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-color-02);
+}
+
+.servicos-container .servico-item {
+    width: 400px;
+    height: 200px;
+    background-color: var(--bg-color-02);
+    border-radius: 20px;
+    padding: 25px 10px 0 25px;
+    text-align: center;
+    display: flex;
+}
+
+.servicos-container .servico-item:hover {
+    transition: 0.8s;
+    background-color: #0096f3;
+}
+
+.servicos-container .servico-item a {
+    display: flex;
     text-decoration: none;
 }
 
-.servicos .botoes li {
-    width: 400px;
-    height: 190px;
-    border-radius: 20px;
-    text-align: center;
-    background-color: #0B7ABF;
-    margin: 0 30px 0;
+.servicos-container .servico-item .servico-item-esquerdo {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
 }
 
-.servicos .botoes li h3 {
+.servicos-container .servico-item h3 {
     font-weight: 700;
     font-size: 28px;
-    color: #ffffff;
+    color: var(--text-color-01);
     text-align: left;
-    margin: 30px 0 0 30px;
-    max-width: 350px;
+    margin: 0;
 }
 
-.servicos .botoes li p {
+.servicos-container .servico-item p {
     font-weight: 500;
     font-size: 14px;
-    color: #ffffff;
+    color: var(--text-color-01);
     text-align: left;
     max-width: 180px;
-    margin: 15px 0 0 30px;
+    margin: 15px 0 0;
 }
 
-.servicos .botoes .imagem-meus-pets {
-    width: 80%;
-    height: 80%;
-    margin: -74px 0 0 70px;
+
+
+.servicos-container .servico-item .imagem-meu-perfil {
+    width: 50%;
 }
 
-.servicos .botoes .imagem-banho {
-    width: 90%;
-    height: 90%;
-    margin: -110px 0 0 40px;
+/* Imagem meus pets */
+.servicos-container .servico-item .imagem-meus-pets {
+    width: 50%;
 }
 
-.servicos .botoes .imagem-medicamentos-e-vacinas {
-    width: 80%;
-    height: 80%;
-    margin: -124px 0 0 40px;
+/* Imagem banho e tosa */
+.servicos-container .servico-item .imagem-banho {
+    width: 50%;
 }
 
-.servicos .botoes .imagem-noticias {
-    width: 100%;
-    height: 100%;
-    margin: -129px 0 0 0;
-    border-bottom-right-radius: 20px;
+/* Imagem medicamentos e vacinas */
+.servicos-container .servico-item .imagem-medicamentos-e-vacinas {
+    width: 50%;
 }
 
-.servicos .botoes .imagem-pet-shops {
-    width: 90%;
-    height: 90%;
-    margin: -115px 0 0 20px;
+/* Imagem noticias */
+.servicos-container .servico-item .imagem-noticias {
+    width: 50%;
 }
 
-.servicos .botoes .imagem-rotina {
-    width: 100%;
-    height: 100%;
-    margin: -129px 0 0; 
-    border-bottom-right-radius: 20px;
+/* Imagem pet shops */
+.servicos-container .servico-item .imagem-pet-shops {
+    width: 50%;
 }
 
 /* PRINCIPAIS NOTÍCIAS */
 
-/* CONTAINER */
-
-.container-noticias {
-    margin: 40px 0 0;
-    padding: 50px 0;
-    width: 100%;
-    height: 500px;
-    background-color: #053451;
-    display: block;
+.principais-noticias {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color-01);
+    padding: 30px;
 }
 
-.container-noticias .titulo-principais-noticias {
+/* TITULO */
+.titulo-principais-noticias {
     font-size: 32px;
-    color: #fff;
+    color: var(--text-color-01);
     font-weight: 700;
     text-align: center;
-    margin: -20px 0 30px 0;
 }
 
-.container-noticias ul {
+/* CONTAINER */
+.container-noticias {
     display: flex;
-    gap: 70px;
-    list-style-type: none;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 40px 30px;
 }
 
-.container-noticias .noticia {
-    background-color: #fff;
+.container-noticias .noticia-item {
+    background-color: var(--text-color-01);
     width: 400px;
     height: 480px;
     padding: 0;
@@ -136,17 +148,15 @@
     text-align: center;
 }
 
-/* IMAGEM */
-
-.container-noticias .noticia .imagem {
+.container-noticias .noticia-item .imagem {
     width: 400px;
     height: 220px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
-.container-noticias .noticia .imagem img {
-    background-color: #0B7ABF;
+.container-noticias .noticia-item .imagem img {
+    background-color: var(--bg-color-02);
     width: 400px;
     height: 220px;
     max-width: 450px;
@@ -155,138 +165,108 @@
     border-top-right-radius: 20px;
 }
 
-/* TITULO E DESCRIÇÃO */
-
-.container-noticias .noticia .titulo-e-descricao {
+.container-noticias .noticia-item .titulo-e-descricao {
     margin: 20px;
     width: 350px;
     height: 170px;
     text-align: center;
 }
 
-.container-noticias .noticia .titulo-e-descricao h2 {
+/* TITULO NOTICIA */
+.container-noticias .noticia-item .titulo-e-descricao h2 {
     font-size: 24px;
-    color: #053451;
+    color: var(--text-color-02);
 }
 
-.container-noticias .noticia .titulo-e-descricao p {
+/* DESCRIÇÃO NOTICIA */
+.container-noticias .noticia-item .titulo-e-descricao p {
     font-size: 18px;
-    color: #053451;
+    color: var(--text-color-02);
     text-align: center;
     margin: 10px;
 }
 
-/* BOTÃO VER MAIS*/
-
-.container-noticias .noticia .botao-ver-mais {
+/* BOTÃO */
+.container-noticias .noticia-item .botao-ver-mais {
     text-align: center;
 }
 
-.container-noticias .noticia a {
+.container-noticias .noticia-item a {
     font-size: 20px;
     text-decoration: none;
-    background-color: #0B7ABF;
-    color: #fff;
+    background-color: var(--bg-color-02);
+    color: var(--text-color-01);
     border-radius: 20px;
     padding: 10px 30px;
 }
 
-/* 
-
-.principais-noticias h2 {
-    text-align: center;
-    font-weight: 700;
-    font-size: 32px;
-    color: #ffffff;
-    padding: 20px 0 0;
-}
-
-.principais-noticias ul {
-    margin: 80px 0 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.principais-noticias li {
-    width: 380px;
-    height: 400px;
-    background-color: #ffffff;
-    border-radius: 20px;
-} */
-
 /* CARACTERÍSTICAS DO PET */
+
+.caracteristicas-do-pet {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .caracteristicas-do-pet h2 {
     text-align: center;
+    padding-top: 20px;
     font-size: 32px;
-    color: #074973;
-    padding: 20px 0 0;
-}
-
-.caracteristicas-do-pet ul h3 {
-    color: #074973;
-    font-size: 24px;
     font-weight: 800;
+    color: var(--text-color-02);
 }
 
-.caracteristicas-do-pet .nome-e-imagem p {
-    text-align: center;
-    width: 300px;
-    height: 300px;
-    background-color: #053451;
-    border-radius: 150px;
-    margin: 30px 0 0;
+.caracteristicas-do-pet .caracteristicas {
+    background-color: var(--bg-color-01);
+    width: 80%;
+    height: auto;
+    margin: 40px 0;
+    padding: 30px 40px;
+    border-radius: 20px;
 }
 
 .caracteristicas-do-pet .caracteristicas h3 {
-    margin: 0 0 15px;
-}
-
-.caracteristicas-do-pet ul {
-    margin: 80px 0 0;
-    display: flex;
-    list-style: none;
+    color: var(--text-color-01);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
     padding: 0;
-    width: 100%;
 }
 
-.caracteristicas-do-pet ul li {
-    width: 50%;
-    text-align: center;
-    justify-items: center;
-    margin: 0 120px 0 0;
-}
-
-.caracteristicas-do-pet ul li p {
-    text-align: justify;
-    margin: 0 0 20px;
+.caracteristicas-do-pet .caracteristicas p {
+    font-size: 20px;
+    color: var(--text-color-01);
+    font-weight: 400;
+    text-align: start;
+    margin: 0;
+    padding: 10px 0 40px;
 }
 
 /* RODAPÉ */
 
 .rodape {
-    margin: 60px 0 0;
-    width: 100%;
-    height: 300px;
-    background-color: #0B7ABF;
+    width: 100vw;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color-02);
+    padding: 20px;
 }
 
 .rodape .lista-rodape {
-    color: #ffffff;
-    padding: 50px 100px 0 0;
+    color: var(--text-color-01);
+    width: 100%;
     display: flex;
+    flex-direction: row;
     list-style: none;
-    justify-content: center;
-    gap: 200px;
+    justify-content: space-around;
 }
 
 .rodape .lista-rodape .cuida-pet-rodape h3 {
     text-align: center;
     font-size: 40px;
     font-weight: 900;
-    padding: 50px 0 0;
 }
 
 .rodape .lista-rodape .cuida-pet-rodape p {
@@ -314,8 +294,13 @@
 }
 
 .rodape .lista-rodape .inicio-rodape ul li a {
-    color: #fff;
+    color: var(--text-color-01);
     text-decoration: none;
+}
+
+.rodape .lista-rodape .inicio-rodape ul li a:hover {
+    transition: 0.5s;
+    color: var(--bg-color-01);
 }
 
 /*  */
@@ -331,11 +316,493 @@
     padding: 0 20px 0 0;
 }
 
-.rodape .lista-rodape .sobre-rodape ul li{
+.rodape .lista-rodape .sobre-rodape ul li {
     margin: 5px 0 0;
 }
 
 .rodape .lista-rodape .sobre-rodape ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+.rodape .lista-rodape .sobre-rodape ul li a:hover {
+    transition: 0.5s;
+    color: var(--bg-color-01);
+}
+
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal {
+        background-color: var(--bg-color-01);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .fundo-banner-principal img {
+        width: 100%;
+        height: 100%;
+        padding-top: 10px;
+    }
+
+    /* SERVIÇOS */
+    .servicos-container {
+        padding: 10px 20px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .servicos h2 {
+        margin-top: 10px;
+        font-size: 28px;
+    }
+
+    .servicos-container .servico-item {
+        width: 350px;
+        height: 180px;
+    }
+
+    .servicos-container .servico-item h3 {
+        font-size: 24px;
+    }
+
+    
+    /* PRINCIPAIS NOTÍCIAS */
+
+    .principais-noticias {
+        height: auto;
+        padding: 20px;
+    }
+
+    /* TITULO */
+    .titulo-principais-noticias {
+        font-size: 28px;
+    }
+
+    /* CONTAINER */
+    .container-noticias {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        overflow-x: auto; /* Permite rolagem horizontal */
+        scroll-snap-type: x mandatory; /* Faz com que cada item "trave" no centro */
+        gap: 20px; /* Espaço entre as notícias */
+        padding: 20px; /* Reduz o padding para melhor adaptação */
+        width: 100%;
+    }
+
+    .container-noticias .noticia-item {
+        width: 320px;
+        height: 480px;
+        text-align: center;
+        scroll-snap-align: center; /* Centraliza ao deslizar */
+    }
+
+    .container-noticias .noticia-item .imagem {
+        width: 320px;
+        height: 220px;
+    }
+
+    .container-noticias .noticia-item .imagem img {
+        width: 320px;
+        height: 220px;
+        max-width: 320px;
+        max-height: 220px;
+    }
+
+    .container-noticias .noticia-item .titulo-e-descricao {
+        margin: 10px 0 0;
+        padding: 0 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* TITULO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao h2 {
+        font-size: 20px;
+    }
+
+    /* DESCRIÇÃO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao p {
+        font-size: 16px;
+    }
+
+    /* BOTÃO */
+    .container-noticias .noticia-item a {
+        font-size: 18px;
+        border-radius: 20px;
+        padding: 10px 20px;
+    }
+
+    /* CARACTERÍSTICAS DO PET */
+    .caracteristicas-do-pet h2 {
+        font-size: 24px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas {
+        width: 90%;
+        height: auto;
+        margin-top: 40px;
+        padding: 30px 20px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas h3 {
+        font-size: 20px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas p {
+        font-size: 16px;
+        font-weight: 400;
+        text-align: start;
+        margin: 0;
+        padding: 10px 0 30px;
+    }
+
+    /* RODAPÉ */
+    .rodape .lista-rodape {
+        justify-content: center;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape h3 {
+        font-size: 32px;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape p {
+        margin: 10px 0 0;
+        max-width: 250px;
+        font-size: 18px;
+    }
+
+    .rodape .lista-rodape .inicio-rodape h3 {
+        display: none;
+    }
+
+    .rodape .lista-rodape .inicio-rodape ul {
+        display: none;
+    }
+
+    /*  */
+    .rodape .lista-rodape .sobre-rodape h3 {
+        display: none;
+    }
+
+    .rodape .lista-rodape .sobre-rodape ul {
+        display: none;
+    }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal img {
+        height: 190px;
+    }
+
+    /* SERVIÇOS */ 
+    .servicos h2 {
+        margin-top: 10px;
+        font-size: 28px;
+    }
+
+    .servicos-container .servico-item {
+        width: 400px;
+        height: 200px;
+    }
+
+    .servicos-container .servico-item h3 {
+        font-size: 24px;
+    }
+
+    /* PRINCIPAIS NOTÍCIAS */
+    .container-noticias .noticia-item {
+        width: 360px;
+        height: 480px;
+    }
+
+    .container-noticias .noticia-item .imagem {
+        width: 100%;
+    }
+
+    .container-noticias .noticia-item .imagem img {
+        width: 360px;
+        max-width: 360px;
+    }
+
+    .container-noticias .noticia-item .titulo-e-descricao {
+        margin: 0 0 20px 0;
+        padding: 20px 10px;
+        width: 100%;
+        height: 170px;
+        text-align: center;
+    }
+
+    /* TITULO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao h2 {
+        font-size: 24px;
+    }
+
+    /* DESCRIÇÃO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao p {
+        font-size: 18px;
+    }
+
+    /* CARACTERÍSTICAS DO PET */
+    .caracteristicas-do-pet h2 {
+        font-size: 32px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas h3 {
+        font-size: 22px;
+    }
+
+    .caracteristicas-do-pet .caracteristicas p {
+        font-size: 16px;
+        font-weight: 400;
+        text-align: start;
+        margin: 0;
+        padding: 10px 0 30px;
+    }
+
+    /* RODAPÉ */
+    .rodape .lista-rodape {
+        justify-content: space-around;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape h3 {
+        font-size: 28px;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape p {
+        max-width: 200px;
+        font-size: 16px;
+    }
+
+    .rodape .lista-rodape .inicio-rodape h3 {
+        display: block;
+    }
+
+    .rodape .lista-rodape .inicio-rodape ul {
+        display: block;
+    }
+
+    /*  */
+    .rodape .lista-rodape .sobre-rodape h3 {
+        display: block;
+    }
+
+    .rodape .lista-rodape .sobre-rodape ul {
+        display: block;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal img {
+        padding-top: 20px;
+        width: 100%;
+        height: 220px;
+    }
+
+    /* SERVIÇOS */ 
+    .servicos-container {
+        padding: 10px 20px 30px;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .servicos h2 {
+        margin-top: 10px;
+        font-size: 28px;
+    }
+
+    .servicos-container .servico-item {
+        width: 350px;
+        height: 180px;
+    }
+
+    .servicos-container .servico-item h3 {
+        font-size: 24px;
+    }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) {
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal img {
+        padding-top: 20px;
+        width: 100%;
+        height: 250px;
+    }
+
+    /* SERVIÇOS */
+    .servicos-container {
+        padding: 30px 50px;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .servicos h2 {
+        margin-top: 20px;
+        font-size: 32px;
+    }
+
+    .servicos-container .servico-item {
+        width: 400px;
+        height: 200px;
+        padding: 25px 10px 0 25px;
+    }
+
+    /* NOTICIAS */
+    .container-noticias .noticia-item {
+        width: 400px;
+        height: 480px;
+    }
+
+    .container-noticias .noticia-item .imagem {
+        width: 100%;
+    }
+
+    .container-noticias .noticia-item .imagem img {
+        width: 400px;
+        max-width: 400px;
+    }
+
+    /* TITULO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao h2 {
+        font-size: 24px;
+    }
+
+    /* DESCRIÇÃO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao p {
+        font-size: 18px;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal img {
+        padding-top: 20px;
+        width: 80%;
+        height: 250px;
+    }
+
+    /* SERVIÇOS */
+    .servicos-container {
+        width: 100vw;
+        padding: 30px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: space-around;
+        gap: 30px;
+    }
+
+    .servicos-container .servico-item {
+        width: 360px;
+        height: 200px;
+        padding: 25px 10px 0 25px;
+    }
+
+    .servicos-container .servico-item h3 {
+        font-size: 28px;
+    }
+
+    .servicos-container .servico-item p {
+        font-size: 14px;
+    }
+
+    /* PRINCIPAIS NOTICIAS */
+    /* TITULO */
+    .titulo-principais-noticias {
+        font-size: 32px;
+    }
+
+    /* TITULO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao h2 {
+        font-size: 24px;
+    }
+
+    /* DESCRIÇÃO NOTICIA */
+    .container-noticias .noticia-item .titulo-e-descricao p {
+        font-size: 18px;
+    }
+
+    /* BOTÃO */
+    .container-noticias .noticia-item a {
+        font-size: 20px;
+        padding: 10px 30px;
+    }
+
+    /* RODAPÉ */
+
+    .rodape .lista-rodape .cuida-pet-rodape h3 {
+        font-size: 40px;
+    }
+
+    .rodape .lista-rodape .cuida-pet-rodape p {
+        max-width: 300px;
+        font-size: 18px;
+    }
+}   
+
+/* Extra large min-1400px (xl) - desktop */
+@media (min-width: 1400px) {
+
+    /* BANNER PRINCIPAL */
+    .fundo-banner-principal img {
+        padding-top: 20px;
+        width: 70%;
+        height: 250px;
+    }    
+
+    /* SERVIÇOS */
+    .servicos-container {
+        width: 100vw;
+        padding: 30px 50px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: space-around;
+        gap: 30px;
+    }
+
+    .servicos-container .servico-item {
+        width: 400px;
+        height: 200px;
+        padding: 25px 10px 0 25px;
+    }
+
+    /* CARACTERISTICAS DO PET */    
+    .caracteristicas-do-pet .caracteristicas {
+        width: 80%;
+        margin: 40px 0;
+        padding: 30px 40px;
+        border-radius: 20px;
+    }
+    
+    .caracteristicas-do-pet .caracteristicas h3 {
+        font-size: 24px;
+    }
+    
+    .caracteristicas-do-pet .caracteristicas p {
+        font-size: 20px;
+        padding: 10px 0 40px;
+    }
 }

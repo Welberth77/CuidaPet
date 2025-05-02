@@ -1,87 +1,281 @@
-/* Título da página */
+/* Estilização da seção principal */
+.meus-pets {
+    width: 100vw;
+    height: 100vh;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+/* Título da página */
 .titulo-pagina {
     text-align: center;
     font-weight: 700;
     font-size: 40px;
-    color: #053451;
-    margin: 20px 0 0;
+    color: var(--text-color-02);
+    margin: 30px 0 0;
 }
 
-/* Lista de Pets */
+/* Container da lista de pets */
+.meus-pets-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+}
 
+/* Lista de pets */
 .lista-pets {
+    width: 100%; 
+    overflow-x: auto; /* scroll para o lado */
+    white-space: nowrap;  /* Não quebra linhas */
+    padding: 10px 0; 
+    display: flex;
+    justify-content: center;
     list-style: none;
-    margin: 0 0 0 2%;
-    display: none; /* Inicialmente oculta */
     gap: 20px;
 }
 
+/* Estilo de cada item da lista de pets */
 .lista-pets li {
-    width: 160px;
-    height: 80px;
+    text-transform: uppercase;
+    width: fit-content; /* o tamanho se ajusta conforme o texto */
+    display: inline-block;
     background-color: #ffffff; /* Fundo branco quando não selecionado */
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px 0 0;
+    padding: 15px 30px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-    border: 2px solid #053451; /* Borda azul quando não selecionado */
+    border: 2px solid #053451; /* Borda azul */
 }
 
+/* Estilo do nome do pet */
 .lista-pets li h2 {
-    color: #0B7ABF; /* Cor azul para texto quando não selecionado */
     font-size: 22px;
+    font-weight: 600;
+    color: var(--text-color-02);
 }
 
 /* Estilo para o item selecionado */
 .lista-pets li.selected {
-    background-color: #0B7ABF; /* Fundo azul para selecionado */
-    border: none; /* Remove a borda quando selecionado */
+    background-color: var(--bg-color-02);
+    border: none;
 }
 
+/* Texto branco para o item selecionado */
 .lista-pets li.selected h2 {
-    color: #ffffff; /* Texto branco para o item selecionado */
+    color: var(--text-color-01);
 }
+
+/* Informações do pet */
+/* Só é mostrada quando algum pet é selecionado */
+
+.pet-info {
+    display: none; /* Inicialmente oculta */
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+    padding: 30px 60px;
+    border-radius: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--bg-color-01);
+    color: var(--text-color-01);
+}
+
+.pet-info h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.pet-info p {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: start;
+    margin: 0 0 5px;
+}
+
+/* Mensagem quando não há pets cadastrados */
 
 .mensagem-vazia {
-    display: none;  /* Inicialmente oculta */
-    font-size: 20px;
-    color: #0B7ABF;
+    display: none;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color-02);
     text-align: center;
-    margin-top: 20px;
+    margin: 40px 0;
 }
 
-/* Cadastrar Novo Pet */
+/* Linha divisória */
 
 .bloco-linha {
-    margin-top: 50px;
-    display: flex;
+    display: none;
+    margin-top: 10px;
     align-items: center;
     justify-content: center;
+    width: 90%;
 }
 
 .bloco-linha .linha {
-    width: 90%;
+    width: 100%;
     height: 1px;
     background-color: black;
 }
 
+/* Botão de cadastro de novo pet */
+
 .cadastrar-novo-pet {
-    margin-top: 50px 0 20px;
-    display: flex;
-    align-items: center;
+    display: none;
     justify-content: center;
 }
 
 .cadastrar-novo-pet a {
-    font-size: 18px;
-    font-weight: 400;
-    padding: 0 20px;
-    color: #0B7ABF;
-    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
     font-weight: 500;
-    margin: 15px 0 0;
+    margin: 30px 0 0;
+    padding: 10px 25px;
+    border-radius: 20px;
+    color: var(--text-color-01);
+    background-color: var(--bg-color-01);
+    text-decoration: none;
+}
+
+.cadastrar-novo-pet a:hover {
+    transition: 0.5s;
+    background-color: var(--bg-color-02);
+}
+
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+    /* Estilização da seção principal */
+    .meus-pets {
+        padding: 0 20px;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 32px;
+        margin: 20px 0 0;
+    }
+
+    /* Container da lista de pets */
+    .meus-pets-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    /* Lista de pets */
+    .lista-pets {
+        justify-content: start;
+    }
+    /* Estilo de cada item da lista de pets */
+    .lista-pets li {
+        padding: 15px 25px;
+    }
+
+    /* Estilo do nome do pet */
+    .lista-pets li h2 {
+        font-size: 20px;
+    }
+
+    /* Informações do pet */
+    /* Só é mostrada quando algum pet é selecionado */
+    .pet-info {
+        margin-top: 20px;
+        padding: 20px 30px;
+    }
+
+    .pet-info h1 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .pet-info p {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    /* Mensagem quando não há pets cadastrados */
+    .mensagem-vazia {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 20px 0;
+    }
+
+    .cadastrar-novo-pet a {
+        text-align: center;
+        font-size: 18px;
+        padding: 10px 25px;
+    }
+}
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+    /* Estilização da seção principal */
+    .meus-pets {
+        padding: 0 40px;
+    }
+
+    /* Título da página */
+    .titulo-pagina {
+        font-size: 40px;
+        margin: 30px 0 0;
+    }
+
+    /* Container da lista de pets */
+    /* Lista de pets */
+    .lista-pets {
+        justify-content: center;
+    }
+    /* Estilo de cada item da lista de pets */
+    .lista-pets li {
+        padding: 15px 30px;
+    }
+
+    /* Estilo do nome do pet */
+    .lista-pets li h2 {
+        font-size: 22px;
+    }
+
+    /* Informações do pet */
+    /* Só é mostrada quando algum pet é selecionado */
+    .pet-info {
+        padding: 20px 40px;
+    }
+
+    /* Mensagem quando não há pets cadastrados */
+    .mensagem-vazia {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 30px 0;
+    }
+
+    /* Botão de cadastro de novo pet */
+    .cadastrar-novo-pet a {
+        font-size: 20px;
+    }
+}
+
+/* Extra large (xl): Desktop */
+@media (min-width: 1200px) {
+    /* Estilização da seção principal */
+    .meus-pets {
+        padding: 0 60px;
+    }
+
+    /* Informações do pet */
+    /* Só é mostrada quando algum pet é selecionado */
+    .pet-info {
+        padding: 30px 60px;
+    }
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../static/css/pages/medicamentos_e_vacinas.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header class="cabecalho">
         <h1 class="logo-cuidapet">
             <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
@@ -23,77 +24,47 @@
                 <li>
                     <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
                 </li>
-                <li class="foto-perfil">
-                    <a href="../perfil_usuario/perfil_usuario.html">
-                        <img src="../../static/css/imagens/foto-perfil-padrao.png" alt="foto-perfil">
-                    </a>
-                </li>
             </ul>
         </nav>
     </header>
+    <!-- /cabeçalho -->
 
-    <h1 class="titulo-pagina">MEDICAMENTOS E VACINAS</h1>
+    <!-- Seção principal: Medicamentos e Vacinas -->
+    <section class="medicamento-e-vacina" id="medicamento-e-vacina">
+        <h1 class="titulo-pagina">Medicamentos e vacinas</h1>
 
-    <div class="medicamentos-e-vacinas">
-        <div class="informacoes-pet">
-            <div class="imagem-pet">
-                <img src="../../static/css/imagens/medicamentos-e-vacinas.png" alt="imagem do pet">
-            </div>
-            <div class="nome-do-pet">
-                <h2>NOME DO PET</h2>
-            </div>
+        <!-- Container com a lista de pets -->
+        <div class="medicamento-e-vacina-container">
+            <ul class="lista-pets">
+                <li><h2>Bob</h2></li>
+                <li><h2>Marley</h2></li>
+                <li><h2>Rex</h2></li>
+                <li><h2>Thor</h2></li>
+            </ul>
         </div>
 
-        <div class="informacoes-medicamentos-pet">
-            <div class="titulo-medicamento-pet">
-                <h2>MEDICAMENTOS</h2>
-            </div>
-            <div class="titulo-medicamentos-pet">
-                <h2>NOME</h2>
-                <h2>DATA</h2>
-                <h2>PRÓXIMO</h2>
-            </div>
-
-            <div class="datas-medicamentos">
-                <h3>ANTI-PULGAS</h3>
-                <h3>13/11/2024</h3>
-                <h3 class="data-proximo-medicamentos">20/11/2024</h3>
-            </div>
-
-            <div class="situacao-medicamentos-pet">
-                <h3>SEU PET ESTÁ EM DIA COM O MEDICAMENTO</h3>
-            </div>
-
-            <div class="registrar-novo-medicamento">
-                <a href="./registrar_medicamento.html">REGISTRAR NOVO MEDICAMENTO</a>
-            </div>
-
-            <!-- PARTE 2, VACINAS -->
-
-            <div class="titulo-vacina-pet">
-                <h2>VACINAS</h2>
-            </div>
-
-            <div class="titulo-vacinas-pet">
-                <h2>NOME</h2>
-                <h2>DATA</h2>
-                <h2>PRÓXIMO</h2>
-            </div>
-
-            <div class="datas-vacinas">
-                <h3>V8/V10</h3>
-                <h3>13/11/2024</h3>
-                <h3 class="data-proximo-vacinas">20/11/2024</h3>
-            </div>
-
-            <div class="situacao-vacinas-pet">
-                <h3>SEU PET ESTÁ EM DIA COM AS VACINAS</h3>
-            </div>
-
-            <div class="registrar-novo-vacinas">
-                <a href="./registrar_nova_vacina.html">REGISTRAR NOVA VACINA</a>
-            </div>
+        <!-- Div que será exibida ao clicar em um pet -->
+        <div class="pet-info">
+            <h1>Informações de <span id="nome_pet"></span></h1>
+            <p>Idade: <span id="idade_pet"></span></p>
+            <p>Raça: <span id="raca_pet"></span></p>
+            <p>Último banho: <span id="ultimo_banho"></span></p>
+            <p>Vacina: <span id="vacina_pet"></span></p>
         </div>
-    </div>
+
+        <!-- Mensagem exibida caso o usuário não tenha pets cadastrados -->
+        <p class="mensagem-vazia">Você ainda não tem pets cadastrados</p>
+
+        <!-- Linha divisória -->
+        <div class="bloco-linha">
+            <hr class="linha">
+        </div>
+
+        <!-- Link para cadastrar um novo pet -->
+        <div class="registrar-novo-medicamento">
+            <a href="./registrar_medicamento.html">REGISTRAR</a>
+        </div>
+    </section>
+    <script src="../../static/js/index.js"></script>
 </body>
 </html>
