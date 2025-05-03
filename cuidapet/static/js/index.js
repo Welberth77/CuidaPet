@@ -15,48 +15,6 @@ function logar(){
 };
 
 
-// Cadastrar novo usuário
-// Recebendo dados do usuário
-const form = document.getElementById("form-cadastrar-usuario");
-const nome = document.getElementById("nome-completo");
-const email = document.getElementById("email");
-const senha = document.getElementById("senha");
-const confirmacaoSenha = document.getElementById("confirma-senha");
-
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    checkInputNomeCompleto();
-});
-
-
-function checkInputNomeCompleto() {
-    const nomeCompletoValue = nome.value;
-
-    // Se o campo estiver vazio
-    if (nomeCompletoValue === "") {
-        // Mostrar aviso e mostrar a mensagem de erro
-        errorInput(nome, "Preencha um nome válido!");
-    }
-}
-
-function errorInput(input, message) {
-    // Pega o item pai do input
-    const formItem = input.parentElement;
-    // Seleciona a tag <a>
-    const textMessage = formItem.querySelector("a");
-
-    // Escreve a mensagem
-    textMessage.innerText = message;
-
-    // Adiciona a classe de error
-    formItem.className = "interacao-usuario-content error";
-}
-
-  
-
-
 // Página de meus pets
 document.addEventListener("DOMContentLoaded", function () {
     const listaPets = document.querySelector(".lista-pets");
