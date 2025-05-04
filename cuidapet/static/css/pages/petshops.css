@@ -44,11 +44,27 @@ body {
   margin: 0 auto; /* Centraliza o mapa */
 }
 
-.pet-shop .btn-locais {
+.btn-locais {
   position: absolute;
   bottom: -60px; /* Distância do botão para a parte inferior do mapa */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-150%);
+  padding: 10px 20px;
+  background-color: #074973;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.bta-locais {
+  position: absolute;
+  bottom: -60px; /* Distância do botão para a parte inferior do mapa */
+  left: 50%;
+  transform: translateX(30%);
   padding: 10px 20px;
   background-color: #074973;
   color: white;
@@ -61,5 +77,9 @@ body {
 }
 
 .btn-locais:hover {
+  background-color: #0b7abf;
+}
+
+.bta-locais:hover {
   background-color: #0b7abf;
 }
