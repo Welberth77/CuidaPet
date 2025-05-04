@@ -10,6 +10,16 @@ async function initMap() {
     zoom: 13,
     center: myLatlng,
     mapTypeId: "roadmap",
+    styles: [
+      {
+        featureType: "poi",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "transit",
+        stylers: [{ visibility: "off" }],
+      },
+    ],
   };
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
