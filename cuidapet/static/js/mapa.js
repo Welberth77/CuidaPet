@@ -88,9 +88,8 @@ async function mostrarLocais() {
 
 function criarMarcador(place, tipo) {
   const icons = {
-    veterinary_care:
-      "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
-    pet_store: "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
+    veterinary_care: "https://cdn-icons-png.flaticon.com/512/6036/6036818.png",
+    pet_store: "https://cdn-icons-png.flaticon.com/512/3520/3520667.png",
   };
 
   const marker = new google.maps.Marker({

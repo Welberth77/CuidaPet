@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-image: url("../imagens/Patas-google-mapa.png"); /* Alterar para seu caminho */
+  /* background-image: url("../imagens/Patas-google-mapa.png"); Alterar para seu caminho */
+  background-color: #fff;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,44 +11,51 @@ body {
 
 .pet-shop {
   width: 100%;
+  height: 100vh;
   max-width: 1200px; /* Adicionado limite máximo */
   margin: 0 auto; /* Centraliza o container */
-  padding: 30px 20px; /* Ajuste no padding */
+  padding: 0px 20px; /* Ajuste no padding */
   display: flex;
   flex-direction: column;
   align-items: center; /* Centraliza os itens internos */
+  /* justify-content: center; */
 }
 
 /* Título da página */
 .pet-shop .titulo-pagina {
-  margin: 0 0 30px 0; /* Ajuste nas margens */
+  margin: 20px auto 10px;
+  color: var(--text-color-02);
   text-align: center;
   width: 100%;
 }
 
 .pet-shop .titulo-pagina h1 {
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 40px;
   color: var(--text-color-02);
 }
 
 /* Mapa - Estilo atualizado */
 .pet-shop .map {
-  height: 500px;
+  min-height: 300px;
+  height: 400px;
   width: 60%; /* Alterado para porcentagem */
   max-width: 800px; /* Limite máximo */
-  background: #cb4646;
-  border: 10px solid #074973;
-  border-radius: 10px;
+  border: 7px solid #074973;
+  border-radius: 15px;
   margin: 0 auto; /* Centraliza o mapa */
 }
 
+.pet-shop .botoes {
+  width: 60%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .btn-locais {
-  position: absolute;
-  bottom: -60px; /* Distância do botão para a parte inferior do mapa */
-  left: 50%;
-  transform: translateX(-150%);
   padding: 10px 20px;
   background-color: #074973;
   color: white;
@@ -56,15 +63,10 @@ body {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  margin-bottom: 20px;
   transition: background-color 0.3s ease;
 }
 
 .bta-locais {
-  position: absolute;
-  bottom: -60px; /* Distância do botão para a parte inferior do mapa */
-  left: 50%;
-  transform: translateX(30%);
   padding: 10px 20px;
   background-color: #074973;
   color: white;
@@ -72,7 +74,6 @@ body {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  margin-bottom: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -82,4 +83,76 @@ body {
 
 .bta-locais:hover {
   background-color: #0b7abf;
+}
+
+
+/* ==== MEDIA QUERIES ==== */
+/* ==== RESPONSIVIDADE ==== */
+
+/* Extra Small (XS) - Celular no modo retrato */
+@media (min-width: 0px) {
+  .pet-shop .titulo-pagina h1 {
+    font-size: 30px;
+  }
+
+  /* Mapa */
+  .pet-shop .map {
+    width: 100%; /* Alterado para porcentagem */
+    border: 7px solid #074973;
+  }
+
+  .pet-shop .botoes {
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Small (S) - Celular no modo horizontal */
+@media (min-width: 576px) { 
+  /* Mapa */
+   .pet-shop .map {
+    width: 90%; /* Alterado para porcentagem */
+  }
+
+  .pet-shop .botoes {
+    width: 80%;
+  }
+}
+
+
+/* Medium (M) - Tablets */
+@media (min-width: 768px) {
+  .pet-shop .titulo-pagina h1 {
+    font-size: 34px;
+  }
+
+  /* Mapa */
+  .pet-shop .map {
+    width: 80%; /* Alterado para porcentagem */
+  }
+
+  .pet-shop .botoes {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0px;
+  }
+}
+
+/* Large (L) - Laptop */
+@media (min-width: 992px) { 
+  .pet-shop .titulo-pagina h1 {
+    font-size: 40px;
+  }
+
+  /* Mapa */
+  .pet-shop .map {
+    width: 60%; /* Alterado para porcentagem */
+  }
+
+  .pet-shop .botoes {
+    width: 60%;
+  }
 }
