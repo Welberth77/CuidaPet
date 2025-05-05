@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Simulação de um banco de dados de pets
     const pets = {
-        Bob: { idade: "4 anos", raca: "Vira lata", ultimo_banho: "02/03/2025", vacina: "Em dia" },
+        BOB: { idade: "4 anos", raca: "Vira lata", ultimo_banho: "02/03/2025", vacina: "Em dia" },
         Marley: { idade: "9 anos", raca: "Labrador", ultimo_banho: "02/03/2025", vacina: "Em dia" },
         Rex: { idade: "3 anos", raca: "Labrador", ultimo_banho: "15/02/2025", vacina: "Em dia" },
         Thor: { idade: "2 anos", raca: "Poodle", ultimo_banho: "20/02/2025", vacina: "Atrasada" }
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mensagemVazia.style.display = "none";
     } else {
         listaPets.style.display = "none";
-        if (registrarBanho) registrarBanho.style.display = "none";
+        if (registrarBanho) registrarBanho.style.display = "flex";
         if (registrarMedicamento) registrarMedicamento.style.display = "none"; 
         mensagemVazia.style.display = "block";
         linha.style.display = "block";
