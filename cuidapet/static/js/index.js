@@ -1,25 +1,21 @@
-function logar() {
-    // Obtém os valores dos campos de e-mail e senha
-    var email = document.getElementById('e-mail').value.trim();
-    var senha = document.getElementById('senha').value.trim();
+// Função de login
+function logar(){
+    // Pegando o email e senha do usuario
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+    console.log(email, senha);
 
-    // Validação dos campos de e-mail e senha
-    if (email === '' || senha === '') {
-        alert('Por favor, preencha todos os campos.');
-        return; // Sai da função se algum campo estiver vazio
-    }
-
-    // Verifica se o e-mail e senha são iguais aos valores esperados
-    if (email === 'admin@gmail.com' && senha === 'admin') {
-        alert('Login realizado com sucesso!');
-        // Redireciona para a página principal
+    // Verificando email e senha
+    if (email == "admin@gmail.com" && senha == "admin") {
+        alert("Login realizado com sucesso!");
         window.location.href = "./cuidapet/templates/pagina_principal/pagina_principal.html";
     } else {
-        alert('Usuário ou senha incorretos!');
-    }
-}
+        alert("Email ou senha incorretos");
+    };
+};
 
 
+// Página de meus pets
 document.addEventListener("DOMContentLoaded", function () {
     const listaPets = document.querySelector(".lista-pets");
     const mensagemVazia = document.querySelector(".mensagem-vazia");
@@ -30,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Simulação de um banco de dados de pets
     const pets = {
-        Bob: { idade: "4 anos", raca: "Vira lata", ultimo_banho: "02/03/2025", vacina: "Em dia" },
+        BOB: { idade: "4 anos", raca: "Vira lata", ultimo_banho: "02/03/2025", vacina: "Em dia" },
         Marley: { idade: "9 anos", raca: "Labrador", ultimo_banho: "02/03/2025", vacina: "Em dia" },
         Rex: { idade: "3 anos", raca: "Labrador", ultimo_banho: "15/02/2025", vacina: "Em dia" },
         Thor: { idade: "2 anos", raca: "Poodle", ultimo_banho: "20/02/2025", vacina: "Atrasada" }
@@ -44,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mensagemVazia.style.display = "none";
     } else {
         listaPets.style.display = "none";
-        if (registrarBanho) registrarBanho.style.display = "none";
+        if (registrarBanho) registrarBanho.style.display = "flex";
         if (registrarMedicamento) registrarMedicamento.style.display = "none"; 
         mensagemVazia.style.display = "block";
         linha.style.display = "block";
