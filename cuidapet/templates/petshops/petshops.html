@@ -36,17 +36,18 @@
     <section class="pet-shop" id="pet-shop">
         <!-- titulo -->
         <div class="titulo-pagina">
-            <h1 class=>Localize aqui</h1>
+            <h1>Localize aqui</h1>
         </div>
 
         <div class="map" id="map"></div>
         <script src="../../static/js/mapa.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7fpikcskzoe6OQGjFtQgJZVxRizNniqw&callback=initMap&libraries=places" async defer></script>
 
-    <button onclick="mostrarMinhaLocalizacao()" class="btn-locais">Mostrar Minha Localização</button>
+        <div class="botoes">
+            <button onclick="mostrarMinhaLocalizacao()" class="btn-locais">Mostrar Minha Localização</button>
 
-    <button onclick="mostrarLocais()" class="bta-locais">Mostrar Petshops e Veterinários</button>
-
+            <button onclick="mostrarLocais()" class="bta-locais">Mostrar Petshops e Veterinários</button>
+        </div>
     </section>
 </body>
 </html>
