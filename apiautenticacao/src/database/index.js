@@ -1,17 +1,20 @@
-const mongoose = require("mongoose");
+const { Sequelize } = require("sequelize");
 
-mongoose
-  .connect(
-    "mongodb+srv://pauluciesar:paulu050224@apiauthmongo.nwgp7.mongodb.net/?retryWrites=true&w=majority&appName=APIauthmongo"
-  )
+const sequelize = new Sequelize("nome_do_banco", "usuario", "senha", {
+  host: "localhost",
+  dialect: "postgres",
+  port: 5432, // porta padrão do PostgreSQL
+  logging: false, // desativa logs de SQL se não quiser ver no console
+});
+
+// Testar a conexão
+sequelize
+  .authenticate()
   .then(() => {
-    console.log("Conexão com MongoDB estável");
+    console.log("Conexão com PostgreSQL estabelecida com sucesso.");
   })
   .catch((error) => {
-    console.log("Falha ao autenticar com MongoDB");
-    console.log(error);
+    console.error("Falha ao conectar com PostgreSQL:", error);
   });
 
-module.exports = mongoose;
-
-mongoose.Promise = global.Promise;
+module.exports = sequelize;
