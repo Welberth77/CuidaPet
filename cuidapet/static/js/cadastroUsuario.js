@@ -81,6 +81,7 @@ function checkform() {
     checkInputSenha();
     checkInputConfirmacaoSenha();
 
+    // Seleciona tudo que tenha essa classe
     const formItems = form.querySelectorAll(".interacao-usuario-content");
     const isValido = [...formItems].every( (item) => {
         // Se todos elemento tiver essa classe  

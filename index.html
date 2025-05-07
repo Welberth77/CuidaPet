@@ -38,27 +38,29 @@
                     <h2 class="titulo-interacao">ENTRE COM SUA CONTA CUIDAPET</h2>
                 
                     <!-- Formulário -->
-                    <form class="input-container" id="login-form" method="POST" onsubmit="logar(); return false;">
+                    <form class="input-container" id="login-form">
 
                         <!--Input e-mail -->
                         <div class="inputs-usuario">
                             <label for="input-e-mail">E-mail:</label>
-                            <input type="email" class="input-e-mail" placeholder="E-mail" id="email" name="email" required>
+                            <input type="email" class="input-e-mail" placeholder="E-mail" id="email">
+                            <span>Aqui vai a mensagem de erro...</span>
                         </div>
                         <!-- /Input e-mail -->
 
                         <!-- Input senha -->
                         <div class="inputs-usuario">
                             <label for="input-senha">Senha:</label>
-                            <input type="password" class="input-senha" placeholder="Senha" id="senha" name="password" required>
+                            <input type="password" class="input-senha" placeholder="Senha" id="senha">
+                            <span>Aqui vai a mensagem de erro...</span>
                         </div>
                         <!-- /Input senha -->
                 
                         <!-- Botão login -->
                         <div class="login">
-                            <div class="entrar">
-                                <input type="submit" value="ENTRAR" class="botao-entrar">
-                            </div>
+                            <button class="entrar">
+                                <h3 class="botao-entrar">ENTRAR</h3>
+                            </button>
                         </div>
                         <!-- /Botão login -->
                     </form>
