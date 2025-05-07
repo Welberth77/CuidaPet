@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../static/css/pages/principal.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header class="cabecalho">
         <h1 class="logo-cuidapet">
             <a href="pagina_principal.html">CUIDAPET</a>
@@ -31,70 +32,69 @@
             </ul>
         </nav>
     </header>
+    <!-- /Cabeçalho -->
 
-    <div class="fundo-banner-principal">
-        <img src="../../static/css/imagens/banner-principal.png" alt="banner-principal" class="banner-principal">
-    </div>
+    <!-- Serviços -->
+    <section class="servicos">
 
-    <div class="servicos">
+        <!-- Banner -->
+        <div class="fundo-banner-principal">
+            <img src="../../static/css/imagens/banner-principal.png" alt="banner-principal" class="banner-principal">
+        </div>
+        <!-- /banner -->
+
         <h2>CUIDADOS E SERVIÇOS PARA SEU PET</h2>
 
-        <ul class="botoes">
-            <li class="meus-pets">
+        <div class="servicos-container">
+            <div class="servico-item">
                 <a href="../meus_pets/meus_pets.html">
                     <h3>MEUS PETS</h3>
                     <p>Gerencie informações dos seus pets em um só lugar</p>
                     <img src="../../static/css/imagens/meus-pets.png" alt="imagem-meus-pets" class="imagem-meus-pets">
                 </a>
-            </li>
+            </div>
 
-            <li class="banho-e-tosa">
+            <div class="servico-item">
                 <a href="../banho_e_tosa/banho_e_tosa.html">
                     <h3>BANHO E TOSA</h3>
                     <p>Acompanhe o histórico e receba lembretes para novos cuidados</p>
                     <img src="../../static/css/imagens/banho.png" alt="banho" class="imagem-banho">
                 </a>
-            </li>
+            </div>
 
-            <li class="medicamentos-e-vacinas">
+            <div class="servico-item">
                 <a href="../medicamentos_e_vacinas/medicamentos_e_vacinas.html">
                     <h3>MEDICAMENTOS E VACINAS</h3>
                     <p>Organize vacinas e medicamentos para garantir a saúde do seu pet</p>
                     <img src="../../static/css/imagens/medicamentos-e-vacinas.png" alt="imagem-medicamentos-e-vacinas" class="imagem-medicamentos-e-vacinas">
                 </a>
-            </li>
+            </div>
 
-            <li class="noticias">
+            <div class="servico-item">
                 <a href="../noticias/noticias.html">
                     <h3>NOTÍCIAS</h3>
                     <p>Confira dicas e novidades do mundo pet para melhor cuidar do seu animal</p>
                     <img src="../../static/css/imagens/noticias.png" alt="imagem-noticias" class="imagem-noticias">
                 </a>
-            </li>
+            </div>
 
-            <li class="pet-shops">
+            <div class="servico-item">
                 <a href="../petshops/petshops.html">
                     <h3>PET-SHOPS</h3>
                     <p>Encontre pet-shops próximos e informações úteis</p>
                     <img src="../../static/css/imagens/pet-shops.png" alt="imagem-pet-shops" class="imagem-pet-shops">
                 </a>
-            </li>
+            </div>
+        </div>
+    </section>
+    <!-- /Serviços -->
 
-            <li class="rotina">
-                <a href="../rotina/rotina.html">
-                    <h3>ROTINA</h3>
-                    <p>Crie uma rotina de cuidados para uma vida saudável e equilibrada</p>
-                    <img src="../../static/css/imagens/rotina.png" alt="rotina" class="imagem-rotina">
-                </a>
-            </li>
-        </ul>
-    </div>
-
-   <!-- Lista com as informações da API -->
-   <div class="container-noticias">
+    <!-- Principais Noticias -->
+    <section class="principais-noticias">
         <h2 class="titulo-principais-noticias">PRINCIPAIS NOTÍCIAS</h2>
-        <ul>
-            <li class="noticia">
+        
+        <div class="container-noticias">
+            <div class="noticia-item">
                 <div class="imagem">
                     <img src="../../static/css/imagens/noticias.png" alt="Notícia 1">
                 </div>
@@ -105,9 +105,9 @@
                 <div class="botao-ver-mais">
                     <a class="botao-noticia" href="../noticias/noticia-unica.html">VER MAIS</a>
                 </div>
-            </li>
+            </div>
 
-            <li class="noticia">
+            <div class="noticia-item">
                 <div class="imagem">
                     <img src="../../static/css/imagens/noticias.png" alt="Notícia 1">
                 </div>
@@ -118,9 +118,9 @@
                 <div class="botao-ver-mais">
                     <a class="botao-noticia" href="../noticias/noticia-unica.html">VER MAIS</a>
                 </div>
-            </li>
+            </div>
 
-            <li class="noticia">
+            <div class="noticia-item">
                 <div class="imagem">
                     <img src="../../static/css/imagens/noticias.png" alt="Notícia 1">
                 </div>
@@ -131,10 +131,12 @@
                 <div class="botao-ver-mais">
                     <a class="botao-noticia" href="../noticias/noticia-unica.html">VER MAIS</a>
                 </div>
-            </li>
-        </ul>
-    </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Principais Noticias -->
 
+    <!-- Caracteristicas do pet -->
     <div class="caracteristicas-do-pet">
         <h2>CARACTERÍSTICAS DO PET</h2>
 
@@ -152,7 +154,9 @@
             </li>
         </ul>
     </div>
+    <!-- /Caracteristicas do pet -->
 
+    <!-- Rodapé -->
     <footer>
         <div class="rodape">
             <ul class="lista-rodape">
@@ -170,7 +174,6 @@
                         <li><a href="../medicamentos_e_vacinas/medicamentos_e_vacinas.html">Medicamentos e Vacinas</a></li>
                         <li><a href="../noticias/noticias.html">Notícias</a></li>
                         <li><a href="../petshops/petshops.html">Pet Shops</a></li>
-                        <li><a href="../rotina/rotina.html">Rotina</a></li>
                     </ul>
                 </li>
 
@@ -183,5 +186,7 @@
             </ul>
         </div>
     </footer>
+    <!-- /Rodapé -->
+
 </body>
 </html>
