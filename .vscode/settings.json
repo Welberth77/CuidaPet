@@ -1,0 +1,24 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "conexão_bd",
+            "database": "CuidaPet",
+            "username": "igor",
+            "group": "conexão_bd"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "CuidaPet",
+            "group": "CuidaPet",
+            "database": "CuidaPet",
+            "username": "igor"
+        }
+    ]
+}
