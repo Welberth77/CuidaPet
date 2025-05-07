@@ -34,6 +34,7 @@ function checkInputEmail() {
     }
 }
 
+
 // Verificação da senha
 function checkInputSenha() {
     const senhaValue = senha.value;
@@ -64,6 +65,7 @@ function checkform() {
         checkLogin(email.value.trim(), senha.value.trim());
     }
 }
+
 
 // Verificação no banco de dados
 function checkLogin(emailDigitado, senhaDigitada) {
