@@ -42,12 +42,12 @@
             <!-- /titulo -->
     
             <!-- inputs do usuario -->
-            <form class="interacao-usuario">
+            <form class="interacao-usuario" id="interacao-usuario">
                 <!-- input container -->
                 <div class="input-container">
                     <div class="input-item">
                         <label for="nome-do-pet">Nome do pet:</label>
-                        <input type="text" class="nome-do-pet" placeholder="Nome do Pet" required>
+                        <input type="text" class="nome-do-pet" id="nomePet" placeholder="Nome do Pet" required>
                     </div>
 
                     <div class="input-item">
@@ -61,7 +61,7 @@
     
                     <div class="input-item">
                         <label for="raca-do-pet">Raça:</label>
-                        <input type="text" class="raca-do-pet" placeholder="Raça do Pet" required>
+                        <input type="text" class="raca-do-pet" id="racaPet" placeholder="Raça do Pet" required>
                     </div>
     
                     <div class="input-item">
@@ -76,17 +76,17 @@
     
                     <div class="input-item">
                         <label for="peso-do-pet">Peso:</label>
-                        <input type="number" class="peso-do-pet" placeholder="Peso do Pet" required>
+                        <input type="number" class="peso-do-pet" id="pesoPet" placeholder="Peso do Pet" required>
                     </div>
     
                     <div class="input-item">
                         <label for="nascimento-do-pet">Nascimento:</label>
-                        <input type="date" class="nascimento-do-pet" placeholder="Nascimento do Pet" required>
+                        <input type="date" class="nascimento-do-pet" id="nascimentoPet" placeholder="Nascimento do Pet" required>
                     </div>
 
                     <div class="input-item">
                         <label for="cor-da-pelagem">Cor da pelagem:</label>
-                        <input type="text" class="cor-da-pelagem" placeholder="Cor da Pelagem" required>
+                        <input type="text" class="cor-da-pelagem" id="corPelagem" placeholder="Cor da Pelagem" required>
                     </div>
 
                     <div class="input-item">
@@ -105,14 +105,14 @@
                     </div>
                 </div>
                 <!-- /input container-->
+                <!-- Botão cadastrar -->
+                <div class="botao-cadastrar-pet">
+                    <button>CADASTRAR</button>
+                </div>
+                <!-- /Botão cadastrar -->
             </form>
             <!-- /inputs do usuário -->
-    
-            <!-- Botão cadastrar -->
-            <form action="./meus_pets.html" method="post" class="cadastrar-pet">
-                <button class="botao-cadastrar-pet">CADASTRAR</button>
-            </form>
-            <!-- /Botão cadastrar -->
+
         </div>
         <!-- /container -->
     </section>

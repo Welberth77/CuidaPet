@@ -110,11 +110,11 @@
 
 /* Botão cadastrar Pet */
 
-.cadastrar-pet {
+.botao-cadastrar-pet {
     margin-top: 20px;
 }
 
-.botao-cadastrar-pet {
+.botao-cadastrar-pet button {
     font-size: 18px;
     font-weight: 600;
     margin: auto;
@@ -155,7 +155,7 @@
     }
 
     /* Botão cadastrar Pet */
-    .cadastrar-pet {
+    .botao-cadastrar-pet {
         margin-top: 0px;
     }
 }
@@ -203,6 +203,11 @@
     /* input container */
     .cadastrar-pet-container .interacao-usuario .input-container {
         gap: 20px;
+    }
+
+    /* Botão cadastrar Pet */
+    .botao-cadastrar-pet {
+        margin-top: 20px;
     }
 }
 
