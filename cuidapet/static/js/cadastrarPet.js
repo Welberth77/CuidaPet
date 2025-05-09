@@ -14,6 +14,8 @@ formulario.addEventListener("submit", (event) => {
 
     // Chamando verificação
     checkNomePet();
+    checkRacaPet();
+    checkPesoPet();
 });
 
 
@@ -28,6 +30,38 @@ function checkNomePet() {
         formularioitem.className = "input-item";
     }
 }
+
+
+// Verificação da raça do pet
+function checkRacaPet() {
+    const racaPetValue = racaPet.value;
+
+    if (racaPetValue === "") {
+        errorInput(racaPet);
+    } else {
+        const formularioItem = nomePet.parentElement;
+        formularioItem.className = "input-item";
+    }
+}
+
+
+// Verificação peso do pet
+function checkPesoPet() {
+    const pesoPetValue = pesoPet.value;
+
+    if (pesoPetValue === "") {
+        errorInput(pesoPet);
+    } else {
+        const formularioItem = pesoPet.parentElement;
+        formularioItem.className = "input-item";
+    }
+}
+
+
+// Verificação da data de nascimento do pet
+
+
+// Verificação da cor da pelagem do pet
 
 
 // Erro de input, deixa apenas a borda vermelha
