@@ -19,9 +19,9 @@ formulario.addEventListener("submit", (event) => {
 
 // Verificando nome do pet
 function checkNomePet() {
-    const nomPetValue = nomePet.value;
+    const nomePetValue = nomePet.value;
 
-    if (nomePet == "") {
+    if (nomePetValue === "") {
         errorInput(nomePet);
     } else {
         const formularioitem = nomePet.parentElement;
