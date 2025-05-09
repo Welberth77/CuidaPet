@@ -71,6 +71,12 @@
     border: 2px solid var(--bg-color-01);
 }
 
+/* input error */
+.input-container .input-item error {
+    border-color: red;
+}
+
+
 /* select */
 
 .cadastrar-pet-container .interacao-usuario .input-container select {
