@@ -20,6 +20,7 @@ formulario.addEventListener("submit", (event) => {
     checkRacaPet();
     checkSexoPet();
     checkPesoPet();
+    checkNascimentoPet();
 });
 
 
@@ -89,6 +90,31 @@ function checkPesoPet() {
 
 
 // Verificação da data de nascimento do pet
+function checkNascimentoPet() {
+    // Recebendo valor como string
+    const nascimentoPetValueString = nascimentoPet.value;
+
+    // Verifica se está vazio
+    if (nascimentoPetValueString === "") {
+        errorInput(nascimentoPet);
+        return
+    }
+
+    // Transforma o valor em um objeto date
+    const nascimentoPetValueData = new Date(nascimentoPet.value);
+    const dataAtual = new Date();
+
+    // Descosiderar horas e minutos 
+    dataAtual.setHours(0, 0, 0, 0);
+
+    // Verifica se a data é maior do que a data atual
+    if (nascimentoPetValueData > dataAtual) {
+        errorInput(nascimentoPet);
+    } else {
+        const formularioItem = nascimentoPet.parentElement;
+        formularioItem.className = "input-item";
+    }
+}
 
 
 // Verificação da cor da pelagem do pet
