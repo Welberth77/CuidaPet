@@ -79,7 +79,7 @@
 
 /* select */
 
-.cadastrar-pet-container .interacao-usuario .input-container select {
+.input-container .input-item select {
     margin: 5px 0 0 0;
     font-size: 16px;
     width: 100%;
@@ -89,6 +89,10 @@
     padding: 10px;
     color: #333;
     border: 2px solid var(--bg-color-01);
+}
+
+.input-container .input-item.error select {
+    border: 3px solid #ff3b25;
 }
 
 /* option */

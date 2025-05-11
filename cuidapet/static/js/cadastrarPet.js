@@ -2,6 +2,7 @@
 // Recebendo ids
 const formulario = document.getElementById("interacao-usuario");
 const nomePet = document.getElementById("nomePet");
+const especiePet = document.getElementById("especiePet");
 const racaPet = document.getElementById("racaPet");
 const pesoPet = document.getElementById("pesoPet");
 const nascimentoPet = document.getElementById("nascimentoPet");
@@ -14,6 +15,7 @@ formulario.addEventListener("submit", (event) => {
 
     // Chamando verificação
     checkNomePet();
+    checkEspeciePet();
     checkRacaPet();
     checkPesoPet();
 });
@@ -28,6 +30,19 @@ function checkNomePet() {
     } else {
         const formularioitem = nomePet.parentElement;
         formularioitem.className = "input-item";
+    }
+}
+
+
+// Verificação Espécie Pet
+function checkEspeciePet() {
+    const especiePetValue = especiePet.value;
+
+    if (especiePetValue === "") {
+        errorInput(especiePet);
+    } else {
+        const formularioItem = especiePet.parentElement;
+        formularioItem.className = "input-item";
     }
 }
 
