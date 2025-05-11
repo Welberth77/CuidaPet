@@ -127,3 +127,55 @@ function errorInput(input) {
 
     formularioItem.className = "input-item error";
 }
+
+
+// Função que atualiza a lista de cores de pelagem com base na espécie escolhida
+function atualizarCores() {
+  // Pega o valor da espécie escolhida (cachorro ou gato)
+  const especiePetValue = especiePet.value;
+
+  // Seleciona o <select> da cor da pelagem
+  const corSelect = document.getElementById("corPelagem");
+
+  // Limpa qualquer opção anterior no select de pelagem
+  corSelect.innerHTML = "";
+
+  // Adiciona uma opção padrão inicial
+  const opcoesDefault = document.createElement("option");
+  opcoesDefault.value = "";
+  opcoesDefault.disabled = true;
+  opcoesDefault.selected = true;
+  opcoesDefault.textContent = "Selecione a cor";
+  corSelect.appendChild(opcoesDefault);
+
+  // Lista de opções de pelagem, inicialmente vazia
+  let opcoes = [];
+
+  // Se for cachorro, define as cores possíveis para cachorros
+  if (especiePetValue === "cachorro") {
+    opcoes = [
+      "Caramelo", "Preto", "Branco", "Marrom", "Cinza",
+      "Bege", "Preto e branco", "Marrom e branco",
+      "Tricolor", "Tigrado", "Dourado", "Fígado"
+    ];
+  }
+  // Se for gato, define as cores possíveis para gatos
+  else if (especiePetValue === "gato") {
+    opcoes = [
+      "Preto", "Branco", "Cinza", "Ruivo (Laranja)", "Marrom",
+      "Tigrado", "Calico (Tricolor)", "Tortoiseshell (Casco de tartaruga)",
+      "Preto e branco", "Colorpoint (tipo siamês)"
+    ];
+  }
+
+  // Para cada cor da lista, cria uma <option> e adiciona no select
+  opcoes.forEach(cor => {
+    const option = document.createElement("option");
+    option.value = cor.toLowerCase();  // valor em minúsculo
+    option.textContent = cor;          // texto visível
+    corSelect.appendChild(option);     // adiciona no <select>
+  });
+
+  // Ativa o select da cor (antes estava desabilitado)
+  corSelect.disabled = false;
+}
