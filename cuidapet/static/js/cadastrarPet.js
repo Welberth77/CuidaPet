@@ -21,6 +21,7 @@ formulario.addEventListener("submit", (event) => {
     checkSexoPet();
     checkPesoPet();
     checkNascimentoPet();
+    checkCorPelagem();
 });
 
 
@@ -118,6 +119,16 @@ function checkNascimentoPet() {
 
 
 // Verificação da cor da pelagem do pet
+function checkCorPelagem() {
+    const corPelagemValue = corPelagem.value;
+
+    if (corPelagemValue === "") {
+        errorInput(corPelagem);
+    } else {
+        const formularioItem = corPelagem.parentElement;
+        formularioItem.className = "input-item";
+    }
+}
 
 
 // Erro de input, deixa apenas a borda vermelha
