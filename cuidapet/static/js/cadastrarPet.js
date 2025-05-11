@@ -7,7 +7,8 @@ const racaPet = document.getElementById("racaPet");
 const sexoPet = document.getElementById("sexoPet"); // Select
 const pesoPet = document.getElementById("pesoPet");
 const nascimentoPet = document.getElementById("nascimentoPet");
-const corPelagem = document.getElementById("corPelagem");
+const corPelagem = document.getElementById("corPelagem"); //Select dinâmico
+const pelagemPet = document.getElementById("pelagemPet");
 
 // Submit do formulario
 formulario.addEventListener("submit", (event) => {
@@ -22,6 +23,7 @@ formulario.addEventListener("submit", (event) => {
     checkPesoPet();
     checkNascimentoPet();
     checkCorPelagem();
+    checkPelagemPet();
 });
 
 
@@ -126,6 +128,19 @@ function checkCorPelagem() {
         errorInput(corPelagem);
     } else {
         const formularioItem = corPelagem.parentElement;
+        formularioItem.className = "input-item";
+    }
+}
+
+
+// Verificação do tamanho da pelagem do pet
+function checkPelagemPet() {
+    const pelagemPetValue = pelagemPet.value;
+
+    if (pelagemPetValue === "") {
+        errorInput(pelagemPet);
+    } else {
+        const formularioItem = pelagemPet.parentElement;
         formularioItem.className = "input-item";
     }
 }
