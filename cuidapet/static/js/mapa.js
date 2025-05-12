@@ -45,7 +45,7 @@ function mostrarMinhaLocalizacao() {
           map: map,
           title: "Você está aqui!",
           icon: {
-            url: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+            url: "../../static/css/imagens/localizacao.png",
             scaledSize: new google.maps.Size(30, 30),
           },
         });
@@ -94,7 +94,7 @@ async function mostrarLocais() {
 function criarMarcador(place, tipo) {
   const icons = {
     veterinary_care: "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
-    pet_store: "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
+    pet_store: "../../static/css/imagens/petshop.png",
   };
 
   const marker = new google.maps.Marker({
