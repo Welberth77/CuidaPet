@@ -15,15 +15,8 @@ formulario.addEventListener("submit", (event) => {
     // So atualiza a página quando o botão for clicado
     event.preventDefault();
 
-    // Chamando verificação
-    checkNomePet();
-    checkEspeciePet();
-    checkRacaPet();
-    checkSexoPet();
-    checkPesoPet();
-    checkNascimentoPet();
-    checkCorPelagem();
-    checkPelagemPet();
+    // Chamando verificação do formulário
+    checkformulario();
 });
 
 
@@ -142,6 +135,31 @@ function checkPelagemPet() {
     } else {
         const formularioItem = pelagemPet.parentElement;
         formularioItem.className = "input-item";
+    }
+}
+
+// Verificação do formulário por completo
+function checkformulario() {
+    // Chamando as verificações
+    checkNomePet();
+    checkEspeciePet();
+    checkRacaPet();
+    checkSexoPet();
+    checkPesoPet();
+    checkNascimentoPet();
+    checkCorPelagem();
+    checkPelagemPet();
+
+    // Pega todas as divs que tem a classe "input-item"
+    const formularioItems = document.querySelectorAll(".input-item");
+    // Verifica se todos os elementos possuem essa classe
+    const isValido = [...formularioItems].every( (item) => {
+        // Se todos elemento tiver essa classe  
+        return item.className === "input-item";
+    })
+
+    if (isValido) {
+        alert("Cadastrado com sucesso!");
     }
 }
 
