@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  /* background-image: url("../imagens/Patas-google-mapa.png"); Alterar para seu caminho */
+  background-image: url("../imagens/Patas-google-mapa.png"); /*Alterar para seu caminho */
   background-color: #fff;
   background-size: cover;
   background-position: center;
@@ -85,7 +85,6 @@ body {
   background-color: #0b7abf;
 }
 
-
 /* ==== MEDIA QUERIES ==== */
 /* ==== RESPONSIVIDADE ==== */
 
@@ -109,9 +108,9 @@ body {
 }
 
 /* Small (S) - Celular no modo horizontal */
-@media (min-width: 576px) { 
+@media (min-width: 576px) {
   /* Mapa */
-   .pet-shop .map {
+  .pet-shop .map {
     width: 90%; /* Alterado para porcentagem */
   }
 
@@ -119,7 +118,6 @@ body {
     width: 80%;
   }
 }
-
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
@@ -142,7 +140,7 @@ body {
 }
 
 /* Large (L) - Laptop */
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   .pet-shop .titulo-pagina h1 {
     font-size: 40px;
   }

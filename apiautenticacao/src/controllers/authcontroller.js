@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 const authconfig = require("../config/auth.json");
 
-const User = require("../models/user"); // Note que agora importamos User (maiúsculo)
+const User = require("../models/user");
 
 const router = express.Router();
 
