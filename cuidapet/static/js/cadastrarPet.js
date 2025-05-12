@@ -3,7 +3,7 @@
 const formulario = document.getElementById("interacao-usuario");
 const nomePet = document.getElementById("nomePet");
 const especiePet = document.getElementById("especiePet"); // Select
-const racaPet = document.getElementById("racaPet");
+const racaPet = document.getElementById("racaPet"); // Select
 const sexoPet = document.getElementById("sexoPet"); // Select
 const pesoPet = document.getElementById("pesoPet");
 const nascimentoPet = document.getElementById("nascimentoPet");
@@ -53,7 +53,7 @@ function checkRacaPet() {
     if (racaPetValue === "") {
         errorInput(racaPet);
     } else {
-        const formularioItem = nomePet.parentElement;
+        const formularioItem = racaPet.parentElement;
         formularioItem.className = "input-item";
     }
 }
@@ -74,13 +74,32 @@ function checkSexoPet() {
 
 // Verificação peso do pet
 function checkPesoPet() {
-    const pesoPetValue = pesoPet.value;
+// Obtém o valor do campo de peso, removendo espaços em branco
+    const pesoPetValue = pesoPet.value.trim();
 
+    // Converte o valor para número inteiro
+    const pesoNumber = parseInt(pesoPetValue, 10);
+
+    // Verifica se o campo está vazio
     if (pesoPetValue === "") {
+        errorInput(pesoPet); 
+    }
+    // Verifica se o valor não é um número válido
+    else if (isNaN(pesoNumber)) {
+        errorInput(pesoPet); 
+    }
+    // Verifica se o valor é menor que 1 (fora do limite mínimo)
+    else if (pesoNumber < 1) {
+        errorInput(pesoPet); 
+    }
+    // Verifica se o valor é maior que 99 (fora do limite de dois dígitos)
+    else if (pesoNumber > 99) {
         errorInput(pesoPet);
-    } else {
+    }
+    // Caso todas as verificações passem, remove o erro
+    else {
         const formularioItem = pesoPet.parentElement;
-        formularioItem.className = "input-item";
+        formularioItem.className = "input-item"; // Restaura o estilo normal
     }
 }
 
@@ -173,53 +192,92 @@ function errorInput(input) {
 }
 
 
-// Função que atualiza a lista de cores de pelagem com base na espécie escolhida
+// Função chamada quando o usuário seleciona a espécie do pet
 function atualizarCores() {
-  // Pega o valor da espécie escolhida (cachorro ou gato)
-  const especiePetValue = especiePet.value;
+    // Obtém o valor selecionado no <select> de espécie
+    const especiePetValue = document.getElementById("especiePet").value;
 
-  // Seleciona o <select> da cor da pelagem
-  const corSelect = document.getElementById("corPelagem");
+    // Seleciona os <select>s de cor da pelagem e de raça
+    const corSelect = document.getElementById("corPelagem");
+    const racaSelect = document.getElementById("racaPet");
 
-  // Limpa qualquer opção anterior no select de pelagem
-  corSelect.innerHTML = "";
+    // ========== Atualização das Cores da Pelagem ==========
 
-  // Adiciona uma opção padrão inicial
-  const opcoesDefault = document.createElement("option");
-  opcoesDefault.value = "";
-  opcoesDefault.disabled = true;
-  opcoesDefault.selected = true;
-  opcoesDefault.textContent = "Selecione a cor";
-  corSelect.appendChild(opcoesDefault);
+    // Limpa as opções anteriores do <select> de cor
+    corSelect.innerHTML = "";
 
-  // Lista de opções de pelagem, inicialmente vazia
-  let opcoes = [];
+    // Cria e adiciona a opção padrão inicial
+    const corDefault = document.createElement("option");
+    corDefault.value = "";
+    corDefault.disabled = true;
+    corDefault.selected = true;
+    corDefault.textContent = "Selecione a cor";
+    corSelect.appendChild(corDefault);
 
-  // Se for cachorro, define as cores possíveis para cachorros
-  if (especiePetValue === "cachorro") {
-    opcoes = [
-      "Caramelo", "Preto", "Branco", "Marrom", "Cinza",
-      "Bege", "Preto e branco", "Marrom e branco",
-      "Tricolor", "Tigrado", "Dourado", "Fígado"
-    ];
-  }
-  // Se for gato, define as cores possíveis para gatos
-  else if (especiePetValue === "gato") {
-    opcoes = [
-      "Preto", "Branco", "Cinza", "Ruivo (Laranja)", "Marrom",
-      "Tigrado", "Calico (Tricolor)", "Tortoiseshell (Casco de tartaruga)",
-      "Preto e branco", "Colorpoint (tipo siamês)"
-    ];
-  }
+    // Define lista de cores de acordo com a espécie
+    let cores = [];
+    if (especiePetValue === "cachorro") {
+        cores = [
+        "Caramelo", "Preto", "Branco", "Marrom", "Cinza",
+        "Bege", "Preto e branco", "Marrom e branco",
+        "Tricolor", "Tigrado", "Dourado", "Fígado", "Não possui"
+        ];
+    } else if (especiePetValue === "gato") {
+        cores = [
+        "Preto", "Branco", "Cinza", "Ruivo (Laranja)", "Marrom",
+        "Tigrado", "Calico (Tricolor)", "Tortoiseshell (Casco de tartaruga)",
+        "Preto e branco", "Colorpoint (tipo siamês)", "Não possui"
+        ];
+    }
 
-  // Para cada cor da lista, cria uma <option> e adiciona no select
-  opcoes.forEach(cor => {
-    const option = document.createElement("option");
-    option.value = cor.toLowerCase();  // valor em minúsculo
-    option.textContent = cor;          // texto visível
-    corSelect.appendChild(option);     // adiciona no <select>
-  });
+    // Adiciona cada cor como uma <option> no select de pelagem
+    cores.forEach(cor => {
+        const option = document.createElement("option");
+        option.value = cor.toLowerCase();   // valor usado no formulário
+        option.textContent = cor;           // texto visível ao usuário
+        corSelect.appendChild(option);
+    });
 
-  // Ativa o select da cor (antes estava desabilitado)
-  corSelect.disabled = false;
+    // Habilita o <select> de cor da pelagem (caso estivesse desabilitado)
+    corSelect.disabled = false;
+
+    // ========== Atualização das Raças ==========
+
+    // Limpa as opções anteriores do <select> de raça
+    racaSelect.innerHTML = "";
+
+    // Cria e adiciona a opção padrão inicial
+    const racaDefault = document.createElement("option");
+    racaDefault.value = "";
+    racaDefault.disabled = true;
+    racaDefault.selected = true;
+    racaDefault.textContent = "Selecione a raça do pet";
+    racaSelect.appendChild(racaDefault);
+
+    // Define lista de raças de acordo com a espécie
+    let racas = [];
+    if (especiePetValue === "cachorro") {
+        racas = [
+        "Vira-lata", "Labrador Retriever", "Shih Tzu", "Poodle", "Yorkshire Terrier",
+        "Pinscher", "Bulldogue Francês", "Golden Retriever", "Chihuahua", "Pastor Alemão",
+        "Dachshund (Salsicha)", "Rottweiler", "Pug", "Maltês", "Border Collie"
+        ];
+    } else if (especiePetValue === "gato") {
+        racas = [
+        "Vira-lata (SRD)", "Siamês", "Persa", "Maine Coon", "Angorá",
+        "Sphynx (Sem pelo)", "Ragdoll", "British Shorthair (Pelo curto inglês)",
+        "Bengal", "Exótico (Pelo curto)", "Norueguês da Floresta", "Himalaio"
+        ];
+    }
+
+    // Adiciona cada raça como uma <option> no select de raça
+    racas.forEach(raca => {
+        const option = document.createElement("option");
+        option.value = raca.toLowerCase();  // valor usado no formulário
+        option.textContent = raca;          // texto visível ao usuário
+        racaSelect.appendChild(option);
+    });
+
+    // Habilita o <select> de raça (caso estivesse desabilitado)
+    racaSelect.disabled = false;
 }

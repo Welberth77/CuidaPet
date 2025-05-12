@@ -64,7 +64,9 @@
                     <!-- Raça do pet -->
                     <div class="input-item">
                         <label for="racaPet">Raça:</label>
-                        <input type="text" class="raca-do-pet" id="racaPet" placeholder="Raça do Pet">
+                        <select class="raca-do-pet" id="racaPet" disabled>
+                            <option value="" disabled selected>Selecione a espécie primeiro</option>
+                        </select>
                     </div>
     
                     <!-- Sexo do pet -->
@@ -81,7 +83,7 @@
                     <!-- Peso do pet -->
                     <div class="input-item">
                         <label for="pesoPet">Peso:</label>
-                        <input type="number" class="peso-do-pet" id="pesoPet" placeholder="Peso do Pet">
+                        <input type="number" class="peso-do-pet" id="pesoPet" min="1" max="99" placeholder="Peso do Pet">
                     </div>
     
                     <!-- Data de nascimento do pet -->
@@ -96,7 +98,6 @@
                         <select name="cor-da-pelagem" id="corPelagem" disabled>
                             <option value="" disabled selected>Selecione a espécie primeiro</option>
                         </select>
-
                     </div>
 
                     <!-- Tamanho da pelagem -->
@@ -107,6 +108,7 @@
                             <option value="curta">Curta</option>
                             <option value="media">Média</option>
                             <option value="longa">Longa</option>
+                            <option value="sem-pelo">Sem Pelo</option>
                         </select>
                     </div>
 
