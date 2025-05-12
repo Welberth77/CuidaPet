@@ -1,14 +1,15 @@
 let map;
-let myLatlng;
+let userLocation;
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
-  myLatlng = new google.maps.LatLng(-9.652692, -35.709994);
+  // Inicializa o mapa em um ponto padrão (caso o usuário não permita o acesso à sua localização)
+  userLocation = new google.maps.LatLng(-9.652692, -35.709994);
 
   const mapOptions = {
     zoom: 13,
-    center: myLatlng,
+    center: userLocation,
     mapTypeId: "roadmap",
     styles: [
       {
@@ -29,17 +30,23 @@ function mostrarMinhaLocalizacao() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const pos = {
+        // A posição do usuário é salva para ser usada na busca de locais próximos
+        userLocation = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
+
+        // Atualiza o mapa e centraliza na localização do usuário
+        map.setCenter(userLocation);
+        map.setZoom(15);
+
         const marker = new google.maps.Marker({
-          position: pos,
+          position: userLocation,
           map: map,
           title: "Você está aqui!",
           icon: {
             url: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
-            scaledSize: new google.maps.Size(30, 30), // ajustar Tamanho
+            scaledSize: new google.maps.Size(30, 30),
           },
         });
 
@@ -51,8 +58,6 @@ function mostrarMinhaLocalizacao() {
           infowindow.open(map, marker);
         });
 
-        map.setCenter(pos);
-        map.setZoom(15);
       },
       () => {
         alert("Não foi possível obter sua localização.");
@@ -71,8 +76,8 @@ async function mostrarLocais() {
 
   tipos.forEach((tipo) => {
     const request = {
-      location: myLatlng,
-      radius: 5000,
+      location: userLocation, // Agora usando a localização do usuário
+      radius: 5000, // Raio de 5 km
       type: tipo,
     };
 
@@ -88,8 +93,7 @@ async function mostrarLocais() {
 
 function criarMarcador(place, tipo) {
   const icons = {
-    veterinary_care:
-      "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
+    veterinary_care: "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
     pet_store: "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
   };
 
@@ -98,7 +102,7 @@ function criarMarcador(place, tipo) {
     position: place.geometry.location,
     icon: {
       url: icons[tipo],
-      scaledSize: new google.maps.Size(25, 25), // ajustar Tamanho
+      scaledSize: new google.maps.Size(25, 25),
     },
     title: place.name,
   });
