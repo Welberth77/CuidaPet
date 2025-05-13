@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("nome_do_banco", "usuario", "senha", {
+const sequelize = new Sequelize("Cuidapet", "postgres", "123456", {
   host: "localhost",
   dialect: "postgres",
   port: 5432, // porta padrão do PostgreSQL
@@ -18,3 +18,5 @@ sequelize
   });
 
 module.exports = sequelize;
+
+sequelize.sync({ force: true }); // `force: true` recria a tabela (cuidado!)
