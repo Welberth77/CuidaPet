@@ -1,5 +1,7 @@
 const express = require("express");
 
+const cors = require("cors");
+
 const authcontroller = require("./controllers/authcontroller");
 
 const admincontroller = require("./controllers/admincontroller");
@@ -7,6 +9,8 @@ const admincontroller = require("./controllers/admincontroller");
 const authenticatemiddleware = require("./middlewares/authenticate");
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
