@@ -19,4 +19,4 @@ sequelize
 
 module.exports = sequelize;
 
-sequelize.sync({ force: true }); // `force: true` recria a tabela (cuidado!)
+// sequelize.sync({ force: false }); // `force: true` recria a tabela (cuidado!)

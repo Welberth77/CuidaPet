@@ -24,9 +24,9 @@ const generatetoken = (user = {}) => {
 };
 
 router.post("/registrar", async (req, res) => {
-  const { email } = req.body;
-
   try {
+    const { name, email, password } = req.body;
+
     const existingUser = await User.findOne({ where: { email } });
 
     if (existingUser) {
@@ -36,13 +36,18 @@ router.post("/registrar", async (req, res) => {
       });
     }
 
-    const user = await User.create(req.body);
+    const user = await User.create({
+      name, // vai para "nome" no banco
+      email,
+      password,
+    });
 
     return res.json({
       user,
       token: generatetoken(user),
     });
   } catch (error) {
+    // console.error("Erro ao registrar usuário:", error);
     return res.status(500).json({
       error: true,
       message: "Erro ao registrar usuário",
