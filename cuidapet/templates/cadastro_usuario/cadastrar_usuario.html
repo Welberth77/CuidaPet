@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaPet - Cadastro de Novo Usuário</title>
 
-    <link rel="stylesheet" href="../../static/css/base.css">
-    <link rel="stylesheet" href="../../static/css/pages/cadastro.css">
-
-</head>
-<body>
+    <link rel="stylesheet" href="../../static/css/base.css" />
+    <link rel="stylesheet" href="../../static/css/pages/cadastro.css" />
+  </head>
+  <body>
     <!-- Cadastrar usuario -->
     <section class="cadastrar-usuario" id="cadastrar-usuario">
-        <!-- Titulo -->
-        <div class="titulo">
-            <h1>CUIDAPET</h1>
+      <!-- Titulo -->
+      <div class="titulo">
+        <h1>CUIDAPET</h1>
+      </div>
+      <!-- /Titulo -->
+
+      <!-- Cadastro container -->
+      <div class="cadastro-container">
+        <div class="titulo-container">
+          <h2>CADASTRE-SE</h2>
         </div>
-        <!-- /Titulo -->
 
-        <!-- Cadastro container -->
-        <div class="cadastro-container">
-            <div class="titulo-container">
-                <h2>CADASTRE-SE</h2>
-            </div>
+        <form class="interacao-usuario" onsubmit="cadastrar(); return false;">
+          <!-- <h3>NOME COMPLETO:</h3> -->
+          <label for="input-nome-completo">Nome Completo</label>
+          <input
+            type="text"
+            class="input-nome-completo"
+            placeholder="Nome completo"
+            required
+          />
 
-            <form class="interacao-usuario" action="../index.html" method="POST">
-                <!-- <h3>NOME COMPLETO:</h3> -->
-                <label for="input-nome-completo">Nome Completo</label>
-                <input type="text" class="input-nome-completo" placeholder="Nome completo" required>
+          <!-- <h3>E-MAIL:</h3> -->
+          <label for="input-e-mail">E-mail</label>
+          <input
+            type="email"
+            class="input-e-mail"
+            placeholder="E-mail"
+            required
+          />
 
-                <!-- <h3>E-MAIL:</h3> -->
-                <label for="input-e-mail">E-mail</label>
-                <input type="email" class="input-e-mail" placeholder="E-mail" required>
+          <!-- <h3>SENHA:</h3> -->
+          <label for="input-senha">Senha</label>
+          <input
+            type="password"
+            class="input-senha"
+            placeholder="Senha"
+            required
+          />
 
-                <!-- <h3>SENHA:</h3> -->
-                <label for="input-senha">Senha</label>
-                <input type="password" class="input-senha" placeholder="Senha" required>
+          <!-- <h3>CONFIRMAÇÃO DE SENHA:</h3> -->
+          <label for="input-confirmacao-senha">Confirmação de senha</label>
+          <input
+            type="password"
+            class="input-confirmacao-senha"
+            placeholder="Confirmação de senha"
+            required
+          />
 
-                <!-- <h3>CONFIRMAÇÃO DE SENHA:</h3> -->
-                <label for="input-confirmacao-senha">Confirmação de senha</label>
-                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha" required>
-
-                <button type="submit" class="cadastrar">
-                    <h4 class="texto-cadastrar">CADASTRAR</h4>
-                </button>
-            </form>
-        </div>
-        <!-- /Cadastro container -->
+          <button type="submit" class="cadastrar">
+            <h4 class="texto-cadastrar">CADASTRAR</h4>
+          </button>
+        </form>
+      </div>
+      <!-- /Cadastro container -->
     </section>
+    <script src="../../static/js/cadastrar_usuario.js"></script>
     <!-- /Cadastrar usuario -->
-</body>
+  </body>
 </html>
