@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const listaPets = document.querySelector(".lista-pets");
     const mensagemVazia = document.querySelector(".mensagem-vazia");
     const petInfo = document.querySelector(".pet-info");
+    const linha = document.querySelector(".bloco-linha");
 
     // Simulando pets vindos do banco de dados
     const pets = {
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         listaPets.style.display = "flex";
         mensagemVazia.style.display = "none";
     } else {
+        linha.style.display = "block";
         listaPets.style.display = "none";
         mensagemVazia.style.display = "block";
     }
