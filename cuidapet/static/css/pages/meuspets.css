@@ -125,10 +125,33 @@
     background-color: black;
 }
 
+/* Botão de editar pet */
+.editar-pet {
+    display: none;
+    justify-content: center;
+}
+
+.editar-pet a {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 30px 0 0;
+    padding: 10px 25px;
+    border-radius: 20px;
+    color: var(--text-color-01);
+    background-color: var(--bg-color-01);
+    text-decoration: none;
+}
+
+.editar-pet a:hover {
+    transition: 0.5s;
+    background-color: var(--bg-color-02);
+}
+
 /* Botão de cadastro de novo pet */
 
 .cadastrar-novo-pet {
-    display: none;
+    display: flex;
     justify-content: center;
 }
 

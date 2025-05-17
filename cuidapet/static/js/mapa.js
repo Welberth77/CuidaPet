@@ -76,7 +76,7 @@ async function mostrarLocais() {
 
   tipos.forEach((tipo) => {
     const request = {
-      location: userLocation, // Agora usando a localização do usuário
+      location: userLocation, // localização do usuário
       radius: 5000, // Raio de 5 km
       type: tipo,
     };
