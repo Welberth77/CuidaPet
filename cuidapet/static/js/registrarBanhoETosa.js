@@ -15,6 +15,7 @@ formulario.addEventListener("submit", (event) => {
     checkSelecionarPet();
     checkSelecionarServico();
     checkData();
+    checkDataProximoBanho();
 })
 
 
@@ -70,6 +71,19 @@ function checkData() {
         // Voltando a classe para a forma normal
         const formularioItem = dataNovoBanho.parentElement;
         formularioItem.className = "interacao-item";
+    }
+}
+
+// Verificação data do próximo banho
+function checkDataProximoBanho() {
+    const dataProximoBanhoValue = dataProximoBanho.value;
+
+    if (dataProximoBanhoValue === "") {
+        errorInput(dataProximoBanho);
+    } else {
+        // Voltando a classe para a forma normal
+        const formularioItem = dataProximoBanho.parentElement;
+        formularioItem.className = "interacao-item"
     }
 }
 
