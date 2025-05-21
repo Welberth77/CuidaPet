@@ -11,11 +11,7 @@ formulario.addEventListener("submit", (event) => {
     event.preventDefault();
 
     // Chamando validações
-    checkSelecionarPet();
-    checkSelecionarCategoria();
-    checkNomeMedicamentoVacina();
-    checkDataMedicamentoVacina();
-    checkDataProxMedicamentoVacina();
+    checkformulario();
 })
 
 
@@ -98,4 +94,27 @@ function errorInput(input) {
     const formularioItem = input.parentElement;
 
     formularioItem.className = "interacao-item error";
+}
+
+// Verificação do formulário por completo
+function checkformulario() {
+    // Chamando as verificações
+    checkSelecionarPet();
+    checkSelecionarCategoria();
+    checkNomeMedicamentoVacina();
+    checkDataMedicamentoVacina();
+    checkDataProxMedicamentoVacina();
+
+
+    // Pega todas as divs que tem a classe "input-item"
+    const formularioItems = document.querySelectorAll(".interacao-item");
+    // Verifica se todos os elementos possuem essa classe
+    const isValido = [...formularioItems].every( (item) => {
+        // Se todos elemento tiver essa classe  
+        return item.className === "interacao-item";
+    })
+
+    if (isValido) {
+        alert("Salvo com sucesso!");
+    }
 }
