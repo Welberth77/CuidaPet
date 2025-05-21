@@ -42,10 +42,10 @@
         <!-- Conteiner registrar banho -->
         <div class="container-registrar-medicamento-vacina">
             <!-- interação usuario -->
-            <form class="interacao-usuario" action="./medicamentos_e_vacinas.html" method="POST">
+            <form class="interacao-usuario" id="interacao-usuario">
                 <div class="interacao-item">
-                    <label for="selecionar-pet">Pet:</label>
-                    <select class="selecionar-pet" required>
+                    <label for="selecionarPet">Pet:</label>
+                    <select class="selecionar-pet" id="selecionarPet">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="bob">BOB</option>
                         <option value="marley">MARLEY</option>
@@ -53,8 +53,8 @@
                 </div>
 
                 <div class="interacao-item">
-                    <label for="selecionar-categoria">Categoria:</label>
-                    <select name="selecionar-categoria" required>
+                    <label for="selecionarCategoria">Categoria:</label>
+                    <select name="selecionar-categoria" id="selecionarCategoria">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="medicamento">MEDICAMENTO</option>
                         <option value="VACINA">VACINA</option>
@@ -62,18 +62,18 @@
                 </div>
 
                 <div class="interacao-item">
-                    <label for="nome-medicamento-vacina">Nome:</label>
-                    <input type="text" class="nome-medicamento-vacina" placeholder="Nome do medicamento ou vacina" required>
+                    <label for="nomeMedicamentoVacina">Nome:</label>
+                    <input type="text" class="nome-medicamento-vacina" id="nomeMedicamentoVacina" placeholder="Nome do medicamento ou vacina">
                 </div>
 
                 <div class="interacao-item">
-                    <label for="data-medicamento-vacina">Data:</label>
-                    <input type="date" class="data-medicamento-vacina" required>
+                    <label for="dataMedicamentoVacina">Data:</label>
+                    <input type="date" class="data-medicamento-vacina" id="dataMedicamentoVacina">
                 </div>
         
                 <div class="interacao-item">
-                    <label for="selecionar-prox-medicamento-vacina">Próximo:</label>
-                    <select class="selecionar-prox-medicamento-vacina" required>
+                    <label for="dataProxMedicamentoVacina">Próximo:</label>
+                    <select class="selecionar-prox-medicamento-vacina" id="dataProxMedicamentoVacina">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="7-dias">7 DIAS</option>
                         <option value="15-dias">15 DIAS</option>
@@ -83,8 +83,8 @@
                 </div>
         
                 <div class="interacao-item">
-                    <label for="observacoes-medicamento-vacina">Observações:</label>
-                    <textarea class="observacoes-medicamento-vacina" placeholder="Observações"></textarea>
+                    <label for="observacoes">Observações:</label>
+                    <textarea class="observacoes-medicamento-vacina" id="observacoes" placeholder="Observações"></textarea>
                 </div>
         
                 <button type="submit" class="salvar">SALVAR</button>
@@ -94,5 +94,6 @@
         <!-- /container registrar banho -->
     </section>
     <!-- /section -->
+     <script src="../../static/js/registrarMedicamentoEVacina.js"></script>
 </body>
 </html>
