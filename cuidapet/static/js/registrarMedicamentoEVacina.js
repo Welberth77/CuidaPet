@@ -15,6 +15,7 @@ formulario.addEventListener("submit", (event) => {
     checkSelecionarCategoria();
     checkNomeMedicamentoVacina();
     checkDataMedicamentoVacina();
+    checkDataProxMedicamentoVacina();
 })
 
 
@@ -75,6 +76,18 @@ function checkDataMedicamentoVacina() {
         errorInput(dataMedicamentoVacina);
     } else {
         const formularioItem = dataMedicamentoVacina.parentElement;
+        formularioItem.className = "interacao-item";
+    }
+}
+
+// Verificação do próximo banho
+function checkDataProxMedicamentoVacina() {
+    const dataProxMedicamentoVacinaValue = dataProxMedicamentoVacina.value;
+
+    if (dataProxMedicamentoVacinaValue === "") {
+        errorInput(dataProxMedicamentoVacina);
+    } else {
+        const formularioItem = dataProxMedicamentoVacina.parentElement;
         formularioItem.className = "interacao-item";
     }
 }
