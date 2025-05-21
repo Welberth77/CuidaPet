@@ -14,6 +14,7 @@ formulario.addEventListener("submit", (event) => {
     checkSelecionarPet();
     checkSelecionarCategoria();
     checkNomeMedicamentoVacina();
+    checkDataMedicamentoVacina();
 })
 
 
@@ -50,6 +51,30 @@ function checkNomeMedicamentoVacina() {
         errorInput(nomeMedicamentoVacina);
     } else {
         const formularioItem = nomeMedicamentoVacina.parentElement;
+        formularioItem.className = "interacao-item";
+    }
+}
+
+// Verificação da data do medicamento
+function checkDataMedicamentoVacina() {
+    // Recebendo valor como string
+    const dataMedicamentoVacinaValue = dataMedicamentoVacina.value;
+    
+    if (dataMedicamentoVacinaValue === "") {
+        errorInput(dataMedicamentoVacina);
+        return
+    }
+
+    // Recebendo como date
+    const dataMedicamentoVacinaValueDate = new Date(dataMedicamentoVacina.value);
+    const dataAtual = new Date();
+
+    dataAtual.setHours(0, 0, 0, 0);
+
+    if (dataMedicamentoVacinaValueDate > dataAtual){
+        errorInput(dataMedicamentoVacina);
+    } else {
+        const formularioItem = dataMedicamentoVacina.parentElement;
         formularioItem.className = "interacao-item";
     }
 }
