@@ -57,7 +57,12 @@
           />
 
           <label for="input-email">E-mail:</label>
-          <input type="email" class="input-email" placeholder="E-mail" />
+          <input
+            type="email"
+            class="input-email"
+            placeholder="E-mail"
+            disabled
+          />
 
           <label for="input-senha">Senha:</label>
           <input type="password" class="input-senha" placeholder="Senha" />
@@ -77,5 +82,17 @@
       </div>
       <!-- /Container editar perfil -->
     </section>
+    <script>
+      window.onload = function () {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user) {
+          window.location.href = "../../index.html";
+          return;
+        }
+
+        document.querySelector(".input-nome-completo").value = user.name;
+        document.querySelector(".input-email").value = user.email;
+      };
+    </script>
   </body>
 </html>

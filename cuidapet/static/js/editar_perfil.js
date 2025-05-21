@@ -1,6 +1,5 @@
 async function salvarEdicao() {
   const nome = document.querySelector(".input-nome-completo").value;
-  const email = document.querySelector(".input-email").value.toLowerCase();
   const senha = document.querySelector(".input-senha").value;
   const confirmacao = document.querySelector(".input-confirmacao-senha").value;
 
@@ -12,6 +11,14 @@ async function salvarEdicao() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
+  const body = {
+    name: nome,
+  };
+
+  if (senha.trim() !== "") {
+    body.password = senha;
+  }
+
   const response = await fetch(
     `http://localhost:3200/admin/usuarios/${user.id}`,
     {
@@ -20,7 +27,7 @@ async function salvarEdicao() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ name: nome, email, password: senha }),
+      body: JSON.stringify(body),
     }
   );
 
@@ -29,7 +36,8 @@ async function salvarEdicao() {
   if (response.ok) {
     alert("Perfil atualizado!");
     localStorage.setItem("user", JSON.stringify(data.user));
-    window.location.href = "./perfil_usuario.html";
+    window.location.href =
+      "../../templates/perfil_usuario/perfil_usuario.htmll";
   } else {
     alert(data.message || "Erro ao atualizar perfil");
   }
