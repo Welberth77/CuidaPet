@@ -36,6 +36,7 @@
     align-items: start;
     margin-top: 30px;
     width: 100%;
+    gap: 8px;
 }
 
 .interacao-usuario .interacao-item {
@@ -56,7 +57,7 @@
 /* Input */
 
 .interacao-usuario .interacao-item input {
-    margin: 0 0 25px 0;
+    margin: 0 0 3px 0;
     font-size: 16px;
     width: 100%;
     height: 50px;
@@ -72,13 +73,24 @@
     border-color: #ff3b25;
 }
 
+/* mensagem de erro */
+.interacao-usuario .interacao-item span {
+    visibility: hidden;
+}
+
+.interacao-usuario .interacao-item.error span {
+    visibility: visible;
+    color: #ff3b25;
+    margin-left: 7px;
+}
+
 /* Botão Salvar */
 
 .editar-perfil-container .interacao-usuario .salvar {
     background-color: var(--bg-color-02);
     color: var(--text-color-01);
     border-radius: 20px;
-    margin: 0 auto;
+    margin: 15px auto auto auto;
     padding: 15px 40px;
     cursor: pointer;
     border: none;
