@@ -41,18 +41,21 @@
             <!-- /Título -->
     
             <!-- Inputs do usuario -->
-            <form class="interacao-usuario" action="./perfil_usuario.html" method="POST">
-                <label for="input-nome-completo">Nome completo:</label>
-                <input type="text" class="input-nome-completo" placeholder="Nome completo">
+            <form class="interacao-usuario" id="interacao-usuario">
+                <div class="interacao-item">
+                    <label for="nomeCompleto">Nome completo:</label>
+                    <input type="text" class="input-nome-completo" id="nomeCompleto" placeholder="Nome completo">
+                </div>
     
-                <label for="input-email">E-mail:</label>
-                <input type="email" class="input-email" placeholder="E-mail">
+                <div class="interacao-item">
+                    <label for="senha">Senha:</label>
+                    <input type="password" class="input-senha" id="senha" placeholder="Senha">
+                </div>
     
-                <label for="input-senha">Senha:</label>
-                <input type="password" class="input-senha" placeholder="Senha">
-    
-                <label for="input-confirmacao-senha">Confirmação de senha:</label>
-                <input type="password" class="input-confirmacao-senha" placeholder="Confirmação de senha">
+                <div class="interacao-item">
+                    <label for="confirmacaoSenha">Confirmação de senha:</label>
+                    <input type="password" class="input-confirmacao-senha" id="confirmacaoSenha" placeholder="Confirmação de senha">
+                </div>
     
                 <button type="submit" class="salvar">
                     <h3 class="texto-salvar">SALVAR</h3>
@@ -62,5 +65,6 @@
         </div>
         <!-- /Container editar perfil -->
     </section>
+    <script src="../../static/js/editarPerfil.js"></script>
 </body>
 </html>
