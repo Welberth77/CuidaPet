@@ -13,6 +13,7 @@ formulario.addEventListener("submit", (event) => {
     // Chamando validações
     checkSelecionarPet();
     checkSelecionarCategoria();
+    checkNomeMedicamentoVacina();
 })
 
 
@@ -38,6 +39,18 @@ function checkSelecionarCategoria() {
     } else {
         const formularioItem = selecionarCategoria.parentElement;
         formularioItem.className = "interacao-item"
+    }
+}
+
+// Verificação no nome do medicamento ou vacina
+function checkNomeMedicamentoVacina() {
+    const nomeMedicamentoVacinaValue = nomeMedicamentoVacina.value;
+
+    if (nomeMedicamentoVacinaValue === "") {
+        errorInput(nomeMedicamentoVacina);
+    } else {
+        const formularioItem = nomeMedicamentoVacina.parentElement;
+        formularioItem.className = "interacao-item";
     }
 }
 
