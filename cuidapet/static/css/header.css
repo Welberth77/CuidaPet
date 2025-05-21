@@ -36,6 +36,17 @@
   color: #fff;
 }
 
+.botao-logout {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
 .cabecalho .navegacao .foto-perfil {
   width: 40px;
   height: 40px;
