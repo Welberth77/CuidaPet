@@ -40,20 +40,24 @@
       <!-- Container com a lista de pets -->
       <div class="meus-pets-container">
         <ul class="lista-pets">
-          <li><h2>BOB</h2></li>
-          <li><h2>Marley</h2></li>
-          <li><h2>Rex</h2></li>
-          <li><h2>Thor</h2></li>
+          <!-- Será preenchida dinamicamente pelo JavaScript -->
         </ul>
       </div>
 
       <!-- Div que será exibida ao clicar em um pet -->
       <div class="pet-info">
         <h1>Informações de <span id="nome_pet"></span></h1>
-        <p>Idade: <span id="idade_pet"></span></p>
-        <p>Raça: <span id="raca_pet"></span></p>
-        <p>Último banho: <span id="ultimo_banho"></span></p>
-        <p>Vacina: <span id="vacina_pet"></span></p>
+        <p><strong>Espécie:</strong> <span id="especie_pet"></span></p>
+        <p><strong>Raça:</strong> <span id="raca_pet"></span></p>
+        <p><strong>Sexo:</strong> <span id="sexo_pet"></span></p>
+        <p><strong>Peso:</strong> <span id="peso_pet"></span></p>
+        <p>
+          <strong>Data de nascimento:</strong> <span id="nascimento_pet"></span>
+        </p>
+        <p><strong>Cor da pelagem:</strong> <span id="cor_pet"></span></p>
+        <p id="sobre_pet_container" style="display: none">
+          <strong>Sobre o pet:</strong> <span id="sobre_pet"></span>
+        </p>
       </div>
 
       <!-- Mensagem exibida caso o usuário não tenha pets cadastrados -->
@@ -64,6 +68,11 @@
         <hr class="linha" />
       </div>
 
+      <!-- Editar pet -->
+      <div class="editar-pet">
+        <a href="cadastrar_pet.html">EDITAR PET</a>
+      </div>
+
       <!-- Link para cadastrar um novo pet -->
       <div class="cadastrar-novo-pet">
         <a href="cadastrar_pet.html">CADASTRAR UM NOVO PET</a>
@@ -71,6 +80,7 @@
     </section>
 
     <!-- Importação do JavaScript -->
+    <script src="../../static/js/informacaoMeuPet.js"></script>
     <script src="../../static/js/meusPets.js"></script>
     <script src="../../static/js/auth_validacao.js"></script>
   </body>

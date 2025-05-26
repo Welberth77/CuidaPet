@@ -45,22 +45,20 @@
       <!-- Container com a lista de pets -->
       <div class="medicamento-e-vacina-container">
         <ul class="lista-pets">
-          <!-- Preencher dinâmicamente no js -->
+          <li><h2>Bob</h2></li>
+          <li><h2>Marley</h2></li>
+          <li><h2>Rex</h2></li>
+          <li><h2>Thor</h2></li>
         </ul>
       </div>
 
       <!-- Div que será exibida ao clicar em um pet -->
-      <div class="pet-info" style="display: none">
+      <div class="pet-info">
         <h1>Informações de <span id="nome_pet"></span></h1>
-        <p>
-          <strong>Último medicamento:</strong>
-          <span id="medicamento_pet"></span> em
-          <span id="data_medicamento"></span>
-        </p>
-        <p>
-          <strong>Última vacina:</strong> <span id="vacina_pet"></span> em
-          <span id="data_vacina"></span>
-        </p>
+        <p>Idade: <span id="idade_pet"></span></p>
+        <p>Raça: <span id="raca_pet"></span></p>
+        <p>Último banho: <span id="ultimo_banho"></span></p>
+        <p>Vacina: <span id="vacina_pet"></span></p>
       </div>
 
       <!-- Mensagem exibida caso o usuário não tenha pets cadastrados -->
@@ -76,7 +74,6 @@
         <a href="./registrar_medicamento.html">REGISTRAR</a>
       </div>
     </section>
-    <script src="../../static/js/informacoesMedicamentoEVacina.js"></script>
     <script src="../../static/js/index.js"></script>
     <script src="../../static/js/auth_validacao.js"></script>
   </body>
