@@ -42,19 +42,21 @@
         <!-- Conteiner registrar banho -->
         <div class="container-registrar-banho">
             <!-- interação usuario -->
-            <form class="interacao-usuario" action="./banho_e_tosa.html" method="POST">
+            <form class="interacao-usuario" id="interacao-usuario">
+                <!-- Selecionar pet -->
                 <div class="interacao-item">
-                    <label for="selecionar-pet">Pet:</label>
-                    <select class="selecionar-pet" required>
+                    <label for="selecionarPet">Pet:</label>
+                    <select class="selecionar-pet" id="selecionarPet">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="bob">BOB</option>
                         <option value="marley">MARLEY</option>
                     </select>
                 </div>
 
+                <!-- Selecionar serviço -->
                 <div class="interacao-item">
-                    <label for="selecionar-servico">Serviço:</label>
-                    <select name="selecionar-servico" required>
+                    <label for="selecionarServico">Serviço:</label>
+                    <select name="selecionar-servico" id="selecionarServico">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="banho-e-tosa">BANHO E TOSA</option>
                         <option value="apenas-banho">APENAS BANHO</option>
@@ -62,14 +64,16 @@
                     </select>
                 </div>
 
+                <!-- Data do banho ou tosa -->
                 <div class="interacao-item">
-                    <label for="data-novo-banho">Data:</label>
-                    <input type="date" class="data-novo-banho" required>
+                    <label for="dataNovoBanho">Data:</label>
+                    <input type="date" class="data-novo-banho" id="dataNovoBanho">
                 </div>
         
+                <!-- Data para o próximo banho -->
                 <div class="interacao-item">
-                    <label for="selecionar-data-proximo-banho">Próximo banho:</label>
-                    <select class="selecionar-data-proximo-banho" required>
+                    <label for="dataProximoBanho">Próximo banho ou tosa:</label>
+                    <select class="selecionar-data-proximo-banho" id="dataProximoBanho">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="7-dias">7 DIAS</option>
                         <option value="15-dias">15 DIAS</option>
@@ -78,17 +82,19 @@
                     </select>
                 </div>
         
+                <!-- Observações -->
                 <div class="interacao-item">
-                    <label for="observacoes-banho">Observações:</label>
-                    <textarea class="observacoes-banho" placeholder="Observações"></textarea>
+                    <label for="observacoes">Observações:</label>
+                    <textarea class="observacoes-banho" id="observacoes" placeholder="Observações"></textarea>
                 </div>
         
-                <button type="submit" class="salvar-banho">SALVAR BANHO</button>
+                <button type="submit" class="salvar-banho">SALVAR</button>
             </form>
             <!-- /intereação usuario -->
         </div>
         <!-- /container registrar banho -->
     </section>
     <!-- /section -->
+     <script src="../../static/js/registrarBanhoETosa.js"></script>
 </body>
 </html>

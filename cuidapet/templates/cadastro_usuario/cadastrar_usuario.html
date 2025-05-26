@@ -1,71 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaPet - Cadastro de Novo Usuário</title>
 
-    <link rel="stylesheet" href="../../static/css/base.css">
-    <link rel="stylesheet" href="../../static/css/pages/cadastro.css">
-    <!-- Ìcone da pata -->
-    <link rel="shortcut icon" href="../../static/css/imagens/favicon-pata.ico" type="image/x-icon">
-</head>
-<body>
+    <link rel="stylesheet" href="../../static/css/base.css" />
+    <link rel="stylesheet" href="../../static/css/pages/cadastro.css" />
+  </head>
+  <body>
     <!-- Cadastrar usuario -->
     <section class="cadastrar-usuario" id="cadastrar-usuario">
-        <!-- Titulo -->
-        <div class="titulo">
-            <h1>CUIDAPET</h1>
+      <!-- Titulo -->
+      <div class="titulo">
+        <h1>CUIDAPET</h1>
+      </div>
+      <!-- /Titulo -->
+
+      <!-- Cadastro container -->
+      <div class="cadastro-container">
+        <div class="titulo-container">
+          <h2>CADASTRE-SE</h2>
         </div>
-        <!-- /Titulo -->
 
-        <!-- Cadastro container -->
-        <div class="cadastro-container">
-            <div class="titulo-container">
-                <h2>CADASTRE-SE</h2>
-            </div>
+        <!-- Formulário -->
+        <form class="interacao-usuario" onsubmit="cadastrar(); return false;">
+          <div class="interacao-usuario-content">
+            <!-- Nome completo -->
+            <label for="nome-completo">Nome Completo</label>
+            <input
+              type="text"
+              class="input-nome-completo"
+              id="nome-completo"
+              placeholder="Nome completo"
+              autocomplete="name"
+            />
+            <a>Aqui vai a mensagem de erro...</a>
+          </div>
 
-            <!-- Formulário -->
-            <form class="interacao-usuario" id="form-cadastrar-usuario">
-                <div class="interacao-usuario-content">
-                    <!-- Nome completo -->
-                    <label for="nome-completo">Nome Completo</label>
-                    <input type="text" class="input-nome-completo" id="nome-completo" placeholder="Nome completo" autocomplete="name">
-                    <a>Aqui vai a mensagem de erro...</a>
-                </div>
+          <div class="interacao-usuario-content">
+            <!-- Email -->
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              class="input-e-mail"
+              id="email"
+              placeholder="E-mail"
+              autocomplete="email"
+            />
+            <a>Aqui vai a mensagem de erro...</a>
+          </div>
 
-                <div class="interacao-usuario-content">
-                    <!-- Email -->
-                    <label for="email">E-mail</label>
-                    <input type="email" class="input-e-mail" id="email" placeholder="E-mail" autocomplete="email">
-                    <a>Aqui vai a mensagem de erro...</a>
-                </div>
+          <div class="interacao-usuario-content">
+            <!-- Senha -->
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              class="input-senha"
+              id="senha"
+              placeholder="Senha"
+              autocomplete="new-password"
+            />
+            <a>Aqui vai a mensagem de erro...</a>
+          </div>
 
-                <div class="interacao-usuario-content">                    
-                    <!-- Senha -->
-                    <label for="senha">Senha</label>
-                    <input type="password" class="input-senha" id="senha" placeholder="Senha" autocomplete="new-password">
-                    <a>Aqui vai a mensagem de erro...</a>
-                </div>
+          <div class="interacao-usuario-content">
+            <!-- Confirmação de senha -->
+            <label for="confirma-senha">Confirmação de senha</label>
+            <input
+              type="password"
+              class="input-confirmacao-senha"
+              id="confirma-senha"
+              placeholder="Confirmação de senha"
+              autocomplete="new-password"
+            />
+            <a>Aqui vai a mensagem de erro...</a>
+          </div>
 
-                <div class="interacao-usuario-content">
-                    <!-- Confirmação de senha -->
-                    <label for="confirma-senha">Confirmação de senha</label>
-                    <input type="password" class="input-confirmacao-senha" id="confirma-senha" placeholder="Confirmação de senha" autocomplete="new-password">
-                    <a>Aqui vai a mensagem de erro...</a>
-                </div>
-
-                <button class="cadastrar">
-                    <h4 class="texto-cadastrar">CADASTRAR</h4>
-                </button>
-            </form>
-            <!-- /Formulário -->
-        </div>
-        <!-- /Cadastro container -->
+          <button class="cadastrar">
+            <h4 class="texto-cadastrar">CADASTRAR</h4>
+          </button>
+        </form>
+        <!-- /Formulário -->
+      </div>
+      <!-- /Cadastro container -->
     </section>
     <!-- /Cadastrar usuario -->
     <!-- Script  -->
     <!-- <script src="../../static/js/index.js"></script> -->
     <script src="../../static/js/cadastroUsuario.js"></script>
-</body>
+    <script src="../../static/js/cadastrar_usuario.js"></script>
+  </body>
 </html>

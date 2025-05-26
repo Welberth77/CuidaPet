@@ -1,201 +1,263 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaPet - Pagina Principal</title>
 
-    <link rel="stylesheet" href="../../static/css/base.css">
-    <link rel="stylesheet" href="../../static/css/header.css">
-    <link rel="stylesheet" href="../../static/css/pages/principal.css">
+    <link rel="stylesheet" href="../../static/css/base.css" />
+    <link rel="stylesheet" href="../../static/css/header.css" />
+    <link rel="stylesheet" href="../../static/css/pages/principal.css" />
     <!-- Ìcone da pata -->
-    <link rel="shortcut icon" href="../../static/css/imagens/favicon-pata.ico" type="image/x-icon">
-</head>
-<body>
+    <link
+      rel="shortcut icon"
+      href="../../static/css/imagens/favicon-pata.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
     <!-- Cabeçalho -->
     <header class="cabecalho">
-        <h1 class="logo-cuidapet">
-            <a href="pagina_principal.html">CUIDAPET</a>
-        </h1>
-        <nav class="navegacao">
-            <ul>
-                <li>
-                    <a href="pagina_principal.html">HOME</a>
-                </li>
-                <li>
-                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
-                </li>
-            </ul>
-        </nav>
+      <h1 class="logo-cuidapet">
+        <a href="pagina_principal.html">CUIDAPET</a>
+      </h1>
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <a href="pagina_principal.html">HOME</a>
+          </li>
+          <li>
+            <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+          </li>
+        </ul>
+      </nav>
+      <button onclick="logout()" class="botao-logout">Sair</button>
     </header>
     <!-- /Cabeçalho -->
 
     <!-- Serviços -->
     <section class="servicos">
+      <!-- Banner -->
+      <div class="fundo-banner-principal">
+        <img
+          src="../../static/css/imagens/banner-principal.png"
+          alt="banner-principal"
+          class="banner-principal"
+        />
+      </div>
+      <!-- /banner -->
 
-        <!-- Banner -->
-        <div class="fundo-banner-principal">
-            <img src="../../static/css/imagens/banner-principal.png" alt="banner-principal" class="banner-principal">
+      <h2>PERFIL E SERVIÇOS</h2>
+
+      <div class="servicos-container">
+        <div class="servico-item">
+          <a href="../perfil_usuario/perfil_usuario.html">
+            <div class="servico-item-esquerdo">
+              <h3>MEU PERFIL</h3>
+              <p>Página do usuário com informações do perfil</p>
+            </div>
+            <img
+              src="../../static/css/imagens/meu-perfil-recortado.png"
+              alt="imagem-meu-perfil"
+              class="imagem-meu-perfil"
+            />
+          </a>
         </div>
-        <!-- /banner -->
 
-        <h2>PERFIL E SERVIÇOS</h2>
-
-        <div class="servicos-container">
-            <div class="servico-item">
-                <a href="../perfil_usuario/perfil_usuario.html">
-                    <div class="servico-item-esquerdo">
-                        <h3>MEU PERFIL</h3>
-                        <p>Página do usuário com informações do perfil</p>
-                    </div>
-                    <img src="../../static/css/imagens/meu-perfil-recortado.png" alt="imagem-meu-perfil" class="imagem-meu-perfil">
-                </a>
+        <div class="servico-item">
+          <a href="../meus_pets/meus_pets.html">
+            <div class="servico-item-esquerdo">
+              <h3>MEUS PETS</h3>
+              <p>Gerencie informações dos seus pets em um só lugar</p>
             </div>
-
-            <div class="servico-item">
-                <a href="../meus_pets/meus_pets.html">
-                    <div class="servico-item-esquerdo">
-                        <h3>MEUS PETS</h3>
-                        <p>Gerencie informações dos seus pets em um só lugar</p>
-                    </div>
-                    <img src="../../static/css/imagens/meus-pets.png" alt="imagem-meus-pets" class="imagem-meus-pets">
-                </a>
-            </div>
-
-            <div class="servico-item">
-                <a href="../banho_e_tosa/banho_e_tosa.html">
-                    <div class="servico-item-esquerdo">
-                        <h3>BANHO E TOSA</h3>
-                        <p>Acompanhe o histórico e receba lembretes para novos cuidados</p>
-                    </div>
-                    <img src="../../static/css/imagens/banho-e-tosa.png" alt="banho" class="imagem-banho">
-                </a>
-            </div>
-
-            <div class="servico-item">
-                <a href="../medicamentos_e_vacinas/medicamentos_e_vacinas.html">
-                    <div class="servico-item-esquerdo">
-                        <h3>MEDICAMENTOS E VACINAS</h3>
-                        <p>Organize vacinas e medicamentos para garantir a saúde do seu pet</p>
-                    </div>
-                    <img src="../../static/css/imagens/medicamentos-e-vacinas.png" alt="imagem-medicamentos-e-vacinas" class="imagem-medicamentos-e-vacinas">
-                </a>
-            </div>
-
-            <div class="servico-item">
-                <a href="../noticias/noticias.html">
-                    <div class="servico-item-esquerdo">
-                        <h3>NOTÍCIAS</h3>
-                        <p>Confira dicas e novidades do mundo pet para melhor cuidar do seu animal</p>
-                    </div>
-                    <img src="../../static/css/imagens/noticias.png" alt="imagem-noticias" class="imagem-noticias">
-                </a>
-            </div>
-
-            <div class="servico-item">
-                <a href="../petshops/petshops.html">
-                    <div class="servico-item-esquerdo">
-                        <h3>PET-SHOPS</h3>
-                        <p>Encontre pet-shops próximos e informações úteis</p>
-                    </div>
-                    <img src="../../static/css/imagens/pet-shop.png" alt="imagem-pet-shops" class="imagem-pet-shops">
-                </a>
-            </div>
+            <img
+              src="../../static/css/imagens/meus-pets.png"
+              alt="imagem-meus-pets"
+              class="imagem-meus-pets"
+            />
+          </a>
         </div>
+
+        <div class="servico-item">
+          <a href="../banho_e_tosa/banho_e_tosa.html">
+            <div class="servico-item-esquerdo">
+              <h3>BANHO E TOSA</h3>
+              <p>
+                Acompanhe o histórico e receba lembretes para novos cuidados
+              </p>
+            </div>
+            <img
+              src="../../static/css/imagens/banho-e-tosa.png"
+              alt="banho"
+              class="imagem-banho"
+            />
+          </a>
+        </div>
+
+        <div class="servico-item">
+          <a href="../medicamentos_e_vacinas/medicamentos_e_vacinas.html">
+            <div class="servico-item-esquerdo">
+              <h3>MEDICAMENTOS E VACINAS</h3>
+              <p>
+                Organize vacinas e medicamentos para garantir a saúde do seu pet
+              </p>
+            </div>
+            <img
+              src="../../static/css/imagens/medicamentos-e-vacinas.png"
+              alt="imagem-medicamentos-e-vacinas"
+              class="imagem-medicamentos-e-vacinas"
+            />
+          </a>
+        </div>
+
+        <div class="servico-item">
+          <a href="../noticias/noticias.html">
+            <div class="servico-item-esquerdo">
+              <h3>NOTÍCIAS</h3>
+              <p>
+                Confira dicas e novidades do mundo pet para melhor cuidar do seu
+                animal
+              </p>
+            </div>
+            <img
+              src="../../static/css/imagens/noticias.png"
+              alt="imagem-noticias"
+              class="imagem-noticias"
+            />
+          </a>
+        </div>
+
+        <div class="servico-item">
+          <a href="../petshops/petshops.html">
+            <div class="servico-item-esquerdo">
+              <h3>PET-SHOPS</h3>
+              <p>Encontre pet-shops próximos e informações úteis</p>
+            </div>
+            <img
+              src="../../static/css/imagens/pet-shop.png"
+              alt="imagem-pet-shops"
+              class="imagem-pet-shops"
+            />
+          </a>
+        </div>
+      </div>
     </section>
     <!-- /Serviços -->
 
     <!-- Principais Noticias -->
     <section class="principais-noticias" id="principais-noticias">
-        <h2 class="titulo-principais-noticias">PRINCIPAIS NOTÍCIAS</h2>
-        
-        <div class="container-noticias">
-            <div class="noticia-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/noticias.png" alt="Notícia 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Notícia 1</h2>
-                    <p>Pequena descrição notícia 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-noticia" href="../noticias/noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
+      <h2 class="titulo-principais-noticias">PRINCIPAIS NOTÍCIAS</h2>
 
-            <div class="noticia-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/noticias.png" alt="Notícia 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Notícia 1</h2>
-                    <p>Pequena descrição notícia 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-noticia" href="../noticias/noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
-
-            <div class="noticia-item">
-                <div class="imagem">
-                    <img src="../../static/css/imagens/noticias.png" alt="Notícia 1">
-                </div>
-                <div class="titulo-e-descricao">
-                    <h2>Título Notícia 1</h2>
-                    <p>Pequena descrição notícia 1</p>
-                </div>
-                <div class="botao-ver-mais">
-                    <a class="botao-noticia" href="../noticias/noticia-unica.html">VER MAIS</a>
-                </div>
-            </div>
+      <div class="container-noticias">
+        <div class="noticia-item">
+          <div class="imagem">
+            <img src="../../static/css/imagens/noticias.png" alt="Notícia 1" />
+          </div>
+          <div class="titulo-e-descricao">
+            <h2>Título Notícia 1</h2>
+            <p>Pequena descrição notícia 1</p>
+          </div>
+          <div class="botao-ver-mais">
+            <a class="botao-noticia" href="../noticias/noticia-unica.html"
+              >VER MAIS</a
+            >
+          </div>
         </div>
+
+        <div class="noticia-item">
+          <div class="imagem">
+            <img src="../../static/css/imagens/noticias.png" alt="Notícia 1" />
+          </div>
+          <div class="titulo-e-descricao">
+            <h2>Título Notícia 1</h2>
+            <p>Pequena descrição notícia 1</p>
+          </div>
+          <div class="botao-ver-mais">
+            <a class="botao-noticia" href="../noticias/noticia-unica.html"
+              >VER MAIS</a
+            >
+          </div>
+        </div>
+
+        <div class="noticia-item">
+          <div class="imagem">
+            <img src="../../static/css/imagens/noticias.png" alt="Notícia 1" />
+          </div>
+          <div class="titulo-e-descricao">
+            <h2>Título Notícia 1</h2>
+            <p>Pequena descrição notícia 1</p>
+          </div>
+          <div class="botao-ver-mais">
+            <a class="botao-noticia" href="../noticias/noticia-unica.html"
+              >VER MAIS</a
+            >
+          </div>
+        </div>
+      </div>
     </section>
     <!-- /Principais Noticias -->
 
     <!-- Caracteristicas do pet -->
     <section class="caracteristicas-do-pet" id="caracteristicas-do-pet">
-        <h2>CARACTERÍSTICAS DO PET</h2>
+      <h2>CARACTERÍSTICAS DO PET</h2>
 
-        <div class="caracteristicas">
-            <h3>CARACTERÍSTICAS DO LABRADOR</h3>
-            <p>O Labrador Retriever é uma raça de cachorro conhecida por sua natureza amigável, inteligente e leal. De porte médio a grande, eles possuem uma pelagem curta e densa, geralmente em tons de amarelo, preto ou chocolate.</p>
-            <h3>COMPORTAMENTO E PERSONALIDADE</h3>
-            <p>Labradores são altamente enérgicos, adoram brincar e nadar, sendo excelentes companheiros para famílias e ótimos cães de trabalho em áreas como resgate e assistência. Além de sua personalidade carinhosa, são fáceis de treinar, o que os torna uma escolha popular entre amantes de cães.</p>
-        </div>
+      <div class="caracteristicas">
+        <h3>CARACTERÍSTICAS DO LABRADOR</h3>
+        <p>
+          O Labrador Retriever é uma raça de cachorro conhecida por sua natureza
+          amigável, inteligente e leal. De porte médio a grande, eles possuem
+          uma pelagem curta e densa, geralmente em tons de amarelo, preto ou
+          chocolate.
+        </p>
+        <h3>COMPORTAMENTO E PERSONALIDADE</h3>
+        <p>
+          Labradores são altamente enérgicos, adoram brincar e nadar, sendo
+          excelentes companheiros para famílias e ótimos cães de trabalho em
+          áreas como resgate e assistência. Além de sua personalidade carinhosa,
+          são fáceis de treinar, o que os torna uma escolha popular entre
+          amantes de cães.
+        </p>
+      </div>
     </section>
     <!-- /Caracteristicas do pet -->
 
     <!-- Rodapé -->
     <footer>
-        <div class="rodape">
-            <ul class="lista-rodape">
-                <li class="cuida-pet-rodape">
-                    <h3>CUIDAPET</h3>
-                    <p>Facilite a vida do seu pet com apenas um clique!</p>
-                </li>
+      <div class="rodape">
+        <ul class="lista-rodape">
+          <li class="cuida-pet-rodape">
+            <h3>CUIDAPET</h3>
+            <p>Facilite a vida do seu pet com apenas um clique!</p>
+          </li>
 
-                <li class="inicio-rodape">
-                    <h3>ÍNICIO</h3>
-                    <ul>
-                        <li><a href="./pagina_principal.html">Home</a></li>
-                        <li><a href="../meus_pets/meus_pets.html">Meus Pets</a></li>
-                        <li><a href="../banho_e_tosa/banho_e_tosa.html">Banho e Tosa</a></li>
-                        <li><a href="../medicamentos_e_vacinas/medicamentos_e_vacinas.html">Medicamentos e Vacinas</a></li>
-                        <li><a href="../noticias/noticias.html">Notícias</a></li>
-                        <li><a href="../petshops/petshops.html">Pet Shops</a></li>
-                    </ul>
-                </li>
-
-                <li class="sobre-rodape">
-                    <h3>SOBRE</h3>
-                    <ul>
-                        <li><a href="../sobre_nos/sobre_nos.html">Sobre nós</a></li>
-                    </ul>
-                </li>
+          <li class="inicio-rodape">
+            <h3>ÍNICIO</h3>
+            <ul>
+              <li><a href="./pagina_principal.html">Home</a></li>
+              <li><a href="../meus_pets/meus_pets.html">Meus Pets</a></li>
+              <li>
+                <a href="../banho_e_tosa/banho_e_tosa.html">Banho e Tosa</a>
+              </li>
+              <li>
+                <a href="../medicamentos_e_vacinas/medicamentos_e_vacinas.html"
+                  >Medicamentos e Vacinas</a
+                >
+              </li>
+              <li><a href="../noticias/noticias.html">Notícias</a></li>
+              <li><a href="../petshops/petshops.html">Pet Shops</a></li>
             </ul>
-        </div>
-    </footer>
-    <!-- /Rodapé -->
+          </li>
 
-</body>
+          <li class="sobre-rodape">
+            <h3>SOBRE</h3>
+            <ul>
+              <li><a href="../sobre_nos/sobre_nos.html">Sobre nós</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <script src="../../static/js/logout.js"></script>
+    <!-- /Rodapé -->
+  </body>
 </html>

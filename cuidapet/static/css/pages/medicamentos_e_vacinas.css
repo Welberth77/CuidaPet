@@ -128,7 +128,7 @@
 /* Botão de cadastro de novo pet */
 
 .registrar-novo-medicamento {
-    display: none;
+    display: flex;
     justify-content: center;
 }
 

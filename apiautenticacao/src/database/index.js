@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("nome_do_banco", "usuario", "senha", {
-  host: "localhost",
+const sequelize = new Sequelize("Cuidapet", "postgres", "123456", {
+  host: "localhost", //"172.20.10.5",
   dialect: "postgres",
   port: 5432, // porta padrão do PostgreSQL
   logging: false, // desativa logs de SQL se não quiser ver no console
@@ -18,3 +18,5 @@ sequelize
   });
 
 module.exports = sequelize;
+
+// sequelize.sync({ force: false }); // `force: true` recria a tabela (cuidado!)

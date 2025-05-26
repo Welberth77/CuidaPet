@@ -57,7 +57,6 @@ function mostrarMinhaLocalizacao() {
         marker.addListener("click", () => {
           infowindow.open(map, marker);
         });
-
       },
       () => {
         alert("Não foi possível obter sua localização.");
@@ -76,7 +75,7 @@ async function mostrarLocais() {
 
   tipos.forEach((tipo) => {
     const request = {
-      location: userLocation, // Agora usando a localização do usuário
+      location: userLocation, // localização do usuário
       radius: 5000, // Raio de 5 km
       type: tipo,
     };
@@ -93,8 +92,8 @@ async function mostrarLocais() {
 
 function criarMarcador(place, tipo) {
   const icons = {
-    veterinary_care: "https://maps.google.com/mapfiles/kml/shapes/hospitals.png",
-    pet_store: "../../static/css/imagens/petshop.png",
+    veterinary_care: "https://cdn-icons-png.flaticon.com/512/6036/6036818.png",
+    pet_store: "https://cdn-icons-png.flaticon.com/512/3520/3520667.png",
   };
 
   const marker = new google.maps.Marker({

@@ -1,55 +1,25 @@
-const mongoose = require("../database/index");
-
-const bcryptjs = require("bcryptjs");
-
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    require: true,
-    unique: true,
-    lowercase: true,
-  },
-  password: {
-    type: String,
-    require: true,
-    select: false,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-userSchema.pre("save", async function (next) {
-  const hash = await bcryptjs.hash(this.password, 10);
-  console.log(this);
-  console.log(hash);
-  this.password = hash;
-});
-
-const user = mongoose.model("user", userSchema);
-
-module.exports = user;
-
 const { DataTypes } = require("sequelize");
-
+const bcryptjs = require("bcryptjs");
 const sequelize = require("../database/index");
 
 const User = sequelize.define(
   "User",
   {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      field: "nome", // corresponde à coluna "nome" criada no banco
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      field: "email",
       validate: {
         isEmail: true,
         isLowercase: true,
@@ -58,13 +28,22 @@ const User = sequelize.define(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      field: "senha", // corresponde à coluna "senha" criada no banco
     },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
+      field: "createdAt",
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+      field: "updatedAt",
     },
   },
   {
+    tableName: "Users", // usa exatamente a tabela que você criou manualmente
+    timestamps: true, // Sequelize gerencia createdAt e updatedAt automaticamente
     hooks: {
       beforeCreate: async (user) => {
         const hash = await bcryptjs.hash(user.password, 10);
