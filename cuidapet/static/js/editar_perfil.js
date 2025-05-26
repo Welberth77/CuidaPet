@@ -11,10 +11,7 @@ async function salvarEdicao() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
-  const body = {
-    name: nome,
-  };
-
+  const body = { name: nome };
   if (senha.trim() !== "") {
     body.password = senha;
   }
@@ -34,10 +31,13 @@ async function salvarEdicao() {
   const data = await response.json();
 
   if (response.ok) {
-    alert("Perfil atualizado!");
-    localStorage.setItem("user", JSON.stringify(data.user));
-    window.location.href =
-      "../../templates/perfil_usuario/perfil_usuario.htmll";
+    alert(
+      "Perfil atualizado com sucesso!\nPor segurança, você será desconectado."
+    );
+    // Limpa os dados e redireciona para login
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    window.location.href = "../../../index.html"; // ou onde está sua tela de login
   } else {
     alert(data.message || "Erro ao atualizar perfil");
   }
