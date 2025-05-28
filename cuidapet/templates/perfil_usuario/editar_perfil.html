@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../../static/css/base.css" />
     <link rel="stylesheet" href="../../static/css/header.css" />
     <link rel="stylesheet" href="../../static/css/pages/editar_perfil.css" />
-    <!-- Ìcone da pata -->
     <link
       rel="shortcut icon"
       href="../../static/css/imagens/favicon-pata.ico"
@@ -16,101 +15,81 @@
     />
   </head>
   <body>
-    <!-- Cebeçalho -->
     <header class="cabecalho">
       <h1 class="logo-cuidapet">
         <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
       </h1>
-
       <nav class="navegacao">
         <ul>
-          <li>
-            <a href="../pagina_principal/pagina_principal.html">HOME</a>
-          </li>
-          <li>
-            <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
-          </li>
+          <li><a href="../pagina_principal/pagina_principal.html">HOME</a></li>
+          <li><a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a></li>
         </ul>
       </nav>
     </header>
-    <!-- /Cabeçalho -->
 
     <section class="editar-perfil" id="editar-perfil">
-
-        <!-- Container editar perfil -->
-        <div class="editar-perfil-container">
-            <!-- Título -->
-            <div class="titulo-editar-perfil">
-                <h2>EDITAR PERFIL</h2>
-            </div>
-            <!-- /Título -->
-    
-            <!-- Inputs do usuario -->
-            <form class="interacao-usuario" id="interacao-usuario">
-                <div class="interacao-item">
-                    <label for="nomeCompleto">Nome completo:</label>
-                    <input type="text" class="input-nome-completo" id="nomeCompleto" placeholder="Nome completo">
-                    <span>mensagem de erro aqui</span>
-                </div>
-    
-                <div class="interacao-item">
-                    <label for="senha">Senha:</label>
-                    <input type="password" class="input-senha" id="senha" placeholder="Senha">
-                    <span>mensagem de erro aqui</span>
-                </div>
-    
-                <div class="interacao-item">
-                    <label for="confirmacaoSenha">Confirmação de senha:</label>
-                    <input type="password" class="input-confirmacao-senha" id="confirmacaoSenha" placeholder="Confirmação de senha">
-                    <span>mensagem de erro aqui</span>
-                </div>
-    
-                <button type="submit" class="salvar">
-                    <h3 class="texto-salvar">SALVAR</h3>
-                </button>
-            </form>
-            <!-- /inputs do usuário -->
+      <div class="editar-perfil-container">
+        <div class="titulo-editar-perfil">
+          <h2>EDITAR PERFIL</h2>
         </div>
-        <!-- /Título -->
 
-        <!-- Inputs do usuario -->
         <form
           class="interacao-usuario"
+          id="interacao-usuario"
           onsubmit="salvarEdicao(); return false;"
         >
-          <label for="input-nome-completo">Nome completo:</label>
-          <input
-            type="text"
-            class="input-nome-completo"
-            placeholder="Nome completo"
-          />
+          <div class="interacao-item">
+            <label for="nomeCompleto">Nome completo:</label>
+            <input
+              type="text"
+              class="input-nome-completo"
+              id="nomeCompleto"
+              placeholder="Nome completo"
+            />
+            <span>mensagem de erro aqui</span>
+          </div>
 
-          <label for="input-email">E-mail:</label>
-          <input
-            type="email"
-            class="input-email"
-            placeholder="E-mail"
-            disabled
-          />
+          <div class="interacao-item">
+            <label for="emailUsuario">E-mail:</label>
+            <input
+              type="email"
+              class="input-email"
+              id="emailUsuario"
+              placeholder="E-mail"
+              readonly
+            />
+            <span>mensagem de erro aqui</span>
+          </div>
 
-          <label for="input-senha">Senha:</label>
-          <input type="password" class="input-senha" placeholder="Senha" />
+          <div class="interacao-item">
+            <label for="senha">Senha:</label>
+            <input
+              type="password"
+              class="input-senha"
+              id="senha"
+              placeholder="Senha"
+            />
+            <span>mensagem de erro aqui</span>
+          </div>
 
-          <label for="input-confirmacao-senha">Confirmação de senha:</label>
-          <input
-            type="password"
-            class="input-confirmacao-senha"
-            placeholder="Confirmação de senha"
-          />
+          <div class="interacao-item">
+            <label for="confirmacaoSenha">Confirmação de senha:</label>
+            <input
+              type="password"
+              class="input-confirmacao-senha"
+              id="confirmacaoSenha"
+              placeholder="Confirmação de senha"
+            />
+            <span>mensagem de erro aqui</span>
+          </div>
 
-          <button type="submit" class="salvar">
+          <button onclick="salvarEdicao()" class="salvar">
             <h3 class="texto-salvar">SALVAR</h3>
           </button>
         </form>
-        <!-- /inputs do usuário -->
       </div>
-      <!-- /Container editar perfil -->
     </section>
+
     <script src="../../static/js/editar_perfil.js"></script>
     <script>
       window.onload = function () {

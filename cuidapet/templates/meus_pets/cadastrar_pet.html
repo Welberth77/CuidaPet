@@ -1,135 +1,164 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaPet - Cadastrar Pet</title>
 
-    <link rel="stylesheet" href="../../static/css/base.css">
-    <link rel="stylesheet" href="../../static/css/header.css">
-    <link rel="stylesheet" href="../../static/css/pages/cadastrarPet.css">
+    <link rel="stylesheet" href="../../static/css/base.css" />
+    <link rel="stylesheet" href="../../static/css/header.css" />
+    <link rel="stylesheet" href="../../static/css/pages/cadastrarPet.css" />
     <!-- Ìcone da pata -->
-    <link rel="shortcut icon" href="../../static/css/imagens/favicon-pata.ico" type="image/x-icon">
-</head>
-<body>
+    <link
+      rel="shortcut icon"
+      href="../../static/css/imagens/favicon-pata.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
     <!-- Cabeçalho -->
     <header class="cabecalho">
-        <h1 class="logo-cuidapet">
-            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
-        </h1>
+      <h1 class="logo-cuidapet">
+        <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+      </h1>
 
-        <nav class="navegacao">
-            <ul>
-                <li>
-                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
-                </li>
-                <li>
-                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
-                </li>
-            </ul>
-        </nav>
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <a href="../pagina_principal/pagina_principal.html">HOME</a>
+          </li>
+          <li>
+            <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <!-- /Cabeçalho -->
 
     <!-- section -->
     <section class="cadastrar-pet" id="cadastrar-pet">
-        <!-- container -->
-        <div class="cadastrar-pet-container">
-            <!-- Titulo -->
-            <div class="titulo-area-pet">
-                <h2>CADASTRAR PET</h2>
-            </div>
-            <!-- /titulo -->
-    
-            <!-- inputs do usuario -->
-            <form class="interacao-usuario" id="interacao-usuario">
-                <!-- input container -->
-                <div class="input-container">
-                    <!-- Nome do pet -->
-                    <div class="input-item">
-                        <label for="nomePet">Nome do pet:</label>
-                        <input type="text" class="nome-do-pet" id="nomePet" placeholder="Nome do Pet">
-                    </div>
-
-                    <!-- Espécie do pet -->
-                    <div class="input-item">
-                        <label for="especiePet">espécie:</label>
-                        <select class="especie-pet" id="especiePet" onchange="atualizarCores()">
-                            <option value="" disabled selected>Selecione uma opção</option>
-                            <option value="cachorro">Cachorro</option>
-                            <option value="gato">Gato</option>
-                        </select>
-                    </div>
-    
-                    <!-- Raça do pet -->
-                    <div class="input-item">
-                        <label for="racaPet">Raça:</label>
-                        <select class="raca-do-pet" id="racaPet" disabled>
-                            <option value="" disabled selected>Selecione a espécie primeiro</option>
-                        </select>
-                    </div>
-    
-                    <!-- Sexo do pet -->
-                    <div class="input-item">
-                        <label for="sexoPet">Sexo:</label>
-                        <select class="sexo-do-pet" id="sexoPet">
-                            <option value="" disabled selected>Selecione uma opção</option>
-                            <option value="macho">Macho</option>
-                            <option value="femea">Fêmea</option>
-                            <option value="nao-identificado">Não identificado</option>
-                        </select>
-                    </div>
-    
-                    <!-- Peso do pet -->
-                    <div class="input-item">
-                        <label for="pesoPet">Peso:</label>
-                        <input type="number" class="peso-do-pet" id="pesoPet" min="1" max="99" placeholder="Peso do Pet">
-                    </div>
-    
-                    <!-- Data de nascimento do pet -->
-                    <div class="input-item">
-                        <label for="nascimentoPet">Nascimento:</label>
-                        <input type="date" class="nascimento-do-pet" id="nascimentoPet" placeholder="Nascimento do Pet">
-                    </div>
-
-                    <!-- Cor da pelagem -->
-                    <div class="input-item">
-                        <label for="corPelagem">Cor da pelagem:</label>
-                        <select name="cor-da-pelagem" id="corPelagem" disabled>
-                            <option value="" disabled selected>Selecione a espécie primeiro</option>
-                        </select>
-                    </div>
-
-                    <!-- Tamanho da pelagem -->
-                    <div class="input-item">
-                        <label for="pelagemPet">Pelagem:</label>
-                        <select class="pelagem-do-pet" id="pelagemPet">
-                            <option value="" disabled selected>Selecione uma opção</option>
-                            <option value="curta">Curta</option>
-                            <option value="media">Média</option>
-                            <option value="longa">Longa</option>
-                            <option value="sem-pelo">Sem Pelo</option>
-                        </select>
-                    </div>
-
-                    <!-- Sobre o pet -->
-                    <div class="input-item">
-                        <label for="sobreOPet">Sobre o pet:</label>
-                        <textarea class="sobre-o-pet" id="sobreOPet" placeholder="Sobre o Pet"></textarea>
-                    </div>
-                </div>
-                <!-- /input container-->
-                <!-- Botão cadastrar -->
-                <div class="botao-cadastrar-pet">
-                    <button>CADASTRAR</button>
-                </div>
-                <!-- /Botão cadastrar -->
-            </form>
-            <!-- /inputs do usuário -->
+      <!-- container -->
+      <div class="cadastrar-pet-container">
+        <!-- Titulo -->
+        <div class="titulo-area-pet">
+          <h2>CADASTRAR PET</h2>
         </div>
-        <!-- /container -->
+        <!-- /titulo -->
+
+        <!-- inputs do usuario -->
+        <form class="interacao-usuario" id="interacao-usuario">
+          <!-- input container -->
+          <div class="input-container">
+            <!-- Nome do pet -->
+            <div class="input-item">
+              <label for="nomePet">Nome do pet:</label>
+              <input
+                type="text"
+                class="nome-do-pet"
+                id="nomePet"
+                placeholder="Nome do Pet"
+              />
+            </div>
+
+            <!-- Espécie do pet -->
+            <div class="input-item">
+              <label for="especiePet">espécie:</label>
+              <select class="especie-pet" id="especiePet">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="cachorro">Cachorro</option>
+                <option value="gato">Gato</option>
+              </select>
+            </div>
+
+            <!-- Raça do pet -->
+            <div class="input-item">
+              <label for="racaPet">Raça:</label>
+              <select class="raca-do-pet" id="racaPet" disabled>
+                <option value="" disabled selected>
+                  Selecione a espécie primeiro
+                </option>
+              </select>
+            </div>
+
+            <!-- Sexo do pet -->
+            <div class="input-item">
+              <label for="sexoPet">Sexo:</label>
+              <select class="sexo-do-pet" id="sexoPet">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="macho">Macho</option>
+                <option value="femea">Fêmea</option>
+                <!--<option value="nao-identificado">Não identificado</option>-->
+              </select>
+            </div>
+
+            <!-- Peso do pet -->
+            <div class="input-item">
+              <label for="pesoPet">Peso:</label>
+              <input
+                type="number"
+                class="peso-do-pet"
+                id="pesoPet"
+                min="1"
+                max="99"
+                placeholder="Peso do Pet"
+              />
+            </div>
+
+            <!-- Data de nascimento do pet -->
+            <div class="input-item">
+              <label for="nascimentoPet">Nascimento:</label>
+              <input
+                type="date"
+                class="nascimento-do-pet"
+                id="nascimentoPet"
+                placeholder="Nascimento do Pet"
+              />
+            </div>
+
+            <!-- Cor da pelagem -->
+            <div class="input-item">
+              <label for="corPelagem">Cor da pelagem:</label>
+              <select name="cor-da-pelagem" id="corPelagem" disabled>
+                <option value="" disabled selected>
+                  Selecione a espécie primeiro
+                </option>
+              </select>
+            </div>
+
+            <!-- Tamanho da pelagem -->
+            <div class="input-item">
+              <label for="pelagemPet">Pelagem:</label>
+              <select class="pelagem-do-pet" id="pelagemPet">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="curta">Curta</option>
+                <option value="media">Média</option>
+                <option value="longa">Longa</option>
+                <option value="sem_pelo">Sem Pelo</option>
+              </select>
+            </div>
+
+            <!-- Sobre o pet -->
+            <div class="input-item">
+              <label for="sobreOPet">Sobre o pet:</label>
+              <textarea
+                class="sobre-o-pet"
+                id="sobreOPet"
+                placeholder="Sobre o Pet"
+              ></textarea>
+            </div>
+          </div>
+          <!-- /input container-->
+          <!-- Botão cadastrar -->
+          <div class="botao-cadastrar-pet">
+            <button type="submit">CADASTRAR</button>
+          </div>
+          <!-- /Botão cadastrar -->
+        </form>
+        <!-- /inputs do usuário -->
+      </div>
+      <!-- /container -->
     </section>
     <!-- /section -->
     <script src="../../static/js/cadastrarPet.js"></script>
-</body>
+  </body>
 </html>
