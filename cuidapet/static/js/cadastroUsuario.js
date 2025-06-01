@@ -1,109 +1,119 @@
-// Cadastrar novo usuário
-// Recebendo dados do usuário
+const { link } = require("fs");
+
 const form = document.getElementById("form-cadastrar-usuario");
-const nome = document.getElementById("nome-completo");
-const email = document.getElementById("email");
-const senha = document.getElementById("senha");
-const confirmacaoSenha = document.getElementById("confirma-senha");
 
-// Após clicar no botão de cadastrar
 form.addEventListener("submit", (event) => {
-    // So atualiza a página quando o botão for clicado
-    event.preventDefault();
-
-    // Enviar formulário apenas após as verificações
-    checkform();
+  event.preventDefault();
+  checkform();
 });
 
-
-// Verificação do nome 
-function checkInputNomeCompleto() {
-    const nomeCompletoValue = nome.value;
-
-    // Se o campo estiver vazio
-    if (nomeCompletoValue === "") {
-        // Mostrar aviso e mostrar a mensagem de erro
-        errorInput(nome, "Preencha um nome válido.");
-    } else {
-        const formItem = nome.parentElement;
-        formItem.className = "interacao-usuario-content";
-    }
-}
-
-// Verificação de email vazio
-function checkInputEmail(){
-    const emailValue = email.value;
-
-    if (emailValue === "") {
-        // Mostra a mensagem de erro
-        errorInput(email, "Preencha um email válido.");
-    } else {
-        const formItem = email.parentElement;
-        formItem.className = "interacao-usuario-content";
-    }
-}
-
-// Verificação de senha vazia e no mínimo 8 caracteres
-function checkInputSenha() {
-    const senhaValue = senha.value;
-
-    if (senhaValue === "") {
-        errorInput(senha, "Preencha uma senha válida.");
-    } else if (senhaValue.length < 8) {
-        errorInput(senha, "A senha precisa ter no mínimo 8 caracteres.")
-    } else {
-        const formItem = senha.parentElement;
-        formItem.className = "interacao-usuario-content";
-    }
-}
-
-
-// Verificação de confirmação de senha
-function checkInputConfirmacaoSenha() {
-    const senhaValue = senha.value;
-    const confirmacaoSenhaValue = confirmacaoSenha.value;
-
-    if (confirmacaoSenhaValue === "") {
-        errorInput(confirmacaoSenha, "A confirmação de senha é obrigatória.")
-    } else if (confirmacaoSenhaValue !== senhaValue) {
-        errorInput(confirmacaoSenha, "As senhas não são iguais.");
-    } else {
-        const formItem = confirmacaoSenha.parentElement;
-        formItem.className = "interacao-usuario-content";
-    }
-}
-
-
 function checkform() {
-    // Chamando as funções de verificação
-    checkInputNomeCompleto();
-    checkInputEmail();
-    checkInputSenha();
-    checkInputConfirmacaoSenha();
+  const nome = document.querySelector(".input-nome-completo");
+  const email = document.querySelector(".input-e-mail");
+  const senha = document.querySelector(".input-senha");
+  const confirmacaoSenha = document.querySelector(".input-confirmacao-senha");
 
-    // Seleciona tudo que tenha essa classe
-    const formItems = form.querySelectorAll(".interacao-usuario-content");
-    const isValido = [...formItems].every( (item) => {
-        // Se todos elemento tiver essa classe  
-        return item.className === "interacao-usuario-content";
-    });
+  checkInputNomeCompleto(nome);
+  checkInputEmail(email);
+  checkInputSenha(senha);
+  checkInputConfirmacaoSenha(senha, confirmacaoSenha);
 
-    if (isValido) {
-        alert("Cadastrado com sucesso!");
-    }
+  const formItems = form.querySelectorAll(".interacao-usuario-content");
+  const isValido = [...formItems].every(
+    (item) => item.className === "interacao-usuario-content"
+  );
+
+  if (isValido) {
+    const userData = {
+      name: nome.value,
+      email: email.value.toLowerCase(),
+      password: senha.value,
+    };
+
+    fetch("http://localhost:3200/auth/registrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || "Erro ao registrar.");
+        alert("Usuário cadastrado com sucesso!");
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+        window.location.href =
+          "../../templates/pagina_principal/pagina_principal.html";
+      })
+      .catch((error) => {
+        alert(`Erro: ${error.message}`);
+      });
+  }
 }
 
+function checkInputNomeCompleto(nome) {
+  const nomeRegex = /^[A-Za-zÀ-ÿ\s]+$/;
+  if (nome.value === "" || !nomeRegex.test(nome.value)) {
+    errorInput(nome, "O nome deve conter apenas letras.");
+  } else {
+    nome.parentElement.className = "interacao-usuario-content";
+  }
+}
 
-// Erro de input
+function checkInputEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+  const dominiosPermitidos = [
+    "gmail.com",
+    "hotmail.com",
+    "outlook.com",
+    "icloud.com",
+    "unit.com.br",
+  ];
+  const dominio = email.value.split("@")[1];
+
+  if (
+    email.value === "" ||
+    !emailRegex.test(email.value) ||
+    !dominiosPermitidos.includes(dominio)
+  ) {
+    errorInput(email, "Use um e-mail válido (ex: gmail.com, hotmail.com)");
+  } else {
+    email.parentElement.className = "interacao-usuario-content";
+  }
+}
+
+function checkInputSenha(senha) {
+  if (senha.value === "") {
+    errorInput(senha, "Preencha uma senha válida.");
+  } else if (senha.value.length < 8) {
+    errorInput(senha, "A senha precisa ter no mínimo 8 caracteres.");
+  } else {
+    senha.parentElement.className = "interacao-usuario-content";
+  }
+}
+
+function checkInputConfirmacaoSenha(senha, confirmacaoSenha) {
+  if (confirmacaoSenha.value === "") {
+    errorInput(confirmacaoSenha, "A confirmação de senha é obrigatória.");
+  } else if (confirmacaoSenha.value !== senha.value) {
+    errorInput(confirmacaoSenha, "As senhas não são iguais.");
+  } else {
+    confirmacaoSenha.parentElement.className = "interacao-usuario-content";
+  }
+}
+
 function errorInput(input, message) {
-    // Pega o item pai do input
-    const formItem = input.parentElement;
-    // Seleciona a tag <a>
-    const textMessage = formItem.querySelector("a");
-
-    // Escreve a mensagem
-    textMessage.innerText = message;
-
-    // Adiciona a classe de error
-    formItem.className = "interacao-usuario-content error";
+  const formItem = input.parentElement;
+  const textMessage =
+    formItem.querySelector("a") || formItem.querySelector("span");
+  if (textMessage) textMessage.innerText = message;
+  formItem.className = "interacao-usuario-content error";
 }
+
+//function toggleSenha(idCampo, btn) {
+//const campo = document.getElementById(idCampo);
+//const mostrar = campo.type === "password";
+
+//campo.type = mostrar ? "text" : "password";
+//btn.textContent = mostrar ? "🙈" : "👁️";}

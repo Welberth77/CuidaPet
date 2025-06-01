@@ -1,190 +1,200 @@
 /* Estilos da página de login */
 
 .login {
-    width: 100vw;
+  width: 100vw;
+}
+
+.btn-toggle-senha {
+  position: absolute;
+  right: 10px;
+  top: 38px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 .login-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
 }
 
 /* Imagem lateral */
 
 .login-container .imagem-login {
-    /* position: static; */
-    margin-top: 0;
-    margin-left: 0;
-    margin-bottom: 0;
+  /* position: static; */
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 0;
 }
 
 .login-container .imagem-login {
-    height: 100vh;
-    width: 35%;
+  height: 100vh;
+  width: 35%;
 }
 
 .login-container .imagem-login img {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 /* Area de login */
 .login-container .area-login {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    width: 70%;
-    height: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 70%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Titulo e descrição */
 .area-login {
-    text-align: center;
+  text-align: center;
 }
 
 .area-login .titulo .texto-titulo {
-    color: var(--text-color-02);
-    font-weight: 900;
-    font-size: 50px;
-    text-transform: uppercase;
+  color: var(--text-color-02);
+  font-weight: 900;
+  font-size: 50px;
+  text-transform: uppercase;
 }
 
 .area-login .titulo .descricao-titulo {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 22px;
-    margin: 20px 0 0;
-    color: var(--text-color-02);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 20px 0 0;
+  color: var(--text-color-02);
 }
 
 /* inputs */
 .area-login .interacao-usuario {
-    margin-top: 50px;
-    justify-items: center;
-    width: 45%;
+  margin-top: 50px;
+  justify-items: center;
+  width: 45%;
 }
 
 .area-login .interacao-usuario h2 {
-    font-size: 22px;
-    font-weight: 700;
-    text-align: center;
-    color: var(--text-color-02);
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-color-02);
 }
 
 .area-login .interacao-usuario .input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 280px;
-    padding: 20px 0 0;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 280px;
+  padding: 20px 0 0;
+  margin-bottom: 20px;
 }
 
 .area-login .interacao-usuario .input-container .inputs-usuario {
-    width: 100%;
-    text-align: start;
-    margin: 0 0 20px;
+  width: 100%;
+  text-align: start;
+  margin: 0 0 20px;
 }
 
 .area-login .interacao-usuario .input-container label {
-    padding: 15px 0 5px 5px; 
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-color-02);
+  padding: 15px 0 5px 5px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-color-02);
 }
 
 .area-login .interacao-usuario .input-container .inputs-usuario input {
-    font-size: 16px;
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: #D9D9D9;
-    color: #333;
-    border: 2px solid #053451;
+  font-size: 16px;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+  color: #333;
+  border: 2px solid #053451;
 }
 
 /* Mensagem e erro após verificação */
 .area-login .interacao-usuario .input-container .inputs-usuario span {
-    font-size: 16px;
-    margin-left: 5px;
-    visibility: hidden;
+  font-size: 16px;
+  margin-left: 5px;
+  visibility: hidden;
 }
 
 /* Quando der error */
 .area-login .interacao-usuario .input-container .inputs-usuario.error input {
-    border-color: #ff3b25;
+  border-color: #ff3b25;
 }
 
 .area-login .interacao-usuario .input-container .inputs-usuario.error span {
-    color: #ff3b25;
-    visibility: visible;
+  color: #ff3b25;
+  visibility: visible;
 }
 
 /* Botão entrar */
 
 .area-login .entrar .botao-entrar {
-    padding: 12px 20px;
-    font-size: 22px;
-    font-weight: 600;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    background-color: var(--bg-color-02);
-    color: #ffffff;
+  padding: 12px 20px;
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--bg-color-02);
+  color: #ffffff;
 }
 
 .area-login .entrar .botao-entrar:hover {
-    transition-duration: 0.5s;
-    background-color: var(--bg-color-01);
+  transition-duration: 0.5s;
+  background-color: var(--bg-color-01);
 }
 
 /* Cadastrar */
 
 .cadastrar-novo {
-    margin-top: 10px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .cadastrar-novo .linha {
-    width: 150px;
-    height: 1px;
-    background-color: black;
+  width: 150px;
+  height: 1px;
+  background-color: black;
 }
 
 .cadastrar-novo h3 {
-    font-size: 18px;
-    font-weight: 400;
-    padding: 0 20px;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 0 20px;
 }
 
 .cadastre-se {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cadastre-se a {
-    font-size: 18px;
-    font-weight: 400;
-    text-decoration: underline;
-    color: #0B7ABF;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: #0b7abf;
 }
 
 .cadastre-se a:hover {
-    transition-duration: 0.5s;
-    color: #053451;
+  transition-duration: 0.5s;
+  color: #053451;
 }
 
 /* ==== MEDIA QUERIES ==== */
@@ -192,179 +202,175 @@
 
 /* Extra Small (XS) - Celular no modo retrato */
 @media (min-width: 0px) {
+  .login-container {
+    padding: 20px;
+    text-align: center;
+  }
 
-    .login-container {
-        padding: 20px;
-        text-align: center;
-    }
+  .login-container .imagem-login {
+    display: none;
+  }
 
-    .login-container .imagem-login {
-        display: none;
-    }
+  /* Area de login */
+  .login-container .area-login {
+    width: 100%;
+  }
 
-    /* Area de login */
-    .login-container .area-login {
-        width: 100%;
-    }
+  /* Titulo e descrição */
+  .area-login .titulo .texto-titulo {
+    font-size: 40px;
+  }
 
-    /* Titulo e descrição */
-    .area-login .titulo .texto-titulo {
-        font-size: 40px;
-    }
+  .area-login .titulo .descricao-titulo {
+    max-width: 300px;
+    font-size: 16px;
+  }
 
-    .area-login .titulo .descricao-titulo {
-        max-width: 300px;
-        font-size: 16px;
-    }
+  /* inputs */
+  .area-login .interacao-usuario {
+    margin-top: 30px;
+    width: 90%;
+  }
 
-    /* inputs */
-    .area-login .interacao-usuario {
-        margin-top: 30px;
-        width: 90%;
-    }
+  .area-login .interacao-usuario h2 {
+    font-size: 18px;
+  }
 
-    .area-login .interacao-usuario h2 {
-        font-size: 18px;
-    }
+  .area-login .interacao-usuario .input-container {
+    height: 260px;
+  }
 
-    .area-login .interacao-usuario .input-container {
-        height: 260px;
-    }
+  .area-login .interacao-usuario .input-container label {
+    font-size: 16px;
+  }
 
-    .area-login .interacao-usuario .input-container label {
-        font-size: 16px;
-    }
+  .area-login .interacao-usuario .input-container .inputs-usuario input {
+    font-size: 14px;
+  }
 
-    .area-login .interacao-usuario .input-container .inputs-usuario input {
-        font-size: 14px;
-    }
+  /* Botão entrar */
+  .area-login .entrar .botao-entrar {
+    font-size: 20px;
+    padding: 12px 25px;
+  }
 
-    /* Botão entrar */
-    .area-login .entrar .botao-entrar {
-        font-size: 20px;
-        padding: 12px 25px;
-    }
+  /* Cadastrar */
+  .cadastrar-novo {
+    margin-top: 50px;
+  }
 
-    /* Cadastrar */
-    .cadastrar-novo {
-        margin-top: 50px;
-    }
+  .cadastrar-novo .linha {
+    width: 60px;
+  }
 
-    .cadastrar-novo .linha {
-        width: 60px;
-    }
+  .cadastrar-novo h3 {
+    font-size: 16px;
+  }
 
-    .cadastrar-novo h3 {
-        font-size: 16px;
-    }
-
-    .cadastre-se a {
-        font-size: 16px;
-    }
+  .cadastre-se a {
+    font-size: 16px;
+  }
 }
 
 /* Small (S) - Celular no modo horizontal */
-@media (min-width: 576px) { 
+@media (min-width: 576px) {
+  /* Titulo e descrição */
+  .area-login .titulo .texto-titulo {
+    font-size: 50px;
+  }
 
-    /* Titulo e descrição */
-    .area-login .titulo .texto-titulo {
-        font-size: 50px;
-    }
+  .area-login .titulo .descricao-titulo {
+    max-width: 100%;
+    font-size: 20px;
+  }
 
-    .area-login .titulo .descricao-titulo {
-        max-width: 100%;
-        font-size: 20px;
-    }
+  /* inputs */
+  .area-login .interacao-usuario {
+    width: 65%;
+  }
 
-    /* inputs */
-    .area-login .interacao-usuario {
-        width: 65%;
-    }
+  /* Botão entrar */
+  .area-login .entrar .botao-entrar {
+    width: 140px;
+  }
 
-    /* Botão entrar */
-    .area-login .entrar .botao-entrar {
-        width: 140px;
-    }
+  /* Cadastrar */
+  .cadastrar-novo .linha {
+    width: 110px;
+  }
 
-    /* Cadastrar */
-    .cadastrar-novo .linha {
-        width: 110px;
-    }
+  .cadastrar-novo h3 {
+    font-size: 18px;
+  }
 
-    .cadastrar-novo h3 {
-        font-size: 18px;
-    }
-
-    .cadastre-se a {
-        font-size: 18px;
-    }
+  .cadastre-se a {
+    font-size: 18px;
+  }
 }
 
 /* Medium (M) - Tablets */
 @media (min-width: 768px) {
+  /* descrição do titulo */
+  .area-login .titulo .descricao-titulo {
+    font-size: 22px;
+  }
 
-    /* descrição do titulo */
-    .area-login .titulo .descricao-titulo {
-        font-size: 22px;
-    }
+  /* inputs */
+  .area-login .interacao-usuario {
+    width: 50%;
+  }
 
-    /* inputs */
-    .area-login .interacao-usuario {
-        width: 50%;
-    }
+  .area-login .interacao-usuario h2 {
+    font-size: 22px;
+  }
 
-    .area-login .interacao-usuario h2 {
-        font-size: 22px;
-    }
+  .area-login .interacao-usuario .input-container label {
+    font-size: 20px;
+  }
 
-    .area-login .interacao-usuario .input-container label {
-        font-size: 20px;
-    }
+  /* Botão entrar */
+  .area-login .entrar .botao-entrar {
+    padding: 12px 20px;
+  }
 
-    /* Botão entrar */
-    .area-login .entrar .botao-entrar {
-        padding: 12px 20px;
-    }
-
-    /* Cadastrar */
-    .cadastrar-novo .linha {
-        width: 130px;
-    }
- }
+  /* Cadastrar */
+  .cadastrar-novo .linha {
+    width: 130px;
+  }
+}
 
 /* Large (L) - Laptop */
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
+  .login-container {
+    padding: 0px;
+  }
 
-    .login-container {
-        padding: 0px;
-    }
+  .login-container .imagem-login {
+    display: block;
+  }
 
-    .login-container .imagem-login {
-        display: block;
-    }
+  /* Area de login */
+  .login-container .area-login {
+    width: 70%;
+  }
 
-    /* Area de login */
-    .login-container .area-login {
-        width: 70%;
-    }
+  /* inputs */
+  .area-login .interacao-usuario {
+    width: 55%;
+  }
 
-    /* inputs */
-    .area-login .interacao-usuario {
-        width: 55%;
-    }
-
-    /* Cadastrar */
-    .cadastrar-novo .linha {
-        width: 150px;
-    }
+  /* Cadastrar */
+  .cadastrar-novo .linha {
+    width: 150px;
+  }
 }
 
 /* Extra large (xl): Desktop */
 @media (min-width: 1200px) {
-    /* inputs */
-    .area-login .interacao-usuario {
-        width: 45%;
-    }
+  /* inputs */
+  .area-login .interacao-usuario {
+    width: 45%;
+  }
 }
 
 /* ==== RESPONSIVIDADE ==== */

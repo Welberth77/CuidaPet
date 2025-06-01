@@ -19,3 +19,13 @@ async function logar() {
     alert(data.message || "Falha ao fazer login");
   }
 }
+
+function toggleSenha(idCampo, btn) {
+  const campo = document.getElementById(idCampo);
+  const mostrar = campo.type === "password";
+
+  campo.type = mostrar ? "text" : "password";
+  btn.innerHTML = mostrar
+    ? "👁️‍🗨️" //'<img src="../css/imagens/olho-de-perto.png" alt="Ocultar senha" style="width: 20px;">'
+    : "😑"; //'<img src="../css/images/olho-fechado.png" alt="Mostrar senha" style="width: 20px;">';
+}
