@@ -1,5 +1,3 @@
-const { link } = require("fs");
-
 const form = document.getElementById("form-cadastrar-usuario");
 
 form.addEventListener("submit", (event) => {
@@ -51,18 +49,36 @@ function checkform() {
       });
   }
 }
-
 function checkInputNomeCompleto(nome) {
-  const nomeRegex = /^[A-Za-zÀ-ÿ\s]+$/;
-  if (nome.value === "" || !nomeRegex.test(nome.value)) {
-    errorInput(nome, "O nome deve conter apenas letras.");
+  const nomeValue = nome.value;
+
+  // Verifica se começa com espaço
+  if (/^\s/.test(nomeValue)) {
+    errorInput(nome, "Não é permitido espaço no início do nome.");
+    return;
+  }
+
+  const nomeSemEspacosExtras = nomeValue.trim();
+  const partesNome = nomeSemEspacosExtras.split(/\s+/).filter(Boolean);
+
+  if (nomeSemEspacosExtras === "") {
+    errorInput(nome, "O nome é obrigatório.");
+  } else if (/\s{2,}/.test(nomeValue)) {
+    errorInput(nome, "Não use múltiplos espaços em sequência.");
+  } else if (partesNome.length < 2) {
+    errorInput(nome, "Digite pelo menos nome e sobrenome.");
+  } else if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nomeSemEspacosExtras)) {
+    errorInput(nome, "Use apenas letras no nome.");
+  } else if (partesNome.some((part) => part.length < 2)) {
+    errorInput(nome, "Cada parte do nome deve ter pelo menos 2 letras.");
   } else {
     nome.parentElement.className = "interacao-usuario-content";
   }
 }
 
 function checkInputEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+  const emailRegex = /^[^\s@]{5,}@[^\s@]+\.[a-zA-Z]{2,}$/;
+
   const dominiosPermitidos = [
     "gmail.com",
     "hotmail.com",
@@ -70,13 +86,21 @@ function checkInputEmail(email) {
     "icloud.com",
     "unit.com.br",
   ];
-  const dominio = email.value.split("@")[1];
 
-  if (
-    email.value === "" ||
-    !emailRegex.test(email.value) ||
-    !dominiosPermitidos.includes(dominio)
-  ) {
+  const emailValue = email.value.trim();
+  const partesEmail = emailValue.split("@");
+  const prefixo = partesEmail[0] || "";
+  const dominio = partesEmail[1];
+
+  if (emailValue === "") {
+    errorInput(email, "O e-mail é obrigatório.");
+  } else if (emailValue.length < 5) {
+    errorInput(email, "O e-mail deve ter no mínimo 5 caracteres.");
+  } else if (!/[a-zA-Z]/.test(prefixo)) {
+    errorInput(email, "O e-mail deve conter pelo menos uma letra antes do @.");
+  } else if (!emailRegex.test(emailValue)) {
+    errorInput(email, "Formato de e-mail inválido.");
+  } else if (!dominiosPermitidos.includes(dominio)) {
     errorInput(email, "Use um e-mail válido (ex: gmail.com, hotmail.com)");
   } else {
     email.parentElement.className = "interacao-usuario-content";
@@ -84,10 +108,20 @@ function checkInputEmail(email) {
 }
 
 function checkInputSenha(senha) {
-  if (senha.value === "") {
+  const senhaValue = senha.value;
+
+  if (senhaValue === "") {
     errorInput(senha, "Preencha uma senha válida.");
-  } else if (senha.value.length < 8) {
-    errorInput(senha, "A senha precisa ter no mínimo 8 caracteres.");
+  } else if (senhaValue.length < 8) {
+    errorInput(senha, "Mínimo 8 caracteres.");
+  } else if (/\s/.test(senhaValue)) {
+    errorInput(senha, "Não pode conter espaços.");
+  } else if (!/[A-Z]/.test(senhaValue)) {
+    errorInput(senha, "Adicione pelo menos uma letra maiúscula.");
+  } else if (!/[a-z]/.test(senhaValue)) {
+    errorInput(senha, "Adicione pelo menos uma letra minúscula.");
+  } else if (!/[0-9]/.test(senhaValue)) {
+    errorInput(senha, "Adicione pelo menos um número.");
   } else {
     senha.parentElement.className = "interacao-usuario-content";
   }
