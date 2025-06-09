@@ -1,99 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaPet - Registrar Medicamento</title>
 
-    <link rel="stylesheet" href="../../static/css/base.css">
-    <link rel="stylesheet" href="../../static/css/header.css">
-    <link rel="stylesheet" href="../../static/css/pages/registrar_medicamento.css">
+    <link rel="stylesheet" href="../../static/css/base.css" />
+    <link rel="stylesheet" href="../../static/css/header.css" />
+    <link
+      rel="stylesheet"
+      href="../../static/css/pages/registrar_medicamento.css"
+    />
     <!-- Ìcone da pata -->
-    <link rel="shortcut icon" href="../../static/css/imagens/favicon-pata.ico" type="image/x-icon">
-</head>
-<body>
+    <link
+      rel="shortcut icon"
+      href="../../static/css/imagens/favicon-pata.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
     <!-- cabeçalho -->
     <header class="cabecalho">
-        <h1 class="logo-cuidapet">
-            <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
-        </h1>
+      <h1 class="logo-cuidapet">
+        <a href="../pagina_principal/pagina_principal.html">CUIDAPET</a>
+      </h1>
 
-        <nav class="navegacao">
-            <ul>
-                <li>
-                    <a href="../pagina_principal/pagina_principal.html">HOME</a>
-                </li>
-                <li>
-                    <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
-                </li>
-            </ul>
-        </nav>
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <a href="../pagina_principal/pagina_principal.html">HOME</a>
+          </li>
+          <li>
+            <a href="../sobre_nos/sobre_nos.html">SOBRE NÓS</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <!-- /cabeçalho -->
 
     <!-- section -->
-    <section class="registrar-medicamento-vacina" id="registrar-medicamento-vacina">
-        <!-- titulo -->
-        <div class="titulo-pagina">
-            <h1>REGISTRAR</h1>
-        </div>
-        <!-- /titulo -->
+    <section
+      class="registrar-medicamento-vacina"
+      id="registrar-medicamento-vacina"
+    >
+      <!-- titulo -->
+      <div class="titulo-pagina">
+        <h1>REGISTRAR</h1>
+      </div>
+      <!-- /titulo -->
 
-        <!-- Conteiner registrar banho -->
-        <div class="container-registrar-medicamento-vacina">
-            <!-- interação usuario -->
-            <form class="interacao-usuario" id="interacao-usuario">
-                <div class="interacao-item">
-                    <label for="selecionarPet">Pet:</label>
-                    <select class="selecionar-pet" id="selecionarPet">
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option value="bob">BOB</option>
-                        <option value="marley">MARLEY</option>
-                    </select>
-                </div>
+      <!-- Conteiner registrar banho -->
+      <div class="container-registrar-medicamento-vacina">
+        <!-- interação usuario -->
+        <form class="interacao-usuario" id="interacao-usuario">
+          <div class="interacao-item">
+            <label for="selecionarPet">Pet:</label>
+            <select class="selecionar-pet" id="selecionarPet">
+              <option value="" disabled selected>Selecione uma opção</option>
+            </select>
+          </div>
 
-                <div class="interacao-item">
-                    <label for="selecionarCategoria">Categoria:</label>
-                    <select name="selecionar-categoria" id="selecionarCategoria">
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option value="medicamento">MEDICAMENTO</option>
-                        <option value="VACINA">VACINA</option>
-                    </select>
-                </div>
+          <div class="interacao-item">
+            <label for="selecionarCategoria">Categoria:</label>
+            <select name="selecionar-categoria" id="selecionarCategoria">
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="medicamento">MEDICAMENTO</option>
+              <option value="VACINA">VACINA</option>
+            </select>
+          </div>
 
-                <div class="interacao-item">
-                    <label for="nomeMedicamentoVacina">Nome:</label>
-                    <input type="text" class="nome-medicamento-vacina" id="nomeMedicamentoVacina" placeholder="Nome do medicamento ou vacina">
-                </div>
+          <div class="interacao-item">
+            <label for="nomeMedicamentoVacina">Nome:</label>
+            <input
+              type="text"
+              class="nome-medicamento-vacina"
+              id="nomeMedicamentoVacina"
+              placeholder="Nome do medicamento ou vacina"
+            />
+          </div>
 
-                <div class="interacao-item">
-                    <label for="dataMedicamentoVacina">Data:</label>
-                    <input type="date" class="data-medicamento-vacina" id="dataMedicamentoVacina">
-                </div>
-        
-                <div class="interacao-item">
-                    <label for="dataProxMedicamentoVacina">Próximo:</label>
-                    <select class="selecionar-prox-medicamento-vacina" id="dataProxMedicamentoVacina">
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option value="7-dias">7 DIAS</option>
-                        <option value="15-dias">15 DIAS</option>
-                        <option value="20-dias">20 DIAS</option>
-                        <option value="30-dias">30 DIAS</option>
-                    </select>
-                </div>
-        
-                <div class="interacao-item">
-                    <label for="observacoes">Observações:</label>
-                    <textarea class="observacoes-medicamento-vacina" id="observacoes" placeholder="Observações"></textarea>
-                </div>
-        
-                <button type="submit" class="salvar">SALVAR</button>
-            </form>
-            <!-- /intereação usuario -->
-        </div>
-        <!-- /container registrar banho -->
+          <div class="interacao-item">
+            <label for="dataMedicamentoVacina">Data:</label>
+            <input
+              type="date"
+              class="data-medicamento-vacina"
+              id="dataMedicamentoVacina"
+            />
+          </div>
+
+          <div class="interacao-item">
+            <label for="dataProxMedicamentoVacina">Próximo:</label>
+            <select
+              class="selecionar-prox-medicamento-vacina"
+              id="dataProxMedicamentoVacina"
+            >
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="7-dias">7 DIAS</option>
+              <option value="15-dias">15 DIAS</option>
+              <option value="20-dias">20 DIAS</option>
+              <option value="30-dias">30 DIAS</option>
+            </select>
+          </div>
+
+          <div class="interacao-item">
+            <label for="observacoes">Observações:</label>
+            <textarea
+              class="observacoes-medicamento-vacina"
+              id="observacoes"
+              placeholder="Observações"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="salvar">SALVAR</button>
+        </form>
+        <!-- /intereação usuario -->
+      </div>
+      <!-- /container registrar banho -->
     </section>
     <!-- /section -->
-     <script src="../../static/js/registrarMedicamentoEVacina.js"></script>
-</body>
+    <script src="../../static/js/registrarMedicamentoEVacina.js"></script>
+  </body>
 </html>

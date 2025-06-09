@@ -1,120 +1,146 @@
-// Recebendo valores
-const formulario = document.getElementById("interacao-usuario"); 
-const selecionarPet = document.getElementById("selecionarPet"); // select
-const selecionarCategoria = document.getElementById("selecionarCategoria"); // select
-const nomeMedicamentoVacina = document.getElementById("nomeMedicamentoVacina"); // input
-const dataMedicamentoVacina = document.getElementById("dataMedicamentoVacina"); // date
-const dataProxMedicamentoVacina = document.getElementById("dataProxMedicamentoVacina"); // select
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
 
-formulario.addEventListener("submit", (event) => {
-    // So atualiza a página quando o botão for clicado
-    event.preventDefault();
+  if (!token) {
+    alert("Você precisa estar autenticado para acessar essa funcionalidade.");
+    window.location.href = "../login/login.html";
+    return;
+  }
 
-    // Chamando validações
-    checkformulario();
-})
-
-
-// Verificação no select do pet
-function checkSelecionarPet() {
-    const selecionarPetValue = selecionarPet.value;
-
-    if (selecionarPetValue === "") {
-        errorInput(selecionarPet);
-    } else {
-        // Voltando a classe para normal
-        const formularioItem = selecionarPet.parentElement;
-        formularioItem.className = "interacao-item";
-    }
-}
-
-// Verificação em selecionar categoria
-function checkSelecionarCategoria() {
-    const selecionarCategoriaValue = selecionarCategoria.value;
-
-    if (selecionarCategoriaValue === ""){
-        errorInput(selecionarCategoria);
-    } else {
-        const formularioItem = selecionarCategoria.parentElement;
-        formularioItem.className = "interacao-item"
-    }
-}
-
-// Verificação no nome do medicamento ou vacina
-function checkNomeMedicamentoVacina() {
-    const nomeMedicamentoVacinaValue = nomeMedicamentoVacina.value;
-
-    if (nomeMedicamentoVacinaValue === "") {
-        errorInput(nomeMedicamentoVacina);
-    } else {
-        const formularioItem = nomeMedicamentoVacina.parentElement;
-        formularioItem.className = "interacao-item";
-    }
-}
-
-// Verificação da data do medicamento
-function checkDataMedicamentoVacina() {
-    // Recebendo valor como string
-    const dataMedicamentoVacinaValue = dataMedicamentoVacina.value;
-    
-    if (dataMedicamentoVacinaValue === "") {
-        errorInput(dataMedicamentoVacina);
-        return
-    }
-
-    // Recebendo como date
-    const dataMedicamentoVacinaValueDate = new Date(dataMedicamentoVacina.value);
-    const dataAtual = new Date();
-
-    dataAtual.setHours(0, 0, 0, 0);
-
-    if (dataMedicamentoVacinaValueDate > dataAtual){
-        errorInput(dataMedicamentoVacina);
-    } else {
-        const formularioItem = dataMedicamentoVacina.parentElement;
-        formularioItem.className = "interacao-item";
-    }
-}
-
-// Verificação do próximo banho
-function checkDataProxMedicamentoVacina() {
-    const dataProxMedicamentoVacinaValue = dataProxMedicamentoVacina.value;
-
-    if (dataProxMedicamentoVacinaValue === "") {
-        errorInput(dataProxMedicamentoVacina);
-    } else {
-        const formularioItem = dataProxMedicamentoVacina.parentElement;
-        formularioItem.className = "interacao-item";
-    }
-}
-
-
-function errorInput(input) {
-    // Pega o elemento pai do input
-    const formularioItem = input.parentElement;
-
-    formularioItem.className = "interacao-item error";
-}
-
-// Verificação do formulário por completo
-function checkformulario() {
-    // Chamando as verificações
-    checkSelecionarPet();
-    checkSelecionarCategoria();
-    checkNomeMedicamentoVacina();
-    checkDataMedicamentoVacina();
-    checkDataProxMedicamentoVacina();
-
-
-    // Pega todas as divs que tem a classe "input-item"
-    const formularioItems = document.querySelectorAll(".interacao-item");
-    // Verifica se todos os elementos possuem essa classe
-    const isValido = [...formularioItems].every( (item) => {
-        // Se todos elemento tiver essa classe  
-        return item.className === "interacao-item";
+  // Preencher o select de pets
+  fetch("http://localhost:3200/pets", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Erro ao carregar pets");
+      return response.json();
     })
+    .then((data) => {
+      // Garante que `pets` seja um array
+      const pets = Array.isArray(data) ? data : [data];
+
+      console.log("Pets recebidos (formatado):", pets); // Verifique no console
+
+      const selecionarPet = document.getElementById("selecionarPet");
+      selecionarPet.innerHTML =
+        '<option value="" disabled selected>Selecione uma opção</option>';
+
+      if (pets.length === 0) {
+        alert("Nenhum pet encontrado. Cadastre um pet primeiro.");
+        return;
+      }
+
+      pets.forEach((pet) => {
+        const option = document.createElement("option");
+        option.value = pet.id;
+        option.textContent = pet.nome;
+        selecionarPet.appendChild(option);
+      });
+    })
+    .catch((error) => {
+      console.error("Erro ao carregar pets:", error);
+      alert("Erro ao carregar pets. Verifique o console para detalhes.");
+    });
+
+  const formulario = document.getElementById("interacao-usuario");
+
+  formulario.addEventListener("submit", (event) => {
+    event.preventDefault();
+    checkformulario();
 
     if (isValido) {
-        alert("Salvo com sucesso!");
+      const petSelecionado = document.getElementById("selecionarPet").value;
+      const categoriaSelecionada = document.getElementById(
+        "selecionarCategoria"
+      ).value;
+      const nomeMedicamento = document.getElementById(
+        "nomeMedicamentoVacina"
+      ).value;
+      const dataMedicamento = document.getElementById(
+        "dataMedicamentoVacina"
+      ).value;
+      const dataProxima = document.getElementById(
+        "dataProxMedicamentoVacina"
+      ).value;
+      const observacoes = document.getElementById("observacoes").value;
+
+      fetch(`http://localhost:3200/pets/${petSelecionado}/medicamento-vacina`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          categoria: categoriaSelecionada,
+          nomeMedicamentoVacina: nomeMedicamento,
+          dataMedicamentoVacina: dataMedicamento,
+          dataProxMedicamentoVacina: dataProxima,
+          observacoes: observacoes,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            return response.json().then((err) => {
+              throw err;
+            });
+          }
+          return response.json();
+        })
+        .then((data) => {
+          alert(data.message || "Registro salvo com sucesso!");
+          formulario.reset();
+        })
+        .catch((error) => {
+          console.error("Erro ao salvar o registro:", error);
+          alert(error.error || "Erro ao salvar o registro");
+        });
     }
-}
+  });
+
+  let isValido = true;
+  function checkformulario() {
+    isValido = true;
+
+    const petSelecionado = document.getElementById("selecionarPet").value;
+    const categoriaSelecionada = document.getElementById(
+      "selecionarCategoria"
+    ).value;
+    const nomeMedicamentoVacina = document.getElementById(
+      "nomeMedicamentoVacina"
+    );
+    const dataMedicamento = document.getElementById(
+      "dataMedicamentoVacina"
+    ).value;
+    const dataProxima = document.getElementById(
+      "dataProxMedicamentoVacina"
+    ).value;
+
+    if (!petSelecionado) {
+      isValido = false;
+      alert("Selecione um pet!");
+    }
+
+    if (!categoriaSelecionada) {
+      isValido = false;
+      alert("Selecione uma categoria!");
+    }
+
+    if (nomeMedicamentoVacina.value.trim() === "") {
+      isValido = false;
+      alert("Nome do medicamento ou vacina é obrigatório!");
+    }
+
+    if (!dataMedicamento) {
+      isValido = false;
+      alert("Data é obrigatória!");
+    }
+
+    if (!dataProxima) {
+      isValido = false;
+      alert("Próxima data é obrigatória!");
+    }
+  }
+});
