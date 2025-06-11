@@ -259,5 +259,13 @@
     </footer>
     <script src="../../static/js/logout.js"></script>
     <!-- /Rodapé -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          window.location.href = "../../../index.html";
+        }
+      });
+    </script>
   </body>
 </html>

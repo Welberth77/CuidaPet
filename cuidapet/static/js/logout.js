@@ -1,4 +1,6 @@
 function logout() {
   localStorage.removeItem("token");
-  window.location.href = "../../../index.html"; // Redireciona para a página de login
+  localStorage.removeItem("user");
+  // Substitui o estado atual no histórico para evitar o "Voltar"
+  window.location.replace("../../../index.html");
 }

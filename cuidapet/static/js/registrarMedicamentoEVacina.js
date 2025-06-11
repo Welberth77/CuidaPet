@@ -1,146 +1,119 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const token = localStorage.getItem("token");
+// Recebendo valores
+const formulario = document.getElementById("interacao-usuario");
+const selecionarPet = document.getElementById("selecionarPet"); // select
+const selecionarCategoria = document.getElementById("selecionarCategoria"); // select
+const nomeMedicamentoVacina = document.getElementById("nomeMedicamentoVacina"); // input
+const dataMedicamentoVacina = document.getElementById("dataMedicamentoVacina"); // date
+const dataProxMedicamentoVacina = document.getElementById(
+  "dataProxMedicamentoVacina"
+); // select
 
-  if (!token) {
-    alert("Você precisa estar autenticado para acessar essa funcionalidade.");
-    window.location.href = "../login/login.html";
+formulario.addEventListener("submit", (event) => {
+  // So atualiza a página quando o botão for clicado
+  event.preventDefault();
+
+  // Chamando validações
+  checkformulario();
+});
+
+// Verificação no select do pet
+function checkSelecionarPet() {
+  const selecionarPetValue = selecionarPet.value;
+
+  if (selecionarPetValue === "") {
+    errorInput(selecionarPet);
+  } else {
+    // Voltando a classe para normal
+    const formularioItem = selecionarPet.parentElement;
+    formularioItem.className = "interacao-item";
+  }
+}
+
+// Verificação em selecionar categoria
+function checkSelecionarCategoria() {
+  const selecionarCategoriaValue = selecionarCategoria.value;
+
+  if (selecionarCategoriaValue === "") {
+    errorInput(selecionarCategoria);
+  } else {
+    const formularioItem = selecionarCategoria.parentElement;
+    formularioItem.className = "interacao-item";
+  }
+}
+
+// Verificação no nome do medicamento ou vacina
+function checkNomeMedicamentoVacina() {
+  const nomeMedicamentoVacinaValue = nomeMedicamentoVacina.value;
+
+  if (nomeMedicamentoVacinaValue === "") {
+    errorInput(nomeMedicamentoVacina);
+  } else {
+    const formularioItem = nomeMedicamentoVacina.parentElement;
+    formularioItem.className = "interacao-item";
+  }
+}
+
+// Verificação da data do medicamento
+function checkDataMedicamentoVacina() {
+  // Recebendo valor como string
+  const dataMedicamentoVacinaValue = dataMedicamentoVacina.value;
+
+  if (dataMedicamentoVacinaValue === "") {
+    errorInput(dataMedicamentoVacina);
     return;
   }
 
-  // Preencher o select de pets
-  fetch("http://localhost:3200/pets", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      if (!response.ok) throw new Error("Erro ao carregar pets");
-      return response.json();
-    })
-    .then((data) => {
-      // Garante que `pets` seja um array
-      const pets = Array.isArray(data) ? data : [data];
+  // Recebendo como date
+  const dataMedicamentoVacinaValueDate = new Date(dataMedicamentoVacina.value);
+  const dataAtual = new Date();
 
-      console.log("Pets recebidos (formatado):", pets); // Verifique no console
+  dataAtual.setHours(0, 0, 0, 0);
 
-      const selecionarPet = document.getElementById("selecionarPet");
-      selecionarPet.innerHTML =
-        '<option value="" disabled selected>Selecione uma opção</option>';
+  if (dataMedicamentoVacinaValueDate > dataAtual) {
+    errorInput(dataMedicamentoVacina);
+  } else {
+    const formularioItem = dataMedicamentoVacina.parentElement;
+    formularioItem.className = "interacao-item";
+  }
+}
 
-      if (pets.length === 0) {
-        alert("Nenhum pet encontrado. Cadastre um pet primeiro.");
-        return;
-      }
+// Verificação do próximo banho
+function checkDataProxMedicamentoVacina() {
+  const dataProxMedicamentoVacinaValue = dataProxMedicamentoVacina.value;
 
-      pets.forEach((pet) => {
-        const option = document.createElement("option");
-        option.value = pet.id;
-        option.textContent = pet.nome;
-        selecionarPet.appendChild(option);
-      });
-    })
-    .catch((error) => {
-      console.error("Erro ao carregar pets:", error);
-      alert("Erro ao carregar pets. Verifique o console para detalhes.");
-    });
+  if (dataProxMedicamentoVacinaValue === "") {
+    errorInput(dataProxMedicamentoVacina);
+  } else {
+    const formularioItem = dataProxMedicamentoVacina.parentElement;
+    formularioItem.className = "interacao-item";
+  }
+}
 
-  const formulario = document.getElementById("interacao-usuario");
+function errorInput(input) {
+  // Pega o elemento pai do input
+  const formularioItem = input.parentElement;
 
-  formulario.addEventListener("submit", (event) => {
-    event.preventDefault();
-    checkformulario();
+  formularioItem.className = "interacao-item error";
+}
 
-    if (isValido) {
-      const petSelecionado = document.getElementById("selecionarPet").value;
-      const categoriaSelecionada = document.getElementById(
-        "selecionarCategoria"
-      ).value;
-      const nomeMedicamento = document.getElementById(
-        "nomeMedicamentoVacina"
-      ).value;
-      const dataMedicamento = document.getElementById(
-        "dataMedicamentoVacina"
-      ).value;
-      const dataProxima = document.getElementById(
-        "dataProxMedicamentoVacina"
-      ).value;
-      const observacoes = document.getElementById("observacoes").value;
+// Verificação do formulário por completo
+function checkformulario() {
+  // Chamando as verificações
+  checkSelecionarPet();
+  checkSelecionarCategoria();
+  checkNomeMedicamentoVacina();
+  checkDataMedicamentoVacina();
+  checkDataProxMedicamentoVacina();
 
-      fetch(`http://localhost:3200/pets/${petSelecionado}/medicamento-vacina`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({
-          categoria: categoriaSelecionada,
-          nomeMedicamentoVacina: nomeMedicamento,
-          dataMedicamentoVacina: dataMedicamento,
-          dataProxMedicamentoVacina: dataProxima,
-          observacoes: observacoes,
-        }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            return response.json().then((err) => {
-              throw err;
-            });
-          }
-          return response.json();
-        })
-        .then((data) => {
-          alert(data.message || "Registro salvo com sucesso!");
-          formulario.reset();
-        })
-        .catch((error) => {
-          console.error("Erro ao salvar o registro:", error);
-          alert(error.error || "Erro ao salvar o registro");
-        });
-    }
+  // Pega todas as divs que tem a classe "input-item"
+  const formularioItems = document.querySelectorAll(".interacao-item");
+  // Verifica se todos os elementos possuem essa classe
+  const isValido = [...formularioItems].every((item) => {
+    // Se todos elemento tiver essa classe
+    return item.className === "interacao-item";
   });
 
-  let isValido = true;
-  function checkformulario() {
-    isValido = true;
-
-    const petSelecionado = document.getElementById("selecionarPet").value;
-    const categoriaSelecionada = document.getElementById(
-      "selecionarCategoria"
-    ).value;
-    const nomeMedicamentoVacina = document.getElementById(
-      "nomeMedicamentoVacina"
-    );
-    const dataMedicamento = document.getElementById(
-      "dataMedicamentoVacina"
-    ).value;
-    const dataProxima = document.getElementById(
-      "dataProxMedicamentoVacina"
-    ).value;
-
-    if (!petSelecionado) {
-      isValido = false;
-      alert("Selecione um pet!");
-    }
-
-    if (!categoriaSelecionada) {
-      isValido = false;
-      alert("Selecione uma categoria!");
-    }
-
-    if (nomeMedicamentoVacina.value.trim() === "") {
-      isValido = false;
-      alert("Nome do medicamento ou vacina é obrigatório!");
-    }
-
-    if (!dataMedicamento) {
-      isValido = false;
-      alert("Data é obrigatória!");
-    }
-
-    if (!dataProxima) {
-      isValido = false;
-      alert("Próxima data é obrigatória!");
-    }
+  if (isValido) {
+    alert("Salvo com sucesso!");
   }
-});
+}

@@ -10,8 +10,6 @@ const authenticatemiddleware = require("./middlewares/authenticate");
 
 const petController = require("./controllers/petcontroller");
 
-const medicamentoVacinaController = require("./controllers/medicamentoVacinaController");
-
 const app = express();
 
 app.use(cors());
@@ -23,8 +21,6 @@ app.use("/auth", authcontroller);
 app.use("/admin", authenticatemiddleware, admincontroller);
 
 app.use("/pets", petController);
-
-app.use("/pets", medicamentoVacinaController);
 
 app.get("/", (req, res) => {
   return res.json({
