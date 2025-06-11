@@ -44,23 +44,11 @@
           <div class="interacao-usuario">
             <h2 class="titulo-interacao">ENTRE COM SUA CONTA CUIDAPET</h2>
 
-            <form
-              class="input-container"
-              id="login-form"
-              method="POST"
-              onsubmit="logar(); return false;"
-            >
+            <form class="input-container" id="login-form" onsubmit="logar(); return false;" method="POST">
               <!--Input e-mail -->
               <div class="inputs-usuario">
                 <label for="input-e-mail">E-mail:</label>
-                <input
-                  type="email"
-                  class="input-e-mail"
-                  placeholder="E-mail"
-                  id="e-mail"
-                  name="email"
-                  required
-                />
+                <input type="email" class="input-e-mail" placeholder="E-mail" id="e-mail" name="email" required/>
               </div>
               <!-- /Input e-mail -->
 
@@ -68,34 +56,12 @@
               <div class="inputs-usuario">
                 <label for="input-senha">Senha:</label>
                 <input
-                  type="password"
-                  class="input-senha"
-                  placeholder="Senha"
-                  id="senha"
-                  name="password"
-                  required
-                />
-              </div>
+                  type="password" class="input-senha" placeholder="Senha" id="senha" name="password" required/>
 
-              <div
-                class="interacao-usuario-content"
-                style="position: relative"
-                si
-              >
-                <button
-                  type="button"
-                  onclick="toggleSenha('senha', this)"
-                  class="btn-toggle-senha"
-                  title="Mostrar senha"
-                >
-                  <img
-                    src="cuidapet/static/css/imagens/olho-fechado.png"
-                    alt="Mostrar senha"
-                  />
-                </button>
+                <!-- Botão de olho senha -->
+                <!-- <button type="button" onclick="toggleSenha('senha', this)" class="olho-senha" title="Mostrar senha"></button> -->
+                <!-- /Input senha -->
               </div>
-
-              <!-- /Input senha -->
 
               <!-- Botão login -->
               <div class="login">
