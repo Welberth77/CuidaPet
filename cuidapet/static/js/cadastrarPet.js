@@ -77,8 +77,67 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function checkNomePet() {
-    if (nomePet.value === "") errorInput(nomePet);
-    else nomePet.parentElement.className = "input-item";
+    const avisoNomePet = document.getElementById("avisoNomePet");
+
+    // Remove qualquer mensagem de erro anterior
+    if (avisoNomePet) {
+      avisoNomePet.remove();
+    }
+
+    const nomeValue = nomePet.value;
+
+    // Verifica se começa com espaço
+    if (/^\s/.test(nomeValue)) {
+      errorInput(nomePet);
+      const errorMessage = document.createElement("span");
+      errorMessage.id = "avisoNomePet";
+      errorMessage.textContent = "Não é permitido espaço no início do nome.";
+      errorMessage.style.color = "red";
+      nomePet.parentElement.appendChild(errorMessage);
+      return;
+    }
+
+    const nomeSemEspacosExtras = nomeValue.trim();
+    const partesNome = nomeSemEspacosExtras.split(/\s+/).filter(Boolean);
+
+    // Verifica se o nome está vazio
+    if (nomeSemEspacosExtras === "") {
+      errorInput(nomePet);
+      const errorMessage = document.createElement("span");
+      errorMessage.id = "avisoNomePet";
+      errorMessage.textContent = "O nome é obrigatório.";
+      errorMessage.style.color = "red";
+      nomePet.parentElement.appendChild(errorMessage);
+    }
+    // Verifica se existem espaços múltiplos
+    else if (/\s{2,}/.test(nomeValue)) {
+      errorInput(nomePet);
+      const errorMessage = document.createElement("span");
+      errorMessage.id = "avisoNomePet";
+      errorMessage.textContent = "Não use múltiplos espaços em sequência.";
+      errorMessage.style.color = "red";
+      nomePet.parentElement.appendChild(errorMessage);
+    }
+    // Verifica o comprimento mínimo de 2 caracteres
+    else if (nomeSemEspacosExtras.length < 2) {
+      errorInput(nomePet);
+      const errorMessage = document.createElement("span");
+      errorMessage.id = "avisoNomePet";
+      errorMessage.textContent = "O nome deve ter pelo menos 2 caracteres.";
+      errorMessage.style.color = "red";
+      nomePet.parentElement.appendChild(errorMessage);
+    }
+    // Verifica se o nome contém apenas letras e espaços
+    else if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nomeSemEspacosExtras)) {
+      errorInput(nomePet);
+      const errorMessage = document.createElement("span");
+      errorMessage.id = "avisoNomePet";
+      errorMessage.textContent = "Use apenas letras no nome.";
+      errorMessage.style.color = "red";
+      nomePet.parentElement.appendChild(errorMessage);
+    } else {
+      nomePet.parentElement.className = "input-item";
+    }
   }
 
   function checkEspeciePet() {
