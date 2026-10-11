@@ -42,7 +42,7 @@ export default function Login() {
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
         <div>
           <label className="rotulo" htmlFor="email">E-mail</label>
-          <input id="email" type="email" className="campo" placeholder="voce@email.com"
+          <input id="email" type="email" className="campo" placeholder="voce@e-mail.com"
             autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>

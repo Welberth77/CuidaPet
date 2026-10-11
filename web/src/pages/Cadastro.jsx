@@ -64,7 +64,7 @@ export default function Cadastro() {
           <label className="rotulo" htmlFor="email">E-mail</label>
           <input id="email" type="email" autoComplete="email"
             className={"campo " + (erros.email ? "campo-erro" : "")}
-            placeholder="voce@email.com" value={form.email} onChange={(e) => set("email", e.target.value)} />
+            placeholder="voce@e-mail.com" value={form.email} onChange={(e) => set("email", e.target.value)} />
           {erros.email && <p className="mt-1 text-xs font-medium text-red-600">{erros.email}</p>}
         </div>
         <div>
