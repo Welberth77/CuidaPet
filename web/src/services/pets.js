@@ -11,6 +11,11 @@ function limpar(dados) {
     out.peso = Number(out.peso);
   }
   if (out.nascimento === "") out.nascimento = null;
+  // Se nao houver foto, nao envia o campo (assim o cadastro funciona mesmo
+  // antes de rodar o storage.sql que cria a coluna foto_url).
+  if (out.foto_url === "" || out.foto_url === undefined || out.foto_url === null) {
+    delete out.foto_url;
+  }
   return out;
 }
 

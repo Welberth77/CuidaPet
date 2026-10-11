@@ -72,16 +72,15 @@ export default function FormPet() {
 
   function validar() {
     const e = {};
+    // Obrigatorios: apenas nome e especie
     if (!form.nome.trim()) e.nome = true;
     if (!form.especie) e.especie = true;
-    if (!form.raca) e.raca = true;
-    if (!form.sexo) e.sexo = true;
-    const peso = parseFloat(form.peso);
-    if (!form.peso || isNaN(peso) || peso < 0.1 || peso > 99) e.peso = true;
-    if (!form.nascimento) e.nascimento = true;
-    else if (new Date(form.nascimento) > new Date()) e.nascimento = true;
-    if (!form.cor) e.cor = true;
-    if (!form.pelagem) e.pelagem = true;
+    // Opcionais, mas validados quando preenchidos
+    if (form.peso) {
+      const peso = parseFloat(form.peso);
+      if (isNaN(peso) || peso < 0.1 || peso > 99) e.peso = true;
+    }
+    if (form.nascimento && new Date(form.nascimento) > new Date()) e.nascimento = true;
     setErros(e);
     return Object.keys(e).length === 0;
   }
@@ -162,38 +161,38 @@ export default function FormPet() {
             </select>
           </Campo>
 
-          <Campo rotulo="Raça" erro={erros.raca}>
+          <Campo rotulo="Raça (opcional)" erro={erros.raca}>
             <select className={cls(erros.raca)} value={form.raca} disabled={!form.especie} onChange={(e) => set("raca", e.target.value)}>
               <option value="">{form.especie ? "Selecione" : "Escolha a espécie antes"}</option>
               {racas.map((r) => <option key={r} value={r.toLowerCase()}>{r}</option>)}
             </select>
           </Campo>
 
-          <Campo rotulo="Sexo" erro={erros.sexo}>
+          <Campo rotulo="Sexo (opcional)" erro={erros.sexo}>
             <select className={cls(erros.sexo)} value={form.sexo} onChange={(e) => set("sexo", e.target.value)}>
               <option value="">Selecione</option>
               {SEXOS.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </Campo>
 
-          <Campo rotulo="Peso (kg)" erro={erros.peso}>
+          <Campo rotulo="Peso em kg (opcional)" erro={erros.peso}>
             <input type="number" step="0.1" min="0" className={cls(erros.peso)} value={form.peso}
               onChange={(e) => set("peso", e.target.value)} placeholder="Ex.: 12.5" />
           </Campo>
 
-          <Campo rotulo="Data de nascimento" erro={erros.nascimento}>
+          <Campo rotulo="Data de nascimento (opcional)" erro={erros.nascimento}>
             <input type="date" max={new Date().toISOString().split("T")[0]}
               className={cls(erros.nascimento)} value={form.nascimento} onChange={(e) => set("nascimento", e.target.value)} />
           </Campo>
 
-          <Campo rotulo="Cor da pelagem" erro={erros.cor}>
+          <Campo rotulo="Cor da pelagem (opcional)" erro={erros.cor}>
             <select className={cls(erros.cor)} value={form.cor} disabled={!form.especie} onChange={(e) => set("cor", e.target.value)}>
               <option value="">{form.especie ? "Selecione" : "Escolha a espécie antes"}</option>
               {cores.map((c) => <option key={c} value={c.toLowerCase()}>{c}</option>)}
             </select>
           </Campo>
 
-          <Campo rotulo="Tipo de pelagem" erro={erros.pelagem}>
+          <Campo rotulo="Tipo de pelagem (opcional)" erro={erros.pelagem}>
             <select className={cls(erros.pelagem)} value={form.pelagem} onChange={(e) => set("pelagem", e.target.value)}>
               <option value="">Selecione</option>
               {PELAGENS.map((p) => <option key={p} value={p.toLowerCase()}>{p}</option>)}
@@ -222,7 +221,7 @@ function Campo({ rotulo, erro, children }) {
     <div>
       <label className="rotulo">{rotulo}</label>
       {children}
-      {erro && <p className="mt-1 text-xs font-medium text-red-600">Campo obrigatório ou inválido.</p>}
+      {erro && <p className="mt-1 text-xs font-medium text-red-600">Verifique este campo.</p>}
     </div>
   );
 }
