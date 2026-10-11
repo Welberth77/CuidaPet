@@ -5,6 +5,7 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 import { useToast } from "../components/ui/Toast.jsx";
 import { TelaCarregando } from "../components/ui/Spinner.jsx";
 import PetAvatar from "../components/art/PetAvatar.jsx";
+import FotoEditor from "../components/ui/FotoEditor.jsx";
 import { criarPet, obterPet, atualizarPet } from "../services/pets.js";
 import { uploadFotoPet } from "../services/storage.js";
 import { ESPECIES, RACAS, CORES, PELAGENS, SEXOS } from "../data/opcoesPet.js";
@@ -30,6 +31,8 @@ export default function FormPet() {
   const [carregando, setCarregando] = useState(editando);
   const [arquivoFoto, setArquivoFoto] = useState(null);
   const [previewFoto, setPreviewFoto] = useState("");
+  const [arquivoOriginal, setArquivoOriginal] = useState(null);
+  const [editorAberto, setEditorAberto] = useState(false);
 
   useEffect(() => {
     if (!editando) return;
@@ -59,13 +62,20 @@ export default function FormPet() {
       toast.erro(`A imagem deve ter no máximo ${MAX_MB} MB.`);
       return;
     }
-    setArquivoFoto(file);
-    setPreviewFoto(URL.createObjectURL(file));
+    setArquivoOriginal(file);
+    setEditorAberto(true);
+  }
+
+  function aoConcluirEdicao(fileRecortado, previewUrl) {
+    setArquivoFoto(fileRecortado);
+    setPreviewFoto(previewUrl);
+    setEditorAberto(false);
   }
 
   function removerFoto() {
     setArquivoFoto(null);
     setPreviewFoto("");
+    setArquivoOriginal(null);
     setForm((f) => ({ ...f, foto_url: "" }));
     if (inputFoto.current) inputFoto.current.value = "";
   }
@@ -122,6 +132,13 @@ export default function FormPet() {
 
   return (
     <Layout>
+      {editorAberto && arquivoOriginal && (
+        <FotoEditor
+          file={arquivoOriginal}
+          onConcluir={aoConcluirEdicao}
+          onCancelar={() => setEditorAberto(false)}
+        />
+      )}
       <h1 className="mb-6 text-2xl font-bold text-marca-900">
         {editando ? "Editar pet" : "Cadastrar novo pet"}
       </h1>
@@ -138,6 +155,11 @@ export default function FormPet() {
               <button type="button" className="btn-secundario px-4 py-2 text-sm" onClick={() => inputFoto.current?.click()}>
                 {fotoAtual ? "Trocar foto" : "Adicionar foto"}
               </button>
+              {arquivoOriginal && (
+                <button type="button" className="btn-secundario px-4 py-2 text-sm" onClick={() => setEditorAberto(true)}>
+                  Ajustar
+                </button>
+              )}
               {fotoAtual && (
                 <button type="button" className="rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50" onClick={removerFoto}>
                   Remover

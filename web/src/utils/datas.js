@@ -36,3 +36,21 @@ export function rotuloPrazo(iso) {
   if (d === 1) return "amanhã";
   return `em ${d} dias`;
 }
+
+
+// Idade a partir da data de nascimento (YYYY-MM-DD) em texto amigavel.
+export function idadeTexto(iso) {
+  if (!iso) return null;
+  const n = new Date(iso + "T00:00:00");
+  if (isNaN(n)) return null;
+  const h = new Date();
+  let anos = h.getFullYear() - n.getFullYear();
+  let meses = h.getMonth() - n.getMonth();
+  if (h.getDate() < n.getDate()) meses--;
+  if (meses < 0) { anos--; meses += 12; }
+  if (anos < 0) return null;
+  if (anos === 0 && meses === 0) return "recém-nascido";
+  if (anos === 0) return `${meses} ${meses === 1 ? "mês" : "meses"}`;
+  if (meses === 0) return `${anos} ${anos === 1 ? "ano" : "anos"}`;
+  return `${anos} ${anos === 1 ? "ano" : "anos"} e ${meses} ${meses === 1 ? "mês" : "meses"}`;
+}

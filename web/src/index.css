@@ -11,6 +11,24 @@
   body {
     @apply font-sans text-marca-900 bg-slate-50;
   }
+
+  /* Corrige o input de data no mobile (iOS/Safari): evita estouro de largura
+     e alinha o conteudo, deixando o campo responsivo dentro do container. */
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 2.75rem;
+  }
+  input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+    margin: 0;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    margin-left: auto;
+    cursor: pointer;
+  }
 }
 
 @layer components {

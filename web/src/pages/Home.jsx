@@ -5,12 +5,13 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 import { useToast } from "../components/ui/Toast.jsx";
 import HeroArt from "../components/art/HeroArt.jsx";
 import EmptyArt from "../components/art/EmptyArt.jsx";
+import PetAvatar from "../components/art/PetAvatar.jsx";
 import { TelaCarregando } from "../components/ui/Spinner.jsx";
 import { IconPaw, IconVaccine, IconBath, IconArrow } from "../components/art/Icons.jsx";
 import { listarPets } from "../services/pets.js";
 import { listarSaude } from "../services/saude.js";
 import { listarBanhoTosa } from "../services/banhoTosa.js";
-import { statusData, rotuloPrazo, formatar } from "../utils/datas.js";
+import { statusData, rotuloPrazo, formatar, idadeTexto } from "../utils/datas.js";
 import Onboarding from "../components/Onboarding.jsx";
 
 export default function Home() {
@@ -104,6 +105,37 @@ export default function Home() {
             <StatCard valor={proximos.length} rotulo="cuidados nos próximos 7 dias" cor="amber" to="/medicamentos-vacinas" />
             <StatCard valor={atrasados.length} rotulo="cuidados atrasados" cor="red" to="/medicamentos-vacinas" />
           </div>
+
+          {/* Seus pets */}
+          <section className="mb-8">
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="text-lg font-bold text-marca-900">Seus pets</h2>
+              <Link to="/meus-pets" className="text-sm font-medium text-marca-500 hover:underline">Ver todos</Link>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {pets.map((p) => {
+                const idade = idadeTexto(p.nascimento);
+                const compartilhado = p.owner_id !== usuario.uid;
+                return (
+                  <Link key={p.id} to="/meus-pets" className="cartao flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-suave">
+                    <PetAvatar especie={p.especie} fotoUrl={p.foto_url} size={56} />
+                    <div className="min-w-0">
+                      <p className="truncate font-semibold text-marca-900">{p.nome}</p>
+                      <p className="truncate text-sm text-slate-500">
+                        {idade || (p.especie === "gato" ? "Gato" : "Cachorro")}
+                      </p>
+                      {compartilhado && (
+                        <span className="mt-1 inline-block rounded-full bg-marca-100 px-2 py-0.5 text-[10px] font-medium text-marca-700">compartilhado</span>
+                      )}
+                    </div>
+                  </Link>
+                );
+              })}
+              <Link to="/pets/novo" className="flex items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-200 p-5 text-sm font-medium text-slate-500 transition hover:border-marca-500/50 hover:text-marca-600">
+                + Cadastrar pet
+              </Link>
+            </div>
+          </section>
 
           {/* Atrasados */}
           {atrasados.length > 0 && (
