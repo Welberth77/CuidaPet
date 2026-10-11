@@ -37,6 +37,11 @@ export async function criarBanhoTosa(ownerId, dados) {
   if (error) throw error;
 }
 
+export async function atualizarBanhoTosa(id, dados) {
+  const { error } = await supabase.from("banho_tosa").update(paraBanco(dados)).eq("id", id);
+  if (error) throw error;
+}
+
 export async function removerBanhoTosa(id) {
   const { error } = await supabase.from("banho_tosa").delete().eq("id", id);
   if (error) throw error;

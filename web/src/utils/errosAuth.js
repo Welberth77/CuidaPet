@@ -5,6 +5,8 @@ export function traduzErroAuth(mensagem = "") {
     return "E-mail ou senha incorretos.";
   if (m.includes("email not confirmed"))
     return "Confirme seu e-mail antes de entrar.";
+  if (m.includes("token has expired") || m.includes("invalid") && m.includes("token") || m.includes("otp"))
+    return "Código inválido ou expirado. Peça um novo.";
   if (m.includes("already registered") || m.includes("already been registered"))
     return "Este e-mail já está cadastrado.";
   if (m.includes("password should be at least"))

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { traduzErroAuth } from "../utils/errosAuth.js";
 import AuthShell from "../components/AuthShell.jsx";
@@ -8,7 +8,7 @@ import Spinner from "../components/ui/Spinner.jsx";
 import { useToast } from "../components/ui/Toast.jsx";
 
 export default function RedefinirSenha() {
-  const { definirNovaSenha } = useAuth();
+  const { usuario, carregando, definirNovaSenha } = useAuth();
   const navigate = useNavigate();
   const toast = useToast();
   const [senha, setSenha] = useState("");
@@ -19,14 +19,8 @@ export default function RedefinirSenha() {
   async function handleSubmit(e) {
     e.preventDefault();
     setErro("");
-    if (senha.length < 6) {
-      setErro("A senha precisa ter no mínimo 6 caracteres.");
-      return;
-    }
-    if (senha !== confirma) {
-      setErro("As senhas não são iguais.");
-      return;
-    }
+    if (senha.length < 6) { setErro("A senha precisa ter no mínimo 6 caracteres."); return; }
+    if (senha !== confirma) { setErro("As senhas não são iguais."); return; }
     setEnviando(true);
     try {
       await definirNovaSenha(senha);
@@ -37,6 +31,27 @@ export default function RedefinirSenha() {
     } finally {
       setEnviando(false);
     }
+  }
+
+  // Enquanto o link de recuperacao e processado
+  if (carregando) {
+    return (
+      <AuthShell titulo="Abrindo o link...">
+        <div className="flex justify-center py-6"><Spinner size={34} /></div>
+      </AuthShell>
+    );
+  }
+
+  // Sem sessao de recuperacao: link invalido/expirado ou aberto direto
+  if (!usuario) {
+    return (
+      <AuthShell titulo="Link inválido ou expirado" subtitulo="Peça um novo link para redefinir sua senha.">
+        <div className="space-y-3">
+          <Link to="/esqueci-senha" className="btn-primario w-full">Pedir novo link</Link>
+          <Link to="/login" className="btn-secundario w-full">Voltar para o login</Link>
+        </div>
+      </AuthShell>
+    );
   }
 
   return (

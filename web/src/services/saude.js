@@ -38,6 +38,11 @@ export async function criarSaude(ownerId, dados) {
   if (error) throw error;
 }
 
+export async function atualizarSaude(id, dados) {
+  const { error } = await supabase.from("saude").update(paraBanco(dados)).eq("id", id);
+  if (error) throw error;
+}
+
 export async function removerSaude(id) {
   const { error } = await supabase.from("saude").delete().eq("id", id);
   if (error) throw error;

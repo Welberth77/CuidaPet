@@ -40,13 +40,20 @@ Para habilitar o compartilhamento de um pet com outro usuario, rode o arquivo
 `pet_shares`, funcoes de apoio e atualiza as politicas de RLS para que o pet
 (e seus registros) fiquem acessiveis ao dono e a quem aceitar o convite.
 
-## 4. Ativar login por e-mail/senha
-1. Vá em **Authentication → Sign In / Providers**.
-2. Confirme que **Email** está habilitado.
-3. **Para o MVP:** em **Authentication → Providers → Email**, desative
-   **"Confirm email"**. Assim o usuário entra direto após se cadastrar,
-   sem precisar confirmar o e-mail. (Se deixar ativado, o app mostra um
-   aviso pedindo a confirmação.)
+## 4. Confirmacao de e-mail por link
+1. Em **Authentication -> Sign In / Providers -> Email**, deixe **"Confirm email" ATIVADO**.
+2. Em **Authentication -> URL Configuration**:
+   - **Site URL:** a URL do app (em dev: `http://localhost:5173`).
+   - **Redirect URLs:** adicione `http://localhost:5173/confirmado` e, em producao,
+     `https://SEU-APP.vercel.app/confirmado`.
+3. Pronto: ao se cadastrar, o usuario recebe um e-mail; ao clicar no link, ele
+   cai na tela `/confirmado` do app, ja confirmado e logado. Nao precisa de SMTP
+   nem de dominio proprio.
+
+> Observacao: o e-mail padrao do Supabase tem limite baixo (bom para testes).
+> Para volume em producao, configure um SMTP proprio em
+> **Authentication -> Emails -> SMTP Settings**.
+
 
 ## 5. Variáveis de ambiente
 Em **Project Settings → API**, copie **Project URL** e a chave **anon public**.

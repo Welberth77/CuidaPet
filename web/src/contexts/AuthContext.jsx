@@ -51,7 +51,10 @@ export function AuthProvider({ children }) {
     const { data, error } = await supabase.auth.signUp({
       email,
       password: senha,
-      options: { data: { nome } },
+      options: {
+        data: { nome },
+        emailRedirectTo: window.location.origin + "/confirmado",
+      },
     });
     if (error) throw error;
     return data; // data.session pode ser null se a confirmacao por e-mail estiver ativa
@@ -65,6 +68,22 @@ export function AuthProvider({ children }) {
 
   async function sair() {
     await supabase.auth.signOut();
+  }
+
+  // Confirmacao de cadastro por codigo (OTP) enviado por e-mail
+  async function confirmarCodigo(email, codigo) {
+    const { data, error } = await supabase.auth.verifyOtp({
+      email,
+      token: codigo,
+      type: "signup",
+    });
+    if (error) throw error;
+    return data;
+  }
+
+  async function reenviarCodigo(email) {
+    const { error } = await supabase.auth.resend({ type: "signup", email });
+    if (error) throw error;
   }
 
   async function resetarSenha(email) {
@@ -88,7 +107,7 @@ export function AuthProvider({ children }) {
     setPerfil((p) => ({ ...p, ...dados }));
   }
 
-  const valor = { usuario, perfil, carregando, cadastrar, entrar, sair, atualizarPerfil, resetarSenha, definirNovaSenha };
+  const valor = { usuario, perfil, carregando, cadastrar, entrar, sair, atualizarPerfil, resetarSenha, definirNovaSenha, confirmarCodigo, reenviarCodigo };
   return <AuthContext.Provider value={valor}>{children}</AuthContext.Provider>;
 }
 

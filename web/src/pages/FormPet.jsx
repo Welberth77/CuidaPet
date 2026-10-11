@@ -203,8 +203,22 @@ export default function FormPet() {
           </Campo>
 
           <Campo rotulo="Data de nascimento (opcional)" erro={erros.nascimento}>
-            <input type="date" max={new Date().toISOString().split("T")[0]}
-              className={cls(erros.nascimento)} value={form.nascimento} onChange={(e) => set("nascimento", e.target.value)} />
+            <div className="flex gap-2">
+              <input type="date" max={new Date().toISOString().split("T")[0]}
+                className={cls(erros.nascimento) + " flex-1"} value={form.nascimento}
+                onChange={(e) => set("nascimento", e.target.value)} />
+              {form.nascimento && (
+                <button type="button" onClick={() => set("nascimento", "")}
+                  className="shrink-0 rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                  Limpar
+                </button>
+              )}
+            </div>
+            {!form.nascimento && (
+              <p className="mt-1 text-xs text-slate-400">
+                Se você não souber a data exata, pode colocar uma data próxima — este campo é opcional.
+              </p>
+            )}
           </Campo>
 
           <Campo rotulo="Cor da pelagem (opcional)" erro={erros.cor}>

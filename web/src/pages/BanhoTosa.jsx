@@ -6,7 +6,7 @@ import { useConfirm } from "../components/ui/Confirm.jsx";
 import { TelaCarregando } from "../components/ui/Spinner.jsx";
 import BadgePrazo from "../components/ui/BadgePrazo.jsx";
 import { listarPets } from "../services/pets.js";
-import { listarBanhoTosa, criarBanhoTosa, removerBanhoTosa } from "../services/banhoTosa.js";
+import { listarBanhoTosa, criarBanhoTosa, atualizarBanhoTosa, removerBanhoTosa } from "../services/banhoTosa.js";
 import { SERVICOS_BANHO } from "../data/opcoesPet.js";
 import { ListaRegistros, Campo, cls, SemPets } from "./MedicamentosVacinas.jsx";
 import { hoje, formatar } from "../utils/datas.js";
@@ -23,6 +23,7 @@ export default function BanhoTosa() {
   const [erros, setErros] = useState({});
   const [enviando, setEnviando] = useState(false);
   const [carregando, setCarregando] = useState(true);
+  const [editandoId, setEditandoId] = useState(null);
 
   async function carregar() {
     try {
@@ -38,6 +39,19 @@ export default function BanhoTosa() {
   useEffect(() => { carregar(); /* eslint-disable-next-line */ }, [usuario]);
 
   function set(c, v) { setForm((f) => ({ ...f, [c]: v })); }
+
+  function editar(r) {
+    setForm({ petId: r.petId || "", servico: r.servico || "", data: r.data || "", proxima: r.proxima || "", observacoes: r.observacoes || "" });
+    setEditandoId(r.id);
+    setErros({});
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function cancelar() {
+    setForm(inicial);
+    setEditandoId(null);
+    setErros({});
+  }
 
   function validar() {
     const e = {};
@@ -55,9 +69,15 @@ export default function BanhoTosa() {
     setEnviando(true);
     try {
       const pet = pets.find((p) => p.id === form.petId);
-      await criarBanhoTosa(usuario.uid, { ...form, petNome: pet?.nome || "" });
-      setForm(inicial);
-      toast.sucesso("Registro salvo!");
+      const dados = { ...form, petNome: pet?.nome || "" };
+      if (editandoId) {
+        await atualizarBanhoTosa(editandoId, dados);
+        toast.sucesso("Registro atualizado!");
+      } else {
+        await criarBanhoTosa(usuario.uid, dados);
+        toast.sucesso("Registro salvo!");
+      }
+      cancelar();
       carregar();
     } catch {
       toast.erro("Não foi possível salvar. Tente novamente.");
@@ -71,6 +91,7 @@ export default function BanhoTosa() {
     if (!ok) return;
     try {
       await removerBanhoTosa(id);
+      if (editandoId === id) cancelar();
       toast.sucesso("Registro removido.");
       carregar();
     } catch {
@@ -88,8 +109,8 @@ export default function BanhoTosa() {
         <SemPets texto="Você precisa ter ao menos um pet para registrar banho e tosa." />
       ) : (
         <div className="grid gap-6 lg:grid-cols-[380px_1fr]">
-          <form onSubmit={handleSubmit} className="cartao h-fit space-y-4" noValidate>
-            <h2 className="font-semibold text-marca-900">Registrar novo</h2>
+          <form onSubmit={handleSubmit} className={"cartao h-fit space-y-4 " + (editandoId ? "ring-2 ring-marca-500/40" : "")} noValidate>
+            <h2 className="font-semibold text-marca-900">{editandoId ? "Editar registro" : "Registrar novo"}</h2>
 
             <Campo rotulo="Pet" erro={erros.petId}>
               <select className={cls(erros.petId)} value={form.petId} onChange={(e) => set("petId", e.target.value)}>
@@ -117,14 +138,21 @@ export default function BanhoTosa() {
               <textarea rows="2" className="campo" value={form.observacoes} onChange={(e) => set("observacoes", e.target.value)} placeholder="Ex.: usar shampoo hipoalergênico" />
             </Campo>
 
-            <button type="submit" className="btn-primario w-full" disabled={enviando}>
-              {enviando ? "Salvando..." : "Salvar registro"}
-            </button>
+            <div className="flex gap-2">
+              <button type="submit" className="btn-primario flex-1" disabled={enviando}>
+                {enviando ? "Salvando..." : editandoId ? "Salvar alterações" : "Salvar registro"}
+              </button>
+              {editandoId && (
+                <button type="button" className="btn-secundario" onClick={cancelar}>Cancelar</button>
+              )}
+            </div>
           </form>
 
           <ListaRegistros
             registros={registros}
+            onEditar={editar}
             onRemover={handleRemover}
+            selecionadoId={editandoId}
             colunas={[
               { titulo: "Serviço", render: (r) => <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-medium text-sky-700">{r.servico}</span> },
               { titulo: "Pet", render: (r) => r.petNome },

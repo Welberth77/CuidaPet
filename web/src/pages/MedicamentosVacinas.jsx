@@ -8,7 +8,7 @@ import { TelaCarregando } from "../components/ui/Spinner.jsx";
 import BadgePrazo from "../components/ui/BadgePrazo.jsx";
 import EmptyArt from "../components/art/EmptyArt.jsx";
 import { listarPets } from "../services/pets.js";
-import { listarSaude, criarSaude, removerSaude } from "../services/saude.js";
+import { listarSaude, criarSaude, atualizarSaude, removerSaude } from "../services/saude.js";
 import { CATEGORIAS_SAUDE } from "../data/opcoesPet.js";
 import { hoje, formatar } from "../utils/datas.js";
 
@@ -24,6 +24,7 @@ export default function MedicamentosVacinas() {
   const [erros, setErros] = useState({});
   const [enviando, setEnviando] = useState(false);
   const [carregando, setCarregando] = useState(true);
+  const [editandoId, setEditandoId] = useState(null);
 
   async function carregar() {
     try {
@@ -39,6 +40,19 @@ export default function MedicamentosVacinas() {
   useEffect(() => { carregar(); /* eslint-disable-next-line */ }, [usuario]);
 
   function set(c, v) { setForm((f) => ({ ...f, [c]: v })); }
+
+  function editar(r) {
+    setForm({ petId: r.petId || "", categoria: r.categoria || "", nome: r.nome || "", data: r.data || "", proxima: r.proxima || "" });
+    setEditandoId(r.id);
+    setErros({});
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function cancelar() {
+    setForm(inicial);
+    setEditandoId(null);
+    setErros({});
+  }
 
   function validar() {
     const e = {};
@@ -57,9 +71,15 @@ export default function MedicamentosVacinas() {
     setEnviando(true);
     try {
       const pet = pets.find((p) => p.id === form.petId);
-      await criarSaude(usuario.uid, { ...form, petNome: pet?.nome || "" });
-      setForm(inicial);
-      toast.sucesso("Registro salvo!");
+      const dados = { ...form, petNome: pet?.nome || "" };
+      if (editandoId) {
+        await atualizarSaude(editandoId, dados);
+        toast.sucesso("Registro atualizado!");
+      } else {
+        await criarSaude(usuario.uid, dados);
+        toast.sucesso("Registro salvo!");
+      }
+      cancelar();
       carregar();
     } catch {
       toast.erro("Não foi possível salvar. Tente novamente.");
@@ -73,6 +93,7 @@ export default function MedicamentosVacinas() {
     if (!ok) return;
     try {
       await removerSaude(id);
+      if (editandoId === id) cancelar();
       toast.sucesso("Registro removido.");
       carregar();
     } catch {
@@ -90,8 +111,8 @@ export default function MedicamentosVacinas() {
         <SemPets texto="Você precisa ter ao menos um pet para registrar vacinas e medicamentos." />
       ) : (
         <div className="grid gap-6 lg:grid-cols-[380px_1fr]">
-          <form onSubmit={handleSubmit} className="cartao h-fit space-y-4" noValidate>
-            <h2 className="font-semibold text-marca-900">Registrar novo</h2>
+          <form onSubmit={handleSubmit} className={"cartao h-fit space-y-4 " + (editandoId ? "ring-2 ring-marca-500/40" : "")} noValidate>
+            <h2 className="font-semibold text-marca-900">{editandoId ? "Editar registro" : "Registrar novo"}</h2>
 
             <Campo rotulo="Pet" erro={erros.petId}>
               <select className={cls(erros.petId)} value={form.petId} onChange={(e) => set("petId", e.target.value)}>
@@ -119,14 +140,21 @@ export default function MedicamentosVacinas() {
               <input type="date" className="campo" value={form.proxima} onChange={(e) => set("proxima", e.target.value)} />
             </Campo>
 
-            <button type="submit" className="btn-primario w-full" disabled={enviando}>
-              {enviando ? "Salvando..." : "Salvar registro"}
-            </button>
+            <div className="flex gap-2">
+              <button type="submit" className="btn-primario flex-1" disabled={enviando}>
+                {enviando ? "Salvando..." : editandoId ? "Salvar alterações" : "Salvar registro"}
+              </button>
+              {editandoId && (
+                <button type="button" className="btn-secundario" onClick={cancelar}>Cancelar</button>
+              )}
+            </div>
           </form>
 
           <ListaRegistros
             registros={registros}
+            onEditar={editar}
             onRemover={handleRemover}
+            selecionadoId={editandoId}
             colunas={[
               { titulo: "Categoria", render: (r) => <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (r.categoria === "Vacina" ? "bg-emerald-100 text-emerald-700" : "bg-marca-100 text-marca-700")}>{r.categoria}</span> },
               { titulo: "Nome", render: (r) => r.nome },
@@ -153,7 +181,7 @@ export function SemPets({ texto }) {
   );
 }
 
-export function ListaRegistros({ registros, onRemover, colunas, vazio }) {
+export function ListaRegistros({ registros, onEditar, onRemover, colunas, vazio, selecionadoId }) {
   if (registros.length === 0) return <div className="cartao text-slate-500">{vazio}</div>;
   return (
     <div className="cartao overflow-x-auto p-0">
@@ -166,9 +194,12 @@ export function ListaRegistros({ registros, onRemover, colunas, vazio }) {
         </thead>
         <tbody>
           {registros.map((r) => (
-            <tr key={r.id} className="border-b border-slate-50 align-top last:border-0 hover:bg-slate-50/60">
+            <tr key={r.id} className={"border-b border-slate-50 align-top last:border-0 hover:bg-slate-50/60 " + (selecionadoId === r.id ? "bg-marca-50" : "")}>
               {colunas.map((c) => <td key={c.titulo} className="px-4 py-3 text-slate-700">{c.render(r)}</td>)}
-              <td className="px-4 py-3 text-right">
+              <td className="whitespace-nowrap px-4 py-3 text-right">
+                {onEditar && (
+                  <button onClick={() => onEditar(r)} className="mr-3 text-xs font-medium text-marca-500 hover:underline">Editar</button>
+                )}
                 <button onClick={() => onRemover(r.id)} className="text-xs font-medium text-red-500 hover:underline">Remover</button>
               </td>
             </tr>
@@ -184,7 +215,7 @@ export function Campo({ rotulo, erro, children }) {
     <div>
       <label className="rotulo">{rotulo}</label>
       {children}
-      {erro && <p className="mt-1 text-xs font-medium text-red-600">Campo obrigatório ou inválido.</p>}
+      {erro && <p className="mt-1 text-xs font-medium text-red-600">Verifique este campo.</p>}
     </div>
   );
 }

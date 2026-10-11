@@ -1,5 +1,5 @@
 import Logo from "./art/Logo.jsx";
-import HeroArt from "./art/HeroArt.jsx";
+import PetScene from "./art/PetScene.jsx";
 
 export default function AuthShell({ titulo, subtitulo, children }) {
   return (
@@ -7,7 +7,7 @@ export default function AuthShell({ titulo, subtitulo, children }) {
       {/* Painel lateral de marca */}
       <div className="relative hidden w-1/2 overflow-hidden bg-gradient-to-br from-marca-500 to-marca-900 lg:flex lg:flex-col lg:justify-center lg:px-14 lg:text-white">
         <Logo tone="light" size={40} className="absolute left-14 top-10 [&_span]:text-2xl" />
-        <HeroArt className="mx-auto w-[80%] max-w-md" />
+        <PetScene className="mx-auto w-[82%] max-w-md" />
         <p className="mx-auto mt-4 max-w-sm text-center text-lg text-white/85">
           Tudo o que você precisa para organizar os cuidados do seu pet em um só lugar.
         </p>

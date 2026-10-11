@@ -7,11 +7,13 @@ import { NotifProvider } from "./contexts/NotifContext.jsx";
 import { ToastProvider } from "./components/ui/Toast.jsx";
 import { ConfirmProvider } from "./components/ui/Confirm.jsx";
 import ConfigNotice from "./components/ConfigNotice.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import { supabaseConfigValido } from "./supabaseClient";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <ErrorBoundary>
     {supabaseConfigValido ? (
       <BrowserRouter>
         <ToastProvider>
@@ -27,5 +29,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     ) : (
       <ConfigNotice />
     )}
+    </ErrorBoundary>
   </React.StrictMode>
 );

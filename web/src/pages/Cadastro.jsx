@@ -39,9 +39,8 @@ export default function Cadastro() {
       if (data.session) {
         navigate("/");
       } else {
-        navigate("/login", {
-          state: { aviso: "Conta criada! Confirme seu e-mail para entrar." },
-        });
+        // Confirmacao por e-mail ativa: avisa para clicar no link
+        navigate("/verifique-email", { state: { email: form.email.trim() } });
       }
     } catch (err) {
       setErroGeral(traduzErroAuth(err.message));
@@ -64,7 +63,7 @@ export default function Cadastro() {
           <label className="rotulo" htmlFor="email">E-mail</label>
           <input id="email" type="email" autoComplete="email"
             className={"campo " + (erros.email ? "campo-erro" : "")}
-            placeholder="voce@e-mail.com" value={form.email} onChange={(e) => set("email", e.target.value)} />
+            placeholder="voce@email.com" value={form.email} onChange={(e) => set("email", e.target.value)} />
           {erros.email && <p className="mt-1 text-xs font-medium text-red-600">{erros.email}</p>}
         </div>
         <div>
