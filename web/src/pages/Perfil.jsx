@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { useToast } from "../components/ui/Toast.jsx";
 
 export default function Perfil() {
   const { usuario, perfil, atualizarPerfil } = useAuth();
+  const toast = useToast();
   const [nome, setNome] = useState("");
   const [editando, setEditando] = useState(false);
   const [salvando, setSalvando] = useState(false);
-  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     setNome(perfil?.nome || usuario?.displayName || "");
@@ -17,11 +18,12 @@ export default function Perfil() {
     e.preventDefault();
     if (!nome.trim()) return;
     setSalvando(true);
-    setMsg("");
     try {
       await atualizarPerfil({ nome: nome.trim() });
       setEditando(false);
-      setMsg("Dados atualizados com sucesso!");
+      toast.sucesso("Dados atualizados com sucesso!");
+    } catch {
+      toast.erro("Não foi possível atualizar. Tente novamente.");
     } finally {
       setSalvando(false);
     }
@@ -41,8 +43,6 @@ export default function Perfil() {
             <p className="text-sm text-slate-500">{usuario?.email}</p>
           </div>
         </div>
-
-        {msg && <p className="mb-4 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700">{msg}</p>}
 
         {editando ? (
           <form onSubmit={handleSalvar} className="space-y-4">
@@ -65,7 +65,7 @@ export default function Perfil() {
             </div>
           </form>
         ) : (
-          <button className="btn-primario" onClick={() => { setEditando(true); setMsg(""); }}>
+          <button className="btn-primario" onClick={() => setEditando(true)}>
             Editar perfil
           </button>
         )}

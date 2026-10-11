@@ -2,15 +2,22 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { useToast } from "../components/ui/Toast.jsx";
+import { useConfirm } from "../components/ui/Confirm.jsx";
+import { TelaCarregando } from "../components/ui/Spinner.jsx";
+import BadgePrazo from "../components/ui/BadgePrazo.jsx";
+import EmptyArt from "../components/art/EmptyArt.jsx";
 import { listarPets } from "../services/pets.js";
 import { listarSaude, criarSaude, removerSaude } from "../services/saude.js";
 import { CATEGORIAS_SAUDE } from "../data/opcoesPet.js";
-import EmptyArt from "../components/art/EmptyArt.jsx";
+import { hoje, formatar } from "../utils/datas.js";
 
 const inicial = { petId: "", categoria: "", nome: "", data: "", proxima: "" };
 
 export default function MedicamentosVacinas() {
   const { usuario } = useAuth();
+  const toast = useToast();
+  const confirmar = useConfirm();
   const [pets, setPets] = useState([]);
   const [registros, setRegistros] = useState([]);
   const [form, setForm] = useState(inicial);
@@ -19,12 +26,16 @@ export default function MedicamentosVacinas() {
   const [carregando, setCarregando] = useState(true);
 
   async function carregar() {
-    const [p, r] = await Promise.all([listarPets(usuario.uid), listarSaude(usuario.uid)]);
-    setPets(p);
-    setRegistros(r);
-    setCarregando(false);
+    try {
+      const [p, r] = await Promise.all([listarPets(usuario.uid), listarSaude(usuario.uid)]);
+      setPets(p);
+      setRegistros(r);
+    } catch {
+      toast.erro("Não foi possível carregar os registros.");
+    } finally {
+      setCarregando(false);
+    }
   }
-
   useEffect(() => { carregar(); /* eslint-disable-next-line */ }, [usuario]);
 
   function set(c, v) { setForm((f) => ({ ...f, [c]: v })); }
@@ -48,24 +59,35 @@ export default function MedicamentosVacinas() {
       const pet = pets.find((p) => p.id === form.petId);
       await criarSaude(usuario.uid, { ...form, petNome: pet?.nome || "" });
       setForm(inicial);
+      toast.sucesso("Registro salvo!");
       carregar();
+    } catch {
+      toast.erro("Não foi possível salvar. Tente novamente.");
     } finally {
       setEnviando(false);
     }
   }
 
   async function handleRemover(id) {
-    if (!confirm("Remover este registro?")) return;
-    await removerSaude(id);
-    carregar();
+    const ok = await confirmar({ titulo: "Remover registro?", mensagem: "Esta ação não pode ser desfeita.", confirmarTexto: "Remover" });
+    if (!ok) return;
+    try {
+      await removerSaude(id);
+      toast.sucesso("Registro removido.");
+      carregar();
+    } catch {
+      toast.erro("Não foi possível remover.");
+    }
   }
 
   return (
     <Layout>
       <h1 className="mb-6 text-2xl font-bold text-marca-900">Medicamentos e Vacinas</h1>
 
-      {!carregando && pets.length === 0 ? (
-        <SemPets />
+      {carregando ? (
+        <TelaCarregando />
+      ) : pets.length === 0 ? (
+        <SemPets texto="Você precisa ter ao menos um pet para registrar vacinas e medicamentos." />
       ) : (
         <div className="grid gap-6 lg:grid-cols-[380px_1fr]">
           <form onSubmit={handleSubmit} className="cartao h-fit space-y-4" noValidate>
@@ -103,15 +125,14 @@ export default function MedicamentosVacinas() {
           </form>
 
           <ListaRegistros
-            carregando={carregando}
             registros={registros}
             onRemover={handleRemover}
             colunas={[
-              { titulo: "Categoria", render: (r) => <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (r.categoria === "Vacina" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700")}>{r.categoria}</span> },
+              { titulo: "Categoria", render: (r) => <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (r.categoria === "Vacina" ? "bg-emerald-100 text-emerald-700" : "bg-marca-100 text-marca-700")}>{r.categoria}</span> },
               { titulo: "Nome", render: (r) => r.nome },
               { titulo: "Pet", render: (r) => r.petNome },
-              { titulo: "Data", render: (r) => formatar(r.data) },
-              { titulo: "Próxima", render: (r) => r.proxima ? formatar(r.proxima) : "-" },
+              { titulo: "Aplicado em", render: (r) => formatar(r.data) },
+              { titulo: "Próxima", render: (r) => <BadgePrazo iso={r.proxima} /> },
             ]}
             vazio="Nenhuma vacina ou medicamento registrado ainda."
           />
@@ -121,19 +142,18 @@ export default function MedicamentosVacinas() {
   );
 }
 
-function SemPets() {
+export function SemPets({ texto }) {
   return (
     <div className="cartao flex flex-col items-center text-center">
       <EmptyArt className="w-56" />
       <p className="mt-2 font-medium text-marca-900">Cadastre um pet primeiro</p>
-      <p className="mt-1 text-sm text-slate-500">Você precisa ter ao menos um pet para registrar vacinas e medicamentos.</p>
+      <p className="mt-1 text-sm text-slate-500">{texto}</p>
       <Link to="/pets/novo" className="btn-primario mt-5">Cadastrar pet</Link>
     </div>
   );
 }
 
-export function ListaRegistros({ carregando, registros, onRemover, colunas, vazio }) {
-  if (carregando) return <p className="text-slate-500">Carregando...</p>;
+export function ListaRegistros({ registros, onRemover, colunas, vazio }) {
   if (registros.length === 0) return <div className="cartao text-slate-500">{vazio}</div>;
   return (
     <div className="cartao overflow-x-auto p-0">
@@ -146,7 +166,7 @@ export function ListaRegistros({ carregando, registros, onRemover, colunas, vazi
         </thead>
         <tbody>
           {registros.map((r) => (
-            <tr key={r.id} className="border-b border-slate-50 last:border-0 hover:bg-slate-50/60">
+            <tr key={r.id} className="border-b border-slate-50 align-top last:border-0 hover:bg-slate-50/60">
               {colunas.map((c) => <td key={c.titulo} className="px-4 py-3 text-slate-700">{c.render(r)}</td>)}
               <td className="px-4 py-3 text-right">
                 <button onClick={() => onRemover(r.id)} className="text-xs font-medium text-red-500 hover:underline">Remover</button>
@@ -169,9 +189,3 @@ export function Campo({ rotulo, erro, children }) {
   );
 }
 export function cls(erro) { return "campo " + (erro ? "campo-erro" : ""); }
-export function hoje() { return new Date().toISOString().split("T")[0]; }
-export function formatar(iso) {
-  if (!iso) return "-";
-  const [a, m, d] = iso.split("-");
-  return d ? `${d}/${m}/${a}` : iso;
-}

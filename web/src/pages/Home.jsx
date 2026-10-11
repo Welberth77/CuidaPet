@@ -1,52 +1,177 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { useToast } from "../components/ui/Toast.jsx";
 import HeroArt from "../components/art/HeroArt.jsx";
-import { IconPaw, IconVaccine, IconBath, IconUser, IconArrow } from "../components/art/Icons.jsx";
-
-const servicos = [
-  { to: "/meus-pets", Icone: IconPaw, titulo: "Meus Pets", desc: "Gerencie as informações dos seus pets em um só lugar." },
-  { to: "/medicamentos-vacinas", Icone: IconVaccine, titulo: "Medicamentos e Vacinas", desc: "Organize vacinas e medicamentos para garantir a saúde do seu pet." },
-  { to: "/banho-tosa", Icone: IconBath, titulo: "Banho e Tosa", desc: "Acompanhe o histórico e registre novos cuidados." },
-  { to: "/perfil", Icone: IconUser, titulo: "Meu Perfil", desc: "Veja e edite as informações da sua conta." },
-];
+import EmptyArt from "../components/art/EmptyArt.jsx";
+import { TelaCarregando } from "../components/ui/Spinner.jsx";
+import { IconPaw, IconVaccine, IconBath, IconArrow } from "../components/art/Icons.jsx";
+import { listarPets } from "../services/pets.js";
+import { listarSaude } from "../services/saude.js";
+import { listarBanhoTosa } from "../services/banhoTosa.js";
+import { statusData, rotuloPrazo, formatar } from "../utils/datas.js";
 
 export default function Home() {
-  const { perfil } = useAuth();
+  const { usuario, perfil } = useAuth();
+  const toast = useToast();
+  const [carregando, setCarregando] = useState(true);
+  const [pets, setPets] = useState([]);
+  const [lembretes, setLembretes] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const [p, saude, banho] = await Promise.all([
+          listarPets(usuario.uid),
+          listarSaude(usuario.uid),
+          listarBanhoTosa(usuario.uid),
+        ]);
+        setPets(p);
+
+        const deSaude = saude
+          .filter((s) => s.proxima)
+          .map((s) => ({ id: "s" + s.id, tipo: s.categoria || "Saúde", titulo: s.nome, pet: s.petNome, data: s.proxima, icone: "vacina" }));
+        const deBanho = banho
+          .filter((b) => b.proxima)
+          .map((b) => ({ id: "b" + b.id, tipo: b.servico || "Banho e Tosa", titulo: b.servico, pet: b.petNome, data: b.proxima, icone: "banho" }));
+
+        const todos = [...deSaude, ...deBanho]
+          .map((l) => ({ ...l, status: statusData(l.data) }))
+          .filter((l) => l.status === "atrasado" || l.status === "proximo")
+          .sort((a, b) => a.data.localeCompare(b.data));
+
+        setLembretes(todos);
+      } catch {
+        toast.erro("Não foi possível carregar seus dados. Tente recarregar a página.");
+      } finally {
+        setCarregando(false);
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [usuario]);
+
   const primeiroNome = (perfil?.nome || "").split(" ")[0];
+  const atrasados = lembretes.filter((l) => l.status === "atrasado");
+  const proximos = lembretes.filter((l) => l.status === "proximo");
 
   return (
     <Layout>
-      <section className="mb-10 grid items-center gap-6 overflow-hidden rounded-2xl bg-gradient-to-br from-marca-500 to-marca-900 px-6 py-10 text-white shadow-suave sm:px-10 md:grid-cols-[1fr_280px]">
+      {/* Hero */}
+      <section className="mb-8 grid items-center gap-6 overflow-hidden rounded-2xl bg-gradient-to-br from-marca-500 to-marca-900 px-6 py-8 text-white shadow-suave sm:px-10 md:grid-cols-[1fr_220px]">
         <div>
-          <h1 className="text-3xl font-bold sm:text-4xl">
-            Olá{primeiroNome ? `, ${primeiroNome}` : ""}! 🐾
-          </h1>
-          <p className="mt-3 max-w-xl text-white/85">
-            Bem-vindo ao CuidaPet. Organize os cuidados dos seus pets, registre vacinas e
-            acompanhe banho e tosa — tudo em um só lugar.
+          <h1 className="text-2xl font-bold sm:text-3xl">Olá{primeiroNome ? `, ${primeiroNome}` : ""}! 🐾</h1>
+          <p className="mt-2 max-w-xl text-white/85">
+            Aqui está um resumo dos cuidados dos seus pets.
           </p>
-          <Link to="/meus-pets" className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 font-semibold text-marca-700 transition hover:bg-white/90">
-            Ver meus pets <IconArrow width="18" height="18" />
-          </Link>
         </div>
-        <HeroArt className="mx-auto hidden w-64 md:block" />
+        <HeroArt className="mx-auto hidden w-48 md:block" />
       </section>
 
-      <h2 className="mb-4 text-xl font-bold text-marca-900">Perfil e serviços</h2>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {servicos.map(({ to, Icone, titulo, desc }) => (
-          <Link key={to} to={to} className="cartao group flex items-start gap-4 transition hover:-translate-y-0.5 hover:shadow-suave">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-marca-500/10 text-marca-500 transition group-hover:bg-marca-500 group-hover:text-white">
-              <Icone />
-            </span>
-            <div>
-              <h3 className="font-semibold text-marca-900">{titulo}</h3>
-              <p className="mt-1 text-sm text-slate-500">{desc}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {carregando ? (
+        <TelaCarregando />
+      ) : pets.length === 0 ? (
+        <div className="cartao flex flex-col items-center text-center">
+          <EmptyArt className="w-56" />
+          <p className="mt-2 font-medium text-marca-900">Comece cadastrando seu primeiro pet</p>
+          <p className="mt-1 text-sm text-slate-500">
+            Depois você poderá registrar vacinas, medicamentos e banhos — e receber lembretes aqui.
+          </p>
+          <Link to="/pets/novo" className="btn-primario mt-5">Cadastrar meu primeiro pet</Link>
+        </div>
+      ) : (
+        <>
+          {/* Stat cards */}
+          <div className="mb-8 grid gap-4 sm:grid-cols-3">
+            <StatCard valor={pets.length} rotulo={pets.length === 1 ? "pet cadastrado" : "pets cadastrados"} cor="marca" to="/meus-pets" />
+            <StatCard valor={proximos.length} rotulo="cuidados nos próximos 7 dias" cor="amber" to="/medicamentos-vacinas" />
+            <StatCard valor={atrasados.length} rotulo="cuidados atrasados" cor="red" to="/medicamentos-vacinas" />
+          </div>
+
+          {/* Atrasados */}
+          {atrasados.length > 0 && (
+            <section className="mb-8">
+              <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-red-700">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-100 text-sm">!</span>
+                Atrasados
+              </h2>
+              <div className="space-y-2">
+                {atrasados.map((l) => <LinhaLembrete key={l.id} l={l} />)}
+              </div>
+            </section>
+          )}
+
+          {/* Próximos */}
+          <section className="mb-8">
+            <h2 className="mb-3 text-lg font-bold text-marca-900">Próximos cuidados</h2>
+            {proximos.length === 0 ? (
+              <div className="cartao text-sm text-slate-500">
+                Nenhum cuidado agendado para os próximos dias. Registre a próxima data ao adicionar
+                uma vacina ou banho para ver os lembretes aqui.
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {proximos.map((l) => <LinhaLembrete key={l.id} l={l} />)}
+              </div>
+            )}
+          </section>
+
+          {/* Atalhos */}
+          <h2 className="mb-3 text-lg font-bold text-marca-900">Ações rápidas</h2>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <Atalho to="/pets/novo" Icone={IconPaw} titulo="Cadastrar pet" />
+            <Atalho to="/medicamentos-vacinas" Icone={IconVaccine} titulo="Registrar vacina" />
+            <Atalho to="/banho-tosa" Icone={IconBath} titulo="Registrar banho" />
+          </div>
+        </>
+      )}
     </Layout>
+  );
+}
+
+function StatCard({ valor, rotulo, cor, to }) {
+  const cores = {
+    marca: "text-marca-500",
+    amber: "text-amber-500",
+    red: "text-red-500",
+  };
+  return (
+    <Link to={to} className="cartao transition hover:-translate-y-0.5 hover:shadow-suave">
+      <div className={"text-4xl font-black " + cores[cor]}>{valor}</div>
+      <div className="mt-1 text-sm text-slate-500">{rotulo}</div>
+    </Link>
+  );
+}
+
+function LinhaLembrete({ l }) {
+  const atrasado = l.status === "atrasado";
+  return (
+    <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3">
+      <div className="flex items-center gap-3">
+        <span className={"flex h-9 w-9 items-center justify-center rounded-lg " + (atrasado ? "bg-red-100 text-red-600" : "bg-amber-100 text-amber-600")}>
+          {l.icone === "banho" ? <IconBath width="18" height="18" /> : <IconVaccine width="18" height="18" />}
+        </span>
+        <div>
+          <p className="font-medium text-marca-900">{l.titulo} <span className="font-normal text-slate-400">· {l.pet}</span></p>
+          <p className="text-xs text-slate-500">{l.tipo}</p>
+        </div>
+      </div>
+      <div className="text-right">
+        <p className="text-sm font-medium text-slate-700">{formatar(l.data)}</p>
+        <p className={"text-xs font-medium " + (atrasado ? "text-red-600" : "text-amber-600")}>{rotuloPrazo(l.data)}</p>
+      </div>
+    </div>
+  );
+}
+
+function Atalho({ to, Icone, titulo }) {
+  return (
+    <Link to={to} className="cartao group flex items-center gap-3 transition hover:-translate-y-0.5 hover:shadow-suave">
+      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-marca-500/10 text-marca-500 transition group-hover:bg-marca-500 group-hover:text-white">
+        <Icone />
+      </span>
+      <span className="font-semibold text-marca-900">{titulo}</span>
+      <IconArrow width="18" height="18" className="ml-auto text-slate-300 group-hover:text-marca-500" />
+    </Link>
   );
 }

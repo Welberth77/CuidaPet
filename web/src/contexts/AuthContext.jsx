@@ -67,6 +67,18 @@ export function AuthProvider({ children }) {
     await supabase.auth.signOut();
   }
 
+  async function resetarSenha(email) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + "/redefinir-senha",
+    });
+    if (error) throw error;
+  }
+
+  async function definirNovaSenha(novaSenha) {
+    const { error } = await supabase.auth.updateUser({ password: novaSenha });
+    if (error) throw error;
+  }
+
   async function atualizarPerfil(dados) {
     if (!usuario) return;
     await supabase.from("profiles").update(dados).eq("id", usuario.uid);
@@ -76,7 +88,7 @@ export function AuthProvider({ children }) {
     setPerfil((p) => ({ ...p, ...dados }));
   }
 
-  const valor = { usuario, perfil, carregando, cadastrar, entrar, sair, atualizarPerfil };
+  const valor = { usuario, perfil, carregando, cadastrar, entrar, sair, atualizarPerfil, resetarSenha, definirNovaSenha };
   return <AuthContext.Provider value={valor}>{children}</AuthContext.Provider>;
 }
 

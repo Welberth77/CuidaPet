@@ -1,8 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import { TelaCarregando } from "./components/ui/Spinner.jsx";
 import Login from "./pages/Login.jsx";
 import Cadastro from "./pages/Cadastro.jsx";
+import EsqueciSenha from "./pages/EsqueciSenha.jsx";
+import RedefinirSenha from "./pages/RedefinirSenha.jsx";
 import Home from "./pages/Home.jsx";
 import MeusPets from "./pages/MeusPets.jsx";
 import FormPet from "./pages/FormPet.jsx";
@@ -15,73 +18,28 @@ export default function App() {
 
   if (carregando) {
     return (
-      <div className="flex min-h-screen items-center justify-center text-marca-500">
-        Carregando...
+      <div className="flex min-h-screen items-center justify-center">
+        <TelaCarregando />
       </div>
     );
   }
+
+  const protegida = (el) => <ProtectedRoute>{el}</ProtectedRoute>;
 
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Cadastro />} />
+      <Route path="/esqueci-senha" element={<EsqueciSenha />} />
+      <Route path="/redefinir-senha" element={<RedefinirSenha />} />
 
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/meus-pets"
-        element={
-          <ProtectedRoute>
-            <MeusPets />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/pets/novo"
-        element={
-          <ProtectedRoute>
-            <FormPet />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/pets/:id/editar"
-        element={
-          <ProtectedRoute>
-            <FormPet />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/medicamentos-vacinas"
-        element={
-          <ProtectedRoute>
-            <MedicamentosVacinas />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/banho-tosa"
-        element={
-          <ProtectedRoute>
-            <BanhoTosa />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/perfil"
-        element={
-          <ProtectedRoute>
-            <Perfil />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/" element={protegida(<Home />)} />
+      <Route path="/meus-pets" element={protegida(<MeusPets />)} />
+      <Route path="/pets/novo" element={protegida(<FormPet />)} />
+      <Route path="/pets/:id/editar" element={protegida(<FormPet />)} />
+      <Route path="/medicamentos-vacinas" element={protegida(<MedicamentosVacinas />)} />
+      <Route path="/banho-tosa" element={protegida(<BanhoTosa />)} />
+      <Route path="/perfil" element={protegida(<Perfil />)} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { useToast } from "../components/ui/Toast.jsx";
+import { useConfirm } from "../components/ui/Confirm.jsx";
+import { TelaCarregando } from "../components/ui/Spinner.jsx";
 import { listarPets, removerPet } from "../services/pets.js";
 import PetAvatar from "../components/art/PetAvatar.jsx";
 import EmptyArt from "../components/art/EmptyArt.jsx";
+import { formatar } from "../utils/datas.js";
 
 export default function MeusPets() {
   const { usuario } = useAuth();
   const navigate = useNavigate();
+  const toast = useToast();
+  const confirmar = useConfirm();
   const [pets, setPets] = useState([]);
   const [selecionado, setSelecionado] = useState(null);
   const [carregando, setCarregando] = useState(true);
@@ -19,6 +25,8 @@ export default function MeusPets() {
       const lista = await listarPets(usuario.uid);
       setPets(lista);
       setSelecionado((atual) => lista.find((p) => p.id === atual?.id) || lista[0] || null);
+    } catch {
+      toast.erro("Não foi possível carregar seus pets.");
     } finally {
       setCarregando(false);
     }
@@ -30,9 +38,19 @@ export default function MeusPets() {
   }, [usuario]);
 
   async function handleRemover(pet) {
-    if (!confirm(`Remover o pet "${pet.nome}"? Esta ação não pode ser desfeita.`)) return;
-    await removerPet(pet.id);
-    carregar();
+    const ok = await confirmar({
+      titulo: `Remover ${pet.nome}?`,
+      mensagem: "Todos os registros de saúde e banho desse pet também serão apagados. Esta ação não pode ser desfeita.",
+      confirmarTexto: "Remover",
+    });
+    if (!ok) return;
+    try {
+      await removerPet(pet.id);
+      toast.sucesso(`${pet.nome} removido.`);
+      carregar();
+    } catch {
+      toast.erro("Não foi possível remover o pet.");
+    }
   }
 
   return (
@@ -43,7 +61,7 @@ export default function MeusPets() {
       </div>
 
       {carregando ? (
-        <p className="text-slate-500">Carregando...</p>
+        <TelaCarregando />
       ) : pets.length === 0 ? (
         <div className="cartao flex flex-col items-center text-center">
           <EmptyArt className="w-56" />
@@ -96,7 +114,7 @@ export default function MeusPets() {
                 <Info rotulo="Raça" valor={cap(selecionado.raca)} />
                 <Info rotulo="Sexo" valor={selecionado.sexo} />
                 <Info rotulo="Peso" valor={selecionado.peso ? `${selecionado.peso} kg` : "-"} />
-                <Info rotulo="Nascimento" valor={formatarData(selecionado.nascimento)} />
+                <Info rotulo="Nascimento" valor={formatar(selecionado.nascimento)} />
                 <Info rotulo="Cor da pelagem" valor={cap(selecionado.cor)} />
                 <Info rotulo="Pelagem" valor={cap(selecionado.pelagem)} />
               </dl>
@@ -127,11 +145,4 @@ function Info({ rotulo, valor }) {
 function cap(s) {
   if (!s) return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
-function formatarData(iso) {
-  if (!iso) return "-";
-  const [a, m, d] = iso.split("-");
-  if (!d) return iso;
-  return `${d}/${m}/${a}`;
 }

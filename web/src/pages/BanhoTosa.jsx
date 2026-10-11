@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { useToast } from "../components/ui/Toast.jsx";
+import { useConfirm } from "../components/ui/Confirm.jsx";
+import { TelaCarregando } from "../components/ui/Spinner.jsx";
+import BadgePrazo from "../components/ui/BadgePrazo.jsx";
 import { listarPets } from "../services/pets.js";
 import { listarBanhoTosa, criarBanhoTosa, removerBanhoTosa } from "../services/banhoTosa.js";
 import { SERVICOS_BANHO } from "../data/opcoesPet.js";
-import { ListaRegistros, Campo, cls, hoje, formatar } from "./MedicamentosVacinas.jsx";
-import EmptyArt from "../components/art/EmptyArt.jsx";
+import { ListaRegistros, Campo, cls, SemPets } from "./MedicamentosVacinas.jsx";
+import { hoje, formatar } from "../utils/datas.js";
 
 const inicial = { petId: "", servico: "", data: "", proxima: "", observacoes: "" };
 
 export default function BanhoTosa() {
   const { usuario } = useAuth();
+  const toast = useToast();
+  const confirmar = useConfirm();
   const [pets, setPets] = useState([]);
   const [registros, setRegistros] = useState([]);
   const [form, setForm] = useState(inicial);
@@ -20,10 +25,15 @@ export default function BanhoTosa() {
   const [carregando, setCarregando] = useState(true);
 
   async function carregar() {
-    const [p, r] = await Promise.all([listarPets(usuario.uid), listarBanhoTosa(usuario.uid)]);
-    setPets(p);
-    setRegistros(r);
-    setCarregando(false);
+    try {
+      const [p, r] = await Promise.all([listarPets(usuario.uid), listarBanhoTosa(usuario.uid)]);
+      setPets(p);
+      setRegistros(r);
+    } catch {
+      toast.erro("Não foi possível carregar os registros.");
+    } finally {
+      setCarregando(false);
+    }
   }
   useEffect(() => { carregar(); /* eslint-disable-next-line */ }, [usuario]);
 
@@ -47,29 +57,35 @@ export default function BanhoTosa() {
       const pet = pets.find((p) => p.id === form.petId);
       await criarBanhoTosa(usuario.uid, { ...form, petNome: pet?.nome || "" });
       setForm(inicial);
+      toast.sucesso("Registro salvo!");
       carregar();
+    } catch {
+      toast.erro("Não foi possível salvar. Tente novamente.");
     } finally {
       setEnviando(false);
     }
   }
 
   async function handleRemover(id) {
-    if (!confirm("Remover este registro?")) return;
-    await removerBanhoTosa(id);
-    carregar();
+    const ok = await confirmar({ titulo: "Remover registro?", mensagem: "Esta ação não pode ser desfeita.", confirmarTexto: "Remover" });
+    if (!ok) return;
+    try {
+      await removerBanhoTosa(id);
+      toast.sucesso("Registro removido.");
+      carregar();
+    } catch {
+      toast.erro("Não foi possível remover.");
+    }
   }
 
   return (
     <Layout>
       <h1 className="mb-6 text-2xl font-bold text-marca-900">Banho e Tosa</h1>
 
-      {!carregando && pets.length === 0 ? (
-        <div className="cartao flex flex-col items-center text-center">
-          <EmptyArt className="w-56" />
-          <p className="mt-2 font-medium text-marca-900">Cadastre um pet primeiro</p>
-          <p className="mt-1 text-sm text-slate-500">Você precisa ter ao menos um pet para registrar banho e tosa.</p>
-          <Link to="/pets/novo" className="btn-primario mt-5">Cadastrar pet</Link>
-        </div>
+      {carregando ? (
+        <TelaCarregando />
+      ) : pets.length === 0 ? (
+        <SemPets texto="Você precisa ter ao menos um pet para registrar banho e tosa." />
       ) : (
         <div className="grid gap-6 lg:grid-cols-[380px_1fr]">
           <form onSubmit={handleSubmit} className="cartao h-fit space-y-4" noValidate>
@@ -107,14 +123,13 @@ export default function BanhoTosa() {
           </form>
 
           <ListaRegistros
-            carregando={carregando}
             registros={registros}
             onRemover={handleRemover}
             colunas={[
               { titulo: "Serviço", render: (r) => <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-medium text-sky-700">{r.servico}</span> },
               { titulo: "Pet", render: (r) => r.petNome },
-              { titulo: "Data", render: (r) => formatar(r.data) },
-              { titulo: "Próximo", render: (r) => r.proxima ? formatar(r.proxima) : "-" },
+              { titulo: "Feito em", render: (r) => formatar(r.data) },
+              { titulo: "Próximo", render: (r) => <BadgePrazo iso={r.proxima} /> },
               { titulo: "Obs.", render: (r) => r.observacoes || "-" },
             ]}
             vazio="Nenhum banho ou tosa registrado ainda."

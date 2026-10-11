@@ -4,6 +4,7 @@ import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { criarPet, obterPet, atualizarPet } from "../services/pets.js";
 import { ESPECIES, RACAS, CORES, PELAGENS, SEXOS } from "../data/opcoesPet.js";
+import { useToast } from "../components/ui/Toast.jsx";
 
 const inicial = {
   nome: "", especie: "", raca: "", sexo: "", peso: "",
@@ -15,6 +16,7 @@ export default function FormPet() {
   const { id } = useParams();
   const editando = Boolean(id);
   const navigate = useNavigate();
+  const toast = useToast();
 
   const [form, setForm] = useState(inicial);
   const [erros, setErros] = useState({});
@@ -67,10 +69,14 @@ export default function FormPet() {
     try {
       if (editando) {
         await atualizarPet(id, form);
+        toast.sucesso("Pet atualizado!");
       } else {
         await criarPet(usuario.uid, form);
+        toast.sucesso("Pet cadastrado!");
       }
       navigate("/meus-pets");
+    } catch {
+      toast.erro("Não foi possível salvar o pet. Tente novamente.");
     } finally {
       setEnviando(false);
     }

@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { traduzErroAuth } from "../utils/errosAuth.js";
 import AuthShell from "../components/AuthShell.jsx";
+import PasswordInput from "../components/ui/PasswordInput.jsx";
+import Spinner from "../components/ui/Spinner.jsx";
 
 export default function Cadastro() {
   const { cadastrar } = useAuth();
@@ -37,7 +39,6 @@ export default function Cadastro() {
       if (data.session) {
         navigate("/");
       } else {
-        // Confirmacao por e-mail ativa no Supabase
         navigate("/login", {
           state: { aviso: "Conta criada! Confirme seu e-mail para entrar." },
         });
@@ -49,31 +50,40 @@ export default function Cadastro() {
     }
   }
 
-  const campos = [
-    { id: "nome", label: "Nome completo", type: "text", ph: "Seu nome" },
-    { id: "email", label: "E-mail", type: "email", ph: "voce@email.com" },
-    { id: "senha", label: "Senha", type: "password", ph: "Mínimo 6 caracteres" },
-    { id: "confirma", label: "Confirmar senha", type: "password", ph: "Repita a senha" },
-  ];
-
   return (
     <AuthShell titulo="Crie sua conta CuidaPet">
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-        {campos.map((c) => (
-          <div key={c.id}>
-            <label className="rotulo" htmlFor={c.id}>{c.label}</label>
-            <input id={c.id} type={c.type}
-              className={"campo " + (erros[c.id] ? "campo-erro" : "")}
-              placeholder={c.ph} value={form[c.id]}
-              onChange={(e) => set(c.id, e.target.value)} />
-            {erros[c.id] && <p className="mt-1 text-xs font-medium text-red-600">{erros[c.id]}</p>}
-          </div>
-        ))}
+        <div>
+          <label className="rotulo" htmlFor="nome">Nome completo</label>
+          <input id="nome" type="text" autoComplete="name"
+            className={"campo " + (erros.nome ? "campo-erro" : "")}
+            placeholder="Seu nome" value={form.nome} onChange={(e) => set("nome", e.target.value)} />
+          {erros.nome && <p className="mt-1 text-xs font-medium text-red-600">{erros.nome}</p>}
+        </div>
+        <div>
+          <label className="rotulo" htmlFor="email">E-mail</label>
+          <input id="email" type="email" autoComplete="email"
+            className={"campo " + (erros.email ? "campo-erro" : "")}
+            placeholder="voce@email.com" value={form.email} onChange={(e) => set("email", e.target.value)} />
+          {erros.email && <p className="mt-1 text-xs font-medium text-red-600">{erros.email}</p>}
+        </div>
+        <div>
+          <label className="rotulo" htmlFor="senha">Senha</label>
+          <PasswordInput id="senha" value={form.senha} placeholder="Mínimo 6 caracteres"
+            autoComplete="new-password" erro={erros.senha} onChange={(e) => set("senha", e.target.value)} />
+          {erros.senha && <p className="mt-1 text-xs font-medium text-red-600">{erros.senha}</p>}
+        </div>
+        <div>
+          <label className="rotulo" htmlFor="confirma">Confirmar senha</label>
+          <PasswordInput id="confirma" value={form.confirma} placeholder="Repita a senha"
+            autoComplete="new-password" erro={erros.confirma} onChange={(e) => set("confirma", e.target.value)} />
+          {erros.confirma && <p className="mt-1 text-xs font-medium text-red-600">{erros.confirma}</p>}
+        </div>
 
         {erroGeral && <p className="text-sm font-medium text-red-600">{erroGeral}</p>}
 
         <button type="submit" className="btn-primario w-full" disabled={enviando}>
-          {enviando ? "Cadastrando..." : "CADASTRAR"}
+          {enviando ? <><Spinner size={18} className="mr-2 border-white/40 border-t-white" /> Cadastrando...</> : "Cadastrar"}
         </button>
       </form>
 
