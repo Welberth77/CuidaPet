@@ -6,6 +6,7 @@ import Login from "./pages/Login.jsx";
 import Cadastro from "./pages/Cadastro.jsx";
 import EsqueciSenha from "./pages/EsqueciSenha.jsx";
 import RedefinirSenha from "./pages/RedefinirSenha.jsx";
+import Root from "./pages/Root.jsx";
 import Home from "./pages/Home.jsx";
 import MeusPets from "./pages/MeusPets.jsx";
 import FormPet from "./pages/FormPet.jsx";
@@ -33,7 +34,7 @@ export default function App() {
       <Route path="/esqueci-senha" element={<EsqueciSenha />} />
       <Route path="/redefinir-senha" element={<RedefinirSenha />} />
 
-      <Route path="/" element={protegida(<Home />)} />
+      <Route path="/" element={<Root />} />
       <Route path="/meus-pets" element={protegida(<MeusPets />)} />
       <Route path="/pets/novo" element={protegida(<FormPet />)} />
       <Route path="/pets/:id/editar" element={protegida(<FormPet />)} />

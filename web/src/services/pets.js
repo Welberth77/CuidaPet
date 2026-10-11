@@ -1,6 +1,6 @@
 import { supabase } from "../supabaseClient";
 
-const COLUNAS = ["nome", "especie", "raca", "sexo", "peso", "nascimento", "cor", "pelagem", "sobre"];
+const COLUNAS = ["nome", "especie", "raca", "sexo", "peso", "nascimento", "cor", "pelagem", "sobre", "foto_url"];
 
 function limpar(dados) {
   const out = {};

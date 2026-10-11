@@ -84,7 +84,7 @@ export default function MeusPets() {
                   }
                 >
                   <span className="flex items-center gap-2">
-                    <PetAvatar especie={pet.especie} size={28} />
+                    <PetAvatar especie={pet.especie} size={28} fotoUrl={pet.foto_url} />
                     {pet.nome}
                   </span>
                 </button>
@@ -96,7 +96,7 @@ export default function MeusPets() {
             <div className="cartao">
               <div className="mb-4 flex items-start justify-between">
                 <h2 className="flex items-center gap-3 text-xl font-bold text-marca-900">
-                  <PetAvatar especie={selecionado.especie} size={44} />
+                  <PetAvatar especie={selecionado.especie} size={44} fotoUrl={selecionado.foto_url} />
                   {selecionado.nome}
                 </h2>
                 <div className="flex gap-2">

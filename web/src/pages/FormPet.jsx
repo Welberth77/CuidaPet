@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
-import { criarPet, obterPet, atualizarPet } from "../services/pets.js";
-import { ESPECIES, RACAS, CORES, PELAGENS, SEXOS } from "../data/opcoesPet.js";
 import { useToast } from "../components/ui/Toast.jsx";
+import { TelaCarregando } from "../components/ui/Spinner.jsx";
+import PetAvatar from "../components/art/PetAvatar.jsx";
+import { criarPet, obterPet, atualizarPet } from "../services/pets.js";
+import { uploadFotoPet } from "../services/storage.js";
+import { ESPECIES, RACAS, CORES, PELAGENS, SEXOS } from "../data/opcoesPet.js";
 
 const inicial = {
   nome: "", especie: "", raca: "", sexo: "", peso: "",
-  nascimento: "", cor: "", pelagem: "", sobre: "",
+  nascimento: "", cor: "", pelagem: "", sobre: "", foto_url: "",
 };
+
+const MAX_MB = 3;
 
 export default function FormPet() {
   const { usuario } = useAuth();
@@ -17,20 +22,20 @@ export default function FormPet() {
   const editando = Boolean(id);
   const navigate = useNavigate();
   const toast = useToast();
+  const inputFoto = useRef(null);
 
   const [form, setForm] = useState(inicial);
   const [erros, setErros] = useState({});
   const [enviando, setEnviando] = useState(false);
   const [carregando, setCarregando] = useState(editando);
+  const [arquivoFoto, setArquivoFoto] = useState(null);
+  const [previewFoto, setPreviewFoto] = useState("");
 
   useEffect(() => {
     if (!editando) return;
     (async () => {
       const pet = await obterPet(id);
-      if (pet) {
-        const { id: _, ownerId, criadoEm, ...resto } = pet;
-        setForm({ ...inicial, ...resto });
-      }
+      if (pet) setForm({ ...inicial, ...pet });
       setCarregando(false);
     })();
   }, [id, editando]);
@@ -38,12 +43,31 @@ export default function FormPet() {
   function set(campo, valor) {
     setForm((f) => {
       const novo = { ...f, [campo]: valor };
-      if (campo === "especie") {
-        novo.raca = "";
-        novo.cor = "";
-      }
+      if (campo === "especie") { novo.raca = ""; novo.cor = ""; }
       return novo;
     });
+  }
+
+  function escolherFoto(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.erro("Selecione um arquivo de imagem.");
+      return;
+    }
+    if (file.size > MAX_MB * 1024 * 1024) {
+      toast.erro(`A imagem deve ter no máximo ${MAX_MB} MB.`);
+      return;
+    }
+    setArquivoFoto(file);
+    setPreviewFoto(URL.createObjectURL(file));
+  }
+
+  function removerFoto() {
+    setArquivoFoto(null);
+    setPreviewFoto("");
+    setForm((f) => ({ ...f, foto_url: "" }));
+    if (inputFoto.current) inputFoto.current.value = "";
   }
 
   function validar() {
@@ -67,11 +91,20 @@ export default function FormPet() {
     if (!validar()) return;
     setEnviando(true);
     try {
+      let fotoUrl = form.foto_url || "";
+      if (arquivoFoto) {
+        try {
+          fotoUrl = await uploadFotoPet(usuario.uid, arquivoFoto);
+        } catch {
+          toast.erro("Não foi possível enviar a foto; o pet será salvo sem a nova foto.");
+        }
+      }
+      const dados = { ...form, foto_url: fotoUrl };
       if (editando) {
-        await atualizarPet(id, form);
+        await atualizarPet(id, dados);
         toast.sucesso("Pet atualizado!");
       } else {
-        await criarPet(usuario.uid, form);
+        await criarPet(usuario.uid, dados);
         toast.sucesso("Pet cadastrado!");
       }
       navigate("/meus-pets");
@@ -82,12 +115,11 @@ export default function FormPet() {
     }
   }
 
-  if (carregando) {
-    return <Layout><p className="text-slate-500">Carregando...</p></Layout>;
-  }
+  if (carregando) return <Layout><TelaCarregando /></Layout>;
 
   const racas = RACAS[form.especie] || [];
   const cores = CORES[form.especie] || [];
+  const fotoAtual = previewFoto || form.foto_url;
 
   return (
     <Layout>
@@ -96,6 +128,27 @@ export default function FormPet() {
       </h1>
 
       <form onSubmit={handleSubmit} className="cartao max-w-2xl space-y-5" noValidate>
+        {/* Foto de perfil */}
+        <div className="flex items-center gap-5">
+          <div className="relative">
+            <PetAvatar especie={form.especie || "cachorro"} size={88} fotoUrl={fotoAtual} className="border border-slate-200" />
+          </div>
+          <div>
+            <input ref={inputFoto} type="file" accept="image/*" className="hidden" onChange={escolherFoto} />
+            <div className="flex flex-wrap gap-2">
+              <button type="button" className="btn-secundario px-4 py-2 text-sm" onClick={() => inputFoto.current?.click()}>
+                {fotoAtual ? "Trocar foto" : "Adicionar foto"}
+              </button>
+              {fotoAtual && (
+                <button type="button" className="rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50" onClick={removerFoto}>
+                  Remover
+                </button>
+              )}
+            </div>
+            <p className="mt-2 text-xs text-slate-400">JPG ou PNG, até {MAX_MB} MB. Opcional.</p>
+          </div>
+        </div>
+
         <Campo rotulo="Nome do pet" erro={erros.nome}>
           <input className={cls(erros.nome)} value={form.nome}
             onChange={(e) => set("nome", e.target.value)} placeholder="Ex.: Bob" />
@@ -103,24 +156,21 @@ export default function FormPet() {
 
         <div className="grid gap-5 sm:grid-cols-2">
           <Campo rotulo="Espécie" erro={erros.especie}>
-            <select className={cls(erros.especie)} value={form.especie}
-              onChange={(e) => set("especie", e.target.value)}>
+            <select className={cls(erros.especie)} value={form.especie} onChange={(e) => set("especie", e.target.value)}>
               <option value="">Selecione</option>
               {ESPECIES.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
             </select>
           </Campo>
 
           <Campo rotulo="Raça" erro={erros.raca}>
-            <select className={cls(erros.raca)} value={form.raca} disabled={!form.especie}
-              onChange={(e) => set("raca", e.target.value)}>
+            <select className={cls(erros.raca)} value={form.raca} disabled={!form.especie} onChange={(e) => set("raca", e.target.value)}>
               <option value="">{form.especie ? "Selecione" : "Escolha a espécie antes"}</option>
               {racas.map((r) => <option key={r} value={r.toLowerCase()}>{r}</option>)}
             </select>
           </Campo>
 
           <Campo rotulo="Sexo" erro={erros.sexo}>
-            <select className={cls(erros.sexo)} value={form.sexo}
-              onChange={(e) => set("sexo", e.target.value)}>
+            <select className={cls(erros.sexo)} value={form.sexo} onChange={(e) => set("sexo", e.target.value)}>
               <option value="">Selecione</option>
               {SEXOS.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
@@ -133,21 +183,18 @@ export default function FormPet() {
 
           <Campo rotulo="Data de nascimento" erro={erros.nascimento}>
             <input type="date" max={new Date().toISOString().split("T")[0]}
-              className={cls(erros.nascimento)} value={form.nascimento}
-              onChange={(e) => set("nascimento", e.target.value)} />
+              className={cls(erros.nascimento)} value={form.nascimento} onChange={(e) => set("nascimento", e.target.value)} />
           </Campo>
 
           <Campo rotulo="Cor da pelagem" erro={erros.cor}>
-            <select className={cls(erros.cor)} value={form.cor} disabled={!form.especie}
-              onChange={(e) => set("cor", e.target.value)}>
+            <select className={cls(erros.cor)} value={form.cor} disabled={!form.especie} onChange={(e) => set("cor", e.target.value)}>
               <option value="">{form.especie ? "Selecione" : "Escolha a espécie antes"}</option>
               {cores.map((c) => <option key={c} value={c.toLowerCase()}>{c}</option>)}
             </select>
           </Campo>
 
           <Campo rotulo="Tipo de pelagem" erro={erros.pelagem}>
-            <select className={cls(erros.pelagem)} value={form.pelagem}
-              onChange={(e) => set("pelagem", e.target.value)}>
+            <select className={cls(erros.pelagem)} value={form.pelagem} onChange={(e) => set("pelagem", e.target.value)}>
               <option value="">Selecione</option>
               {PELAGENS.map((p) => <option key={p} value={p.toLowerCase()}>{p}</option>)}
             </select>
@@ -156,17 +203,14 @@ export default function FormPet() {
 
         <Campo rotulo="Sobre o pet (opcional)">
           <textarea rows="3" className="campo" value={form.sobre}
-            onChange={(e) => set("sobre", e.target.value)}
-            placeholder="Personalidade, cuidados especiais..." />
+            onChange={(e) => set("sobre", e.target.value)} placeholder="Personalidade, cuidados especiais..." />
         </Campo>
 
         <div className="flex gap-3 pt-2">
           <button type="submit" className="btn-primario" disabled={enviando}>
             {enviando ? "Salvando..." : editando ? "Salvar alterações" : "Cadastrar pet"}
           </button>
-          <button type="button" onClick={() => navigate("/meus-pets")} className="btn-secundario">
-            Cancelar
-          </button>
+          <button type="button" onClick={() => navigate("/meus-pets")} className="btn-secundario">Cancelar</button>
         </div>
       </form>
     </Layout>
@@ -182,7 +226,4 @@ function Campo({ rotulo, erro, children }) {
     </div>
   );
 }
-
-function cls(erro) {
-  return "campo " + (erro ? "campo-erro" : "");
-}
+function cls(erro) { return "campo " + (erro ? "campo-erro" : ""); }

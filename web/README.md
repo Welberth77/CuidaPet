@@ -27,6 +27,13 @@ npm install
 3. Isso cria as tabelas (`profiles`, `pets`, `saude`, `banho_tosa`), ativa a
    segurança por linha (RLS) e o gatilho que cria o perfil no cadastro.
 
+## 3b. Fotos de pet (opcional, mas recomendado)
+Para habilitar o upload de foto do pet, rode também o arquivo
+`supabase/storage.sql` no **SQL Editor**. Ele adiciona a coluna `foto_url`,
+cria o bucket publico `pet-fotos` e as politicas de acesso (cada usuario
+so escreve na propria pasta). Sem isso, o cadastro de pet funciona
+normalmente, apenas sem foto.
+
 ## 4. Ativar login por e-mail/senha
 1. Vá em **Authentication → Sign In / Providers**.
 2. Confirme que **Email** está habilitado.

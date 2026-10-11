@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { useToast } from "../components/ui/Toast.jsx";
@@ -11,10 +11,21 @@ import { listarPets } from "../services/pets.js";
 import { listarSaude } from "../services/saude.js";
 import { listarBanhoTosa } from "../services/banhoTosa.js";
 import { statusData, rotuloPrazo, formatar } from "../utils/datas.js";
+import Onboarding from "../components/Onboarding.jsx";
 
 export default function Home() {
   const { usuario, perfil } = useAuth();
   const toast = useToast();
+  const navigate = useNavigate();
+  const chaveOnb = usuario ? `cuidapet:onboarding:${usuario.uid}` : null;
+  const [mostrarOnb, setMostrarOnb] = useState(() => {
+    try { return chaveOnb ? !localStorage.getItem(chaveOnb) : false; } catch { return false; }
+  });
+
+  function fecharOnb() {
+    try { if (chaveOnb) localStorage.setItem(chaveOnb, "1"); } catch { /* ignore */ }
+    setMostrarOnb(false);
+  }
   const [carregando, setCarregando] = useState(true);
   const [pets, setPets] = useState([]);
   const [lembretes, setLembretes] = useState([]);
@@ -57,6 +68,12 @@ export default function Home() {
 
   return (
     <Layout>
+      {mostrarOnb && (
+        <Onboarding
+          onCadastrar={() => { fecharOnb(); navigate("/pets/novo"); }}
+          onDepois={fecharOnb}
+        />
+      )}
       {/* Hero */}
       <section className="mb-8 grid items-center gap-6 overflow-hidden rounded-2xl bg-gradient-to-br from-marca-500 to-marca-900 px-6 py-8 text-white shadow-suave sm:px-10 md:grid-cols-[1fr_220px]">
         <div>

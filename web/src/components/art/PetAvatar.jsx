@@ -1,9 +1,23 @@
-export default function PetAvatar({ especie = "cachorro", className = "", size = 40 }) {
+export default function PetAvatar({ especie = "cachorro", className = "", size = 40, fotoUrl }) {
+  if (fotoUrl) {
+    return (
+      <img
+        src={fotoUrl}
+        alt=""
+        width={size}
+        height={size}
+        className={"shrink-0 rounded-full object-cover ring-1 ring-black/5 " + className}
+        style={{ width: size, height: size }}
+        loading="lazy"
+      />
+    );
+  }
+
   const gato = especie === "gato";
   const bg = gato ? "#EDE7F6" : "#FDE9D4";
   const cor = gato ? "#6D5BA6" : "#C77D3C";
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" className={className} aria-hidden="true">
+    <svg width={size} height={size} viewBox="0 0 48 48" className={"shrink-0 " + className} aria-hidden="true">
       <circle cx="24" cy="24" r="24" fill={bg} />
       {gato ? (
         <g fill={cor}>
