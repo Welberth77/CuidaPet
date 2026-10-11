@@ -34,6 +34,12 @@ cria o bucket publico `pet-fotos` e as politicas de acesso (cada usuario
 so escreve na propria pasta). Sem isso, o cadastro de pet funciona
 normalmente, apenas sem foto.
 
+## 3c. Compartilhamento de pets (opcional)
+Para habilitar o compartilhamento de um pet com outro usuario, rode o arquivo
+`supabase/compartilhamento.sql` no **SQL Editor**. Ele cria a tabela
+`pet_shares`, funcoes de apoio e atualiza as politicas de RLS para que o pet
+(e seus registros) fiquem acessiveis ao dono e a quem aceitar o convite.
+
 ## 4. Ativar login por e-mail/senha
 1. Vá em **Authentication → Sign In / Providers**.
 2. Confirme que **Email** está habilitado.

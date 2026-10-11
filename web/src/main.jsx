@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
+import { NotifProvider } from "./contexts/NotifContext.jsx";
 import { ToastProvider } from "./components/ui/Toast.jsx";
 import { ConfirmProvider } from "./components/ui/Confirm.jsx";
 import ConfigNotice from "./components/ConfigNotice.jsx";
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ToastProvider>
           <ConfirmProvider>
             <AuthProvider>
-              <App />
+              <NotifProvider>
+                <App />
+              </NotifProvider>
             </AuthProvider>
           </ConfirmProvider>
         </ToastProvider>

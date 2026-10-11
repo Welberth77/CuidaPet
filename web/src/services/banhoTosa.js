@@ -27,7 +27,6 @@ export async function listarBanhoTosa(ownerId) {
   const { data, error } = await supabase
     .from("banho_tosa")
     .select("*")
-    .eq("owner_id", ownerId)
     .order("data", { ascending: false });
   if (error) throw error;
   return (data || []).map(paraTela);

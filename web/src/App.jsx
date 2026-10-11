@@ -13,6 +13,7 @@ import FormPet from "./pages/FormPet.jsx";
 import MedicamentosVacinas from "./pages/MedicamentosVacinas.jsx";
 import BanhoTosa from "./pages/BanhoTosa.jsx";
 import Perfil from "./pages/Perfil.jsx";
+import Notificacoes from "./pages/Notificacoes.jsx";
 
 export default function App() {
   const { carregando } = useAuth();
@@ -41,6 +42,7 @@ export default function App() {
       <Route path="/medicamentos-vacinas" element={protegida(<MedicamentosVacinas />)} />
       <Route path="/banho-tosa" element={protegida(<BanhoTosa />)} />
       <Route path="/perfil" element={protegida(<Perfil />)} />
+      <Route path="/notificacoes" element={protegida(<Notificacoes />)} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

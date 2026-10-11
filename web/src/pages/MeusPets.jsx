@@ -6,8 +6,10 @@ import { useToast } from "../components/ui/Toast.jsx";
 import { useConfirm } from "../components/ui/Confirm.jsx";
 import { TelaCarregando } from "../components/ui/Spinner.jsx";
 import { listarPets, removerPet } from "../services/pets.js";
+import { sairDoCompartilhamento } from "../services/shares.js";
 import PetAvatar from "../components/art/PetAvatar.jsx";
 import EmptyArt from "../components/art/EmptyArt.jsx";
+import CompartilharModal from "../components/CompartilharModal.jsx";
 import { formatar } from "../utils/datas.js";
 
 export default function MeusPets() {
@@ -18,6 +20,9 @@ export default function MeusPets() {
   const [pets, setPets] = useState([]);
   const [selecionado, setSelecionado] = useState(null);
   const [carregando, setCarregando] = useState(true);
+  const [compartilhando, setCompartilhando] = useState(null);
+
+  const ehDono = (pet) => pet && pet.owner_id === usuario.uid;
 
   async function carregar() {
     setCarregando(true);
@@ -32,10 +37,7 @@ export default function MeusPets() {
     }
   }
 
-  useEffect(() => {
-    carregar();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [usuario]);
+  useEffect(() => { carregar(); /* eslint-disable-next-line */ }, [usuario]);
 
   async function handleRemover(pet) {
     const ok = await confirmar({
@@ -53,8 +55,28 @@ export default function MeusPets() {
     }
   }
 
+  async function handleSair(pet) {
+    const ok = await confirmar({
+      titulo: `Sair do compartilhamento?`,
+      mensagem: `Você deixará de ver ${pet.nome} e os cuidados dele. O dono pode te convidar novamente depois.`,
+      confirmarTexto: "Sair",
+    });
+    if (!ok) return;
+    try {
+      await sairDoCompartilhamento(pet.id, usuario.uid);
+      toast.sucesso("Você saiu do compartilhamento.");
+      carregar();
+    } catch {
+      toast.erro("Não foi possível sair do compartilhamento.");
+    }
+  }
+
   return (
     <Layout>
+      {compartilhando && (
+        <CompartilharModal pet={compartilhando} onFechar={() => setCompartilhando(null)} />
+      )}
+
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-marca-900">Meus Pets</h1>
         <Link to="/pets/novo" className="btn-primario">+ Cadastrar pet</Link>
@@ -77,16 +99,17 @@ export default function MeusPets() {
                 <button
                   onClick={() => setSelecionado(pet)}
                   className={
-                    "w-full rounded-lg border px-4 py-3 text-left transition " +
+                    "flex w-full items-center gap-2 rounded-lg border px-4 py-3 text-left transition " +
                     (selecionado?.id === pet.id
                       ? "border-marca-500 bg-marca-500/10 font-semibold text-marca-700"
                       : "border-slate-200 bg-white hover:border-marca-500/50")
                   }
                 >
-                  <span className="flex items-center gap-2">
-                    <PetAvatar especie={pet.especie} size={28} fotoUrl={pet.foto_url} />
-                    {pet.nome}
-                  </span>
+                  <PetAvatar especie={pet.especie} size={28} fotoUrl={pet.foto_url} />
+                  <span className="flex-1 truncate">{pet.nome}</span>
+                  {!ehDono(pet) && (
+                    <span className="rounded-full bg-marca-100 px-2 py-0.5 text-[10px] font-medium text-marca-700">compartilhado</span>
+                  )}
                 </button>
               </li>
             ))}
@@ -94,18 +117,36 @@ export default function MeusPets() {
 
           {selecionado && (
             <div className="cartao">
-              <div className="mb-4 flex items-start justify-between">
-                <h2 className="flex items-center gap-3 text-xl font-bold text-marca-900">
-                  <PetAvatar especie={selecionado.especie} size={44} fotoUrl={selecionado.foto_url} />
-                  {selecionado.nome}
-                </h2>
-                <div className="flex gap-2">
+              <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h2 className="flex items-center gap-3 text-xl font-bold text-marca-900">
+                    <PetAvatar especie={selecionado.especie} size={44} fotoUrl={selecionado.foto_url} />
+                    {selecionado.nome}
+                  </h2>
+                  {!ehDono(selecionado) && (
+                    <span className="mt-2 inline-block rounded-full bg-marca-100 px-2.5 py-0.5 text-xs font-medium text-marca-700">
+                      Compartilhado com você
+                    </span>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {ehDono(selecionado) && (
+                    <button onClick={() => setCompartilhando(selecionado)} className="btn-secundario px-3 py-1.5 text-sm">
+                      Compartilhar
+                    </button>
+                  )}
                   <button onClick={() => navigate(`/pets/${selecionado.id}/editar`)} className="btn-secundario px-3 py-1.5 text-sm">
                     Editar
                   </button>
-                  <button onClick={() => handleRemover(selecionado)} className="rounded-lg border border-red-300 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
-                    Remover
-                  </button>
+                  {ehDono(selecionado) ? (
+                    <button onClick={() => handleRemover(selecionado)} className="rounded-lg border border-red-300 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50">
+                      Remover
+                    </button>
+                  ) : (
+                    <button onClick={() => handleSair(selecionado)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                      Sair
+                    </button>
+                  )}
                 </div>
               </div>
 

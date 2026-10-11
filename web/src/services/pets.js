@@ -20,10 +20,10 @@ function limpar(dados) {
 }
 
 export async function listarPets(ownerId) {
+  // Sem filtro de owner: o RLS retorna os pets do dono + os compartilhados aceitos.
   const { data, error } = await supabase
     .from("pets")
     .select("*")
-    .eq("owner_id", ownerId)
     .order("nome");
   if (error) throw error;
   return data || [];
