@@ -40,6 +40,12 @@ Para habilitar o compartilhamento de um pet com outro usuario, rode o arquivo
 `pet_shares`, funcoes de apoio e atualiza as politicas de RLS para que o pet
 (e seus registros) fiquem acessiveis ao dono e a quem aceitar o convite.
 
+## 3d. Exclusao de conta (opcional)
+Para habilitar o botao "Excluir minha conta" (na tela de Perfil), rode o
+arquivo `supabase/excluir_conta.sql` no **SQL Editor**. Ele cria a funcao
+`excluir_minha_conta()`, que apaga o usuario logado e, em cascata, todos os
+seus dados (pets, saude, banho, compartilhamentos e fotos).
+
 ## 4. Confirmacao de e-mail por link
 1. Em **Authentication -> Sign In / Providers -> Email**, deixe **"Confirm email" ATIVADO**.
 2. Em **Authentication -> URL Configuration**:

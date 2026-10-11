@@ -70,6 +70,12 @@ export function AuthProvider({ children }) {
     await supabase.auth.signOut();
   }
 
+  async function excluirConta() {
+    const { error } = await supabase.rpc("excluir_minha_conta");
+    if (error) throw error;
+    await supabase.auth.signOut();
+  }
+
   // Confirmacao de cadastro por codigo (OTP) enviado por e-mail
   async function confirmarCodigo(email, codigo) {
     const { data, error } = await supabase.auth.verifyOtp({
@@ -107,7 +113,7 @@ export function AuthProvider({ children }) {
     setPerfil((p) => ({ ...p, ...dados }));
   }
 
-  const valor = { usuario, perfil, carregando, cadastrar, entrar, sair, atualizarPerfil, resetarSenha, definirNovaSenha, confirmarCodigo, reenviarCodigo };
+  const valor = { usuario, perfil, carregando, cadastrar, entrar, sair, atualizarPerfil, resetarSenha, definirNovaSenha, confirmarCodigo, reenviarCodigo, excluirConta };
   return <AuthContext.Provider value={valor}>{children}</AuthContext.Provider>;
 }
 

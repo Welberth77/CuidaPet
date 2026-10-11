@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { useToast } from "../components/ui/Toast.jsx";
+import ExcluirContaModal from "../components/ExcluirContaModal.jsx";
 
 export default function Perfil() {
-  const { usuario, perfil, atualizarPerfil } = useAuth();
+  const { usuario, perfil, atualizarPerfil, excluirConta } = useAuth();
   const toast = useToast();
+  const navigate = useNavigate();
   const [nome, setNome] = useState("");
   const [editando, setEditando] = useState(false);
   const [salvando, setSalvando] = useState(false);
+  const [mostrarExcluir, setMostrarExcluir] = useState(false);
 
   useEffect(() => {
     setNome(perfil?.nome || usuario?.displayName || "");
@@ -29,8 +33,22 @@ export default function Perfil() {
     }
   }
 
+  async function handleExcluir() {
+    try {
+      await excluirConta();
+      navigate("/");
+    } catch {
+      toast.erro("Não foi possível excluir a conta. Tente novamente.");
+      setMostrarExcluir(false);
+    }
+  }
+
   return (
     <Layout>
+      {mostrarExcluir && (
+        <ExcluirContaModal onCancelar={() => setMostrarExcluir(false)} onConfirmar={handleExcluir} />
+      )}
+
       <h1 className="mb-6 text-2xl font-bold text-marca-900">Meu Perfil</h1>
 
       <div className="cartao max-w-xl">
@@ -65,10 +83,23 @@ export default function Perfil() {
             </div>
           </form>
         ) : (
-          <button className="btn-primario" onClick={() => setEditando(true)}>
-            Editar perfil
-          </button>
+          <button className="btn-primario" onClick={() => setEditando(true)}>Editar perfil</button>
         )}
+      </div>
+
+      {/* Zona de perigo */}
+      <div className="mt-8 max-w-xl rounded-xl border border-red-200 bg-red-50/40 p-5">
+        <h2 className="font-semibold text-red-700">Zona de perigo</h2>
+        <p className="mt-1 text-sm text-slate-600">
+          Excluir sua conta remove permanentemente todos os seus pets, fotos, histórico de saúde,
+          banhos, lembretes e compartilhamentos. Esta ação não pode ser desfeita.
+        </p>
+        <button
+          onClick={() => setMostrarExcluir(true)}
+          className="mt-4 rounded-lg border border-red-300 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+        >
+          Excluir minha conta
+        </button>
       </div>
     </Layout>
   );
