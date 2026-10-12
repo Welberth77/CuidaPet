@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { TelaCarregando } from "../components/ui/Spinner.jsx";
@@ -8,11 +8,18 @@ import { obterPet } from "../services/pets.js";
 import { listarSaude } from "../services/saude.js";
 import { listarBanhoTosa } from "../services/banhoTosa.js";
 import { formatar, idadeTexto } from "../utils/datas.js";
+import { useToast } from "../components/ui/Toast.jsx";
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
 
 export default function CarteiraPet() {
   const { id } = useParams();
   const { usuario } = useAuth();
   const navigate = useNavigate();
+  const toast = useToast();
+  const folhaRef = useRef(null);
+  const [menuAberto, setMenuAberto] = useState(false);
+  const [gerando, setGerando] = useState(false);
   const [carregando, setCarregando] = useState(true);
   const [pet, setPet] = useState(null);
   const [saude, setSaude] = useState([]);
@@ -37,6 +44,60 @@ export default function CarteiraPet() {
     return () => { document.title = "CuidaPet"; };
   }, [id, usuario]);
 
+  async function gerarCanvas() {
+    return html2canvas(folhaRef.current, { scale: 2, backgroundColor: "#ffffff", useCORS: true });
+  }
+
+  async function arquivoPng() {
+    const canvas = await gerarCanvas();
+    const blob = await new Promise((res) => canvas.toBlob(res, "image/png"));
+    return new File([blob], `Carteira de ${pet.nome}.png`, { type: "image/png" });
+  }
+
+  async function arquivoPdf() {
+    const canvas = await gerarCanvas();
+    const img = canvas.toDataURL("image/jpeg", 0.95);
+    const pdf = new jsPDF({ orientation: "p", unit: "pt", format: "a4" });
+    const pw = pdf.internal.pageSize.getWidth();
+    const ph = pdf.internal.pageSize.getHeight();
+    const imgH = (canvas.height * pw) / canvas.width;
+    let heightLeft = imgH;
+    let position = 0;
+    pdf.addImage(img, "JPEG", 0, position, pw, imgH);
+    heightLeft -= ph;
+    while (heightLeft > 0) {
+      position -= ph;
+      pdf.addPage();
+      pdf.addImage(img, "JPEG", 0, position, pw, imgH);
+      heightLeft -= ph;
+    }
+    const blob = pdf.output("blob");
+    return new File([blob], `Carteira de ${pet.nome}.pdf`, { type: "application/pdf" });
+  }
+
+  async function compartilhar(tipo) {
+    setMenuAberto(false);
+    setGerando(true);
+    try {
+      const file = tipo === "pdf" ? await arquivoPdf() : await arquivoPng();
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: `Carteira de ${pet.nome}` });
+      } else {
+        const url = URL.createObjectURL(file);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = file.name;
+        a.click();
+        URL.revokeObjectURL(url);
+        toast.info("Compartilhamento direto não é suportado aqui — o arquivo foi baixado.");
+      }
+    } catch (e) {
+      if (e?.name !== "AbortError") toast.erro("Não foi possível gerar o arquivo.");
+    } finally {
+      setGerando(false);
+    }
+  }
+
   if (carregando) return <div className="min-h-screen bg-slate-100 py-10"><TelaCarregando /></div>;
   if (!pet) {
     return (
@@ -56,11 +117,21 @@ export default function CarteiraPet() {
       {/* Barra de acoes (nao sai na impressao) */}
       <div className="no-print mx-auto mb-4 flex max-w-3xl items-center justify-between px-4">
         <button onClick={() => navigate(-1)} className="btn-secundario">← Voltar</button>
-        <button onClick={() => window.print()} className="btn-primario">Imprimir / Salvar PDF</button>
+        <div className="relative">
+          <button onClick={() => setMenuAberto((a) => !a)} className="btn-primario" disabled={gerando}>
+            {gerando ? "Gerando..." : "Compartilhar"}
+          </button>
+          {menuAberto && (
+            <div className="absolute right-0 z-10 mt-1 w-56 overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-suave">
+              <button onClick={() => compartilhar("pdf")} className="block w-full px-4 py-2.5 text-left text-sm text-marca-900 hover:bg-slate-50">Compartilhar como PDF</button>
+              <button onClick={() => compartilhar("png")} className="block w-full px-4 py-2.5 text-left text-sm text-marca-900 hover:bg-slate-50">Compartilhar como imagem (PNG)</button>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Folha */}
-      <div className="folha mx-auto max-w-3xl rounded-xl bg-white p-8 shadow-suave sm:p-10">
+      <div ref={folhaRef} className="folha mx-auto max-w-3xl rounded-xl bg-white p-8 shadow-suave sm:p-10">
         <div className="flex items-center justify-between border-b border-slate-200 pb-4">
           <Logo />
           <div className="text-right">
