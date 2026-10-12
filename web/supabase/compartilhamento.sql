@@ -74,7 +74,11 @@ drop policy if exists "pets_insert" on public.pets;
 drop policy if exists "pets_update" on public.pets;
 drop policy if exists "pets_delete" on public.pets;
 
-create policy "pets_select" on public.pets for select using (public.pode_acessar_pet(id));
+-- IMPORTANTE: o "owner_id = auth.uid()" inline precisa vir antes da funcao.
+-- Sem ele, o INSERT ... RETURNING (usado por .insert().select()) valida a linha
+-- recem-criada contra esta policy, e a funcao SECURITY DEFINER nao enxerga a
+-- linha ainda nao commitada -> dispara "violates row-level security policy".
+create policy "pets_select" on public.pets for select using (owner_id = auth.uid() or public.pode_acessar_pet(id));
 create policy "pets_insert" on public.pets for insert with check (owner_id = auth.uid());
 create policy "pets_update" on public.pets for update using (public.pode_acessar_pet(id)) with check (public.pode_acessar_pet(id));
 create policy "pets_delete" on public.pets for delete using (owner_id = auth.uid());
