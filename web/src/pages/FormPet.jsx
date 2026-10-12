@@ -9,6 +9,8 @@ import FotoEditor from "../components/ui/FotoEditor.jsx";
 import { criarPet, obterPet, atualizarPet } from "../services/pets.js";
 import { uploadFotoPet } from "../services/storage.js";
 import { ESPECIES, RACAS, CORES, PELAGENS, SEXOS } from "../data/opcoesPet.js";
+import { ehAniversarioHoje, anosFazendo } from "../utils/datas.js";
+import Aniversario from "../components/Aniversario.jsx";
 
 const inicial = {
   nome: "", especie: "", raca: "", sexo: "", peso: "",
@@ -33,6 +35,7 @@ export default function FormPet() {
   const [previewFoto, setPreviewFoto] = useState("");
   const [arquivoOriginal, setArquivoOriginal] = useState(null);
   const [editorAberto, setEditorAberto] = useState(false);
+  const [festaPet, setFestaPet] = useState(null);
 
   useEffect(() => {
     if (!editando) return;
@@ -109,14 +112,26 @@ export default function FormPet() {
         }
       }
       const dados = { ...form, foto_url: fotoUrl };
+      let petId = id;
       if (editando) {
         await atualizarPet(id, dados);
         toast.sucesso("Pet atualizado!");
       } else {
-        await criarPet(usuario.uid, dados);
+        petId = await criarPet(usuario.uid, dados);
         toast.sucesso("Pet cadastrado!");
       }
-      navigate("/meus-pets");
+
+      // Se o aniversario for hoje, comemora na hora (uma vez por ano)
+      const ano = new Date().getFullYear();
+      const chave = `cuidapet:bday:${petId}:${ano}`;
+      let jaViu = false;
+      try { jaViu = !!localStorage.getItem(chave); } catch { /* ignore */ }
+      if (ehAniversarioHoje(dados.nascimento) && !jaViu) {
+        try { localStorage.setItem(chave, "1"); } catch { /* ignore */ }
+        setFestaPet({ nome: dados.nome, especie: dados.especie, foto_url: dados.foto_url, nascimento: dados.nascimento });
+      } else {
+        navigate("/meus-pets");
+      }
     } catch (err) {
       toast.erro("Não foi possível salvar: " + (err?.message || "tente novamente"));
     } finally {
@@ -132,6 +147,9 @@ export default function FormPet() {
 
   return (
     <Layout>
+      {festaPet && (
+        <Aniversario pet={festaPet} anos={anosFazendo(festaPet.nascimento)} onFechar={() => navigate("/meus-pets")} />
+      )}
       {editorAberto && arquivoOriginal && (
         <FotoEditor
           file={arquivoOriginal}

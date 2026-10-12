@@ -39,9 +39,13 @@ export async function obterPet(id) {
 }
 
 export async function criarPet(ownerId, dados) {
+  // Pega o id do usuario autenticado AGORA (garante owner_id = auth.uid() no RLS)
+  const { data: auth } = await supabase.auth.getUser();
+  const oid = auth?.user?.id || ownerId;
+  if (!oid) throw new Error("Sessão expirada. Entre novamente.");
   const { data, error } = await supabase
     .from("pets")
-    .insert({ ...limpar(dados), owner_id: ownerId })
+    .insert({ ...limpar(dados), owner_id: oid })
     .select("id")
     .single();
   if (error) throw error;
