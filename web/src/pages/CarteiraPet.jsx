@@ -45,7 +45,25 @@ export default function CarteiraPet() {
   }, [id, usuario]);
 
   async function gerarCanvas() {
-    return html2canvas(folhaRef.current, { scale: 2, backgroundColor: "#ffffff", useCORS: true });
+    const el = folhaRef.current;
+    const styleOriginal = el.getAttribute("style") || "";
+    // Renderiza sempre no tamanho de documento (760px), nao no tamanho da tela,
+    // para a imagem/PDF nao sair achatada no celular.
+    el.style.width = "760px";
+    el.style.maxWidth = "760px";
+    el.style.boxShadow = "none";
+    await new Promise((r) => setTimeout(r, 60));
+    const canvas = await html2canvas(el, {
+      scale: 2,
+      backgroundColor: "#ffffff",
+      useCORS: true,
+      width: 760,
+      windowWidth: 760,
+      scrollX: 0,
+      scrollY: -window.scrollY,
+    });
+    el.setAttribute("style", styleOriginal);
+    return canvas;
   }
 
   async function arquivoPng() {
