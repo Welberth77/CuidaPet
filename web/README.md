@@ -46,6 +46,13 @@ arquivo `supabase/excluir_conta.sql` no **SQL Editor**. Ele cria a funcao
 `excluir_minha_conta()`, que apaga o usuario logado e, em cascata, todos os
 seus dados (pets, saude, banho, compartilhamentos e fotos).
 
+## 3e. Extras: foto de perfil, despesas e notificacoes em tempo real
+Rode `supabase/extras.sql` no **SQL Editor** (depois do compartilhamento.sql,
+pois as despesas usam a funcao de acesso de la). Ele:
+- adiciona `avatar_url` em profiles (foto de perfil do usuario);
+- cria a tabela `despesas` com RLS (controle de gastos por pet);
+- publica `pet_shares` no Realtime (sino de notificacoes em tempo real).
+
 ## 4. Confirmacao de e-mail por link
 1. Em **Authentication -> Sign In / Providers -> Email**, deixe **"Confirm email" ATIVADO**.
 2. Em **Authentication -> URL Configuration**:

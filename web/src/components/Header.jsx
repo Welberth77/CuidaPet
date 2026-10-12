@@ -9,6 +9,7 @@ const links = [
   { to: "/meus-pets", label: "Meus Pets" },
   { to: "/medicamentos-vacinas", label: "Vacinas" },
   { to: "/banho-tosa", label: "Banho e Tosa" },
+  { to: "/despesas", label: "Despesas" },
 ];
 
 export default function Header() {
@@ -47,8 +48,10 @@ export default function Header() {
             )}
           </NavLink>
 
-          <Link to="/perfil" className="ml-1 flex h-9 w-9 items-center justify-center rounded-full bg-marca-900 text-sm font-semibold uppercase ring-2 ring-white/20" title={perfil?.nome || "Perfil"}>
-            {(perfil?.nome || "?").charAt(0)}
+          <Link to="/perfil" className="ml-1 flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-marca-900 text-sm font-semibold uppercase ring-2 ring-white/20" title={perfil?.nome || "Perfil"}>
+            {perfil?.avatar_url
+              ? <img src={perfil.avatar_url} alt="" className="h-full w-full object-cover" />
+              : (perfil?.nome || "?").charAt(0)}
           </Link>
           <button onClick={handleSair} className="ml-1 rounded-md px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10">Sair</button>
         </nav>

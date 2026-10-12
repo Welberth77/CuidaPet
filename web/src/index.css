@@ -55,3 +55,9 @@
     @apply rounded-xl border border-slate-200 bg-white p-5 shadow-sm;
   }
 }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .folha { box-shadow: none !important; margin: 0 !important; max-width: 100% !important; }
+}

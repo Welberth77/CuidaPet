@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
     }
     const { data } = await supabase
       .from("profiles")
-      .select("nome, email")
+      .select("nome, email, avatar_url")
       .eq("id", user.id)
       .maybeSingle();
     setPerfil(data || { nome: user.user_metadata?.nome || "", email: user.email });

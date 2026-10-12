@@ -16,6 +16,8 @@ import MedicamentosVacinas from "./pages/MedicamentosVacinas.jsx";
 import BanhoTosa from "./pages/BanhoTosa.jsx";
 import Perfil from "./pages/Perfil.jsx";
 import Notificacoes from "./pages/Notificacoes.jsx";
+import Despesas from "./pages/Despesas.jsx";
+import CarteiraPet from "./pages/CarteiraPet.jsx";
 import NaoEncontrado from "./pages/NaoEncontrado.jsx";
 
 export default function App() {
@@ -44,8 +46,10 @@ export default function App() {
       <Route path="/meus-pets" element={protegida(<MeusPets />)} />
       <Route path="/pets/novo" element={protegida(<FormPet />)} />
       <Route path="/pets/:id/editar" element={protegida(<FormPet />)} />
+      <Route path="/pets/:id/carteira" element={protegida(<CarteiraPet />)} />
       <Route path="/medicamentos-vacinas" element={protegida(<MedicamentosVacinas />)} />
       <Route path="/banho-tosa" element={protegida(<BanhoTosa />)} />
+      <Route path="/despesas" element={protegida(<Despesas />)} />
       <Route path="/perfil" element={protegida(<Perfil />)} />
       <Route path="/notificacoes" element={protegida(<Notificacoes />)} />
 

@@ -35,3 +35,5 @@ export const SEXOS = ["Macho", "Fêmea"];
 
 export const CATEGORIAS_SAUDE = ["Vacina", "Medicamento"];
 export const SERVICOS_BANHO = ["Banho", "Tosa", "Banho e Tosa"];
+
+export const CATEGORIAS_DESPESA = ["Consulta", "Alimentação", "Medicamento", "Vacina", "Higiene", "Acessórios", "Outros"];

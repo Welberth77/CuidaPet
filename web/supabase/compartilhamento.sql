@@ -44,6 +44,8 @@ language sql security definer stable set search_path = public as $$
   limit 10;
 $$;
 
+grant execute on function public.buscar_usuarios(text) to authenticated;
+
 -- 3) RLS da tabela de compartilhamentos
 alter table public.pet_shares enable row level security;
 

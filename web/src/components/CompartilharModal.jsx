@@ -34,8 +34,13 @@ export default function CompartilharModal({ pet, onFechar }) {
     try {
       setResultados(await buscarUsuarios(termo.trim()));
       setBuscou(true);
-    } catch {
-      toast.erro("Não foi possível buscar usuários.");
+    } catch (err) {
+      const m = String(err?.message || "");
+      if (m.includes("function") && m.includes("buscar_usuarios")) {
+        toast.erro("A busca ainda não foi ativada no banco. Rode o compartilhamento.sql no Supabase.");
+      } else {
+        toast.erro("Erro ao buscar: " + (err?.message || "tente novamente"));
+      }
     } finally {
       setBuscando(false);
     }

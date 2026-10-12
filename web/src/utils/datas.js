@@ -54,3 +54,9 @@ export function idadeTexto(iso) {
   if (meses === 0) return `${anos} ${anos === 1 ? "ano" : "anos"}`;
   return `${anos} ${anos === 1 ? "ano" : "anos"} e ${meses} ${meses === 1 ? "mês" : "meses"}`;
 }
+
+// Valor numerico em R$ (ex.: 12.5 -> "R$ 12,50")
+export function moeda(v) {
+  const n = Number(v) || 0;
+  return "R$ " + n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}

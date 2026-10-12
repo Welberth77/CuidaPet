@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import { useAuth } from "../contexts/AuthContext.jsx";
@@ -7,6 +7,9 @@ import { useConfirm } from "../components/ui/Confirm.jsx";
 import { TelaCarregando } from "../components/ui/Spinner.jsx";
 import { listarPets, removerPet } from "../services/pets.js";
 import { sairDoCompartilhamento } from "../services/shares.js";
+import { listarSaude } from "../services/saude.js";
+import { listarBanhoTosa } from "../services/banhoTosa.js";
+import { IconVaccine, IconBath } from "../components/art/Icons.jsx";
 import PetAvatar from "../components/art/PetAvatar.jsx";
 import EmptyArt from "../components/art/EmptyArt.jsx";
 import CompartilharModal from "../components/CompartilharModal.jsx";
@@ -21,14 +24,29 @@ export default function MeusPets() {
   const [selecionado, setSelecionado] = useState(null);
   const [carregando, setCarregando] = useState(true);
   const [compartilhando, setCompartilhando] = useState(null);
+  const [saude, setSaude] = useState([]);
+  const [banho, setBanho] = useState([]);
 
   const ehDono = (pet) => pet && pet.owner_id === usuario.uid;
+
+  const eventos = useMemo(() => {
+    if (!selecionado) return [];
+    const s = saude.filter((x) => x.petId === selecionado.id).map((x) => ({ id: "s" + x.id, titulo: x.nome, tipo: x.categoria || "Saúde", data: x.data, k: "vacina" }));
+    const b = banho.filter((x) => x.petId === selecionado.id).map((x) => ({ id: "b" + x.id, titulo: x.servico, tipo: "Banho e tosa", data: x.data, k: "banho" }));
+    return [...s, ...b].sort((a, b) => (b.data || "").localeCompare(a.data || ""));
+  }, [saude, banho, selecionado]);
 
   async function carregar() {
     setCarregando(true);
     try {
-      const lista = await listarPets(usuario.uid);
+      const [lista, s, b] = await Promise.all([
+        listarPets(usuario.uid),
+        listarSaude(usuario.uid).catch(() => []),
+        listarBanhoTosa(usuario.uid).catch(() => []),
+      ]);
       setPets(lista);
+      setSaude(s);
+      setBanho(b);
       setSelecionado((atual) => lista.find((p) => p.id === atual?.id) || lista[0] || null);
     } catch {
       toast.erro("Não foi possível carregar seus pets.");
@@ -135,6 +153,9 @@ export default function MeusPets() {
                       Compartilhar
                     </button>
                   )}
+                  <button onClick={() => navigate(`/pets/${selecionado.id}/carteira`)} className="btn-secundario px-3 py-1.5 text-sm">
+                    Carteira (PDF)
+                  </button>
                   <button onClick={() => navigate(`/pets/${selecionado.id}/editar`)} className="btn-secundario px-3 py-1.5 text-sm">
                     Editar
                   </button>
@@ -166,6 +187,25 @@ export default function MeusPets() {
                   <p className="mt-1 text-slate-600">{selecionado.sobre}</p>
                 </div>
               )}
+
+              <div className="mt-6 border-t border-slate-100 pt-4">
+                <p className="mb-3 text-sm font-medium text-marca-700">Linha do tempo</p>
+                {eventos.length === 0 ? (
+                  <p className="text-sm text-slate-400">Nenhum registro de saúde ou banho ainda.</p>
+                ) : (
+                  <ol className="relative space-y-4 border-l-2 border-slate-100 pl-6">
+                    {eventos.map((ev) => (
+                      <li key={ev.id} className="relative">
+                        <span className={"absolute -left-[31px] flex h-7 w-7 items-center justify-center rounded-full ring-4 ring-white " + (ev.k === "banho" ? "bg-sky-100 text-sky-600" : "bg-emerald-100 text-emerald-600")}>
+                          {ev.k === "banho" ? <IconBath width="15" height="15" /> : <IconVaccine width="15" height="15" />}
+                        </span>
+                        <p className="text-sm font-medium text-marca-900">{ev.titulo}</p>
+                        <p className="text-xs text-slate-500">{ev.tipo} · {formatar(ev.data)}</p>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
             </div>
           )}
         </div>

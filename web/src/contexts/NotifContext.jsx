@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { useAuth } from "./AuthContext.jsx";
 import { listarNotificacoes } from "../services/shares.js";
+import { supabase } from "../supabaseClient";
 
 const NotifContext = createContext(null);
 
@@ -18,6 +19,20 @@ export function NotifProvider({ children }) {
   }, [usuario]);
 
   useEffect(() => { atualizar(); }, [atualizar]);
+
+  // Atualiza o contador em tempo real quando chega/ muda um convite
+  useEffect(() => {
+    if (!usuario) return;
+    const canal = supabase
+      .channel("notif-" + usuario.uid)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "pet_shares", filter: `shared_with=eq.${usuario.uid}` },
+        () => atualizar()
+      )
+      .subscribe();
+    return () => { supabase.removeChannel(canal); };
+  }, [usuario, atualizar]);
 
   return (
     <NotifContext.Provider value={{ notificacoes, count: notificacoes.length, atualizar }}>
