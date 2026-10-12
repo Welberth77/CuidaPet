@@ -60,3 +60,20 @@ export function moeda(v) {
   const n = Number(v) || 0;
   return "R$ " + n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
+
+// Verifica se hoje e o aniversario (mesmo dia e mes) do nascimento informado.
+export function ehAniversarioHoje(iso) {
+  if (!iso) return false;
+  const n = new Date(iso + "T00:00:00");
+  if (isNaN(n)) return false;
+  const h = new Date();
+  return n.getDate() === h.getDate() && n.getMonth() === h.getMonth();
+}
+
+// Quantos anos o pet completa (0 se nasceu hoje).
+export function anosFazendo(iso) {
+  if (!iso) return null;
+  const n = new Date(iso + "T00:00:00");
+  if (isNaN(n)) return null;
+  return new Date().getFullYear() - n.getFullYear();
+}

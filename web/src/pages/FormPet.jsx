@@ -117,8 +117,8 @@ export default function FormPet() {
         toast.sucesso("Pet cadastrado!");
       }
       navigate("/meus-pets");
-    } catch {
-      toast.erro("Não foi possível salvar o pet. Tente novamente.");
+    } catch (err) {
+      toast.erro("Não foi possível salvar: " + (err?.message || "tente novamente"));
     } finally {
       setEnviando(false);
     }

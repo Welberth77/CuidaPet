@@ -11,8 +11,9 @@ import { IconPaw, IconVaccine, IconBath, IconArrow } from "../components/art/Ico
 import { listarPets } from "../services/pets.js";
 import { listarSaude } from "../services/saude.js";
 import { listarBanhoTosa } from "../services/banhoTosa.js";
-import { statusData, rotuloPrazo, formatar, idadeTexto } from "../utils/datas.js";
+import { statusData, rotuloPrazo, formatar, idadeTexto, ehAniversarioHoje, anosFazendo } from "../utils/datas.js";
 import Onboarding from "../components/Onboarding.jsx";
+import Aniversario from "../components/Aniversario.jsx";
 
 export default function Home() {
   const { usuario, perfil } = useAuth();
@@ -30,6 +31,15 @@ export default function Home() {
   const [carregando, setCarregando] = useState(true);
   const [pets, setPets] = useState([]);
   const [lembretes, setLembretes] = useState([]);
+  const [festaFila, setFestaFila] = useState([]);
+
+  function fecharFesta() {
+    const atual = festaFila[0];
+    if (atual) {
+      try { localStorage.setItem(`cuidapet:bday:${atual.id}:${new Date().getFullYear()}`, "1"); } catch { /* ignore */ }
+    }
+    setFestaFila((f) => f.slice(1));
+  }
 
   useEffect(() => {
     (async () => {
@@ -40,6 +50,14 @@ export default function Home() {
           listarBanhoTosa(usuario.uid),
         ]);
         setPets(p);
+
+        const ano = new Date().getFullYear();
+        const niver = p
+          .filter((x) => ehAniversarioHoje(x.nascimento))
+          .filter((x) => {
+            try { return !localStorage.getItem(`cuidapet:bday:${x.id}:${ano}`); } catch { return true; }
+          });
+        setFestaFila(niver);
 
         const deSaude = saude
           .filter((s) => s.proxima)
@@ -74,6 +92,9 @@ export default function Home() {
           onCadastrar={() => { fecharOnb(); navigate("/pets/novo"); }}
           onDepois={fecharOnb}
         />
+      )}
+      {!mostrarOnb && festaFila.length > 0 && (
+        <Aniversario pet={festaFila[0]} anos={anosFazendo(festaFila[0].nascimento)} onFechar={fecharFesta} />
       )}
       {/* Hero */}
       <section className="mb-8 grid items-center gap-6 overflow-hidden rounded-2xl bg-gradient-to-br from-marca-500 to-marca-900 px-6 py-8 text-white shadow-suave sm:px-10 md:grid-cols-[1fr_220px]">
@@ -116,6 +137,7 @@ export default function Home() {
               {pets.map((p) => {
                 const idade = idadeTexto(p.nascimento);
                 const compartilhado = p.owner_id !== usuario.uid;
+                const niverHoje = ehAniversarioHoje(p.nascimento);
                 return (
                   <Link key={p.id} to="/meus-pets" className="cartao flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-suave">
                     <PetAvatar especie={p.especie} fotoUrl={p.foto_url} size={56} />
@@ -124,6 +146,9 @@ export default function Home() {
                       <p className="truncate text-sm text-slate-500">
                         {idade || (p.especie === "gato" ? "Gato" : "Cachorro")}
                       </p>
+                      {niverHoje && (
+                        <span className="mt-1 mr-1 inline-block rounded-full bg-acento-50 px-2 py-0.5 text-[10px] font-medium text-acento-600">🎂 Aniversário hoje!</span>
+                      )}
                       {compartilhado && (
                         <span className="mt-1 inline-block rounded-full bg-marca-100 px-2 py-0.5 text-[10px] font-medium text-marca-700">compartilhado</span>
                       )}

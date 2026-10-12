@@ -7,7 +7,10 @@ function limpar(dados) {
   for (const c of COLUNAS) {
     if (dados[c] !== undefined) out[c] = dados[c];
   }
-  if (out.peso !== undefined && out.peso !== "" && out.peso !== null) {
+  // peso vazio vira null (coluna numerica nao aceita string vazia)
+  if (out.peso === "" || out.peso === undefined || out.peso === null) {
+    out.peso = null;
+  } else {
     out.peso = Number(out.peso);
   }
   if (out.nascimento === "") out.nascimento = null;

@@ -61,3 +61,20 @@
   body { background: #fff; }
   .folha { box-shadow: none !important; margin: 0 !important; max-width: 100% !important; }
 }
+
+@keyframes confete {
+  0% { transform: translateY(-12vh) rotate(0deg); }
+  100% { transform: translateY(112vh) rotate(720deg); }
+}
+@keyframes flutua {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes popar {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes balancar {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
