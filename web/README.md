@@ -99,6 +99,11 @@ crie uma conta e teste.
    Vercel (ex.: `https://seu-projeto.vercel.app`) em **Site URL / Redirect URLs**.
 6. Deploy. O `vercel.json` já cuida do redirecionamento de rotas (SPA).
 
+## PWA (instalavel no celular)
+O app e um PWA: em producao (HTTPS/Vercel) o navegador oferece "Instalar"
+/ "Adicionar a tela inicial". O service worker (public/sw.js) so e registrado
+em producao; em desenvolvimento fica desativado para nao atrapalhar o HMR.
+
 ## Modelo de dados (PostgreSQL)
 - `profiles(id, nome, email, created_at)` — 1 por usuário (id = auth.users.id)
 - `pets(id, owner_id, nome, especie, raca, sexo, peso, nascimento, cor, pelagem, sobre, created_at)`

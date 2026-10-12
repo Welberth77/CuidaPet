@@ -76,8 +76,13 @@ export default function Perfil() {
     try {
       await excluirConta();
       navigate("/");
-    } catch {
-      toast.erro("Não foi possível excluir a conta. Tente novamente.");
+    } catch (err) {
+      const m = String(err?.message || "");
+      if (m.includes("function") && m.includes("excluir_minha_conta")) {
+        toast.erro("A exclusão ainda não foi ativada no banco. Rode o excluir_conta.sql no Supabase.");
+      } else {
+        toast.erro("Não foi possível excluir: " + (err?.message || "tente novamente"));
+      }
       setMostrarExcluir(false);
     }
   }

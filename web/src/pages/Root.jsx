@@ -1,6 +1,8 @@
+import { lazy } from "react";
 import { useAuth } from "../contexts/AuthContext.jsx";
-import Landing from "./Landing.jsx";
-import Home from "./Home.jsx";
+
+const Landing = lazy(() => import("./Landing.jsx"));
+const Home = lazy(() => import("./Home.jsx"));
 
 export default function Root() {
   const { usuario } = useAuth();

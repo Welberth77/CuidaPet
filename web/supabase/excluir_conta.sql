@@ -1,6 +1,6 @@
 -- =========================================================
 -- CuidaPet - Exclusao da propria conta pelo usuario
--- Rode no SQL Editor do Supabase (depois dos outros scripts).
+-- Rode no SQL Editor do Supabase (pode rodar de novo com seguranca).
 -- =========================================================
 
 create or replace function public.excluir_minha_conta()
@@ -15,12 +15,16 @@ begin
     raise exception 'Nao autenticado';
   end if;
 
-  -- Remove as fotos do usuario no Storage (os demais dados caem em cascata)
-  delete from storage.objects
-   where bucket_id = 'pet-fotos'
-     and (storage.foldername(name))[1] = uid::text;
+  -- Limpa as fotos do usuario no Storage (best-effort; nao bloqueia a exclusao)
+  begin
+    delete from storage.objects
+     where bucket_id = 'pet-fotos'
+       and (storage.foldername(name))[1] = uid::text;
+  exception when others then
+    null;
+  end;
 
-  -- Apaga o usuario; profiles, pets, saude, banho_tosa e pet_shares
+  -- Apaga o usuario; profiles, pets, saude, banho_tosa, pet_shares e despesas
   -- tem ON DELETE CASCADE referenciando auth.users, entao somem junto.
   delete from auth.users where id = uid;
 end;
