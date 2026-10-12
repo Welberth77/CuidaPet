@@ -5,4 +5,12 @@ const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabaseConfigValido = Boolean(url && anonKey);
 
-export const supabase = supabaseConfigValido ? createClient(url, anonKey) : null;
+export const supabase = supabaseConfigValido
+  ? createClient(url, anonKey, {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+      },
+    })
+  : null;

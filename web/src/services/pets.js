@@ -39,10 +39,20 @@ export async function obterPet(id) {
 }
 
 export async function criarPet(ownerId, dados) {
-  // Pega o id do usuario autenticado AGORA (garante owner_id = auth.uid() no RLS)
-  const { data: auth } = await supabase.auth.getUser();
-  const oid = auth?.user?.id || ownerId;
-  if (!oid) throw new Error("Sessão expirada. Entre novamente.");
+  // Garante uma sessao VALIDA agora. getSession() renova o token se estiver
+  // expirado; sem isso o insert pode ir com um JWT vencido e o auth.uid() do
+  // Postgres vira NULL -> viola o RLS mesmo com owner_id correto.
+  const { data: s } = await supabase.auth.getSession();
+  let session = s?.session || null;
+  if (!session) {
+    // tenta uma renovacao explicita antes de desistir
+    const { data: r } = await supabase.auth.refreshSession();
+    session = r?.session || null;
+  }
+  if (!session?.user?.id) {
+    throw new Error("Sua sessao expirou. Saia e entre novamente para cadastrar o pet.");
+  }
+  const oid = session.user.id;
   const { data, error } = await supabase
     .from("pets")
     .insert({ ...limpar(dados), owner_id: oid })
