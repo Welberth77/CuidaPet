@@ -125,7 +125,7 @@ export default function MeusPets() {
       )}
 
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-marca-900">Meus Pets</h1>
+        <h1 className="text-2xl font-bold text-marca-900 dark:text-slate-100">Meus Pets</h1>
         <Link to="/pets/novo" className="btn-primario">+ Cadastrar pet</Link>
       </div>
 
@@ -134,8 +134,8 @@ export default function MeusPets() {
       ) : pets.length === 0 ? (
         <div className="cartao flex flex-col items-center text-center">
           <EmptyArt className="w-56" />
-          <p className="mt-2 font-medium text-marca-900">Você ainda não tem pets cadastrados</p>
-          <p className="mt-1 text-sm text-slate-500">Cadastre seu primeiro pet para começar.</p>
+          <p className="mt-2 font-medium text-marca-900 dark:text-slate-100">Você ainda não tem pets cadastrados</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Cadastre seu primeiro pet para começar.</p>
           <Link to="/pets/novo" className="btn-primario mt-5">Cadastrar meu primeiro pet</Link>
         </div>
       ) : (
@@ -148,15 +148,15 @@ export default function MeusPets() {
                   className={
                     "flex w-full items-center gap-2 rounded-lg border px-4 py-3 text-left transition " +
                     (selecionado?.id === pet.id
-                      ? "border-marca-500 bg-marca-500/10 font-semibold text-marca-700"
-                      : "border-slate-200 bg-white hover:border-marca-500/50")
+                      ? "border-marca-500 bg-marca-500/10 font-semibold text-marca-700 dark:text-marca-200"
+                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-marca-500/50")
                   }
                 >
                   <PetAvatar especie={pet.especie} size={28} fotoUrl={pet.foto_url} />
                   <span className="flex-1 truncate">{pet.nome}</span>
                   {pet.falecido && <span title="Em memória" className="shrink-0">🕊️</span>}
                   {!ehDono(pet) && (
-                    <span className="rounded-full bg-marca-100 px-2 py-0.5 text-[10px] font-medium text-marca-700">compartilhado</span>
+                    <span className="rounded-full bg-marca-100 dark:bg-slate-700 px-2 py-0.5 text-[10px] font-medium text-marca-700 dark:text-marca-200">compartilhado</span>
                   )}
                 </button>
               </li>
@@ -166,21 +166,21 @@ export default function MeusPets() {
           {selecionado && (
             <div className="cartao">
               {selecionado.falecido && (
-                <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-marca-50 px-4 py-3">
-                  <span className="text-sm font-medium text-marca-800">🕊️ Em memória{selecionado.data_falecimento ? ` · ${formatar(selecionado.data_falecimento)}` : ""}</span>
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-marca-50 dark:bg-slate-800 px-4 py-3">
+                  <span className="text-sm font-medium text-marca-800 dark:text-marca-200">🕊️ Em memória{selecionado.data_falecimento ? ` · ${formatar(selecionado.data_falecimento)}` : ""}</span>
                   {ehDono(selecionado) && (
-                    <button onClick={() => handleReverter(selecionado)} className="text-xs font-medium text-slate-400 transition-colors hover:text-slate-600">desfazer</button>
+                    <button onClick={() => handleReverter(selecionado)} className="text-xs font-medium text-slate-400 dark:text-slate-500 transition-colors hover:text-slate-600">desfazer</button>
                   )}
                 </div>
               )}
               <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h2 className="flex items-center gap-3 text-xl font-bold text-marca-900">
+                  <h2 className="flex items-center gap-3 text-xl font-bold text-marca-900 dark:text-slate-100">
                     <PetAvatar especie={selecionado.especie} size={44} fotoUrl={selecionado.foto_url} ampliavel />
                     {selecionado.nome}
                   </h2>
                   {!ehDono(selecionado) && (
-                    <span className="mt-2 inline-block rounded-full bg-marca-100 px-2.5 py-0.5 text-xs font-medium text-marca-700">
+                    <span className="mt-2 inline-block rounded-full bg-marca-100 dark:bg-slate-700 px-2.5 py-0.5 text-xs font-medium text-marca-700 dark:text-marca-200">
                       Compartilhado com você
                     </span>
                   )}
@@ -202,7 +202,7 @@ export default function MeusPets() {
                       Remover
                     </button>
                   ) : (
-                    <button onClick={() => handleSair(selecionado)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                    <button onClick={() => handleSair(selecionado)} className="rounded-lg border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60">
                       Sair
                     </button>
                   )}
@@ -220,25 +220,25 @@ export default function MeusPets() {
               </dl>
 
               {selecionado.sobre && (
-                <div className="mt-4 border-t border-slate-100 pt-4">
-                  <p className="text-sm font-medium text-marca-700">Sobre o pet</p>
-                  <p className="mt-1 text-slate-600">{selecionado.sobre}</p>
+                <div className="mt-4 border-t border-slate-100 dark:border-slate-700 pt-4">
+                  <p className="text-sm font-medium text-marca-700 dark:text-marca-200">Sobre o pet</p>
+                  <p className="mt-1 text-slate-600 dark:text-slate-300">{selecionado.sobre}</p>
                 </div>
               )}
 
-              <div className="mt-6 border-t border-slate-100 pt-4">
-                <p className="mb-3 text-sm font-medium text-marca-700">Linha do tempo</p>
+              <div className="mt-6 border-t border-slate-100 dark:border-slate-700 pt-4">
+                <p className="mb-3 text-sm font-medium text-marca-700 dark:text-marca-200">Linha do tempo</p>
                 {eventos.length === 0 ? (
-                  <p className="text-sm text-slate-400">Nenhum registro de saúde ou banho ainda.</p>
+                  <p className="text-sm text-slate-400 dark:text-slate-500">Nenhum registro de saúde ou banho ainda.</p>
                 ) : (
-                  <ol className="relative space-y-4 border-l-2 border-slate-100 pl-6">
+                  <ol className="relative space-y-4 border-l-2 border-slate-100 dark:border-slate-700 pl-6">
                     {eventos.map((ev) => (
                       <li key={ev.id} className="relative">
                         <span className={"absolute -left-[31px] flex h-7 w-7 items-center justify-center rounded-full ring-4 ring-white " + (ev.k === "banho" ? "bg-sky-100 text-sky-600" : "bg-emerald-100 text-emerald-600")}>
                           {ev.k === "banho" ? <IconBath width="15" height="15" /> : <IconVaccine width="15" height="15" />}
                         </span>
-                        <p className="text-sm font-medium text-marca-900">{ev.titulo}</p>
-                        <p className="text-xs text-slate-500">{ev.tipo} · {formatar(ev.data)}</p>
+                        <p className="text-sm font-medium text-marca-900 dark:text-slate-100">{ev.titulo}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">{ev.tipo} · {formatar(ev.data)}</p>
                       </li>
                     ))}
                   </ol>
@@ -246,8 +246,8 @@ export default function MeusPets() {
               </div>
 
               {ehDono(selecionado) && !selecionado.falecido && (
-                <div className="mt-6 border-t border-slate-100 pt-4 text-center">
-                  <button onClick={() => setDespedindo(true)} className="text-xs text-slate-400 transition-colors hover:text-slate-600">
+                <div className="mt-6 border-t border-slate-100 dark:border-slate-700 pt-4 text-center">
+                  <button onClick={() => setDespedindo(true)} className="text-xs text-slate-400 dark:text-slate-500 transition-colors hover:text-slate-600">
                     🕊️ {selecionado.nome} partiu? Prestar uma homenagem
                   </button>
                 </div>
@@ -263,8 +263,8 @@ export default function MeusPets() {
 function Info({ rotulo, valor }) {
   return (
     <div>
-      <dt className="text-xs uppercase tracking-wide text-slate-400">{rotulo}</dt>
-      <dd className="text-slate-800">{valor || "-"}</dd>
+      <dt className="text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">{rotulo}</dt>
+      <dd className="text-slate-800 dark:text-slate-100">{valor || "-"}</dd>
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default function VerifiqueEmail() {
 
   return (
     <AuthShell titulo="Verifique seu e-mail 📬" subtitulo="Enviamos um link de confirmação. Clique nele para ativar sua conta e entrar.">
-      <div className="rounded-lg bg-marca-50 p-4 text-sm text-marca-800">
+      <div className="rounded-lg bg-marca-50 dark:bg-slate-800 p-4 text-sm text-marca-800 dark:text-marca-200">
         {location.state?.email ? (
           <>Enviamos para <strong>{location.state.email}</strong>. Pode levar alguns minutos — confira também o spam.</>
         ) : (
@@ -51,8 +51,8 @@ export default function VerifiqueEmail() {
         {enviando ? "Reenviando..." : "Reenviar e-mail"}
       </button>
 
-      <p className="mt-6 text-center text-sm text-slate-500">
-        <Link to="/login" className="font-semibold text-marca-500 hover:underline">Voltar para o login</Link>
+      <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
+        <Link to="/login" className="font-semibold text-marca-500 dark:text-marca-300 hover:underline">Voltar para o login</Link>
       </p>
     </AuthShell>
   );

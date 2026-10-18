@@ -116,11 +116,11 @@ export default function CarteiraPet() {
     }
   }
 
-  if (carregando) return <div className="min-h-screen bg-slate-100 py-10"><TelaCarregando /></div>;
+  if (carregando) return <div className="min-h-screen bg-slate-100 dark:bg-slate-700 py-10"><TelaCarregando /></div>;
   if (!pet) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-slate-100">
-        <p className="text-slate-600">Pet não encontrado.</p>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-slate-100 dark:bg-slate-700">
+        <p className="text-slate-600 dark:text-slate-300">Pet não encontrado.</p>
         <Link to="/meus-pets" className="btn-primario">Voltar</Link>
       </div>
     );
@@ -131,7 +131,7 @@ export default function CarteiraPet() {
   const medicamentos = saude.filter((s) => s.categoria !== "Vacina");
 
   return (
-    <div className="min-h-screen bg-slate-100 py-8">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-700 py-8">
       {/* Barra de acoes (nao sai na impressao) */}
       <div className="no-print mx-auto mb-4 flex max-w-3xl items-center justify-between px-4">
         <button onClick={() => navigate(-1)} className="btn-secundario">← Voltar</button>
@@ -140,21 +140,21 @@ export default function CarteiraPet() {
             {gerando ? "Gerando..." : "Compartilhar"}
           </button>
           {menuAberto && (
-            <div className="absolute right-0 z-10 mt-1 w-56 overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-suave">
-              <button onClick={() => compartilhar("pdf")} className="block w-full px-4 py-2.5 text-left text-sm text-marca-900 hover:bg-slate-50">Compartilhar como PDF</button>
-              <button onClick={() => compartilhar("png")} className="block w-full px-4 py-2.5 text-left text-sm text-marca-900 hover:bg-slate-50">Compartilhar como imagem (PNG)</button>
+            <div className="absolute right-0 z-10 mt-1 w-56 overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-1 shadow-suave">
+              <button onClick={() => compartilhar("pdf")} className="block w-full px-4 py-2.5 text-left text-sm text-marca-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-700/60">Compartilhar como PDF</button>
+              <button onClick={() => compartilhar("png")} className="block w-full px-4 py-2.5 text-left text-sm text-marca-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-700/60">Compartilhar como imagem (PNG)</button>
             </div>
           )}
         </div>
       </div>
 
       {/* Folha */}
-      <div ref={folhaRef} className="folha mx-auto max-w-3xl rounded-xl bg-white p-8 shadow-suave sm:p-10">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+      <div ref={folhaRef} className="folha mx-auto max-w-3xl rounded-xl bg-white dark:bg-slate-800 p-8 shadow-suave sm:p-10">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-4">
           <Logo />
           <div className="text-right">
-            <h1 className="text-lg font-bold text-marca-900">Carteira de Saúde</h1>
-            <p className="text-xs text-slate-400">Emitida em {formatar(new Date().toISOString().split("T")[0])}</p>
+            <h1 className="text-lg font-bold text-marca-900 dark:text-slate-100">Carteira de Saúde</h1>
+            <p className="text-xs text-slate-400 dark:text-slate-500">Emitida em {formatar(new Date().toISOString().split("T")[0])}</p>
           </div>
         </div>
 
@@ -162,12 +162,12 @@ export default function CarteiraPet() {
         <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:gap-7">
           <PetAvatar especie={pet.especie} fotoUrl={pet.foto_url} size={160} ampliavel className="ring-4 ring-marca-500/15" />
           <div className="text-center sm:text-left">
-            <h2 className="text-3xl font-bold text-marca-900">{pet.nome}</h2>
-            <p className="mt-1 text-slate-500">
+            <h2 className="text-3xl font-bold text-marca-900 dark:text-slate-100">{pet.nome}</h2>
+            <p className="mt-1 text-slate-500 dark:text-slate-400">
               {cap(pet.especie)}{pet.raca ? ` · ${cap(pet.raca)}` : ""}{pet.sexo ? ` · ${pet.sexo}` : ""}
             </p>
             {idadeTexto(pet.nascimento) && (
-              <p className="mt-0.5 text-sm text-slate-400">{idadeTexto(pet.nascimento)}</p>
+              <p className="mt-0.5 text-sm text-slate-400 dark:text-slate-500">{idadeTexto(pet.nascimento)}</p>
             )}
           </div>
         </div>
@@ -179,7 +179,7 @@ export default function CarteiraPet() {
           <Linha rotulo="Cor" valor={cap(pet.cor)} />
           <Linha rotulo="Pelagem" valor={cap(pet.pelagem)} />
         </dl>
-        {pet.sobre && <p className="mt-3 text-sm text-slate-600"><strong>Sobre:</strong> {pet.sobre}</p>}
+        {pet.sobre && <p className="mt-3 text-sm text-slate-600 dark:text-slate-300"><strong>Sobre:</strong> {pet.sobre}</p>}
 
         <Secao titulo="Vacinas" vazio="Nenhuma vacina registrada.">
           {vacinas.length > 0 && (
@@ -202,7 +202,7 @@ export default function CarteiraPet() {
           )}
         </Secao>
 
-        <p className="mt-8 border-t border-slate-200 pt-4 text-center text-xs text-slate-400">
+        <p className="mt-8 border-t border-slate-200 dark:border-slate-700 pt-4 text-center text-xs text-slate-400 dark:text-slate-500">
           Documento gerado pelo CuidaPet — não substitui a orientação de um médico veterinário.
         </p>
       </div>
@@ -213,8 +213,8 @@ export default function CarteiraPet() {
 function Linha({ rotulo, valor }) {
   return (
     <div>
-      <dt className="text-xs uppercase tracking-wide text-slate-400">{rotulo}</dt>
-      <dd className="text-slate-800">{valor || "-"}</dd>
+      <dt className="text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">{rotulo}</dt>
+      <dd className="text-slate-800 dark:text-slate-100">{valor || "-"}</dd>
     </div>
   );
 }
@@ -223,8 +223,8 @@ function Secao({ titulo, vazio, children }) {
   const temConteudo = Array.isArray(children) ? children.some(Boolean) : Boolean(children);
   return (
     <div className="mt-7">
-      <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-marca-700">{titulo}</h3>
-      {temConteudo ? children : <p className="text-sm text-slate-400">{vazio}</p>}
+      <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-marca-700 dark:text-marca-200">{titulo}</h3>
+      {temConteudo ? children : <p className="text-sm text-slate-400 dark:text-slate-500">{vazio}</p>}
     </div>
   );
 }
@@ -233,14 +233,14 @@ function Tabela({ colunas, linhas }) {
   return (
     <table className="w-full border-collapse text-sm">
       <thead>
-        <tr className="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-400">
+        <tr className="border-b border-slate-200 dark:border-slate-700 text-left text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">
           {colunas.map((c) => <th key={c} className="py-2 pr-4">{c}</th>)}
         </tr>
       </thead>
       <tbody>
         {linhas.map((l, i) => (
-          <tr key={i} className="border-b border-slate-100">
-            {l.map((celula, j) => <td key={j} className="py-2 pr-4 text-slate-700">{celula}</td>)}
+          <tr key={i} className="border-b border-slate-100 dark:border-slate-700">
+            {l.map((celula, j) => <td key={j} className="py-2 pr-4 text-slate-700 dark:text-slate-200">{celula}</td>)}
           </tr>
         ))}
       </tbody>

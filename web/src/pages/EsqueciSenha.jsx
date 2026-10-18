@@ -51,8 +51,8 @@ export default function EsqueciSenha() {
         </form>
       )}
 
-      <p className="mt-6 text-center text-sm text-slate-500">
-        <Link to="/login" className="font-semibold text-marca-500 hover:underline">Voltar para o login</Link>
+      <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
+        <Link to="/login" className="font-semibold text-marca-500 dark:text-marca-300 hover:underline">Voltar para o login</Link>
       </p>
     </AuthShell>
   );

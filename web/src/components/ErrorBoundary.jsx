@@ -20,12 +20,12 @@ export default class ErrorBoundary extends Component {
   render() {
     if (this.state.erro) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-slate-50 px-5">
-          <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-suave">
+        <div className="flex min-h-screen items-center justify-center bg-slate-50 dark:bg-slate-900 px-5">
+          <div className="w-full max-w-md rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 text-center shadow-suave">
             <div className="flex justify-center"><Logo size={40} /></div>
             <PetLost className="mx-auto mt-4 w-44" />
-            <h1 className="mt-3 text-xl font-bold text-marca-900">Algo deu errado</h1>
-            <p className="mt-2 text-sm text-slate-600">
+            <h1 className="mt-3 text-xl font-bold text-marca-900 dark:text-slate-100">Algo deu errado</h1>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Tivemos um problema inesperado ao carregar esta tela. Tente recarregar — se continuar,
               volte para o início.
             </p>

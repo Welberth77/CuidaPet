@@ -11,7 +11,7 @@ export default function Spinner({ size = 28, className = "" }) {
 
 export function TelaCarregando({ texto = "Carregando..." }) {
   return (
-    <div className="flex min-h-[40vh] flex-col items-center justify-center gap-3 text-marca-500">
+    <div className="flex min-h-[40vh] flex-col items-center justify-center gap-3 text-marca-500 dark:text-marca-300">
       <Spinner size={34} />
       <p className="text-sm">{texto}</p>
     </div>

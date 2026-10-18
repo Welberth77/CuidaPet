@@ -113,8 +113,8 @@ export default function Home() {
       ) : pets.length === 0 ? (
         <div className="cartao flex flex-col items-center text-center">
           <EmptyArt className="w-56" />
-          <p className="mt-2 font-medium text-marca-900">Comece cadastrando seu primeiro pet</p>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-2 font-medium text-marca-900 dark:text-slate-100">Comece cadastrando seu primeiro pet</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Depois você poderá registrar vacinas, medicamentos e banhos — e receber lembretes aqui.
           </p>
           <Link to="/pets/novo" className="btn-primario mt-5">Cadastrar meu primeiro pet</Link>
@@ -131,8 +131,8 @@ export default function Home() {
           {/* Seus pets */}
           <section className="mb-8">
             <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-bold text-marca-900">Seus pets</h2>
-              <Link to="/meus-pets" className="text-sm font-medium text-marca-500 hover:underline">Ver todos</Link>
+              <h2 className="text-lg font-bold text-marca-900 dark:text-slate-100">Seus pets</h2>
+              <Link to="/meus-pets" className="text-sm font-medium text-marca-500 dark:text-marca-300 hover:underline">Ver todos</Link>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {pets.map((p) => {
@@ -143,24 +143,24 @@ export default function Home() {
                   <Link key={p.id} to="/meus-pets" className="cartao flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-suave">
                     <PetAvatar especie={p.especie} fotoUrl={p.foto_url} size={56} ampliavel />
                     <div className="min-w-0">
-                      <p className="truncate font-semibold text-marca-900">{p.nome}</p>
-                      <p className="truncate text-sm text-slate-500">
+                      <p className="truncate font-semibold text-marca-900 dark:text-slate-100">{p.nome}</p>
+                      <p className="truncate text-sm text-slate-500 dark:text-slate-400">
                         {idade || (p.especie === "gato" ? "Gato" : "Cachorro")}
                       </p>
                       {p.falecido && (
-                        <span className="mt-1 mr-1 inline-block rounded-full bg-marca-50 px-2 py-0.5 text-[10px] font-medium text-marca-700">🕊️ Em memória</span>
+                        <span className="mt-1 mr-1 inline-block rounded-full bg-marca-50 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-medium text-marca-700 dark:text-marca-200">🕊️ Em memória</span>
                       )}
                       {niverHoje && (
                         <span className="mt-1 mr-1 inline-block rounded-full bg-acento-50 px-2 py-0.5 text-[10px] font-medium text-acento-600">🎂 Aniversário hoje!</span>
                       )}
                       {compartilhado && (
-                        <span className="mt-1 inline-block rounded-full bg-marca-100 px-2 py-0.5 text-[10px] font-medium text-marca-700">compartilhado</span>
+                        <span className="mt-1 inline-block rounded-full bg-marca-100 dark:bg-slate-700 px-2 py-0.5 text-[10px] font-medium text-marca-700 dark:text-marca-200">compartilhado</span>
                       )}
                     </div>
                   </Link>
                 );
               })}
-              <Link to="/pets/novo" className="flex items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-200 p-5 text-sm font-medium text-slate-500 transition hover:border-marca-500/50 hover:text-marca-600">
+              <Link to="/pets/novo" className="flex items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 p-5 text-sm font-medium text-slate-500 dark:text-slate-400 transition hover:border-marca-500/50 hover:text-marca-600">
                 + Cadastrar pet
               </Link>
             </div>
@@ -181,9 +181,9 @@ export default function Home() {
 
           {/* Próximos */}
           <section className="mb-8">
-            <h2 className="mb-3 text-lg font-bold text-marca-900">Próximos cuidados</h2>
+            <h2 className="mb-3 text-lg font-bold text-marca-900 dark:text-slate-100">Próximos cuidados</h2>
             {proximos.length === 0 ? (
-              <div className="cartao text-sm text-slate-500">
+              <div className="cartao text-sm text-slate-500 dark:text-slate-400">
                 Nenhum cuidado agendado para os próximos dias. Registre a próxima data ao adicionar
                 uma vacina ou banho para ver os lembretes aqui.
               </div>
@@ -195,7 +195,7 @@ export default function Home() {
           </section>
 
           {/* Atalhos */}
-          <h2 className="mb-3 text-lg font-bold text-marca-900">Ações rápidas</h2>
+          <h2 className="mb-3 text-lg font-bold text-marca-900 dark:text-slate-100">Ações rápidas</h2>
           <div className="grid gap-4 sm:grid-cols-3">
             <Atalho to="/pets/novo" Icone={IconPaw} titulo="Cadastrar pet" />
             <Atalho to="/medicamentos-vacinas" Icone={IconVaccine} titulo="Registrar vacina" />
@@ -209,14 +209,14 @@ export default function Home() {
 
 function StatCard({ valor, rotulo, cor, to }) {
   const cores = {
-    marca: "text-marca-500",
+    marca: "text-marca-500 dark:text-marca-300",
     amber: "text-amber-500",
     red: "text-red-500",
   };
   return (
     <Link to={to} className="cartao transition hover:-translate-y-0.5 hover:shadow-suave">
       <div className={"text-4xl font-black " + cores[cor]}>{valor}</div>
-      <div className="mt-1 text-sm text-slate-500">{rotulo}</div>
+      <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">{rotulo}</div>
     </Link>
   );
 }
@@ -224,18 +224,18 @@ function StatCard({ valor, rotulo, cor, to }) {
 function LinhaLembrete({ l }) {
   const atrasado = l.status === "atrasado";
   return (
-    <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3">
+    <div className="flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3">
       <div className="flex items-center gap-3">
         <span className={"flex h-9 w-9 items-center justify-center rounded-lg " + (atrasado ? "bg-red-100 text-red-600" : "bg-amber-100 text-amber-600")}>
           {l.icone === "banho" ? <IconBath width="18" height="18" /> : <IconVaccine width="18" height="18" />}
         </span>
         <div>
-          <p className="font-medium text-marca-900">{l.titulo} <span className="font-normal text-slate-400">· {l.pet}</span></p>
-          <p className="text-xs text-slate-500">{l.tipo}</p>
+          <p className="font-medium text-marca-900 dark:text-slate-100">{l.titulo} <span className="font-normal text-slate-400 dark:text-slate-500">· {l.pet}</span></p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">{l.tipo}</p>
         </div>
       </div>
       <div className="text-right">
-        <p className="text-sm font-medium text-slate-700">{formatar(l.data)}</p>
+        <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{formatar(l.data)}</p>
         <p className={"text-xs font-medium " + (atrasado ? "text-red-600" : "text-amber-600")}>{rotuloPrazo(l.data)}</p>
       </div>
     </div>
@@ -245,10 +245,10 @@ function LinhaLembrete({ l }) {
 function Atalho({ to, Icone, titulo }) {
   return (
     <Link to={to} className="cartao group flex items-center gap-3 transition hover:-translate-y-0.5 hover:shadow-suave">
-      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-marca-500/10 text-marca-500 transition group-hover:bg-marca-500 group-hover:text-white">
+      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-marca-500/10 text-marca-500 dark:text-marca-300 transition group-hover:bg-marca-500 group-hover:text-white">
         <Icone />
       </span>
-      <span className="font-semibold text-marca-900">{titulo}</span>
+      <span className="font-semibold text-marca-900 dark:text-slate-100">{titulo}</span>
       <IconArrow width="18" height="18" className="ml-auto text-slate-300 group-hover:text-marca-500" />
     </Link>
   );

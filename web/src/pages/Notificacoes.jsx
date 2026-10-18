@@ -41,15 +41,15 @@ export default function Notificacoes() {
 
   return (
     <Layout>
-      <h1 className="mb-6 text-2xl font-bold text-marca-900">Notificações</h1>
+      <h1 className="mb-6 text-2xl font-bold text-marca-900 dark:text-slate-100">Notificações</h1>
 
       {notificacoes.length === 0 ? (
         <div className="cartao flex flex-col items-center py-10 text-center">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-marca-500/10 text-marca-500">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-marca-500/10 text-marca-500 dark:text-marca-300">
             <IconBell width="26" height="26" />
           </span>
-          <p className="mt-4 font-medium text-marca-900">Nenhuma notificação por aqui</p>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-4 font-medium text-marca-900 dark:text-slate-100">Nenhuma notificação por aqui</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Quando alguém compartilhar um pet com você, a solicitação aparece aqui.
           </p>
           <Link to="/meus-pets" className="btn-secundario mt-5">Ver meus pets</Link>
@@ -61,14 +61,14 @@ export default function Notificacoes() {
               <div className="flex items-start gap-3">
                 <PetAvatar especie="cachorro" size={44} />
                 <div>
-                  <p className="text-marca-900">
+                  <p className="text-marca-900 dark:text-slate-100">
                     <strong>{n.owner_nome || n.owner_email}</strong> quer compartilhar o pet{" "}
                     <strong>{n.pet_nome}</strong> com você.
                   </p>
-                  <p className="mt-0.5 text-xs text-slate-400">
+                  <p className="mt-0.5 text-xs text-slate-400 dark:text-slate-500">
                     {n.owner_email} · {formatar((n.created_at || "").split("T")[0])}
                   </p>
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     Ao aceitar, o pet aparece em “Meus Pets” e você poderá ver e registrar os cuidados dele.
                   </p>
                 </div>
@@ -77,7 +77,7 @@ export default function Notificacoes() {
                 <button className="btn-primario px-4 py-2 text-sm" disabled={ocupado === n.id} onClick={() => aceitar(n)}>
                   Aceitar
                 </button>
-                <button className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50" disabled={ocupado === n.id} onClick={() => recusar(n)}>
+                <button className="rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60" disabled={ocupado === n.id} onClick={() => recusar(n)}>
                   Recusar
                 </button>
               </div>

@@ -58,18 +58,18 @@ export default function Despedida({ pet, cuidados = {}, onConcluir, onFechar }) 
 
   return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4" style={{ animation: "popar 0.18s ease-out" }}>
-      <div className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-2xl">
+      <div className="w-full max-w-md overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-2xl">
         {etapa === "confirmar" ? (
           <div className="p-6">
             <div className="mb-3 text-center text-3xl">🕊️</div>
-            <h3 className="text-center text-lg font-bold text-marca-900">Prestar homenagem a {pet.nome}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            <h3 className="text-center text-lg font-bold text-marca-900 dark:text-slate-100">Prestar homenagem a {pet.nome}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               Sentimos muito pela sua perda. 💙 Ao confirmar, criamos um memorial para {pet.nome}: o perfil e
               todas as memórias continuam guardadas com você, e pausamos os lembretes e as comemorações.
               Você pode desfazer isso quando quiser.
             </p>
             <label className="mt-4 block">
-              <span className="mb-1 block text-sm font-medium text-marca-700">Data da partida (opcional)</span>
+              <span className="mb-1 block text-sm font-medium text-marca-700 dark:text-marca-200">Data da partida (opcional)</span>
               <input type="date" className="campo" min={dataMin} max={hoje()} value={data} onChange={(e) => setData(e.target.value)} />
             </label>
             <div className="mt-6 flex gap-2">
@@ -82,16 +82,16 @@ export default function Despedida({ pet, cuidados = {}, onConcluir, onFechar }) 
         ) : (
           <div className="bg-gradient-to-b from-marca-50 to-white p-7 text-center">
             <div className="mb-2 text-2xl">🕊️</div>
-            <p className="text-xs font-medium uppercase tracking-wide text-marca-500">Em memória de</p>
-            <h3 className="text-xl font-bold text-marca-900">{pet.nome}</h3>
+            <p className="text-xs font-medium uppercase tracking-wide text-marca-500 dark:text-marca-300">Em memória de</p>
+            <h3 className="text-xl font-bold text-marca-900 dark:text-slate-100">{pet.nome}</h3>
             <div className="my-4 flex justify-center">
               <PetAvatar especie={pet.especie} fotoUrl={pet.foto_url} size={110} className="ring-4 ring-white shadow-suave" />
             </div>
-            <p className="text-[15px] font-medium text-marca-900">{pet.nome} teve uma vida muito bem cuidada.</p>
+            <p className="text-[15px] font-medium text-marca-900 dark:text-slate-100">{pet.nome} teve uma vida muito bem cuidada.</p>
             {partes.length > 0 && (
-              <p className="mt-2 text-sm text-slate-500">{partes.join(" · ")}</p>
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{partes.join(" · ")}</p>
             )}
-            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+            <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               Cada vacina, cada banho e cada detalhe que você registrou foi prova do seu carinho.
               {" "}{Ele} foi {amado} ao seu lado. Obrigado por ter cuidado tão bem {dele} — as boas memórias
               ficam para sempre. 🐾

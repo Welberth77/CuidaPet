@@ -157,7 +157,7 @@ export default function FormPet() {
           onCancelar={() => setEditorAberto(false)}
         />
       )}
-      <h1 className="mb-6 text-2xl font-bold text-marca-900">
+      <h1 className="mb-6 text-2xl font-bold text-marca-900 dark:text-slate-100">
         {editando ? "Editar pet" : "Cadastrar novo pet"}
       </h1>
 
@@ -165,7 +165,7 @@ export default function FormPet() {
         {/* Foto de perfil */}
         <div className="flex items-center gap-5">
           <div className="relative">
-            <PetAvatar especie={form.especie || "cachorro"} size={88} fotoUrl={fotoAtual} className="border border-slate-200" />
+            <PetAvatar especie={form.especie || "cachorro"} size={88} fotoUrl={fotoAtual} className="border border-slate-200 dark:border-slate-700" />
           </div>
           <div>
             <input ref={inputFoto} type="file" accept="image/*" className="hidden" onChange={escolherFoto} />
@@ -184,7 +184,7 @@ export default function FormPet() {
                 </button>
               )}
             </div>
-            <p className="mt-2 text-xs text-slate-400">JPG ou PNG, até {MAX_MB} MB. Opcional.</p>
+            <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">JPG ou PNG, até {MAX_MB} MB. Opcional.</p>
           </div>
         </div>
 
@@ -227,13 +227,13 @@ export default function FormPet() {
                 onChange={(e) => set("nascimento", e.target.value)} />
               {form.nascimento && (
                 <button type="button" onClick={() => set("nascimento", "")}
-                  className="shrink-0 rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                  className="shrink-0 rounded-lg border border-slate-300 dark:border-slate-600 px-3 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60">
                   Limpar
                 </button>
               )}
             </div>
             {!form.nascimento && (
-              <p className="mt-1 text-xs text-slate-400">
+              <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
                 Se você não souber a data exata, pode colocar uma data próxima — este campo é opcional.
               </p>
             )}

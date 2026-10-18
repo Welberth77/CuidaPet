@@ -17,7 +17,7 @@ export default function Onboarding({ onCadastrar, onDepois }) {
     {
       titulo: "Bem-vindo ao CuidaPet! 🐾",
       corpo: (
-        <p className="text-slate-600">
+        <p className="text-slate-600 dark:text-slate-300">
           Aqui você organiza todos os cuidados dos seus pets em um só lugar: saúde, vacinas,
           banho e tosa — com lembretes para nunca esquecer nada. Vamos ver como funciona em
           3 passinhos rápidos.
@@ -28,14 +28,14 @@ export default function Onboarding({ onCadastrar, onDepois }) {
       titulo: "Assim fica o seu pet",
       corpo: (
         <div>
-          <p className="mb-4 text-slate-600">
+          <p className="mb-4 text-slate-600 dark:text-slate-300">
             Cada pet tem um perfil com foto e informações. Veja um exemplo:
           </p>
-          <div className="flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+          <div className="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-4">
             <PetAvatar especie={exemplo.especie} size={56} />
             <div>
-              <p className="font-bold text-marca-900">{exemplo.nome}</p>
-              <p className="text-sm text-slate-500">
+              <p className="font-bold text-marca-900 dark:text-slate-100">{exemplo.nome}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
                 {exemplo.especie === "gato" ? "Gato" : "Cachorro"} · {exemplo.raca} · {exemplo.idade}
               </p>
               <span className="mt-1 inline-block rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700">
@@ -43,7 +43,7 @@ export default function Onboarding({ onCadastrar, onDepois }) {
               </span>
             </div>
           </div>
-          <p className="mt-3 text-xs text-slate-400">* pet de exemplo, só para ilustrar 🙂</p>
+          <p className="mt-3 text-xs text-slate-400 dark:text-slate-500">* pet de exemplo, só para ilustrar 🙂</p>
         </div>
       ),
     },
@@ -57,12 +57,12 @@ export default function Onboarding({ onCadastrar, onDepois }) {
             { Icone: IconBath, t: "Acompanhar banho e tosa", d: "E ver tudo que está por vir na tela inicial." },
           ].map(({ Icone, t, d }) => (
             <li key={t} className="flex items-start gap-3">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-marca-500/10 text-marca-500">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-marca-500/10 text-marca-500 dark:text-marca-300">
                 <Icone width="18" height="18" />
               </span>
               <div>
-                <p className="font-medium text-marca-900">{t}</p>
-                <p className="text-sm text-slate-500">{d}</p>
+                <p className="font-medium text-marca-900 dark:text-slate-100">{t}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">{d}</p>
               </div>
             </li>
           ))}
@@ -72,7 +72,7 @@ export default function Onboarding({ onCadastrar, onDepois }) {
     {
       titulo: "Vamos cadastrar seu primeiro pet?",
       corpo: (
-        <p className="text-slate-600">
+        <p className="text-slate-600 dark:text-slate-300">
           É rapidinho — e depois de cadastrar você já pode registrar vacinas e banhos.
           Se preferir, pode deixar para depois e explorar o app antes.
         </p>
@@ -85,19 +85,19 @@ export default function Onboarding({ onCadastrar, onDepois }) {
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-suave sm:p-8">
+      <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-suave sm:p-8">
         {/* indicador de passos */}
         <div className="mb-5 flex gap-1.5">
           {passos.map((_, i) => (
-            <span key={i} className={"h-1.5 flex-1 rounded-full " + (i <= passo ? "bg-marca-500" : "bg-slate-200")} />
+            <span key={i} className={"h-1.5 flex-1 rounded-full " + (i <= passo ? "bg-marca-500" : "bg-slate-200 dark:bg-slate-600")} />
           ))}
         </div>
 
-        <h2 className="text-xl font-bold text-marca-900">{atual.titulo}</h2>
+        <h2 className="text-xl font-bold text-marca-900 dark:text-slate-100">{atual.titulo}</h2>
         <div className="mt-3">{atual.corpo}</div>
 
         <div className="mt-8 flex items-center justify-between gap-3">
-          <button onClick={onDepois} className="text-sm font-medium text-slate-500 hover:text-slate-700">
+          <button onClick={onDepois} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700">
             {ultimo ? "Cadastrar depois" : "Pular"}
           </button>
           {ultimo ? (

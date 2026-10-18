@@ -68,12 +68,12 @@ export default function FotoEditor({ file, onConcluir, onCancelar }) {
 
   return (
     <div className="fixed inset-0 z-[95] flex items-center justify-center bg-black/60 p-4" onClick={onCancelar}>
-      <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-suave" onClick={(e) => e.stopPropagation()}>
-        <h2 className="mb-1 text-lg font-bold text-marca-900">Ajustar foto</h2>
-        <p className="mb-4 text-sm text-slate-500">Arraste para posicionar e use o controle para dar zoom.</p>
+      <div className="w-full max-w-sm rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-suave" onClick={(e) => e.stopPropagation()}>
+        <h2 className="mb-1 text-lg font-bold text-marca-900 dark:text-slate-100">Ajustar foto</h2>
+        <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">Arraste para posicionar e use o controle para dar zoom.</p>
 
         <div
-          className="relative mx-auto touch-none overflow-hidden rounded-full bg-slate-100 ring-2 ring-marca-500/30"
+          className="relative mx-auto touch-none overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700 ring-2 ring-marca-500/30"
           style={{ width: V, height: V, cursor: "grab" }}
           onPointerDown={onDown}
           onPointerMove={onMove}
@@ -100,10 +100,10 @@ export default function FotoEditor({ file, onConcluir, onCancelar }) {
         </div>
 
         <div className="mt-5 flex items-center gap-3">
-          <span className="text-xs text-slate-400">Zoom</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">Zoom</span>
           <input type="range" min="1" max="3" step="0.01" value={zoom}
             onChange={(e) => setZoom(parseFloat(e.target.value))}
-            className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-slate-200 accent-marca-500" />
+            className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-slate-200 dark:bg-slate-600 accent-marca-500" />
         </div>
 
         <div className="mt-6 flex justify-end gap-3">

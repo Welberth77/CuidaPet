@@ -9,9 +9,9 @@ import Lightbox from "../components/ui/Lightbox.jsx";
 
 function Card({ titulo, sub, children, className = "" }) {
   return (
-    <div className={"rounded-2xl border border-slate-200 bg-white p-5 shadow-suave " + className}>
-      {titulo && <h3 className="text-sm font-semibold text-marca-900">{titulo}</h3>}
-      {sub && <p className="mt-0.5 text-xs text-slate-500">{sub}</p>}
+    <div className={"rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-suave " + className}>
+      {titulo && <h3 className="text-sm font-semibold text-marca-900 dark:text-slate-100">{titulo}</h3>}
+      {sub && <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{sub}</p>}
       <div className={titulo ? "mt-4" : ""}>{children}</div>
     </div>
   );
@@ -60,18 +60,18 @@ export default function Relatorios() {
     <Layout>
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-marca-900">Relatórios</h1>
-          <p className="text-sm text-slate-500">Visão administrativa do CuidaPet</p>
+          <h1 className="text-2xl font-bold text-marca-900 dark:text-slate-100">Relatórios</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400">Visão administrativa do CuidaPet</p>
         </div>
         {aba === "geral" && <button onClick={carregarGeral} className="btn-secundario text-sm">Atualizar</button>}
       </div>
 
       {/* Abas */}
-      <div className="mb-6 inline-flex rounded-xl border border-slate-200 bg-white p-1">
+      <div className="mb-6 inline-flex rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-1">
         {abas.map((a) => (
           <button key={a.id} onClick={() => abrir(a.id)}
             className={"rounded-lg px-4 py-1.5 text-sm font-medium transition-colors " +
-              (aba === a.id ? "bg-marca-500 text-white" : "text-slate-600 hover:bg-slate-100")}>
+              (aba === a.id ? "bg-marca-500 text-white" : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700")}>
             {a.label}
           </button>
         ))}
@@ -89,8 +89,8 @@ function VisaoGeral({ dados, carregando, erro, recarregar }) {
   if (carregando) return <TelaCarregando />;
   if (erro || !dados) {
     return (
-      <div className="mx-auto max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-suave">
-        <p className="text-slate-600">Não foi possível carregar os relatórios.</p>
+      <div className="mx-auto max-w-md rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 text-center shadow-suave">
+        <p className="text-slate-600 dark:text-slate-300">Não foi possível carregar os relatórios.</p>
         <button onClick={recarregar} className="btn-primario mt-4">Tentar novamente</button>
       </div>
     );
@@ -101,7 +101,7 @@ function VisaoGeral({ dados, carregando, erro, recarregar }) {
 
   return (
     <>
-      {geradoEm && <p className="mb-3 text-xs text-slate-400">Atualizado em {geradoEm}</p>}
+      {geradoEm && <p className="mb-3 text-xs text-slate-400 dark:text-slate-500">Atualizado em {geradoEm}</p>}
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         <Kpi rotulo="Usuários" valor={(t.usuarios || 0).toLocaleString("pt-BR")} sub={`${t.usuarios_confirmados || 0} confirmados (${pct(t.usuarios_confirmados, t.usuarios)})`} destaque />
@@ -114,13 +114,13 @@ function VisaoGeral({ dados, carregando, erro, recarregar }) {
         <Kpi rotulo="Novos (30 dias)" valor={`+${t.novos_usuarios_30d || 0}`} sub={`usuários · +${t.novos_pets_30d || 0} pets`} />
       </div>
 
-      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900">Crescimento</h2>
+      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900 dark:text-slate-100">Crescimento</h2>
       <div className="grid gap-4 lg:grid-cols-2">
         <Card titulo="Novos usuários por mês" sub="Últimos 12 meses"><ColunasMensais dados={dados.usuarios_por_mes} cor="#0B7ABF" /></Card>
         <Card titulo="Novos pets por mês" sub="Últimos 12 meses"><ColunasMensais dados={dados.pets_por_mes} cor="#F2762E" /></Card>
       </div>
 
-      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900">Perfil dos pets</h2>
+      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900 dark:text-slate-100">Perfil dos pets</h2>
       <div className="grid gap-4 lg:grid-cols-2">
         <Card titulo="Por espécie"><BarrasH dados={dados.pets_por_especie} /></Card>
         <Card titulo="Por sexo"><Donut dados={dados.pets_por_sexo} /></Card>
@@ -128,14 +128,14 @@ function VisaoGeral({ dados, carregando, erro, recarregar }) {
         <Card titulo="Pets por usuário" sub="Quantos pets cada tutor tem"><BarrasH dados={dados.pets_por_usuario} cor="#095F95" /></Card>
       </div>
 
-      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900">Atividade e cuidados</h2>
+      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900 dark:text-slate-100">Atividade e cuidados</h2>
       <div className="grid gap-4 lg:grid-cols-3">
         <Card titulo="Saúde por categoria"><BarrasH dados={dados.saude_por_categoria} /></Card>
         <Card titulo="Banho e tosa por serviço"><BarrasH dados={dados.banho_por_servico} cor="#F2762E" /></Card>
         <Card titulo="Despesas por categoria" sub="Soma dos valores"><BarrasH dados={dados.despesas_por_categoria} cor="#074973" formato="moeda" /></Card>
       </div>
 
-      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900">Engajamento</h2>
+      <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900 dark:text-slate-100">Engajamento</h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Kpi rotulo="Pets com foto" valor={pct(t.pets_com_foto, t.pets)} sub={`${t.pets_com_foto || 0} de ${t.pets || 0}`} />
         <Kpi rotulo="Usuários com avatar" valor={pct(t.usuarios_com_avatar, t.usuarios)} sub={`${t.usuarios_com_avatar || 0} de ${t.usuarios || 0}`} />
@@ -151,7 +151,7 @@ function BuscaFiltro({ valor, onChange, placeholder, total, filtrado }) {
   return (
     <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
       <input className="campo max-w-xs" placeholder={placeholder} value={valor} onChange={(e) => onChange(e.target.value)} />
-      <span className="text-xs text-slate-500">{filtrado} de {total}</span>
+      <span className="text-xs text-slate-500 dark:text-slate-400">{filtrado} de {total}</span>
     </div>
   );
 }
@@ -180,7 +180,7 @@ function Th({ campo, label, tipo = "texto", ord, setOrd }) {
     <th className="py-2 pr-3 font-medium">
       <button type="button"
         onClick={() => setOrd(ativo ? { campo, dir: ord.dir === "asc" ? "desc" : "asc", tipo } : { campo, dir: "asc", tipo })}
-        className={"inline-flex items-center gap-1 transition-colors hover:text-marca-700 " + (ativo ? "text-marca-700" : "")}>
+        className={"inline-flex items-center gap-1 transition-colors hover:text-marca-700 " + (ativo ? "text-marca-700 dark:text-marca-200" : "")}>
         {label}<span className={"text-[9px] " + (ativo ? "opacity-100" : "opacity-30")}>{seta}</span>
       </button>
     </th>
@@ -203,7 +203,7 @@ function TabelaUsuarios({ lista }) {
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] text-sm">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500">
+            <tr className="border-b border-slate-200 dark:border-slate-700 text-left text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
               <Th campo="nome" label="Nome" ord={ord} setOrd={setOrd} />
               <Th campo="email" label="E-mail" ord={ord} setOrd={setOrd} />
               <Th campo="pets" label="Pets" tipo="num" ord={ord} setOrd={setOrd} />
@@ -213,20 +213,20 @@ function TabelaUsuarios({ lista }) {
           </thead>
           <tbody>
             {visiveis.map((u) => (
-              <tr key={u.id} className="border-b border-slate-100 hover:bg-slate-50">
+              <tr key={u.id} className="border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60">
                 <td className="py-2 pr-3">
-                  <span className="font-medium text-marca-900">{u.nome || "—"}</span>
+                  <span className="font-medium text-marca-900 dark:text-slate-100">{u.nome || "—"}</span>
                   {u.is_admin && <span className="ml-2 rounded-full bg-acento-500 px-1.5 py-0.5 text-[10px] font-bold uppercase text-white">admin</span>}
-                  {!u.confirmado && <span className="ml-2 rounded-full bg-slate-200 px-1.5 py-0.5 text-[10px] font-medium text-slate-600">não confirmado</span>}
+                  {!u.confirmado && <span className="ml-2 rounded-full bg-slate-200 dark:bg-slate-600 px-1.5 py-0.5 text-[10px] font-medium text-slate-600 dark:text-slate-300">não confirmado</span>}
                 </td>
-                <td className="py-2 pr-3 text-slate-600">{u.email || "—"}</td>
-                <td className="py-2 pr-3 text-slate-700">{u.pets}</td>
-                <td className="py-2 pr-3 text-slate-600">{soData(u.criado_em)}</td>
-                <td className="py-2 pr-3 text-slate-600">{dataHora(u.ultimo_acesso)}</td>
+                <td className="py-2 pr-3 text-slate-600 dark:text-slate-300">{u.email || "—"}</td>
+                <td className="py-2 pr-3 text-slate-700 dark:text-slate-200">{u.pets}</td>
+                <td className="py-2 pr-3 text-slate-600 dark:text-slate-300">{soData(u.criado_em)}</td>
+                <td className="py-2 pr-3 text-slate-600 dark:text-slate-300">{dataHora(u.ultimo_acesso)}</td>
               </tr>
             ))}
             {visiveis.length === 0 && (
-              <tr><td colSpan={5} className="py-6 text-center text-slate-400">Nenhum usuário encontrado.</td></tr>
+              <tr><td colSpan={5} className="py-6 text-center text-slate-400 dark:text-slate-500">Nenhum usuário encontrado.</td></tr>
             )}
           </tbody>
         </table>
@@ -252,7 +252,7 @@ function TabelaPets({ lista }) {
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px] text-sm">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500">
+            <tr className="border-b border-slate-200 dark:border-slate-700 text-left text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
               <Th campo="nome" label="Pet" ord={ord} setOrd={setOrd} />
               <Th campo="especie" label="Espécie" ord={ord} setOrd={setOrd} />
               <Th campo="raca" label="Raça" ord={ord} setOrd={setOrd} />
@@ -263,27 +263,27 @@ function TabelaPets({ lista }) {
           </thead>
           <tbody>
             {visiveis.map((p) => (
-              <tr key={p.id} className="border-b border-slate-100 hover:bg-slate-50">
+              <tr key={p.id} className="border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60">
                 <td className="py-2 pr-3">
                   <div className="flex items-center gap-2">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-marca-100 text-xs font-semibold uppercase text-marca-700">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-marca-100 dark:bg-slate-700 text-xs font-semibold uppercase text-marca-700 dark:text-marca-200">
                       {p.foto_url ? <img src={p.foto_url} alt="" onClick={() => setFotoAmpliada(p.foto_url)} className="h-full w-full cursor-zoom-in object-cover" /> : (p.nome || "?").charAt(0)}
                     </span>
-                    <span className="font-medium text-marca-900">{p.nome || "—"}</span>
+                    <span className="font-medium text-marca-900 dark:text-slate-100">{p.nome || "—"}</span>
                   </div>
                 </td>
-                <td className="py-2 pr-3 capitalize text-slate-600">{p.especie || "—"}</td>
-                <td className="py-2 pr-3 capitalize text-slate-600">{p.raca || "—"}</td>
-                <td className="py-2 pr-3 capitalize text-slate-600">{p.sexo || "—"}</td>
-                <td className="py-2 pr-3 text-slate-600">
-                  <div className="text-marca-900">{p.tutor_nome || "—"}</div>
-                  <div className="text-xs text-slate-400">{p.tutor_email || ""}</div>
+                <td className="py-2 pr-3 capitalize text-slate-600 dark:text-slate-300">{p.especie || "—"}</td>
+                <td className="py-2 pr-3 capitalize text-slate-600 dark:text-slate-300">{p.raca || "—"}</td>
+                <td className="py-2 pr-3 capitalize text-slate-600 dark:text-slate-300">{p.sexo || "—"}</td>
+                <td className="py-2 pr-3 text-slate-600 dark:text-slate-300">
+                  <div className="text-marca-900 dark:text-slate-100">{p.tutor_nome || "—"}</div>
+                  <div className="text-xs text-slate-400 dark:text-slate-500">{p.tutor_email || ""}</div>
                 </td>
-                <td className="py-2 pr-3 text-slate-600">{soData(p.criado_em)}</td>
+                <td className="py-2 pr-3 text-slate-600 dark:text-slate-300">{soData(p.criado_em)}</td>
               </tr>
             ))}
             {visiveis.length === 0 && (
-              <tr><td colSpan={6} className="py-6 text-center text-slate-400">Nenhum pet encontrado.</td></tr>
+              <tr><td colSpan={6} className="py-6 text-center text-slate-400 dark:text-slate-500">Nenhum pet encontrado.</td></tr>
             )}
           </tbody>
         </table>

@@ -78,7 +78,7 @@ export default function Aniversario({ pet, anos, onFechar }) {
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-gradient-to-br from-marca-700/95 to-marca-900/95 p-4">
       <Confetes seed={seed} />
 
-      <div className="relative z-[102] w-full max-w-sm rounded-3xl bg-white p-8 text-center shadow-suave" style={{ animation: "popar .4s ease-out" }}>
+      <div className="relative z-[102] w-full max-w-sm rounded-3xl bg-white dark:bg-slate-800 p-8 text-center shadow-suave" style={{ animation: "popar .4s ease-out" }}>
         <Balao cor="#F2762E" className="absolute -left-6 -top-8 hidden sm:block" />
         <Balao cor="#06D6A0" className="absolute -right-6 -top-10 hidden sm:block" />
 
@@ -89,13 +89,13 @@ export default function Aniversario({ pet, anos, onFechar }) {
           <PetAvatar especie={pet.especie} fotoUrl={pet.foto_url} size={128} ampliavel className="ring-4 ring-acento-300" />
         </div>
 
-        <h2 className="mt-5 text-2xl font-black text-marca-900">
+        <h2 className="mt-5 text-2xl font-black text-marca-900 dark:text-slate-100">
           Feliz aniversário, {pet.nome}! 🎉
         </h2>
-        <p className="mt-2 text-slate-600">
-          Hoje <strong className="text-marca-700">{pet.nome}</strong> {textoIdade}
+        <p className="mt-2 text-slate-600 dark:text-slate-300">
+          Hoje <strong className="text-marca-700 dark:text-marca-200">{pet.nome}</strong> {textoIdade}
         </p>
-        <p className="mt-3 text-sm text-slate-500">
+        <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
           Que venham muitos passeios, petiscos e carinho. 🐾🎂
         </p>
 

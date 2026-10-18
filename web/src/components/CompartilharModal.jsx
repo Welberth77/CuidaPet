@@ -80,13 +80,13 @@ export default function CompartilharModal({ pet, onFechar }) {
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/50 p-4" onClick={onFechar}>
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-suave" onClick={(e) => e.stopPropagation()}>
+      <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-suave" onClick={(e) => e.stopPropagation()}>
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-bold text-marca-900">Compartilhar {pet.nome}</h2>
-          <button onClick={onFechar} className="text-slate-400 hover:text-slate-600" aria-label="Fechar">✕</button>
+          <h2 className="text-lg font-bold text-marca-900 dark:text-slate-100">Compartilhar {pet.nome}</h2>
+          <button onClick={onFechar} className="text-slate-400 dark:text-slate-500 hover:text-slate-600" aria-label="Fechar">✕</button>
         </div>
 
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
           Busque um usuário cadastrado pelo e-mail ou nome e envie um convite. Ele decide se aceita —
           e você pode remover o acesso quando quiser.
         </p>
@@ -102,13 +102,13 @@ export default function CompartilharModal({ pet, onFechar }) {
         {buscou && (
           <div className="mt-3 space-y-2">
             {resultados.length === 0 ? (
-              <p className="text-sm text-slate-400">Nenhum usuário encontrado.</p>
+              <p className="text-sm text-slate-400 dark:text-slate-500">Nenhum usuário encontrado.</p>
             ) : (
               resultados.map((u) => (
-                <div key={u.id} className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2">
+                <div key={u.id} className="flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2">
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-marca-900">{u.nome || "Sem nome"}</p>
-                    <p className="truncate text-xs text-slate-500">{u.email}</p>
+                    <p className="truncate text-sm font-medium text-marca-900 dark:text-slate-100">{u.nome || "Sem nome"}</p>
+                    <p className="truncate text-xs text-slate-500 dark:text-slate-400">{u.email}</p>
                   </div>
                   <button className="btn-secundario px-3 py-1.5 text-sm" onClick={() => convidar(u)}>Convidar</button>
                 </div>
@@ -119,13 +119,13 @@ export default function CompartilharModal({ pet, onFechar }) {
 
         {convites.length > 0 && (
           <div className="mt-6">
-            <h3 className="mb-2 text-sm font-semibold text-marca-700">Compartilhado com</h3>
+            <h3 className="mb-2 text-sm font-semibold text-marca-700 dark:text-marca-200">Compartilhado com</h3>
             <div className="space-y-2">
               {convites.map((c) => (
-                <div key={c.id} className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2">
+                <div key={c.id} className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-900 px-3 py-2">
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-marca-900">{c.shared_with_nome || c.shared_with_email}</p>
-                    <p className="truncate text-xs text-slate-500">{c.shared_with_email}</p>
+                    <p className="truncate text-sm font-medium text-marca-900 dark:text-slate-100">{c.shared_with_nome || c.shared_with_email}</p>
+                    <p className="truncate text-xs text-slate-500 dark:text-slate-400">{c.shared_with_email}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (c.status === "aceito" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700")}>

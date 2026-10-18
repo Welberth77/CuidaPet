@@ -28,9 +28,9 @@ export function ConfirmProvider({ children }) {
       {children}
       {estado && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/40 p-4" onClick={() => responder(false)}>
-          <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-suave" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-bold text-marca-900">{estado.titulo}</h3>
-            {estado.mensagem && <p className="mt-2 text-sm text-slate-600">{estado.mensagem}</p>}
+          <div className="w-full max-w-sm rounded-xl bg-white dark:bg-slate-800 p-6 shadow-suave" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-lg font-bold text-marca-900 dark:text-slate-100">{estado.titulo}</h3>
+            {estado.mensagem && <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{estado.mensagem}</p>}
             <div className="mt-6 flex justify-end gap-3">
               <button className="btn-secundario" onClick={() => responder(false)}>Cancelar</button>
               <button

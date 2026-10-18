@@ -11,6 +11,12 @@
   body {
     @apply font-sans text-marca-900 bg-slate-50;
   }
+  .dark {
+    color-scheme: dark;
+  }
+  .dark body {
+    @apply bg-slate-900 text-slate-100;
+  }
 
   /* Corrige o input de data no mobile (iOS/Safari): evita estouro de largura
      e alinha o conteudo, deixando o campo responsivo dentro do container. */
@@ -53,6 +59,18 @@
   }
   .cartao {
     @apply rounded-xl border border-slate-200 bg-white p-5 shadow-sm;
+  }
+  .dark .cartao {
+    @apply border-slate-700 bg-slate-800;
+  }
+  .dark .campo {
+    @apply border-slate-600 bg-slate-800 text-slate-100 placeholder:text-slate-500;
+  }
+  .dark .rotulo {
+    @apply text-marca-200;
+  }
+  .dark .btn-secundario {
+    @apply border-marca-400 text-marca-200 hover:bg-marca-500 hover:text-white;
   }
 }
 

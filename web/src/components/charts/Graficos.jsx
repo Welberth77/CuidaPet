@@ -7,10 +7,10 @@ export const CORES = ["#0B7ABF", "#F2762E", "#095F95", "#074973", "#0B75B7", "#0
 // ---- Cartao de KPI ---------------------------------------------------------
 export function Kpi({ rotulo, valor, sub, destaque }) {
   return (
-    <div className={"rounded-xl border p-4 " + (destaque ? "border-marca-200 bg-marca-50" : "border-slate-200 bg-white")}>
-      <div className="text-xs font-medium uppercase tracking-wide text-slate-500">{rotulo}</div>
-      <div className="mt-1 text-2xl font-bold text-marca-900">{valor}</div>
-      {sub && <div className="mt-0.5 text-xs text-slate-500">{sub}</div>}
+    <div className={"rounded-xl border p-4 " + (destaque ? "border-marca-200 bg-marca-50 dark:bg-slate-800" : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800")}>
+      <div className="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{rotulo}</div>
+      <div className="mt-1 text-2xl font-bold text-marca-900 dark:text-slate-100">{valor}</div>
+      {sub && <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{sub}</div>}
     </div>
   );
 }
@@ -28,10 +28,10 @@ export function BarrasH({ dados = [], cor = "#0B7ABF", formato }) {
         return (
           <div key={i}>
             <div className="mb-0.5 flex items-baseline justify-between gap-2 text-sm">
-              <span className="truncate text-slate-700">{d.rotulo}</span>
-              <span className="shrink-0 font-semibold text-marca-900">{fmt(v)}</span>
+              <span className="truncate text-slate-700 dark:text-slate-200">{d.rotulo}</span>
+              <span className="shrink-0 font-semibold text-marca-900 dark:text-slate-100">{fmt(v)}</span>
             </div>
-            <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
+            <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
               <div className="h-full rounded-full" style={{ width: pct + "%", backgroundColor: cor }} />
             </div>
           </div>
@@ -53,14 +53,14 @@ export function ColunasMensais({ dados = [], cor = "#0B7ABF" }) {
   const totalPeriodo = dados.reduce((s, d) => s + (Number(d.total) || 0), 0);
   return (
     <div>
-      <div className="mb-3 text-sm text-slate-500">{totalPeriodo.toLocaleString("pt-BR")} no período</div>
+      <div className="mb-3 text-sm text-slate-500 dark:text-slate-400">{totalPeriodo.toLocaleString("pt-BR")} no período</div>
       <div className="flex h-40 items-end gap-1">
         {dados.map((d, i) => {
           const v = Number(d.total) || 0;
           const h = Math.max((v / max) * 100, v > 0 ? 4 : 1.5);
           return (
             <div key={i} className="flex flex-1 flex-col items-center justify-end" title={`${rotuloMes(d.mes)}: ${v}`}>
-              <span className="mb-1 text-[10px] font-semibold text-marca-700">{v > 0 ? v : ""}</span>
+              <span className="mb-1 text-[10px] font-semibold text-marca-700 dark:text-marca-200">{v > 0 ? v : ""}</span>
               <div className="w-full rounded-t" style={{ height: h + "%", backgroundColor: v > 0 ? cor : "#E2E8F0" }} />
             </div>
           );
@@ -68,7 +68,7 @@ export function ColunasMensais({ dados = [], cor = "#0B7ABF" }) {
       </div>
       <div className="mt-1 flex gap-1">
         {dados.map((d, i) => (
-          <div key={i} className="flex-1 text-center text-[9px] text-slate-400">{rotuloMes(d.mes)}</div>
+          <div key={i} className="flex-1 text-center text-[9px] text-slate-400 dark:text-slate-500">{rotuloMes(d.mes)}</div>
         ))}
       </div>
     </div>
@@ -105,9 +105,9 @@ export function Donut({ dados = [] }) {
         {itens.map((d, i) => (
           <div key={i} className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-sm" style={{ backgroundColor: CORES[i % CORES.length] }} />
-            <span className="text-slate-700">{d.rotulo}</span>
-            <span className="font-semibold text-marca-900">{d.valor}</span>
-            <span className="text-xs text-slate-400">({Math.round((d.valor / total) * 100)}%)</span>
+            <span className="text-slate-700 dark:text-slate-200">{d.rotulo}</span>
+            <span className="font-semibold text-marca-900 dark:text-slate-100">{d.valor}</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">({Math.round((d.valor / total) * 100)}%)</span>
           </div>
         ))}
       </div>
@@ -116,5 +116,5 @@ export function Donut({ dados = [] }) {
 }
 
 function Vazio() {
-  return <div className="flex h-24 items-center justify-center text-sm text-slate-400">Sem dados ainda</div>;
+  return <div className="flex h-24 items-center justify-center text-sm text-slate-400 dark:text-slate-500">Sem dados ainda</div>;
 }

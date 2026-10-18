@@ -52,7 +52,7 @@ export default function Login() {
         <div>
           <div className="mb-1 flex items-center justify-between">
             <label className="rotulo mb-0" htmlFor="senha">Senha</label>
-            <Link to="/esqueci-senha" className="text-xs font-medium text-marca-500 hover:underline">
+            <Link to="/esqueci-senha" className="text-xs font-medium text-marca-500 dark:text-marca-300 hover:underline">
               Esqueci minha senha
             </Link>
           </div>
@@ -67,10 +67,10 @@ export default function Login() {
         </button>
       </form>
 
-      <div className="my-6 flex items-center gap-3 text-xs text-slate-400">
-        <span className="h-px flex-1 bg-slate-200" />
+      <div className="my-6 flex items-center gap-3 text-xs text-slate-400 dark:text-slate-500">
+        <span className="h-px flex-1 bg-slate-200 dark:bg-slate-600" />
         NÃO TEM CADASTRO?
-        <span className="h-px flex-1 bg-slate-200" />
+        <span className="h-px flex-1 bg-slate-200 dark:bg-slate-600" />
       </div>
 
       <Link to="/cadastro" className="btn-secundario w-full">Cadastre-se aqui</Link>

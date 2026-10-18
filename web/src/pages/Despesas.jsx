@@ -111,7 +111,7 @@ export default function Despesas() {
 
   return (
     <Layout>
-      <h1 className="mb-6 text-2xl font-bold text-marca-900">Despesas</h1>
+      <h1 className="mb-6 text-2xl font-bold text-marca-900 dark:text-slate-100">Despesas</h1>
 
       {carregando ? (
         <TelaCarregando />
@@ -122,23 +122,23 @@ export default function Despesas() {
           {/* Resumo */}
           <div className="mb-6 grid gap-4 sm:grid-cols-[260px_1fr]">
             <div className="cartao">
-              <p className="text-xs uppercase tracking-wide text-slate-400">Gasto em {nomeMes}</p>
-              <p className="mt-1 text-3xl font-black text-marca-500">{moeda(resumo.total)}</p>
-              <p className="mt-2 text-xs text-slate-400">Total acumulado: {moeda(resumo.totalGeral)}</p>
+              <p className="text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">Gasto em {nomeMes}</p>
+              <p className="mt-1 text-3xl font-black text-marca-500 dark:text-marca-300">{moeda(resumo.total)}</p>
+              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Total acumulado: {moeda(resumo.totalGeral)}</p>
             </div>
             <div className="cartao">
-              <p className="mb-2 text-sm font-semibold text-marca-900">Por categoria ({nomeMes})</p>
+              <p className="mb-2 text-sm font-semibold text-marca-900 dark:text-slate-100">Por categoria ({nomeMes})</p>
               {resumo.cats.length === 0 ? (
-                <p className="text-sm text-slate-400">Nenhuma despesa neste mês ainda.</p>
+                <p className="text-sm text-slate-400 dark:text-slate-500">Nenhuma despesa neste mês ainda.</p>
               ) : (
                 <div className="space-y-2">
                   {resumo.cats.map(([cat, val]) => (
                     <div key={cat}>
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-600">{cat}</span>
-                        <span className="font-medium text-marca-900">{moeda(val)}</span>
+                        <span className="text-slate-600 dark:text-slate-300">{cat}</span>
+                        <span className="font-medium text-marca-900 dark:text-slate-100">{moeda(val)}</span>
                       </div>
-                      <div className="mt-1 h-2 rounded-full bg-slate-100">
+                      <div className="mt-1 h-2 rounded-full bg-slate-100 dark:bg-slate-700">
                         <div className="h-2 rounded-full bg-marca-500" style={{ width: (val / resumo.max * 100) + "%" }} />
                       </div>
                     </div>
@@ -150,7 +150,7 @@ export default function Despesas() {
 
           <div className="grid gap-6 lg:grid-cols-[380px_1fr]">
             <form onSubmit={handleSubmit} className={"cartao h-fit space-y-4 " + (editandoId ? "ring-2 ring-marca-500/40" : "")} noValidate>
-              <h2 className="font-semibold text-marca-900">{editandoId ? "Editar despesa" : "Nova despesa"}</h2>
+              <h2 className="font-semibold text-marca-900 dark:text-slate-100">{editandoId ? "Editar despesa" : "Nova despesa"}</h2>
 
               <Campo rotulo="Pet" erro={erros.petId}>
                 <select className={cls(erros.petId)} value={form.petId} onChange={(e) => set("petId", e.target.value)}>
@@ -192,10 +192,10 @@ export default function Despesas() {
               onRemover={handleRemover}
               selecionadoId={editandoId}
               colunas={[
-                { titulo: "Categoria", render: (r) => <span className="rounded-full bg-marca-100 px-2 py-0.5 text-xs font-medium text-marca-700">{r.categoria}</span> },
+                { titulo: "Categoria", render: (r) => <span className="rounded-full bg-marca-100 dark:bg-slate-700 px-2 py-0.5 text-xs font-medium text-marca-700 dark:text-marca-200">{r.categoria}</span> },
                 { titulo: "Descrição", render: (r) => r.descricao || "-" },
                 { titulo: "Pet", render: (r) => r.petNome },
-                { titulo: "Valor", render: (r) => <span className="font-medium text-marca-900">{moeda(r.valor)}</span> },
+                { titulo: "Valor", render: (r) => <span className="font-medium text-marca-900 dark:text-slate-100">{moeda(r.valor)}</span> },
                 { titulo: "Data", render: (r) => formatar(r.data) },
               ]}
               vazio="Nenhuma despesa registrada ainda."

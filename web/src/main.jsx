@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
+import { ThemeProvider } from "./contexts/ThemeContext.jsx";
 import { NotifProvider } from "./contexts/NotifContext.jsx";
 import { ToastProvider } from "./components/ui/Toast.jsx";
 import { ConfirmProvider } from "./components/ui/Confirm.jsx";
@@ -14,6 +15,7 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ErrorBoundary>
+    <ThemeProvider>
     {supabaseConfigValido ? (
       <BrowserRouter>
         <ToastProvider>
@@ -29,6 +31,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     ) : (
       <ConfigNotice />
     )}
+    </ThemeProvider>
     </ErrorBoundary>
   </React.StrictMode>
 );

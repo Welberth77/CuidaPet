@@ -22,13 +22,13 @@ const passos = [
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-white text-marca-900">
+    <div className="min-h-screen bg-white dark:bg-slate-800 text-marca-900 dark:text-slate-100">
       {/* Topo */}
-      <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/90 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-slate-100 dark:border-slate-700 bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <Logo />
           <div className="flex items-center gap-2">
-            <Link to="/login" className="rounded-lg px-4 py-2 text-sm font-medium text-marca-700 hover:bg-marca-50">Entrar</Link>
+            <Link to="/login" className="rounded-lg px-4 py-2 text-sm font-medium text-marca-700 dark:text-marca-200 hover:bg-marca-50">Entrar</Link>
             <Link to="/cadastro" className="btn-primario px-4 py-2 text-sm">Criar conta grátis</Link>
           </div>
         </div>
@@ -38,13 +38,13 @@ export default function Landing() {
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-marca-50 px-3 py-1 text-sm font-medium text-marca-700">
+            <span className="inline-flex items-center gap-2 rounded-full bg-marca-50 dark:bg-slate-800 px-3 py-1 text-sm font-medium text-marca-700 dark:text-marca-200">
               🐾 Cuidar do seu pet ficou simples
             </span>
             <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">
-              Todos os cuidados do seu pet em <span className="text-marca-500">um só lugar</span>
+              Todos os cuidados do seu pet em <span className="text-marca-500 dark:text-marca-300">um só lugar</span>
             </h1>
-            <p className="mt-4 max-w-md text-lg text-slate-600">
+            <p className="mt-4 max-w-md text-lg text-slate-600 dark:text-slate-300">
               Organize vacinas, medicamentos, banho e tosa, receba lembretes e nunca mais perca
               uma data importante da saúde do seu melhor amigo.
             </p>
@@ -56,29 +56,29 @@ export default function Landing() {
             </div>
           </div>
           <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-full bg-marca-50 blur-2xl" />
+            <div className="absolute inset-0 -z-10 rounded-full bg-marca-50 dark:bg-slate-800 blur-2xl" />
             <HeroArt className="mx-auto w-full max-w-md" />
           </div>
         </div>
       </section>
 
       {/* Funcionalidades */}
-      <section className="bg-slate-50 py-16 md:py-20">
+      <section className="bg-slate-50 dark:bg-slate-900 py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold">Tudo o que você precisa para cuidar bem</h2>
-            <p className="mt-3 text-slate-600">
+            <p className="mt-3 text-slate-600 dark:text-slate-300">
               O CuidaPet reúne as informações que hoje ficam espalhadas em papéis, mensagens e na memória.
             </p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {funcionalidades.map(({ Icone, titulo, desc }) => (
               <div key={titulo} className="cartao">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-marca-500/10 text-marca-500">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-marca-500/10 text-marca-500 dark:text-marca-300">
                   <Icone />
                 </span>
                 <h3 className="mt-4 text-lg font-semibold">{titulo}</h3>
-                <p className="mt-2 text-sm text-slate-600">{desc}</p>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{desc}</p>
               </div>
             ))}
           </div>
@@ -90,7 +90,7 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold">Como funciona</h2>
-            <p className="mt-3 text-slate-600">Em três passos você já está no controle.</p>
+            <p className="mt-3 text-slate-600 dark:text-slate-300">Em três passos você já está no controle.</p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {passos.map((p) => (
@@ -99,7 +99,7 @@ export default function Landing() {
                   {p.n}
                 </div>
                 <h3 className="mt-4 text-lg font-semibold">{p.titulo}</h3>
-                <p className="mt-2 text-sm text-slate-600">{p.desc}</p>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -113,15 +113,15 @@ export default function Landing() {
           <p className="mx-auto mt-3 max-w-xl text-white/85">
             Crie sua conta gratuita e comece a cuidar melhor hoje mesmo.
           </p>
-          <Link to="/cadastro" className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-marca-700 transition hover:bg-white/90">
+          <Link to="/cadastro" className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white dark:bg-slate-800 px-6 py-3 font-semibold text-marca-700 dark:text-marca-200 transition hover:bg-white/90">
             Criar conta grátis <IconArrow width="18" height="18" />
           </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100 py-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-sm text-slate-500 sm:flex-row">
+      <footer className="border-t border-slate-100 dark:border-slate-700 py-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
           <Logo />
           <p>© {new Date().getFullYear()} CuidaPet — feito com carinho para quem ama seus pets.</p>
         </div>

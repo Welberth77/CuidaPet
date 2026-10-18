@@ -73,12 +73,12 @@ export default function ConfirmarEmail() {
       </form>
 
       <button onClick={reenviar} disabled={reenviando}
-        className="mt-4 w-full text-center text-sm font-medium text-marca-500 hover:underline disabled:opacity-60">
+        className="mt-4 w-full text-center text-sm font-medium text-marca-500 dark:text-marca-300 hover:underline disabled:opacity-60">
         {reenviando ? "Reenviando..." : "Reenviar código"}
       </button>
 
-      <p className="mt-6 text-center text-sm text-slate-500">
-        <Link to="/login" className="font-semibold text-marca-500 hover:underline">Voltar para o login</Link>
+      <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
+        <Link to="/login" className="font-semibold text-marca-500 dark:text-marca-300 hover:underline">Voltar para o login</Link>
       </p>
     </AuthShell>
   );

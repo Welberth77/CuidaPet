@@ -104,7 +104,7 @@ export default function MedicamentosVacinas() {
 
   return (
     <Layout>
-      <h1 className="mb-6 text-2xl font-bold text-marca-900">Medicamentos e Vacinas</h1>
+      <h1 className="mb-6 text-2xl font-bold text-marca-900 dark:text-slate-100">Medicamentos e Vacinas</h1>
 
       {carregando ? (
         <TelaCarregando />
@@ -113,7 +113,7 @@ export default function MedicamentosVacinas() {
       ) : (
         <div className="grid gap-6 lg:grid-cols-[380px_1fr]">
           <form onSubmit={handleSubmit} className={"cartao h-fit space-y-4 " + (editandoId ? "ring-2 ring-marca-500/40" : "")} noValidate>
-            <h2 className="font-semibold text-marca-900">{editandoId ? "Editar registro" : "Registrar novo"}</h2>
+            <h2 className="font-semibold text-marca-900 dark:text-slate-100">{editandoId ? "Editar registro" : "Registrar novo"}</h2>
 
             <Campo rotulo="Pet" erro={erros.petId}>
               <select className={cls(erros.petId)} value={form.petId} onChange={(e) => set("petId", e.target.value)}>
@@ -157,7 +157,7 @@ export default function MedicamentosVacinas() {
             onRemover={handleRemover}
             selecionadoId={editandoId}
             colunas={[
-              { titulo: "Categoria", render: (r) => <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (r.categoria === "Vacina" ? "bg-emerald-100 text-emerald-700" : "bg-marca-100 text-marca-700")}>{r.categoria}</span> },
+              { titulo: "Categoria", render: (r) => <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (r.categoria === "Vacina" ? "bg-emerald-100 text-emerald-700" : "bg-marca-100 dark:bg-slate-700 text-marca-700 dark:text-marca-200")}>{r.categoria}</span> },
               { titulo: "Nome", render: (r) => r.nome },
               { titulo: "Pet", render: (r) => r.petNome },
               { titulo: "Aplicado em", render: (r) => formatar(r.data) },
@@ -175,31 +175,31 @@ export function SemPets({ texto }) {
   return (
     <div className="cartao flex flex-col items-center text-center">
       <EmptyArt className="w-56" />
-      <p className="mt-2 font-medium text-marca-900">Cadastre um pet primeiro</p>
-      <p className="mt-1 text-sm text-slate-500">{texto}</p>
+      <p className="mt-2 font-medium text-marca-900 dark:text-slate-100">Cadastre um pet primeiro</p>
+      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{texto}</p>
       <Link to="/pets/novo" className="btn-primario mt-5">Cadastrar pet</Link>
     </div>
   );
 }
 
 export function ListaRegistros({ registros, onEditar, onRemover, colunas, vazio, selecionadoId }) {
-  if (registros.length === 0) return <div className="cartao text-slate-500">{vazio}</div>;
+  if (registros.length === 0) return <div className="cartao text-slate-500 dark:text-slate-400">{vazio}</div>;
   return (
     <div className="cartao overflow-x-auto p-0">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-slate-100 text-left text-xs uppercase tracking-wide text-slate-400">
+          <tr className="border-b border-slate-100 dark:border-slate-700 text-left text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">
             {colunas.map((c) => <th key={c.titulo} className="px-4 py-3">{c.titulo}</th>)}
             <th className="px-4 py-3"></th>
           </tr>
         </thead>
         <tbody>
           {registros.map((r) => (
-            <tr key={r.id} className={"border-b border-slate-50 align-top last:border-0 hover:bg-slate-50/60 " + (selecionadoId === r.id ? "bg-marca-50" : "")}>
-              {colunas.map((c) => <td key={c.titulo} className="px-4 py-3 text-slate-700">{c.render(r)}</td>)}
+            <tr key={r.id} className={"border-b border-slate-50 align-top last:border-0 hover:bg-slate-50/60 " + (selecionadoId === r.id ? "bg-marca-50 dark:bg-slate-800" : "")}>
+              {colunas.map((c) => <td key={c.titulo} className="px-4 py-3 text-slate-700 dark:text-slate-200">{c.render(r)}</td>)}
               <td className="whitespace-nowrap px-4 py-3 text-right">
                 {onEditar && (
-                  <button onClick={() => onEditar(r)} className="mr-3 text-xs font-medium text-marca-500 hover:underline">Editar</button>
+                  <button onClick={() => onEditar(r)} className="mr-3 text-xs font-medium text-marca-500 dark:text-marca-300 hover:underline">Editar</button>
                 )}
                 <button onClick={() => onRemover(r.id)} className="text-xs font-medium text-red-500 hover:underline">Remover</button>
               </td>

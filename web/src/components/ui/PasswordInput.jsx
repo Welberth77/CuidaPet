@@ -16,7 +16,7 @@ export default function PasswordInput({ id, value, onChange, placeholder, erro, 
       <button
         type="button"
         onClick={() => setVer((v) => !v)}
-        className="absolute inset-y-0 right-0 flex items-center px-3 text-slate-400 hover:text-marca-500"
+        className="absolute inset-y-0 right-0 flex items-center px-3 text-slate-400 dark:text-slate-500 hover:text-marca-500"
         aria-label={ver ? "Ocultar senha" : "Mostrar senha"}
         tabIndex={-1}
       >

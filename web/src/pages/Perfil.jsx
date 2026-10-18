@@ -98,7 +98,7 @@ export default function Perfil() {
         <FotoEditor file={arquivoOriginal} onConcluir={aoConcluirEdicao} onCancelar={() => setEditorAberto(false)} />
       )}
 
-      <h1 className="mb-6 text-2xl font-bold text-marca-900">Meu Perfil</h1>
+      <h1 className="mb-6 text-2xl font-bold text-marca-900 dark:text-slate-100">Meu Perfil</h1>
 
       <div className="cartao max-w-xl">
         <div className="mb-6 flex items-center gap-4">
@@ -110,12 +110,12 @@ export default function Perfil() {
             </div>
           )}
           <div className="min-w-0">
-            <p className="truncate text-lg font-semibold text-marca-900">{nome || "Sem nome"}</p>
-            <p className="truncate text-sm text-slate-500">{usuario?.email}</p>
+            <p className="truncate text-lg font-semibold text-marca-900 dark:text-slate-100">{nome || "Sem nome"}</p>
+            <p className="truncate text-sm text-slate-500 dark:text-slate-400">{usuario?.email}</p>
             <div className="mt-1 flex gap-3 text-sm">
               <input ref={inputFoto} type="file" accept="image/*" className="hidden" onChange={escolherFoto} />
               <button onClick={() => inputFoto.current?.click()} disabled={enviandoFoto}
-                className="font-medium text-marca-500 hover:underline disabled:opacity-60">
+                className="font-medium text-marca-500 dark:text-marca-300 hover:underline disabled:opacity-60">
                 {enviandoFoto ? "Enviando..." : avatar ? "Trocar foto" : "Adicionar foto"}
               </button>
               {avatar && !enviandoFoto && (
@@ -133,8 +133,8 @@ export default function Perfil() {
             </div>
             <div>
               <label className="rotulo">E-mail</label>
-              <input className="campo bg-slate-100 text-slate-500" value={usuario?.email || ""} disabled />
-              <p className="mt-1 text-xs text-slate-400">O e-mail não pode ser alterado.</p>
+              <input className="campo bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400" value={usuario?.email || ""} disabled />
+              <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">O e-mail não pode ser alterado.</p>
             </div>
             <div className="flex gap-3 pt-1">
               <button type="submit" className="btn-primario" disabled={salvando}>
@@ -152,7 +152,7 @@ export default function Perfil() {
 
       <div className="mt-8 max-w-xl rounded-xl border border-red-200 bg-red-50/40 p-5">
         <h2 className="font-semibold text-red-700">Zona de perigo</h2>
-        <p className="mt-1 text-sm text-slate-600">
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
           Excluir sua conta remove permanentemente todos os seus pets, fotos, histórico de saúde,
           banhos, lembretes e compartilhamentos. Esta ação não pode ser desfeita.
         </p>

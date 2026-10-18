@@ -102,7 +102,7 @@ export default function BanhoTosa() {
 
   return (
     <Layout>
-      <h1 className="mb-6 text-2xl font-bold text-marca-900">Banho e Tosa</h1>
+      <h1 className="mb-6 text-2xl font-bold text-marca-900 dark:text-slate-100">Banho e Tosa</h1>
 
       {carregando ? (
         <TelaCarregando />
@@ -111,7 +111,7 @@ export default function BanhoTosa() {
       ) : (
         <div className="grid gap-6 lg:grid-cols-[380px_1fr]">
           <form onSubmit={handleSubmit} className={"cartao h-fit space-y-4 " + (editandoId ? "ring-2 ring-marca-500/40" : "")} noValidate>
-            <h2 className="font-semibold text-marca-900">{editandoId ? "Editar registro" : "Registrar novo"}</h2>
+            <h2 className="font-semibold text-marca-900 dark:text-slate-100">{editandoId ? "Editar registro" : "Registrar novo"}</h2>
 
             <Campo rotulo="Pet" erro={erros.petId}>
               <select className={cls(erros.petId)} value={form.petId} onChange={(e) => set("petId", e.target.value)}>
