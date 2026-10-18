@@ -1,15 +1,23 @@
-export default function PetAvatar({ especie = "cachorro", className = "", size = 40, fotoUrl }) {
+import { useState } from "react";
+import Lightbox from "../ui/Lightbox.jsx";
+
+export default function PetAvatar({ especie = "cachorro", className = "", size = 40, fotoUrl, ampliavel = false }) {
+  const [aberto, setAberto] = useState(false);
   if (fotoUrl) {
     return (
-      <img
-        src={fotoUrl}
-        alt=""
-        width={size}
-        height={size}
-        className={"shrink-0 rounded-full object-cover ring-1 ring-black/5 " + className}
-        style={{ width: size, height: size }}
-        loading="lazy"
-      />
+      <>
+        <img
+          src={fotoUrl}
+          alt=""
+          width={size}
+          height={size}
+          onClick={ampliavel ? (e) => { e.stopPropagation(); e.preventDefault(); setAberto(true); } : undefined}
+          className={"shrink-0 rounded-full object-cover ring-1 ring-black/5 " + (ampliavel ? "cursor-zoom-in " : "") + className}
+          style={{ width: size, height: size }}
+          loading="lazy"
+        />
+        {ampliavel && aberto && <Lightbox src={fotoUrl} onFechar={() => setAberto(false)} />}
+      </>
     );
   }
 

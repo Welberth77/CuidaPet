@@ -138,7 +138,7 @@ export default function MeusPets() {
               <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h2 className="flex items-center gap-3 text-xl font-bold text-marca-900">
-                    <PetAvatar especie={selecionado.especie} size={44} fotoUrl={selecionado.foto_url} />
+                    <PetAvatar especie={selecionado.especie} size={44} fotoUrl={selecionado.foto_url} ampliavel />
                     {selecionado.nome}
                   </h2>
                   {!ehDono(selecionado) && (

@@ -86,7 +86,7 @@ export default function Aniversario({ pet, anos, onFechar }) {
           <div className="absolute -top-9 left-1/2 -translate-x-1/2" style={{ animation: "balancar 2.4s ease-in-out infinite", transformOrigin: "bottom center" }}>
             <ChapeuFesta />
           </div>
-          <PetAvatar especie={pet.especie} fotoUrl={pet.foto_url} size={128} className="ring-4 ring-acento-300" />
+          <PetAvatar especie={pet.especie} fotoUrl={pet.foto_url} size={128} ampliavel className="ring-4 ring-acento-300" />
         </div>
 
         <h2 className="mt-5 text-2xl font-black text-marca-900">

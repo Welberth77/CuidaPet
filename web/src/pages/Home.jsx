@@ -140,7 +140,7 @@ export default function Home() {
                 const niverHoje = ehAniversarioHoje(p.nascimento);
                 return (
                   <Link key={p.id} to="/meus-pets" className="cartao flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-suave">
-                    <PetAvatar especie={p.especie} fotoUrl={p.foto_url} size={56} />
+                    <PetAvatar especie={p.especie} fotoUrl={p.foto_url} size={56} ampliavel />
                     <div className="min-w-0">
                       <p className="truncate font-semibold text-marca-900">{p.nome}</p>
                       <p className="truncate text-sm text-slate-500">

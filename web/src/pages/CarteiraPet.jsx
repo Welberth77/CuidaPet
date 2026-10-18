@@ -160,7 +160,7 @@ export default function CarteiraPet() {
 
         {/* Dados do pet */}
         <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:gap-7">
-          <PetAvatar especie={pet.especie} fotoUrl={pet.foto_url} size={160} className="ring-4 ring-marca-500/15" />
+          <PetAvatar especie={pet.especie} fotoUrl={pet.foto_url} size={160} ampliavel className="ring-4 ring-marca-500/15" />
           <div className="text-center sm:text-left">
             <h2 className="text-3xl font-bold text-marca-900">{pet.nome}</h2>
             <p className="mt-1 text-slate-500">

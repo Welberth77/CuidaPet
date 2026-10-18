@@ -5,6 +5,7 @@ import { useToast } from "../components/ui/Toast.jsx";
 import { obterRelatorio, listarUsuariosAdmin, listarPetsAdmin } from "../services/relatorios.js";
 import { moeda } from "../utils/datas.js";
 import { Kpi, BarrasH, ColunasMensais, Donut } from "../components/charts/Graficos.jsx";
+import Lightbox from "../components/ui/Lightbox.jsx";
 
 function Card({ titulo, sub, children, className = "" }) {
   return (
@@ -237,6 +238,7 @@ function TabelaUsuarios({ lista }) {
 function TabelaPets({ lista }) {
   const [q, setQ] = useState("");
   const [ord, setOrd] = useState({ campo: "criado_em", dir: "desc", tipo: "data" });
+  const [fotoAmpliada, setFotoAmpliada] = useState(null);
   if (lista === null) return <TelaCarregando />;
   const termo = q.trim().toLowerCase();
   const filtradas = termo
@@ -265,7 +267,7 @@ function TabelaPets({ lista }) {
                 <td className="py-2 pr-3">
                   <div className="flex items-center gap-2">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-marca-100 text-xs font-semibold uppercase text-marca-700">
-                      {p.foto_url ? <img src={p.foto_url} alt="" className="h-full w-full object-cover" /> : (p.nome || "?").charAt(0)}
+                      {p.foto_url ? <img src={p.foto_url} alt="" onClick={() => setFotoAmpliada(p.foto_url)} className="h-full w-full cursor-zoom-in object-cover" /> : (p.nome || "?").charAt(0)}
                     </span>
                     <span className="font-medium text-marca-900">{p.nome || "—"}</span>
                   </div>
@@ -286,6 +288,7 @@ function TabelaPets({ lista }) {
           </tbody>
         </table>
       </div>
+    {fotoAmpliada && <Lightbox src={fotoAmpliada} onFechar={() => setFotoAmpliada(null)} />}
     </Card>
   );
 }
