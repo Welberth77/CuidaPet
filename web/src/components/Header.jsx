@@ -30,7 +30,7 @@ export default function Header() {
     (isActive ? "bg-white/20 text-white" : "text-white/90 hover:bg-white/10");
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-marca-500 to-marca-700 text-white shadow-suave">
+    <header className="fixed inset-x-0 top-0 z-50 bg-gradient-to-r from-marca-500 to-marca-700 text-white shadow-suave">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link to="/" aria-label="CuidaPet - início">
           <Logo tone="light" />
