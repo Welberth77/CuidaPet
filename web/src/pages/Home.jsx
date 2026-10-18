@@ -53,17 +53,18 @@ export default function Home() {
 
         const ano = new Date().getFullYear();
         const niver = p
-          .filter((x) => ehAniversarioHoje(x.nascimento))
+          .filter((x) => !x.falecido && ehAniversarioHoje(x.nascimento))
           .filter((x) => {
             try { return !localStorage.getItem(`cuidapet:bday:${x.id}:${ano}`); } catch { return true; }
           });
         setFestaFila(niver);
 
+        const idsFalecidos = new Set(p.filter((x) => x.falecido).map((x) => x.id));
         const deSaude = saude
-          .filter((s) => s.proxima)
+          .filter((s) => s.proxima && !idsFalecidos.has(s.petId))
           .map((s) => ({ id: "s" + s.id, tipo: s.categoria || "Saúde", titulo: s.nome, pet: s.petNome, data: s.proxima, icone: "vacina" }));
         const deBanho = banho
-          .filter((b) => b.proxima)
+          .filter((b) => b.proxima && !idsFalecidos.has(b.petId))
           .map((b) => ({ id: "b" + b.id, tipo: b.servico || "Banho e Tosa", titulo: b.servico, pet: b.petNome, data: b.proxima, icone: "banho" }));
 
         const todos = [...deSaude, ...deBanho]
@@ -137,7 +138,7 @@ export default function Home() {
               {pets.map((p) => {
                 const idade = idadeTexto(p.nascimento);
                 const compartilhado = p.owner_id !== usuario.uid;
-                const niverHoje = ehAniversarioHoje(p.nascimento);
+                const niverHoje = !p.falecido && ehAniversarioHoje(p.nascimento);
                 return (
                   <Link key={p.id} to="/meus-pets" className="cartao flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-suave">
                     <PetAvatar especie={p.especie} fotoUrl={p.foto_url} size={56} ampliavel />
@@ -146,6 +147,9 @@ export default function Home() {
                       <p className="truncate text-sm text-slate-500">
                         {idade || (p.especie === "gato" ? "Gato" : "Cachorro")}
                       </p>
+                      {p.falecido && (
+                        <span className="mt-1 mr-1 inline-block rounded-full bg-marca-50 px-2 py-0.5 text-[10px] font-medium text-marca-700">🕊️ Em memória</span>
+                      )}
                       {niverHoje && (
                         <span className="mt-1 mr-1 inline-block rounded-full bg-acento-50 px-2 py-0.5 text-[10px] font-medium text-acento-600">🎂 Aniversário hoje!</span>
                       )}

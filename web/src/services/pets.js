@@ -71,3 +71,19 @@ export async function removerPet(id) {
   const { error } = await supabase.from("pets").delete().eq("id", id);
   if (error) throw error;
 }
+
+export async function marcarFalecido(id, dataFalecimento) {
+  const { error } = await supabase
+    .from("pets")
+    .update({ falecido: true, data_falecimento: dataFalecimento || null })
+    .eq("id", id);
+  if (error) throw error;
+}
+
+export async function reverterFalecido(id) {
+  const { error } = await supabase
+    .from("pets")
+    .update({ falecido: false, data_falecimento: null })
+    .eq("id", id);
+  if (error) throw error;
+}

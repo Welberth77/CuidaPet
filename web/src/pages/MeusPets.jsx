@@ -5,7 +5,8 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 import { useToast } from "../components/ui/Toast.jsx";
 import { useConfirm } from "../components/ui/Confirm.jsx";
 import { TelaCarregando } from "../components/ui/Spinner.jsx";
-import { listarPets, removerPet } from "../services/pets.js";
+import { listarPets, removerPet, reverterFalecido } from "../services/pets.js";
+import Despedida from "../components/Despedida.jsx";
 import { sairDoCompartilhamento } from "../services/shares.js";
 import { listarSaude } from "../services/saude.js";
 import { listarBanhoTosa } from "../services/banhoTosa.js";
@@ -26,6 +27,7 @@ export default function MeusPets() {
   const [compartilhando, setCompartilhando] = useState(null);
   const [saude, setSaude] = useState([]);
   const [banho, setBanho] = useState([]);
+  const [despedindo, setDespedindo] = useState(false);
 
   const ehDono = (pet) => pet && pet.owner_id === usuario.uid;
 
@@ -89,10 +91,37 @@ export default function MeusPets() {
     }
   }
 
+  async function handleReverter(pet) {
+    const ok = await confirmar({
+      titulo: "Desfazer memorial?",
+      mensagem: `${pet.nome} voltará a aparecer normalmente, com lembretes e comemorações.`,
+      confirmarTexto: "Desfazer",
+    });
+    if (!ok) return;
+    try {
+      await reverterFalecido(pet.id);
+      toast.sucesso("Memorial desfeito.");
+      carregar();
+    } catch {
+      toast.erro("Não foi possível desfazer.");
+    }
+  }
+
   return (
     <Layout>
       {compartilhando && (
         <CompartilharModal pet={compartilhando} onFechar={() => setCompartilhando(null)} />
+      )}
+      {despedindo && selecionado && (
+        <Despedida
+          pet={selecionado}
+          cuidados={{
+            saude: saude.filter((x) => x.petId === selecionado.id).length,
+            banho: banho.filter((x) => x.petId === selecionado.id).length,
+          }}
+          onConcluir={carregar}
+          onFechar={() => setDespedindo(false)}
+        />
       )}
 
       <div className="mb-6 flex items-center justify-between">
@@ -125,6 +154,7 @@ export default function MeusPets() {
                 >
                   <PetAvatar especie={pet.especie} size={28} fotoUrl={pet.foto_url} />
                   <span className="flex-1 truncate">{pet.nome}</span>
+                  {pet.falecido && <span title="Em memória" className="shrink-0">🕊️</span>}
                   {!ehDono(pet) && (
                     <span className="rounded-full bg-marca-100 px-2 py-0.5 text-[10px] font-medium text-marca-700">compartilhado</span>
                   )}
@@ -135,6 +165,14 @@ export default function MeusPets() {
 
           {selecionado && (
             <div className="cartao">
+              {selecionado.falecido && (
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-marca-50 px-4 py-3">
+                  <span className="text-sm font-medium text-marca-800">🕊️ Em memória{selecionado.data_falecimento ? ` · ${formatar(selecionado.data_falecimento)}` : ""}</span>
+                  {ehDono(selecionado) && (
+                    <button onClick={() => handleReverter(selecionado)} className="text-xs font-medium text-slate-400 transition-colors hover:text-slate-600">desfazer</button>
+                  )}
+                </div>
+              )}
               <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h2 className="flex items-center gap-3 text-xl font-bold text-marca-900">
@@ -206,6 +244,14 @@ export default function MeusPets() {
                   </ol>
                 )}
               </div>
+
+              {ehDono(selecionado) && !selecionado.falecido && (
+                <div className="mt-6 border-t border-slate-100 pt-4 text-center">
+                  <button onClick={() => setDespedindo(true)} className="text-xs text-slate-400 transition-colors hover:text-slate-600">
+                    🕊️ {selecionado.nome} partiu? Prestar uma homenagem
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

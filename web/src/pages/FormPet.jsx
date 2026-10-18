@@ -126,7 +126,7 @@ export default function FormPet() {
       const chave = `cuidapet:bday:${petId}:${ano}`;
       let jaViu = false;
       try { jaViu = !!localStorage.getItem(chave); } catch { /* ignore */ }
-      if (ehAniversarioHoje(dados.nascimento) && !jaViu) {
+      if (!dados.falecido && ehAniversarioHoje(dados.nascimento) && !jaViu) {
         try { localStorage.setItem(chave, "1"); } catch { /* ignore */ }
         setFestaPet({ nome: dados.nome, especie: dados.especie, foto_url: dados.foto_url, nascimento: dados.nascimento });
       } else {

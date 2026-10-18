@@ -88,3 +88,21 @@ export function maxFuturo(anos = 5) {
   dt.setFullYear(dt.getFullYear() + anos);
   return dt.toISOString().split("T")[0];
 }
+
+// Duracao amigavel entre duas datas ISO (ex.: "3 anos e 2 meses").
+export function duracaoTexto(iniIso, fimIso) {
+  if (!iniIso || !fimIso) return null;
+  const a = new Date(iniIso + "T00:00:00");
+  const b = new Date(fimIso + "T00:00:00");
+  if (isNaN(a) || isNaN(b) || b < a) return null;
+  let anos = b.getFullYear() - a.getFullYear();
+  let meses = b.getMonth() - a.getMonth();
+  if (b.getDate() < a.getDate()) meses--;
+  if (meses < 0) { anos--; meses += 12; }
+  const pa = anos > 0 ? `${anos} ${anos === 1 ? "ano" : "anos"}` : "";
+  const pm = meses > 0 ? `${meses} ${meses === 1 ? "mês" : "meses"}` : "";
+  if (pa && pm) return `${pa} e ${pm}`;
+  if (pa) return pa;
+  if (pm) return pm;
+  return "menos de um mês";
+}
