@@ -13,7 +13,7 @@ const links = [
 ];
 
 export default function Header() {
-  const { sair, perfil } = useAuth();
+  const { sair, perfil, ehAdmin } = useAuth();
   const { count } = useNotif();
   const navigate = useNavigate();
   const [aberto, setAberto] = useState(false);
@@ -38,6 +38,7 @@ export default function Header() {
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className={classe}>{l.label}</NavLink>
           ))}
+          {ehAdmin && <NavLink to="/relatorios" className={classe}>Relatórios</NavLink>}
 
           <NavLink to="/notificacoes" className="relative ml-1 flex h-9 w-9 items-center justify-center rounded-full text-white/90 hover:bg-white/10" title="Notificações" aria-label="Notificações">
             <IconBell width="20" height="20" />
@@ -70,6 +71,7 @@ export default function Header() {
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className={classe} onClick={() => setAberto(false)}>{l.label}</NavLink>
           ))}
+          {ehAdmin && <NavLink to="/relatorios" className={classe} onClick={() => setAberto(false)}>Relatórios</NavLink>}
           <NavLink to="/notificacoes" className={classe} onClick={() => setAberto(false)}>
             Notificações{count > 0 ? ` (${count})` : ""}
           </NavLink>

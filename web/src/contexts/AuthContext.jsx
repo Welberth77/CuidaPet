@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
     }
     const { data } = await supabase
       .from("profiles")
-      .select("nome, email, avatar_url")
+      .select("nome, email, avatar_url, is_admin")
       .eq("id", user.id)
       .maybeSingle();
     setPerfil(data || { nome: user.user_metadata?.nome || "", email: user.email });
@@ -113,7 +113,8 @@ export function AuthProvider({ children }) {
     setPerfil((p) => ({ ...p, ...dados }));
   }
 
-  const valor = { usuario, perfil, carregando, cadastrar, entrar, sair, atualizarPerfil, resetarSenha, definirNovaSenha, confirmarCodigo, reenviarCodigo, excluirConta };
+  const ehAdmin = !!perfil?.is_admin;
+  const valor = { usuario, perfil, ehAdmin, carregando, cadastrar, entrar, sair, atualizarPerfil, resetarSenha, definirNovaSenha, confirmarCodigo, reenviarCodigo, excluirConta };
   return <AuthContext.Provider value={valor}>{children}</AuthContext.Provider>;
 }
 

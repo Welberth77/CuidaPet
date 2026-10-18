@@ -20,6 +20,7 @@ const BanhoTosa = lazy(() => import("./pages/BanhoTosa.jsx"));
 const Despesas = lazy(() => import("./pages/Despesas.jsx"));
 const Perfil = lazy(() => import("./pages/Perfil.jsx"));
 const Notificacoes = lazy(() => import("./pages/Notificacoes.jsx"));
+const Relatorios = lazy(() => import("./pages/Relatorios.jsx"));
 const NaoEncontrado = lazy(() => import("./pages/NaoEncontrado.jsx"));
 
 function Carregando() {
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/despesas" element={protegida(<Despesas />)} />
         <Route path="/perfil" element={protegida(<Perfil />)} />
         <Route path="/notificacoes" element={protegida(<Notificacoes />)} />
+        <Route path="/relatorios" element={<ProtectedRoute admin>{<Relatorios />}</ProtectedRoute>} />
 
         <Route path="*" element={<NaoEncontrado />} />
       </Routes>
