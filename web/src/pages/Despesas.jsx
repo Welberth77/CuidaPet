@@ -191,12 +191,13 @@ export default function Despesas() {
               onEditar={editar}
               onRemover={handleRemover}
               selecionadoId={editandoId}
+              buscarEm={(r) => `${r.categoria || ""} ${r.descricao || ""} ${r.petNome || ""}`}
               colunas={[
-                { titulo: "Categoria", render: (r) => <span className="rounded-full bg-marca-100 dark:bg-slate-700 px-2 py-0.5 text-xs font-medium text-marca-700 dark:text-marca-200">{r.categoria}</span> },
-                { titulo: "Descrição", render: (r) => r.descricao || "-" },
-                { titulo: "Pet", render: (r) => r.petNome },
-                { titulo: "Valor", render: (r) => <span className="font-medium text-marca-900 dark:text-slate-100">{moeda(r.valor)}</span> },
-                { titulo: "Data", render: (r) => formatar(r.data) },
+                { titulo: "Categoria", sort: { tipo: "texto", valor: (r) => r.categoria }, render: (r) => <span className="rounded-full bg-marca-100 dark:bg-slate-700 px-2 py-0.5 text-xs font-medium text-marca-700 dark:text-marca-200">{r.categoria}</span> },
+                { titulo: "Descrição", sort: { tipo: "texto", valor: (r) => r.descricao }, render: (r) => r.descricao || "-" },
+                { titulo: "Pet", sort: { tipo: "texto", valor: (r) => r.petNome }, render: (r) => r.petNome },
+                { titulo: "Valor", sort: { tipo: "num", valor: (r) => r.valor }, render: (r) => <span className="font-medium text-marca-900 dark:text-slate-100">{moeda(r.valor)}</span> },
+                { titulo: "Data", sort: { tipo: "data", valor: (r) => r.data }, render: (r) => formatar(r.data) },
               ]}
               vazio="Nenhuma despesa registrada ainda."
             />

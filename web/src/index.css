@@ -17,6 +17,13 @@
   .dark body {
     @apply bg-slate-900 text-slate-100;
   }
+  :focus-visible {
+    outline: 2px solid #0B7ABF;
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  .dark :focus-visible { outline-color: #7FB8DD; }
+  header :focus-visible { outline-color: #ffffff; }
 
   /* Corrige o input de data no mobile (iOS/Safari): evita estouro de largura
      e alinha o conteudo, deixando o campo responsivo dentro do container. */
@@ -95,4 +102,14 @@
 @keyframes balancar {
   0%, 100% { transform: rotate(-4deg); }
   50% { transform: rotate(4deg); }
+}
+
+/* Respeita quem pediu menos movimento no sistema */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

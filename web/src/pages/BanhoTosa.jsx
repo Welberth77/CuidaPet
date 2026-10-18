@@ -154,12 +154,13 @@ export default function BanhoTosa() {
             onEditar={editar}
             onRemover={handleRemover}
             selecionadoId={editandoId}
+            buscarEm={(r) => `${r.servico || ""} ${r.petNome || ""} ${r.observacoes || ""}`}
             colunas={[
-              { titulo: "Serviço", render: (r) => <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-medium text-sky-700">{r.servico}</span> },
-              { titulo: "Pet", render: (r) => r.petNome },
-              { titulo: "Feito em", render: (r) => formatar(r.data) },
-              { titulo: "Próximo", render: (r) => <BadgePrazo iso={r.proxima} /> },
-              { titulo: "Obs.", render: (r) => r.observacoes || "-" },
+              { titulo: "Serviço", sort: { tipo: "texto", valor: (r) => r.servico }, render: (r) => <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-medium text-sky-700">{r.servico}</span> },
+              { titulo: "Pet", sort: { tipo: "texto", valor: (r) => r.petNome }, render: (r) => r.petNome },
+              { titulo: "Feito em", sort: { tipo: "data", valor: (r) => r.data }, render: (r) => formatar(r.data) },
+              { titulo: "Próximo", sort: { tipo: "data", valor: (r) => r.proxima }, render: (r) => <BadgePrazo iso={r.proxima} /> },
+              { titulo: "Obs.", sort: { tipo: "texto", valor: (r) => r.observacoes }, render: (r) => r.observacoes || "-" },
             ]}
             vazio="Nenhum banho ou tosa registrado ainda."
           />

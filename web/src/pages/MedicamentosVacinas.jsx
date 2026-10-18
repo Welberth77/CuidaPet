@@ -156,12 +156,13 @@ export default function MedicamentosVacinas() {
             onEditar={editar}
             onRemover={handleRemover}
             selecionadoId={editandoId}
+            buscarEm={(r) => `${r.nome || ""} ${r.categoria || ""} ${r.petNome || ""}`}
             colunas={[
-              { titulo: "Categoria", render: (r) => <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (r.categoria === "Vacina" ? "bg-emerald-100 text-emerald-700" : "bg-marca-100 dark:bg-slate-700 text-marca-700 dark:text-marca-200")}>{r.categoria}</span> },
-              { titulo: "Nome", render: (r) => r.nome },
-              { titulo: "Pet", render: (r) => r.petNome },
-              { titulo: "Aplicado em", render: (r) => formatar(r.data) },
-              { titulo: "Próxima", render: (r) => <BadgePrazo iso={r.proxima} /> },
+              { titulo: "Categoria", sort: { tipo: "texto", valor: (r) => r.categoria }, render: (r) => <span className={"rounded-full px-2 py-0.5 text-xs font-medium " + (r.categoria === "Vacina" ? "bg-emerald-100 text-emerald-700" : "bg-marca-100 dark:bg-slate-700 text-marca-700 dark:text-marca-200")}>{r.categoria}</span> },
+              { titulo: "Nome", sort: { tipo: "texto", valor: (r) => r.nome }, render: (r) => r.nome },
+              { titulo: "Pet", sort: { tipo: "texto", valor: (r) => r.petNome }, render: (r) => r.petNome },
+              { titulo: "Aplicado em", sort: { tipo: "data", valor: (r) => r.data }, render: (r) => formatar(r.data) },
+              { titulo: "Próxima", sort: { tipo: "data", valor: (r) => r.proxima }, render: (r) => <BadgePrazo iso={r.proxima} /> },
             ]}
             vazio="Nenhuma vacina ou medicamento registrado ainda."
           />
@@ -182,31 +183,82 @@ export function SemPets({ texto }) {
   );
 }
 
-export function ListaRegistros({ registros, onEditar, onRemover, colunas, vazio, selecionadoId }) {
+function ordenarRegistros(lista, ord) {
+  const s = ord.dir === "desc" ? -1 : 1;
+  const { tipo, valor } = ord.sort;
+  return [...lista].sort((x, y) => {
+    const a = valor(x), b = valor(y);
+    const an = a == null || a === "", bn = b == null || b === "";
+    if (an && bn) return 0;
+    if (an) return 1;
+    if (bn) return -1;
+    let c;
+    if (tipo === "num") c = Number(a) - Number(b);
+    else if (tipo === "data") c = new Date(a) - new Date(b);
+    else c = String(a).localeCompare(String(b), "pt-BR", { sensitivity: "base" });
+    return c * s;
+  });
+}
+
+export function ListaRegistros({ registros, onEditar, onRemover, colunas, vazio, selecionadoId, buscarEm }) {
+  const [termo, setTermo] = useState("");
+  const [ord, setOrd] = useState(null);
+
+  const temBusca = typeof buscarEm === "function";
+  const filtrados = temBusca && termo.trim()
+    ? registros.filter((r) => buscarEm(r).toLowerCase().includes(termo.trim().toLowerCase()))
+    : registros;
+  const visiveis = ord ? ordenarRegistros(filtrados, ord) : filtrados;
+
+  function clicarOrd(idx, sort) {
+    setOrd((o) => (o && o.idx === idx ? { idx, dir: o.dir === "asc" ? "desc" : "asc", sort } : { idx, dir: "asc", sort }));
+  }
+
   if (registros.length === 0) return <div className="cartao text-slate-500 dark:text-slate-400">{vazio}</div>;
+
   return (
-    <div className="cartao overflow-x-auto p-0">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="border-b border-slate-100 dark:border-slate-700 text-left text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">
-            {colunas.map((c) => <th key={c.titulo} className="px-4 py-3">{c.titulo}</th>)}
-            <th className="px-4 py-3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {registros.map((r) => (
-            <tr key={r.id} className={"border-b border-slate-50 align-top last:border-0 hover:bg-slate-50/60 " + (selecionadoId === r.id ? "bg-marca-50 dark:bg-slate-800" : "")}>
-              {colunas.map((c) => <td key={c.titulo} className="px-4 py-3 text-slate-700 dark:text-slate-200">{c.render(r)}</td>)}
-              <td className="whitespace-nowrap px-4 py-3 text-right">
-                {onEditar && (
-                  <button onClick={() => onEditar(r)} className="mr-3 text-xs font-medium text-marca-500 dark:text-marca-300 hover:underline">Editar</button>
-                )}
-                <button onClick={() => onRemover(r.id)} className="text-xs font-medium text-red-500 hover:underline">Remover</button>
-              </td>
+    <div className="cartao overflow-hidden p-0">
+      {temBusca && (
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-700 px-4 py-3">
+          <input className="campo max-w-xs" placeholder="Buscar..." value={termo} onChange={(e) => setTermo(e.target.value)} />
+          <span className="text-xs text-slate-400 dark:text-slate-500">{visiveis.length} de {registros.length}</span>
+        </div>
+      )}
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-slate-100 dark:border-slate-700 text-left text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">
+              {colunas.map((c, idx) => (
+                <th key={c.titulo} className="px-4 py-3">
+                  {c.sort ? (
+                    <button onClick={() => clicarOrd(idx, c.sort)} className="inline-flex items-center gap-1 transition-colors hover:text-marca-700 dark:hover:text-marca-200">
+                      {c.titulo}
+                      <span className="text-[9px]">{ord && ord.idx === idx ? (ord.dir === "asc" ? "▲" : "▼") : "⇅"}</span>
+                    </button>
+                  ) : c.titulo}
+                </th>
+              ))}
+              <th className="px-4 py-3"></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {visiveis.map((r) => (
+              <tr key={r.id} className={"border-b border-slate-50 dark:border-slate-700/50 align-top last:border-0 hover:bg-slate-50/60 dark:hover:bg-slate-700/40 " + (selecionadoId === r.id ? "bg-marca-50 dark:bg-slate-800" : "")}>
+                {colunas.map((c) => <td key={c.titulo} className="px-4 py-3 text-slate-700 dark:text-slate-200">{c.render(r)}</td>)}
+                <td className="whitespace-nowrap px-4 py-3 text-right">
+                  {onEditar && (
+                    <button onClick={() => onEditar(r)} className="mr-3 text-xs font-medium text-marca-500 dark:text-marca-300 hover:underline">Editar</button>
+                  )}
+                  <button onClick={() => onRemover(r.id)} className="text-xs font-medium text-red-500 hover:underline">Remover</button>
+                </td>
+              </tr>
+            ))}
+            {visiveis.length === 0 && (
+              <tr><td colSpan={colunas.length + 1} className="px-4 py-6 text-center text-slate-400 dark:text-slate-500">Nada encontrado.</td></tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

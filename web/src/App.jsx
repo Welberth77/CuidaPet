@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import { TelaCarregando } from "./components/ui/Spinner.jsx";
 
 // Carregamento sob demanda (code-splitting) de cada tela
@@ -34,6 +35,8 @@ export default function App() {
   const protegida = (el) => <ProtectedRoute>{el}</ProtectedRoute>;
 
   return (
+    <>
+    <ScrollToTop />
     <Suspense fallback={<Carregando />}>
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -58,5 +61,6 @@ export default function App() {
         <Route path="*" element={<NaoEncontrado />} />
       </Routes>
     </Suspense>
+    </>
   );
 }

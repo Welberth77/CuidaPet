@@ -107,6 +107,30 @@ export default function MeusPets() {
     }
   }
 
+  const ativos = pets.filter((p) => !p.falecido);
+  const memoriais = pets.filter((p) => p.falecido);
+  const ItemPet = (pet) => (
+    <li key={pet.id}>
+      <button
+        onClick={() => setSelecionado(pet)}
+        className={
+          "flex w-full items-center gap-2 rounded-lg border px-4 py-3 text-left transition " +
+          (pet.falecido ? "opacity-75 " : "") +
+          (selecionado?.id === pet.id
+            ? "border-marca-500 bg-marca-500/10 font-semibold text-marca-700 dark:text-marca-200"
+            : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-marca-500/50")
+        }
+      >
+        <PetAvatar especie={pet.especie} size={28} fotoUrl={pet.foto_url} />
+        <span className="flex-1 truncate">{pet.nome}</span>
+        {pet.falecido && <span title="Em memória" className="shrink-0">🕊️</span>}
+        {!ehDono(pet) && (
+          <span className="rounded-full bg-marca-100 dark:bg-slate-700 px-2 py-0.5 text-[10px] font-medium text-marca-700 dark:text-marca-200">compartilhado</span>
+        )}
+      </button>
+    </li>
+  );
+
   return (
     <Layout>
       {compartilhando && (
@@ -140,28 +164,15 @@ export default function MeusPets() {
         </div>
       ) : (
         <div className="grid gap-6 md:grid-cols-[260px_1fr]">
-          <ul className="space-y-2">
-            {pets.map((pet) => (
-              <li key={pet.id}>
-                <button
-                  onClick={() => setSelecionado(pet)}
-                  className={
-                    "flex w-full items-center gap-2 rounded-lg border px-4 py-3 text-left transition " +
-                    (selecionado?.id === pet.id
-                      ? "border-marca-500 bg-marca-500/10 font-semibold text-marca-700 dark:text-marca-200"
-                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-marca-500/50")
-                  }
-                >
-                  <PetAvatar especie={pet.especie} size={28} fotoUrl={pet.foto_url} />
-                  <span className="flex-1 truncate">{pet.nome}</span>
-                  {pet.falecido && <span title="Em memória" className="shrink-0">🕊️</span>}
-                  {!ehDono(pet) && (
-                    <span className="rounded-full bg-marca-100 dark:bg-slate-700 px-2 py-0.5 text-[10px] font-medium text-marca-700 dark:text-marca-200">compartilhado</span>
-                  )}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="space-y-5">
+            <ul className="space-y-2">{ativos.map(ItemPet)}</ul>
+            {memoriais.length > 0 && (
+              <div>
+                <p className="mb-2 px-1 text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-slate-500">🕊️ Em memória</p>
+                <ul className="space-y-2">{memoriais.map(ItemPet)}</ul>
+              </div>
+            )}
+          </div>
 
           {selecionado && (
             <div className="cartao">
