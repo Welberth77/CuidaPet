@@ -10,7 +10,7 @@ import EmptyArt from "../components/art/EmptyArt.jsx";
 import { listarPets } from "../services/pets.js";
 import { listarSaude, criarSaude, atualizarSaude, removerSaude } from "../services/saude.js";
 import { CATEGORIAS_SAUDE } from "../data/opcoesPet.js";
-import { hoje, formatar } from "../utils/datas.js";
+import { hoje, formatar, DATA_MINIMA, maxFuturo } from "../utils/datas.js";
 
 const inicial = { petId: "", categoria: "", nome: "", data: "", proxima: "" };
 
@@ -60,7 +60,8 @@ export default function MedicamentosVacinas() {
     if (!form.categoria) e.categoria = true;
     if (!form.nome.trim()) e.nome = true;
     if (!form.data) e.data = true;
-    else if (new Date(form.data) > new Date()) e.data = true;
+    else if (form.data < DATA_MINIMA || form.data > hoje()) e.data = true;
+    if (form.proxima && (form.proxima < (form.data || hoje()) || form.proxima > maxFuturo())) e.proxima = true;
     setErros(e);
     return Object.keys(e).length === 0;
   }
@@ -133,11 +134,11 @@ export default function MedicamentosVacinas() {
             </Campo>
 
             <Campo rotulo="Data de aplicação" erro={erros.data}>
-              <input type="date" max={hoje()} className={cls(erros.data)} value={form.data} onChange={(e) => set("data", e.target.value)} />
+              <input type="date" min={DATA_MINIMA} max={hoje()} className={cls(erros.data)} value={form.data} onChange={(e) => set("data", e.target.value)} />
             </Campo>
 
-            <Campo rotulo="Próxima dose (opcional)">
-              <input type="date" className="campo" value={form.proxima} onChange={(e) => set("proxima", e.target.value)} />
+            <Campo rotulo="Próxima dose (opcional)" erro={erros.proxima}>
+              <input type="date" min={form.data || hoje()} max={maxFuturo()} className={cls(erros.proxima)} value={form.proxima} onChange={(e) => set("proxima", e.target.value)} />
             </Campo>
 
             <div className="flex gap-2">

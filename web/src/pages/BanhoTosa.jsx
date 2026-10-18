@@ -9,7 +9,7 @@ import { listarPets } from "../services/pets.js";
 import { listarBanhoTosa, criarBanhoTosa, atualizarBanhoTosa, removerBanhoTosa } from "../services/banhoTosa.js";
 import { SERVICOS_BANHO } from "../data/opcoesPet.js";
 import { ListaRegistros, Campo, cls, SemPets } from "./MedicamentosVacinas.jsx";
-import { hoje, formatar } from "../utils/datas.js";
+import { hoje, formatar, DATA_MINIMA, maxFuturo } from "../utils/datas.js";
 
 const inicial = { petId: "", servico: "", data: "", proxima: "", observacoes: "" };
 
@@ -58,7 +58,8 @@ export default function BanhoTosa() {
     if (!form.petId) e.petId = true;
     if (!form.servico) e.servico = true;
     if (!form.data) e.data = true;
-    else if (new Date(form.data) > new Date()) e.data = true;
+    else if (form.data < DATA_MINIMA || form.data > hoje()) e.data = true;
+    if (form.proxima && (form.proxima < (form.data || hoje()) || form.proxima > maxFuturo())) e.proxima = true;
     setErros(e);
     return Object.keys(e).length === 0;
   }
@@ -127,11 +128,11 @@ export default function BanhoTosa() {
             </Campo>
 
             <Campo rotulo="Data" erro={erros.data}>
-              <input type="date" max={hoje()} className={cls(erros.data)} value={form.data} onChange={(e) => set("data", e.target.value)} />
+              <input type="date" min={DATA_MINIMA} max={hoje()} className={cls(erros.data)} value={form.data} onChange={(e) => set("data", e.target.value)} />
             </Campo>
 
-            <Campo rotulo="Próximo (opcional)">
-              <input type="date" className="campo" value={form.proxima} onChange={(e) => set("proxima", e.target.value)} />
+            <Campo rotulo="Próximo (opcional)" erro={erros.proxima}>
+              <input type="date" min={form.data || hoje()} max={maxFuturo()} className={cls(erros.proxima)} value={form.proxima} onChange={(e) => set("proxima", e.target.value)} />
             </Campo>
 
             <Campo rotulo="Observações (opcional)">

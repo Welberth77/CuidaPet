@@ -8,7 +8,7 @@ import { ListaRegistros, Campo, cls, SemPets } from "./MedicamentosVacinas.jsx";
 import { listarPets } from "../services/pets.js";
 import { listarDespesas, criarDespesa, atualizarDespesa, removerDespesa } from "../services/despesas.js";
 import { CATEGORIAS_DESPESA } from "../data/opcoesPet.js";
-import { hoje, formatar, moeda } from "../utils/datas.js";
+import { hoje, formatar, moeda, DATA_MINIMA } from "../utils/datas.js";
 
 const inicial = { petId: "", categoria: "", descricao: "", valor: "", data: "" };
 
@@ -54,6 +54,7 @@ export default function Despesas() {
     const v = parseFloat(form.valor);
     if (!form.valor || isNaN(v) || v <= 0) e.valor = true;
     if (!form.data) e.data = true;
+    else if (form.data < DATA_MINIMA || form.data > hoje()) e.data = true;
     setErros(e);
     return Object.keys(e).length === 0;
   }
@@ -174,7 +175,7 @@ export default function Despesas() {
               </Campo>
 
               <Campo rotulo="Data" erro={erros.data}>
-                <input type="date" max={hoje()} className={cls(erros.data)} value={form.data} onChange={(e) => set("data", e.target.value)} />
+                <input type="date" min={DATA_MINIMA} max={hoje()} className={cls(erros.data)} value={form.data} onChange={(e) => set("data", e.target.value)} />
               </Campo>
 
               <div className="flex gap-2">

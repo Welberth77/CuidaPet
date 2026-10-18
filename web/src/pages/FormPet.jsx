@@ -9,7 +9,7 @@ import FotoEditor from "../components/ui/FotoEditor.jsx";
 import { criarPet, obterPet, atualizarPet } from "../services/pets.js";
 import { uploadFotoPet } from "../services/storage.js";
 import { ESPECIES, RACAS, CORES, PELAGENS, SEXOS } from "../data/opcoesPet.js";
-import { ehAniversarioHoje, anosFazendo } from "../utils/datas.js";
+import { ehAniversarioHoje, anosFazendo, DATA_MINIMA, hoje } from "../utils/datas.js";
 import Aniversario from "../components/Aniversario.jsx";
 
 const inicial = {
@@ -93,7 +93,7 @@ export default function FormPet() {
       const peso = parseFloat(form.peso);
       if (isNaN(peso) || peso < 0.1 || peso > 99) e.peso = true;
     }
-    if (form.nascimento && new Date(form.nascimento) > new Date()) e.nascimento = true;
+    if (form.nascimento && (form.nascimento < DATA_MINIMA || form.nascimento > hoje())) e.nascimento = true;
     setErros(e);
     return Object.keys(e).length === 0;
   }
@@ -222,7 +222,7 @@ export default function FormPet() {
 
           <Campo rotulo="Data de nascimento (opcional)" erro={erros.nascimento}>
             <div className="flex gap-2">
-              <input type="date" max={new Date().toISOString().split("T")[0]}
+              <input type="date" min={DATA_MINIMA} max={hoje()}
                 className={cls(erros.nascimento) + " flex-1"} value={form.nascimento}
                 onChange={(e) => set("nascimento", e.target.value)} />
               {form.nascimento && (

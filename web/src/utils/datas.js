@@ -77,3 +77,14 @@ export function anosFazendo(iso) {
   if (isNaN(n)) return null;
   return new Date().getFullYear() - n.getFullYear();
 }
+
+// --- Limites de data para os formularios -------------------------------------
+// Piso para datas de eventos ja ocorridos (nascimento, consultas, banho...).
+export const DATA_MINIMA = "1990-01-01";
+
+// Data maxima no futuro (hoje + anos) em "YYYY-MM-DD" — para agendamentos.
+export function maxFuturo(anos = 5) {
+  const dt = new Date();
+  dt.setFullYear(dt.getFullYear() + anos);
+  return dt.toISOString().split("T")[0];
+}
