@@ -133,3 +133,61 @@ end;
 $$;
 
 grant execute on function public.relatorio_admin() to authenticated;
+
+-- =========================================================
+-- 4) Listas detalhadas (so admin)
+-- =========================================================
+
+-- Lista de usuarios cadastrados, com ultimo acesso e nº de pets
+create or replace function public.listar_usuarios_admin()
+returns jsonb language plpgsql security definer set search_path = public as $$
+declare r jsonb;
+begin
+  if not public.sou_admin() then
+    raise exception 'Acesso negado' using errcode = '42501';
+  end if;
+  select coalesce(jsonb_agg(jsonb_build_object(
+    'id',            p.id,
+    'nome',          p.nome,
+    'email',         coalesce(p.email, u.email),
+    'is_admin',      p.is_admin,
+    'confirmado',    (u.email_confirmed_at is not null),
+    'criado_em',     p.created_at,
+    'ultimo_acesso', u.last_sign_in_at,
+    'pets',          (select count(*) from pets where owner_id = p.id)
+  ) order by p.created_at desc), '[]'::jsonb)
+  into r
+  from profiles p
+  left join auth.users u on u.id = p.id;
+  return r;
+end;
+$$;
+grant execute on function public.listar_usuarios_admin() to authenticated;
+
+-- Lista de pets cadastrados, com o tutor
+create or replace function public.listar_pets_admin()
+returns jsonb language plpgsql security definer set search_path = public as $$
+declare r jsonb;
+begin
+  if not public.sou_admin() then
+    raise exception 'Acesso negado' using errcode = '42501';
+  end if;
+  select coalesce(jsonb_agg(jsonb_build_object(
+    'id',          pt.id,
+    'nome',        pt.nome,
+    'especie',     pt.especie,
+    'raca',        pt.raca,
+    'sexo',        pt.sexo,
+    'foto_url',    pt.foto_url,
+    'criado_em',   pt.created_at,
+    'tutor_nome',  pr.nome,
+    'tutor_email', coalesce(pr.email, u.email)
+  ) order by pt.created_at desc), '[]'::jsonb)
+  into r
+  from pets pt
+  left join profiles pr on pr.id = pt.owner_id
+  left join auth.users u on u.id = pt.owner_id;
+  return r;
+end;
+$$;
+grant execute on function public.listar_pets_admin() to authenticated;
