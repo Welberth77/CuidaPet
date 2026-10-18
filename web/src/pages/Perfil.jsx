@@ -129,7 +129,7 @@ export default function Perfil() {
           <form onSubmit={handleSalvar} className="space-y-4">
             <div>
               <label className="rotulo">Nome completo</label>
-              <input className="campo" value={nome} onChange={(e) => setNome(e.target.value)} />
+              <input maxLength={40} className="campo" value={nome} onChange={(e) => setNome(e.target.value)} />
             </div>
             <div>
               <label className="rotulo">E-mail</label>

@@ -52,7 +52,7 @@ export default function Despesas() {
     if (!form.petId) e.petId = true;
     if (!form.categoria) e.categoria = true;
     const v = parseFloat(form.valor);
-    if (!form.valor || isNaN(v) || v <= 0) e.valor = true;
+    if (!form.valor || isNaN(v) || v <= 0 || v > 1000000) e.valor = true;
     if (!form.data) e.data = true;
     else if (form.data < DATA_MINIMA || form.data > hoje()) e.data = true;
     setErros(e);
@@ -167,11 +167,11 @@ export default function Despesas() {
               </Campo>
 
               <Campo rotulo="Descrição (opcional)">
-                <input className="campo" value={form.descricao} onChange={(e) => set("descricao", e.target.value)} placeholder="Ex.: Ração premium 10kg" />
+                <input maxLength={80} className="campo" value={form.descricao} onChange={(e) => set("descricao", e.target.value)} placeholder="Ex.: Ração premium 10kg" />
               </Campo>
 
               <Campo rotulo="Valor (R$)" erro={erros.valor}>
-                <input type="number" step="0.01" min="0" className={cls(erros.valor)} value={form.valor} onChange={(e) => set("valor", e.target.value)} placeholder="0,00" />
+                <input type="number" step="0.01" min="0" max="1000000" className={cls(erros.valor)} value={form.valor} onChange={(e) => set("valor", e.target.value)} placeholder="0,00" />
               </Campo>
 
               <Campo rotulo="Data" erro={erros.data}>

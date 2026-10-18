@@ -91,7 +91,7 @@ export default function FormPet() {
     // Opcionais, mas validados quando preenchidos
     if (form.peso) {
       const peso = parseFloat(form.peso);
-      if (isNaN(peso) || peso < 0.1 || peso > 99) e.peso = true;
+      if (isNaN(peso) || peso < 0.1 || peso > 150) e.peso = true;
     }
     if (form.nascimento && (form.nascimento < DATA_MINIMA || form.nascimento > hoje())) e.nascimento = true;
     setErros(e);
@@ -111,7 +111,7 @@ export default function FormPet() {
           toast.erro("Não foi possível enviar a foto; o pet será salvo sem a nova foto.");
         }
       }
-      const dados = { ...form, foto_url: fotoUrl };
+      const dados = { ...form, nome: form.nome.trim(), foto_url: fotoUrl };
       let petId = id;
       if (editando) {
         await atualizarPet(id, dados);
@@ -189,7 +189,7 @@ export default function FormPet() {
         </div>
 
         <Campo rotulo="Nome do pet" erro={erros.nome}>
-          <input className={cls(erros.nome)} value={form.nome}
+          <input maxLength={40} className={cls(erros.nome)} value={form.nome}
             onChange={(e) => set("nome", e.target.value)} placeholder="Ex.: Bob" />
         </Campo>
 
@@ -216,7 +216,7 @@ export default function FormPet() {
           </Campo>
 
           <Campo rotulo="Peso em kg (opcional)" erro={erros.peso}>
-            <input type="number" step="0.1" min="0" className={cls(erros.peso)} value={form.peso}
+            <input type="number" step="0.1" min="0.1" max="150" className={cls(erros.peso)} value={form.peso}
               onChange={(e) => set("peso", e.target.value)} placeholder="Ex.: 12.5" />
           </Campo>
 
@@ -255,7 +255,7 @@ export default function FormPet() {
         </div>
 
         <Campo rotulo="Sobre o pet (opcional)">
-          <textarea rows="3" className="campo" value={form.sobre}
+          <textarea rows="3" maxLength={500} className="campo" value={form.sobre}
             onChange={(e) => set("sobre", e.target.value)} placeholder="Personalidade, cuidados especiais..." />
         </Campo>
 

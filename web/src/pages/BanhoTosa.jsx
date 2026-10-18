@@ -136,7 +136,7 @@ export default function BanhoTosa() {
             </Campo>
 
             <Campo rotulo="Observações (opcional)">
-              <textarea rows="2" className="campo" value={form.observacoes} onChange={(e) => set("observacoes", e.target.value)} placeholder="Ex.: usar shampoo hipoalergênico" />
+              <textarea rows="2" maxLength={300} className="campo" value={form.observacoes} onChange={(e) => set("observacoes", e.target.value)} placeholder="Ex.: usar shampoo hipoalergênico" />
             </Campo>
 
             <div className="flex gap-2">

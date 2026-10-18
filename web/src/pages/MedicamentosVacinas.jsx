@@ -72,7 +72,7 @@ export default function MedicamentosVacinas() {
     setEnviando(true);
     try {
       const pet = pets.find((p) => p.id === form.petId);
-      const dados = { ...form, petNome: pet?.nome || "" };
+      const dados = { ...form, nome: form.nome.trim(), petNome: pet?.nome || "" };
       if (editandoId) {
         await atualizarSaude(editandoId, dados);
         toast.sucesso("Registro atualizado!");
@@ -130,7 +130,7 @@ export default function MedicamentosVacinas() {
             </Campo>
 
             <Campo rotulo="Nome do medicamento / vacina" erro={erros.nome}>
-              <input className={cls(erros.nome)} value={form.nome} onChange={(e) => set("nome", e.target.value)} placeholder="Ex.: V10, Vermífugo" />
+              <input maxLength={60} className={cls(erros.nome)} value={form.nome} onChange={(e) => set("nome", e.target.value)} placeholder="Ex.: V10, Vermífugo" />
             </Campo>
 
             <Campo rotulo="Data de aplicação" erro={erros.data}>

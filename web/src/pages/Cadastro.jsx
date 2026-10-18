@@ -54,14 +54,14 @@ export default function Cadastro() {
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
         <div>
           <label className="rotulo" htmlFor="nome">Nome completo</label>
-          <input id="nome" type="text" autoComplete="name"
+          <input id="nome" type="text" autoComplete="name" maxLength={60}
             className={"campo " + (erros.nome ? "campo-erro" : "")}
             placeholder="Seu nome" value={form.nome} onChange={(e) => set("nome", e.target.value)} />
           {erros.nome && <p className="mt-1 text-xs font-medium text-red-600">{erros.nome}</p>}
         </div>
         <div>
           <label className="rotulo" htmlFor="email">E-mail</label>
-          <input id="email" type="email" autoComplete="email"
+          <input id="email" type="email" autoComplete="email" maxLength={120}
             className={"campo " + (erros.email ? "campo-erro" : "")}
             placeholder="voce@email.com" value={form.email} onChange={(e) => set("email", e.target.value)} />
           {erros.email && <p className="mt-1 text-xs font-medium text-red-600">{erros.email}</p>}
