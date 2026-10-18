@@ -1,8 +1,8 @@
 import { supabase } from "../supabaseClient";
 
 // Relatorio agregado (so admin; a funcao no banco garante a permissao).
-export async function obterRelatorio() {
-  const { data, error } = await supabase.rpc("relatorio_admin");
+export async function obterRelatorio(incluirAdmins = true) {
+  const { data, error } = await supabase.rpc("relatorio_admin", { p_incluir: incluirAdmins });
   if (error) throw error;
   return data;
 }

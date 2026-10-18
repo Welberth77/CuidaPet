@@ -25,6 +25,7 @@ const dataHora = (iso) => (iso ? new Date(iso).toLocaleString("pt-BR", { dateSty
 export default function Relatorios() {
   const toast = useToast();
   const [aba, setAba] = useState("geral");
+  const [incluirAdmins, setIncluirAdmins] = useState(true);
 
   const [dados, setDados] = useState(null);
   const [usuarios, setUsuarios] = useState(null);
@@ -32,13 +33,13 @@ export default function Relatorios() {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(false);
 
-  async function carregarGeral() {
+  async function carregarGeral(inc = incluirAdmins) {
     setCarregando(true); setErro(false);
-    try { setDados(await obterRelatorio()); }
+    try { setDados(await obterRelatorio(inc)); }
     catch { setErro(true); toast.erro("Não foi possível carregar os relatórios."); }
     finally { setCarregando(false); }
   }
-  useEffect(() => { carregarGeral(); /* eslint-disable-next-line */ }, []);
+  useEffect(() => { carregarGeral(incluirAdmins); /* eslint-disable-next-line */ }, [incluirAdmins]);
 
   async function abrir(novaAba) {
     setAba(novaAba);
@@ -63,7 +64,15 @@ export default function Relatorios() {
           <h1 className="text-2xl font-bold text-marca-900 dark:text-slate-100">Relatórios</h1>
           <p className="text-sm text-slate-500 dark:text-slate-400">Visão administrativa do CuidaPet</p>
         </div>
-        {aba === "geral" && <button onClick={carregarGeral} className="btn-secundario text-sm">Atualizar</button>}
+        {aba === "geral" && (
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="flex cursor-pointer select-none items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+              <input type="checkbox" checked={incluirAdmins} onChange={(e) => setIncluirAdmins(e.target.checked)} className="h-4 w-4 rounded border-slate-300 accent-marca-500" />
+              Incluir administradores
+            </label>
+            <button onClick={() => carregarGeral()} className="btn-secundario text-sm">Atualizar</button>
+          </div>
+        )}
       </div>
 
       {/* Abas */}
@@ -101,7 +110,7 @@ function VisaoGeral({ dados, carregando, erro, recarregar }) {
 
   return (
     <>
-      {geradoEm && <p className="mb-3 text-xs text-slate-400 dark:text-slate-500">Atualizado em {geradoEm}</p>}
+      {geradoEm && <p className="mb-3 text-xs text-slate-400 dark:text-slate-500">Atualizado em {geradoEm}{dados.incluir_admins === false ? " · administradores fora da análise" : ""}</p>}
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         <Kpi rotulo="Usuários" valor={(t.usuarios || 0).toLocaleString("pt-BR")} sub={`${t.usuarios_confirmados || 0} confirmados (${pct(t.usuarios_confirmados, t.usuarios)})`} destaque />
