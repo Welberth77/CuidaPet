@@ -11,8 +11,8 @@ export default function HeroArt({ className = "" }) {
       {/* blobs de fundo */}
       <circle cx="320" cy="70" r="54" fill="#ffffff" opacity="0.10" />
       <circle cx="70" cy="250" r="70" fill="#ffffff" opacity="0.08" />
-      <circle cx="330" cy="260" r="26" fill="#FFB59A" opacity="0.7" />
-      <circle cx="60" cy="90" r="16" fill="#FFB59A" opacity="0.6" />
+      <circle cx="330" cy="260" r="26" fill="#F6A877" opacity="0.7" />
+      <circle cx="60" cy="90" r="16" fill="#F6A877" opacity="0.6" />
 
       {/* coracao */}
       <path
@@ -37,7 +37,7 @@ export default function HeroArt({ className = "" }) {
           <path d="M0 -6c8 0 14 6 14 13 0 5-4 7-8 7-3 0-4-1-6-1s-3 1-6 1c-4 0-8-2-8-7C-14 0-8-6 0-6z" />
         </g>
       </g>
-      <g fill="#FFB59A">
+      <g fill="#F6A877">
         <g transform="translate(95 170) scale(0.45)">
           <circle cx="-16" cy="-8" r="5" /><circle cx="-5" cy="-15" r="5" />
           <circle cx="6" cy="-15" r="5" /><circle cx="16" cy="-8" r="5" />

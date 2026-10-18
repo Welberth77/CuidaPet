@@ -116,7 +116,7 @@ function VisaoGeral({ dados, carregando, erro, recarregar }) {
       <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900">Crescimento</h2>
       <div className="grid gap-4 lg:grid-cols-2">
         <Card titulo="Novos usuários por mês" sub="Últimos 12 meses"><ColunasMensais dados={dados.usuarios_por_mes} cor="#0B7ABF" /></Card>
-        <Card titulo="Novos pets por mês" sub="Últimos 12 meses"><ColunasMensais dados={dados.pets_por_mes} cor="#FF7A59" /></Card>
+        <Card titulo="Novos pets por mês" sub="Últimos 12 meses"><ColunasMensais dados={dados.pets_por_mes} cor="#F2762E" /></Card>
       </div>
 
       <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900">Perfil dos pets</h2>
@@ -124,13 +124,13 @@ function VisaoGeral({ dados, carregando, erro, recarregar }) {
         <Card titulo="Por espécie"><BarrasH dados={dados.pets_por_especie} /></Card>
         <Card titulo="Por sexo"><Donut dados={dados.pets_por_sexo} /></Card>
         <Card titulo="Top raças"><BarrasH dados={dados.top_racas} cor="#074973" /></Card>
-        <Card titulo="Pets por usuário" sub="Quantos pets cada tutor tem"><BarrasH dados={dados.pets_por_usuario} cor="#53789A" /></Card>
+        <Card titulo="Pets por usuário" sub="Quantos pets cada tutor tem"><BarrasH dados={dados.pets_por_usuario} cor="#095F95" /></Card>
       </div>
 
       <h2 className="mb-3 mt-8 text-lg font-semibold text-marca-900">Atividade e cuidados</h2>
       <div className="grid gap-4 lg:grid-cols-3">
         <Card titulo="Saúde por categoria"><BarrasH dados={dados.saude_por_categoria} /></Card>
-        <Card titulo="Banho e tosa por serviço"><BarrasH dados={dados.banho_por_servico} cor="#FF7A59" /></Card>
+        <Card titulo="Banho e tosa por serviço"><BarrasH dados={dados.banho_por_servico} cor="#F2762E" /></Card>
         <Card titulo="Despesas por categoria" sub="Soma dos valores"><BarrasH dados={dados.despesas_por_categoria} cor="#074973" formato="moeda" /></Card>
       </div>
 
@@ -155,30 +155,63 @@ function BuscaFiltro({ valor, onChange, placeholder, total, filtrado }) {
   );
 }
 
+// Ordenacao de tabelas -------------------------------------------------------
+function ordenar(lista, campo, dir, tipo) {
+  const s = dir === "desc" ? -1 : 1;
+  return [...lista].sort((x, y) => {
+    const a = x[campo], b = y[campo];
+    const an = a == null || a === "", bn = b == null || b === "";
+    if (an && bn) return 0;
+    if (an) return 1;   // vazios sempre por ultimo
+    if (bn) return -1;
+    let c;
+    if (tipo === "num") c = Number(a) - Number(b);
+    else if (tipo === "data") c = new Date(a) - new Date(b);
+    else c = String(a).localeCompare(String(b), "pt-BR", { sensitivity: "base" });
+    return c * s;
+  });
+}
+
+function Th({ campo, label, tipo = "texto", ord, setOrd }) {
+  const ativo = ord.campo === campo;
+  const seta = ativo ? (ord.dir === "asc" ? "▲" : "▼") : "⇅";
+  return (
+    <th className="py-2 pr-3 font-medium">
+      <button type="button"
+        onClick={() => setOrd(ativo ? { campo, dir: ord.dir === "asc" ? "desc" : "asc", tipo } : { campo, dir: "asc", tipo })}
+        className={"inline-flex items-center gap-1 transition-colors hover:text-marca-700 " + (ativo ? "text-marca-700" : "")}>
+        {label}<span className={"text-[9px] " + (ativo ? "opacity-100" : "opacity-30")}>{seta}</span>
+      </button>
+    </th>
+  );
+}
+
 function TabelaUsuarios({ lista }) {
   const [q, setQ] = useState("");
+  const [ord, setOrd] = useState({ campo: "criado_em", dir: "desc", tipo: "data" });
   if (lista === null) return <TelaCarregando />;
   const termo = q.trim().toLowerCase();
   const filtradas = termo
     ? lista.filter((u) => (u.nome || "").toLowerCase().includes(termo) || (u.email || "").toLowerCase().includes(termo))
     : lista;
+  const visiveis = ordenar(filtradas, ord.campo, ord.dir, ord.tipo);
 
   return (
     <Card>
-      <BuscaFiltro valor={q} onChange={setQ} placeholder="Buscar por nome ou e-mail" total={lista.length} filtrado={filtradas.length} />
+      <BuscaFiltro valor={q} onChange={setQ} placeholder="Buscar por nome ou e-mail" total={lista.length} filtrado={visiveis.length} />
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] text-sm">
           <thead>
             <tr className="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500">
-              <th className="py-2 pr-3 font-medium">Nome</th>
-              <th className="py-2 pr-3 font-medium">E-mail</th>
-              <th className="py-2 pr-3 font-medium">Pets</th>
-              <th className="py-2 pr-3 font-medium">Cadastro</th>
-              <th className="py-2 pr-3 font-medium">Último acesso</th>
+              <Th campo="nome" label="Nome" ord={ord} setOrd={setOrd} />
+              <Th campo="email" label="E-mail" ord={ord} setOrd={setOrd} />
+              <Th campo="pets" label="Pets" tipo="num" ord={ord} setOrd={setOrd} />
+              <Th campo="criado_em" label="Cadastro" tipo="data" ord={ord} setOrd={setOrd} />
+              <Th campo="ultimo_acesso" label="Último acesso" tipo="data" ord={ord} setOrd={setOrd} />
             </tr>
           </thead>
           <tbody>
-            {filtradas.map((u) => (
+            {visiveis.map((u) => (
               <tr key={u.id} className="border-b border-slate-100 hover:bg-slate-50">
                 <td className="py-2 pr-3">
                   <span className="font-medium text-marca-900">{u.nome || "—"}</span>
@@ -191,7 +224,7 @@ function TabelaUsuarios({ lista }) {
                 <td className="py-2 pr-3 text-slate-600">{dataHora(u.ultimo_acesso)}</td>
               </tr>
             ))}
-            {filtradas.length === 0 && (
+            {visiveis.length === 0 && (
               <tr><td colSpan={5} className="py-6 text-center text-slate-400">Nenhum usuário encontrado.</td></tr>
             )}
           </tbody>
@@ -203,29 +236,31 @@ function TabelaUsuarios({ lista }) {
 
 function TabelaPets({ lista }) {
   const [q, setQ] = useState("");
+  const [ord, setOrd] = useState({ campo: "criado_em", dir: "desc", tipo: "data" });
   if (lista === null) return <TelaCarregando />;
   const termo = q.trim().toLowerCase();
   const filtradas = termo
     ? lista.filter((p) => [p.nome, p.raca, p.tutor_nome, p.tutor_email].some((x) => (x || "").toLowerCase().includes(termo)))
     : lista;
+  const visiveis = ordenar(filtradas, ord.campo, ord.dir, ord.tipo);
 
   return (
     <Card>
-      <BuscaFiltro valor={q} onChange={setQ} placeholder="Buscar por pet, raça ou tutor" total={lista.length} filtrado={filtradas.length} />
+      <BuscaFiltro valor={q} onChange={setQ} placeholder="Buscar por pet, raça ou tutor" total={lista.length} filtrado={visiveis.length} />
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px] text-sm">
           <thead>
             <tr className="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500">
-              <th className="py-2 pr-3 font-medium">Pet</th>
-              <th className="py-2 pr-3 font-medium">Espécie</th>
-              <th className="py-2 pr-3 font-medium">Raça</th>
-              <th className="py-2 pr-3 font-medium">Sexo</th>
-              <th className="py-2 pr-3 font-medium">Tutor</th>
-              <th className="py-2 pr-3 font-medium">Cadastro</th>
+              <Th campo="nome" label="Pet" ord={ord} setOrd={setOrd} />
+              <Th campo="especie" label="Espécie" ord={ord} setOrd={setOrd} />
+              <Th campo="raca" label="Raça" ord={ord} setOrd={setOrd} />
+              <Th campo="sexo" label="Sexo" ord={ord} setOrd={setOrd} />
+              <Th campo="tutor_nome" label="Tutor" ord={ord} setOrd={setOrd} />
+              <Th campo="criado_em" label="Cadastro" tipo="data" ord={ord} setOrd={setOrd} />
             </tr>
           </thead>
           <tbody>
-            {filtradas.map((p) => (
+            {visiveis.map((p) => (
               <tr key={p.id} className="border-b border-slate-100 hover:bg-slate-50">
                 <td className="py-2 pr-3">
                   <div className="flex items-center gap-2">
@@ -245,7 +280,7 @@ function TabelaPets({ lista }) {
                 <td className="py-2 pr-3 text-slate-600">{soData(p.criado_em)}</td>
               </tr>
             ))}
-            {filtradas.length === 0 && (
+            {visiveis.length === 0 && (
               <tr><td colSpan={6} className="py-6 text-center text-slate-400">Nenhum pet encontrado.</td></tr>
             )}
           </tbody>

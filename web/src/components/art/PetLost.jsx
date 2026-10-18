@@ -5,7 +5,7 @@ export default function PetLost({ className = "" }) {
 
       {/* interrogacoes */}
       <text x="214" y="70" fontSize="40" fontWeight="800" fill="#0B7ABF" opacity="0.9">?</text>
-      <text x="246" y="46" fontSize="26" fontWeight="800" fill="#FF7A59" opacity="0.9">?</text>
+      <text x="246" y="46" fontSize="26" fontWeight="800" fill="#F2762E" opacity="0.9">?</text>
 
       {/* cachorro sentado olhando para cima */}
       <g>

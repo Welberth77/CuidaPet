@@ -2,7 +2,7 @@
 import { moeda } from "../../utils/datas.js";
 
 // Paleta categorica derivada da marca do app
-export const CORES = ["#0B7ABF", "#FF7A59", "#074973", "#FFB59A", "#53789A", "#94A3B8", "#0EA5E9", "#F2623D"];
+export const CORES = ["#0B7ABF", "#F2762E", "#095F95", "#074973", "#0B75B7", "#053451", "#94A3B8", "#000000"];
 
 // ---- Cartao de KPI ---------------------------------------------------------
 export function Kpi({ rotulo, valor, sub, destaque }) {

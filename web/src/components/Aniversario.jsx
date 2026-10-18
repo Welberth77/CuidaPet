@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import PetAvatar from "./art/PetAvatar.jsx";
 
-const CORES = ["#0B7ABF", "#FF7A59", "#FFD166", "#06D6A0", "#EF476F", "#FFB59A", "#118AB2"];
+const CORES = ["#0B7ABF", "#F2762E", "#FFD166", "#06D6A0", "#EF476F", "#F6A877", "#118AB2"];
 const r = (min, max) => Math.random() * (max - min) + min;
 
 function gerarConfetes(qtd) {
@@ -44,7 +44,7 @@ function ChapeuFesta() {
     <svg width="72" height="64" viewBox="0 0 72 64" className="drop-shadow" aria-hidden="true">
       <defs>
         <linearGradient id="hat" x1="0" y1="0" x2="72" y2="64" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FF7A59" /><stop offset="1" stopColor="#EF476F" />
+          <stop stopColor="#F2762E" /><stop offset="1" stopColor="#EF476F" />
         </linearGradient>
       </defs>
       <path d="M36 2 L60 54 H12 Z" fill="url(#hat)" />
@@ -79,7 +79,7 @@ export default function Aniversario({ pet, anos, onFechar }) {
       <Confetes seed={seed} />
 
       <div className="relative z-[102] w-full max-w-sm rounded-3xl bg-white p-8 text-center shadow-suave" style={{ animation: "popar .4s ease-out" }}>
-        <Balao cor="#FF7A59" className="absolute -left-6 -top-8 hidden sm:block" />
+        <Balao cor="#F2762E" className="absolute -left-6 -top-8 hidden sm:block" />
         <Balao cor="#06D6A0" className="absolute -right-6 -top-10 hidden sm:block" />
 
         <div className="relative mx-auto w-fit">

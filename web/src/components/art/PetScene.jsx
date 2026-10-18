@@ -3,8 +3,8 @@ export default function PetScene({ className = "" }) {
     <svg viewBox="0 0 360 300" className={className} role="img" aria-label="Um cachorro e um gato">
       {/* fundo */}
       <circle cx="180" cy="150" r="138" fill="#FFF6EE" />
-      <circle cx="300" cy="60" r="10" fill="#FFB59A" opacity="0.8" />
-      <circle cx="58" cy="90" r="7" fill="#FFB59A" opacity="0.7" />
+      <circle cx="300" cy="60" r="10" fill="#F6A877" opacity="0.8" />
+      <circle cx="58" cy="90" r="7" fill="#F6A877" opacity="0.7" />
       <ellipse cx="180" cy="248" rx="120" ry="16" fill="#053451" opacity="0.08" />
 
       {/* ===== CACHORRO ===== */}
@@ -48,8 +48,8 @@ export default function PetScene({ className = "" }) {
         {/* orelhas */}
         <path d="M218 108 l8 -30 l20 18z" fill="#B4C2D4" />
         <path d="M270 108 l-8 -30 l-20 18z" fill="#B4C2D4" />
-        <path d="M224 104 l5 -17 l11 11z" fill="#FFB59A" />
-        <path d="M264 104 l-5 -17 l-11 11z" fill="#FFB59A" />
+        <path d="M224 104 l5 -17 l11 11z" fill="#F6A877" />
+        <path d="M264 104 l-5 -17 l-11 11z" fill="#F6A877" />
         {/* cabeca */}
         <circle cx="244" cy="128" r="38" fill="#B4C2D4" />
         {/* olhos */}
@@ -58,7 +58,7 @@ export default function PetScene({ className = "" }) {
         <circle cx="233" cy="122" r="1.8" fill="#fff" />
         <circle cx="259" cy="122" r="1.8" fill="#fff" />
         {/* nariz + boca */}
-        <path d="M241 134 h6 l-3 4z" fill="#FF7A59" />
+        <path d="M241 134 h6 l-3 4z" fill="#F2762E" />
         <path d="M244 138 q-5 4 -9 1 M244 138 q5 4 9 1" stroke="#2e3b4a" strokeWidth="1.5" fill="none" strokeLinecap="round" />
         {/* bigodes */}
         <path d="M232 132 l-20 -4 M232 136 l-20 2 M256 132 l20 -4 M256 136 l20 2" stroke="#8795a6" strokeWidth="1.2" strokeLinecap="round" />

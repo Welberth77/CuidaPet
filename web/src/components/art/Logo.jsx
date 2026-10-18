@@ -19,7 +19,7 @@ export default function Logo({ className = "", withText = true, tone = "dark", s
       </svg>
       {withText && (
         <span className="text-xl font-black tracking-tight" style={{ color: cor }}>
-          Cuida<span style={{ color: tone === "light" ? "#FFB59A" : "#0B7ABF" }}>Pet</span>
+          Cuida<span style={{ color: tone === "light" ? "#F6A877" : "#0B7ABF" }}>Pet</span>
         </span>
       )}
     </span>
