@@ -29,6 +29,8 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-white/50">
         © {new Date().getFullYear()} CuidaPet
+        {" · "}<Link to="/termos" className="hover:underline">Termos de Uso</Link>
+        {" · "}<Link to="/privacidade" className="hover:underline">Política de Privacidade</Link>
       </div>
     </footer>
   );

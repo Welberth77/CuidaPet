@@ -14,7 +14,7 @@ export default class ErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     // Em producao da para enviar para um servico de logs aqui.
-    console.error("Erro capturado pelo ErrorBoundary:", error, info);
+    if (import.meta.env.DEV) console.error("Erro capturado pelo ErrorBoundary:", error, info);
   }
 
   render() {

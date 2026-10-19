@@ -13,6 +13,7 @@ export default function Cadastro() {
   const [erros, setErros] = useState({});
   const [erroGeral, setErroGeral] = useState("");
   const [enviando, setEnviando] = useState(false);
+  const [aceito, setAceito] = useState(false);
 
   function set(campo, valor) {
     setForm((f) => ({ ...f, [campo]: valor }));
@@ -33,6 +34,7 @@ export default function Cadastro() {
     ev.preventDefault();
     setErroGeral("");
     if (!validar()) return;
+    if (!aceito) return;
     setEnviando(true);
     try {
       const data = await cadastrar(form.nome.trim(), form.email.trim(), form.senha);
@@ -81,7 +83,21 @@ export default function Cadastro() {
 
         {erroGeral && <p className="text-sm font-medium text-red-600">{erroGeral}</p>}
 
-        <button type="submit" className="btn-primario w-full" disabled={enviando}>
+        <label className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
+          <input
+            type="checkbox"
+            checked={aceito}
+            onChange={(e) => setAceito(e.target.checked)}
+            className="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-marca-500"
+          />
+          <span>
+            Li e concordo com os{" "}
+            <Link to="/termos" target="_blank" rel="noopener noreferrer" className="text-marca-500 dark:text-marca-300 hover:underline">Termos de Uso</Link> e a{" "}
+            <Link to="/privacidade" target="_blank" rel="noopener noreferrer" className="text-marca-500 dark:text-marca-300 hover:underline">Política de Privacidade</Link>.
+          </span>
+        </label>
+
+        <button type="submit" className="btn-primario w-full" disabled={enviando || !aceito}>
           {enviando ? <><Spinner size={18} className="mr-2 border-white/40 border-t-white" /> Cadastrando...</> : "Cadastrar"}
         </button>
       </form>
